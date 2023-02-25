@@ -18,6 +18,7 @@ import Promise from "./Component/Promise.jsx";
 
 //About Me
 import Shad from "./views/about_me/shad/Shad.jsx";
+import Daniel from "./views/about_me/daniel/Daniel.jsx";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -132,6 +133,7 @@ class App extends React.Component {
 
                 {/* About Me Pages */}
                 <Route path="/about/dev/Shad" element={<Shad />} />
+                <Route path="/about/dev/Daniel" element={<Daniel />} />
               </Routes>
             </div>
           </header>
