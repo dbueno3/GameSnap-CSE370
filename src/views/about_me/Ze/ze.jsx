@@ -1,6 +1,6 @@
 import "./ze.css";
 
-import image from "./zechen.jpg";
+import image from "./zechen.png";
 
 
 const Ze = () => {
