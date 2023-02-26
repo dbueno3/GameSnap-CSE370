@@ -34,14 +34,9 @@ const Landing = () => {
         >
           Daniel
         </button>
-        <button
-          className="button"
-          onClick={(e) => {
-            navigate("/dheeraj.html");
-          }}
-        >
-          Dheeraj
-        </button>
+        <a href="./dheeraj.html">
+          <button className="button">Dheeraj</button>
+        </a>
         <button
           className="button"
           onClick={(e) => {
