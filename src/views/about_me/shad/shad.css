@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-#body {
+#Shad_body {
     min-height: 100vh;
     min-width: 100vw;
     background-color: white;
 }
 
-h1 {
+#Shad_body h1 {
     color:black
 }
 
-#main_body{
+#Shad_main_body{
     height: 100vh;
     width: 100vw;
 }
 
-#left {
+#Shad_left {
     float: left;
     height: 100vh;
     width:30vw;
@@ -25,12 +25,12 @@ h1 {
     background: linear-gradient(to left, #ffe4c4, #ffffff);
 }
 
-#abt_me_image{
+#Shad_abt_me_image{
     height: 50vh;
     margin: 50px;
 }
 
-#right {
+#Shad_right {
     float: right;
     background: linear-gradient(to right, #ffe4c4, #ffffff);
     height: 100vh;
@@ -38,7 +38,7 @@ h1 {
     text-align: left;
 }
 
-#right_info{
+#Shad_right_info{
     margin:30px;
     line-height: -20px;
     width: 40vw;
@@ -50,7 +50,7 @@ h1 {
     animation: yourAnimation 1s linear 0s 1 normal none;
 }
 
-#right_info p{
+#Shad_right_info p{
     font-size: 20px;
     color: black;
 }

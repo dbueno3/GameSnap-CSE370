@@ -8,13 +8,13 @@ import twitter from "./twitter.png";
 
 const Shad = () => {
   return (
-    <div id="body">
-      <div id="main_body">
-        <div id="left">
-          <img alt="shad" id="abt_me_image" src={image} />
+    <div id="Shad_body">
+      <div id="Shad_main_body">
+        <div id="Shad_left">
+          <img alt="shad" id="Shad_abt_me_image" src={image} />
         </div>
-        <div id="right">
-          <div id="right_info">
+        <div id="Shad_right">
+          <div id="Shad_right_info">
             <h1 style={{ marginBottom: "0.25em" }}>Shad Chowdhury</h1>
             <p style={{ marginTop: "0.25em", color: "grey" }}>
               <i>shad chou-dhoo-reeh</i>
