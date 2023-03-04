@@ -5,7 +5,7 @@
 */
 
 import React from "react";
-import "./App.css";
+// import "./App.css";
 import PostForm from "./Component/PostForm.jsx";
 import FriendList from "./Component/FriendList.jsx";
 import GroupList from "./Component/GroupList.jsx";
@@ -13,11 +13,16 @@ import LoginForm from "./Component/LoginForm.jsx";
 import Profile from "./Component/Profile.jsx";
 import FriendForm from "./Component/FriendForm.jsx";
 import Modal from "./Component/Modal.jsx";
-import Navbar from "./Component/Navbar.jsx";
+// import Navbar from "./Component/Navbar.jsx";
 import Promise from "./Component/Promise.jsx";
 
+//Landing
+import Landing from "./views/Landing.jsx";
+
 //About Me
+import Shad from "./views/about_me/shad/Shad.jsx";
 import Ze from "./views/about_me/Ze/ze.jsx";
+import Daniel from "./views/about_me/Daniel/daniel.jsx";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -119,19 +124,12 @@ class App extends React.Component {
                   }
                 />
                 <Route path="/promise" element={<Promise />} />
-                <Route
-                  path="/"
-                  element={
-                    <Posts
-                      doRefreshPosts={this.doRefreshPosts}
-                      login={this.login}
-                      apprefresh={this.state.refreshPosts}
-                    />
-                  }
-                />
+                <Route path="/" element={<Landing />} />
 
                 {/* About Me Pages */}
+                <Route path="/about/dev/Shad" element={<Shad />} />
                 <Route path="/about/dev/Ze" element={<Ze />} />
+                <Route path="/about/dev/Daniel" element={<Daniel />} />
               </Routes>
             </div>
           </header>
