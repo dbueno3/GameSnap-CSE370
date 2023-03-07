@@ -27,6 +27,7 @@ import Daniel from "./views/about_me/Daniel/daniel.jsx";
 //User
 import SignUp from "./views/SignUp.jsx";
 import Login from "./views/Login.jsx";
+import EditProfile from "./views/EditProfile.jsx";
 import UserProfile from "./views/UserProfile.jsx";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -133,6 +134,7 @@ class App extends React.Component {
 
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/edit_profile" element={<EditProfile />} />
                 <Route path="/profile" element={<UserProfile />} />
 
                 {/* About Me Pages */}

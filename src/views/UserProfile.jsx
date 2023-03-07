@@ -1,23 +1,56 @@
 //Blank profile
 import BProfile from "../assets/blank_profile.png";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+//Router
+import { useNavigate } from "react-router-dom";
 
 //CSS
 import "./style.css";
 
 const UserProfile = () => {
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [bio, setBio] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  let navigate = useNavigate();
   useEffect(() => {
-    console.log(sessionStorage.getItem("token"));
+    fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result) {
+          let info = result.attributes;
+          setFname(info.firstName);
+          setLname(info.lastName);
+          setBio(info.bio);
+          setUsername(info.username);
+          setEmail(result.email);
+        }
+      });
   }, []);
   return (
     <div id="ProfilePageMain">
       <img src={BProfile} alt="blank_profile" className="blankProfileImage" />
-      <h4>First Name: Austin</h4>
-      <h4>Last Name: Tleon</h4>
-      <h4>Username: atleon</h4>
-      <h4>Email: austin@buffalo.edu</h4>
-      <h4>Bio : Like to play games</h4>
+      <h4>First Name: {fname}</h4>
+      <h4>Last Name: {lname}</h4>
+      <h4>Username: {username}</h4>
+      <h4>Email: {email}</h4>
+      <h4>Bio : {bio}</h4>
+      <button
+        onClick={() => {
+          navigate("/edit_profile");
+        }}
+      >
+        Edit
+      </button>
     </div>
   );
 };

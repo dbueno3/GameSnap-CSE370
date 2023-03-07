@@ -8,7 +8,7 @@ export default class FriendList extends React.Component {
     super(props);
     this.state = {
       userid: props.userid,
-      connections: []
+      connections: [],
     };
   }
 
@@ -17,87 +17,85 @@ export default class FriendList extends React.Component {
   }
 
   loadFriends() {
-
-    fetch(process.env.REACT_APP_API_PATH+"/connections?userID="+sessionStorage.getItem("user"), {
+    fetch(process.env.REACT_APP_API_PATH + "/connections?userID=" + sessionStorage.getItem("user"), {
       method: "get",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer '+sessionStorage.getItem("token")
-      }
-     })
-      .then(res => res.json())
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
       .then(
-        result => {
+        (result) => {
           if (result) {
             this.setState({
               isLoaded: true,
-              connections: result[0]
+              connections: result[0],
             });
           }
         },
-        error => {
+        (error) => {
           this.setState({
             isLoaded: true,
-            error
+            error,
           });
         }
       );
   }
 
-  updateConnection(id, status){
+  updateConnection(id, status) {
     //make the api call to the user controller
-    fetch(process.env.REACT_APP_API_PATH+"/connections/"+id, {
+    fetch(process.env.REACT_APP_API_PATH + "/connections/" + id, {
       method: "PATCH",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer '+sessionStorage.getItem("token")
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
       },
       body: JSON.stringify({
-        attributes: {status: status, type: "friend"}
-      })
+        attributes: { status: status, type: "friend" },
+      }),
     })
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(
-        result => {
+        (result) => {
           this.setState({
-            responseMessage: result.Status
+            responseMessage: result.Status,
           });
           this.loadFriends();
         },
-        error => {
+        (error) => {
           alert("error!");
         }
       );
   }
 
-  conditionalAction(status, id){
-    if (status === "active"){
-      return(
-
-      <img
-        src={blockIcon}
-        className="sidenav-icon deleteIcon"
-        alt="Block User"
-        title="Block User"
-        onClick={e => this.updateConnection(id, "blocked")}
-      />
-    )
-    }else{
-      return(
-      <img
-        src={unblockIcon}
-        className="sidenav-icon deleteIcon"
-        alt="Unblock User"
-        title="Unblock User"
-        onClick={e => this.updateConnection(id, "active")}
-      />
-    )
+  conditionalAction(status, id) {
+    if (status === "active") {
+      return (
+        <img
+          src={blockIcon}
+          className="sidenav-icon deleteIcon"
+          alt="Block User"
+          title="Block User"
+          onClick={(e) => this.updateConnection(id, "blocked")}
+        />
+      );
+    } else {
+      return (
+        <img
+          src={unblockIcon}
+          className="sidenav-icon deleteIcon"
+          alt="Unblock User"
+          title="Unblock User"
+          onClick={(e) => this.updateConnection(id, "active")}
+        />
+      );
     }
   }
 
   render() {
     //this.loadPosts();
-    const {error, isLoaded, connections} = this.state;
+    const { error, isLoaded, connections } = this.state;
     if (error) {
       return <div> Error: {error.message} </div>;
     } else if (!isLoaded) {
@@ -106,12 +104,10 @@ export default class FriendList extends React.Component {
       return (
         <div className="post">
           <ul>
-            {connections.map(connection => (
+            {connections.map((connection) => (
               <div key={connection.id} className="userlist">
                 {connection.toUser.attributes.username} - {connection.attributes.status}
-                <div className="deletePost">
-                {this.conditionalAction(connection.attributes.status, connection.id)}
-                </div>
+                <div className="deletePost">{this.conditionalAction(connection.attributes.status, connection.id)}</div>
               </div>
             ))}
           </ul>
