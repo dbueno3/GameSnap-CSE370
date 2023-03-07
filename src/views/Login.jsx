@@ -3,14 +3,14 @@ import React, { useState } from "react";
 //Router
 import { useNavigate } from "react-router-dom";
 
-const SignUp = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let navigate = useNavigate();
   return (
-    <div id="signUpMain">
+    <div id="loginMain">
       <u>
-        <h1>Sign Up</h1>
+        <h1>Login</h1>
       </u>
       <input
         type="text"
@@ -32,7 +32,7 @@ const SignUp = () => {
       <br />
       <button
         onClick={() => {
-          fetch(process.env.REACT_APP_API_PATH + "/auth/signup", {
+          fetch(process.env.REACT_APP_API_PATH + "/auth/login", {
             method: "post",
             headers: {
               "Content-Type": "application/json",
@@ -40,25 +40,11 @@ const SignUp = () => {
             body: JSON.stringify({
               email: email,
               password: password,
-              attributes: {
-                username: "",
-                firstName: "",
-                lastName: "",
-                bio: "",
-                profilePicture: "",
-              },
             }),
           })
             .then((res) => res.json())
             .then(
               (result) => {
-                console.log(
-                  JSON.stringify({
-                    email: email,
-                    password: password,
-                  })
-                );
-                console.log("Testing");
                 if (result.userID) {
                   // set the auth token and user ID in the session state
                   sessionStorage.setItem("token", result.token);
@@ -77,10 +63,10 @@ const SignUp = () => {
             );
         }}
       >
-        Register
+        Login
       </button>
     </div>
   );
 };
 
-export default SignUp;
+export default Login;
