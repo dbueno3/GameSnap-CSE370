@@ -15,6 +15,7 @@ const UserProfile = () => {
   const [bio, setBio] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [proPic, setPropic] = useState("");
   let navigate = useNavigate();
   useEffect(() => {
     fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
@@ -33,12 +34,13 @@ const UserProfile = () => {
           setBio(info.bio);
           setUsername(info.username);
           setEmail(result.email);
+          setPropic(info.profilePicture);
         }
       });
   }, []);
   return (
     <div id="ProfilePageMain">
-      <img src={BProfile} alt="blank_profile" className="blankProfileImage" />
+      <img src={proPic === "" ? BProfile : proPic} alt="blank_profile" className="blankProfileImage" />
       <h4>First Name: {fname}</h4>
       <h4>Last Name: {lname}</h4>
       <h4>Username: {username}</h4>

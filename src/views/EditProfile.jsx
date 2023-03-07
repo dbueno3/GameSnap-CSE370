@@ -11,7 +11,7 @@ const EditProfile = () => {
   const [lname, setLname] = useState("");
   const [bio, setBio] = useState("");
   const [username, setUsername] = useState("");
-  const [imageByte, setImageByte] = useState("");
+  const [proPic, setPropic] = useState("");
   let navigate = useNavigate();
   useEffect(() => {
     fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
@@ -45,16 +45,20 @@ const EditProfile = () => {
         onChange={() => {
           let formData = new FormData();
           let image = document.getElementById("pickNewImage").files[0];
-          formData.append("uploaderID", 115);
-          formData.append("attributes", {});
+          formData.append("uploaderID", sessionStorage.getItem("user"));
+          formData.append(
+            "attributes",
+            JSON.stringify({
+              profilePicture: "",
+            })
+          );
           formData.append("file", image);
           fetch(process.env.REACT_APP_API_PATH + `/file-uploads`, {
             method: "POST",
             headers: {
-              "Content-Type": "multipart/form-data",
               Authorization: "Bearer " + sessionStorage.getItem("token"),
             },
-            body: JSON.stringify(formData),
+            body: formData,
           })
             .then((response) => {
               if (!response.ok) {
@@ -65,7 +69,44 @@ const EditProfile = () => {
             .then((result) => {
               if (result) {
                 const data = JSON.parse(result);
-                console.log("Success:", data);
+                console.log(data);
+                let newForm = new FormData();
+                newForm.append("uploaderID", data.uploaderID);
+                newForm.append(
+                  "attributes",
+                  JSON.stringify({
+                    profilePicture: `https://webdev.cse.buffalo.edu${data.path}`,
+                  })
+                );
+                setPropic(`https://webdev.cse.buffalo.edu${data.path}`);
+                fetch(process.env.REACT_APP_API_PATH + `/file-uploads/${data.id}`, {
+                  method: "PATCH",
+                  headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem("token"),
+                  },
+                  body: newForm,
+                })
+                  .then((response) => {
+                    if (!response.ok) {
+                      throw new Error(`HTTP error! status: ${response.status}`);
+                    } else {
+                      fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
+                        method: "PATCH",
+                        headers: {
+                          "Content-Type": "application/json",
+                          Authorization: "Bearer " + sessionStorage.getItem("token"),
+                        },
+                        body: JSON.stringify({
+                          attributes: {
+                            profilePicture: proPic,
+                          },
+                        }),
+                      });
+                    }
+                  })
+                  .catch((error) => {
+                    console.error("Error:", error);
+                  });
               } else {
                 console.log("Success: Response was empty");
               }
@@ -82,7 +123,6 @@ const EditProfile = () => {
       <br />
       <input type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)} />
       <br />
-      <p>Email: edy@buffalo.edu</p>
       <br />
       <textarea placeholder="Bio" onChange={(e) => setBio(e.target.value)} />
       <br />
@@ -100,6 +140,7 @@ const EditProfile = () => {
                 lastName: lname,
                 username: username,
                 bio: bio,
+                profilePicture: proPic,
               },
             }),
           })
