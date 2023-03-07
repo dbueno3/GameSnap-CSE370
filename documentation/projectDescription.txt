@@ -1,0 +1,31 @@
+Project Description:
+
+As a group we decided to build a social media platform for gamers. The goal of our platform is to allow gamers to share their contents such as via uploading their play of the game clips.
+Our platform also allows users to engage with other users who have simillar interests in terms of games they play by selecting top 3 games they usually play. This allows our platform to render their feed with relevant contents to them.
+Finally our platform allows users to communicate their friends via messaging services in the application with allowing them to like and comment on each others post.
+
+
+Team Contract:
+
+1. As a team, research and discuss 3 ways that you can help set expectations
+    a. We will set and define clear checkpoints for the projects.
+    b. We will solve any confusions each member would have
+    about the documentation of the project during the group
+    discussion.
+    c. Help each other out in terms of confusion or unexpected
+    troubles come out and properly communicate
+
+2. As a team, find one thing about each team member that is unique (skill, experience, goal)    
+    Daniel: able to have an open mind when working with others on a project
+    Eric: I'm a decently creative thinker and I also consider myself to be a strong listener
+    Shad: Have software development and management skills from internships and personal projects which can be used to successfully deliver the expectation for the team project
+    Dheeraj: Has both mobile and web development experience and is design enthusiast which can help in the development cycle of the projects.
+    Ze: Have some backend experience that deals with the databases and information transformation between clients to the server.
+
+3. As a team, how will you communicate? In person? Via e-mail? Piazza? Slack? Decide on at least 2 channels of communication. (Your PM may require an additional channel).
+    a. We will communicate both in person and also via Discord.
+
+4. How will you resolve conflict? Decide on a method to resolve disagreements. Funny is best.
+    a. To resolve a conflict, we will approach the conflict in aN appropriate manner on how to solve the conflict as a team.
+    b. We will be very communicative with each other when a member is struggling on a task on the assignment.
+    c. Will try to handle the situation amongst ourselves as best as we can first, but if we can’t get to a proper solution we will ask the instructor for help mediating it.
