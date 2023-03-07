@@ -5,6 +5,7 @@ import userPic from '../assets/user.png';
 import puppyPicture from '../assets/puppy.jpg';
 import sunsetPicture from '../assets/sunset.jpg';
 import ProfileGrid from "./ProfileGrid";
+import BottomBar from "./BottomBar";
 
 function MyProfile() {
     const user = {
@@ -41,6 +42,7 @@ function MyProfile() {
         <div>
           <Header user={user}/>
           <ProfileGrid posts={posts} />
+          <BottomBar/>
         </div>
       );
 }
