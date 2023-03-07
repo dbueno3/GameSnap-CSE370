@@ -9,7 +9,7 @@ export default class FriendForm extends React.Component {
       friendname: "",
       friendid: "",
       responseMessage: "",
-      users: []
+      users: [],
     };
     this.fieldChangeHandler.bind(this);
   }
@@ -17,77 +17,79 @@ export default class FriendForm extends React.Component {
   fieldChangeHandler(field, e) {
     console.log("field change");
     this.setState({
-      [field]: e.target.value
+      [field]: e.target.value,
     });
   }
 
   selectAutocomplete(friendID) {
-      this.setState({
-        friendid:friendID
-      })
-      console.log("Set Friend ID to "+friendID)
+    this.setState({
+      friendid: friendID,
+    });
+    console.log("Set Friend ID to " + friendID);
   }
 
   componentDidMount() {
     //make the api call to the user API to get the user with all of their attached preferences
-    fetch(process.env.REACT_APP_API_PATH+"/users/", {
+    fetch(process.env.REACT_APP_API_PATH + "/users/", {
       method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer '+sessionStorage.getItem("token")
-      }
-
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
     })
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(
-        result => {
+        (result) => {
           if (result) {
             let names = [];
 
-            result[0].forEach(element => {if (element.attributes.username){names.push(element)}});
+            result[0].forEach((element) => {
+              if (element.attributes.username) {
+                names.push(element);
+              }
+            });
 
             this.setState({
               users: names,
-              responseMessage: result.Status
+              responseMessage: result.Status,
             });
             console.log(names);
           }
         },
-        error => {
+        (error) => {
           alert("error!");
         }
       );
   }
 
-  submitHandler = event => {
+  submitHandler = (event) => {
     //keep the form from actually submitting
     event.preventDefault();
 
     console.log("friend is ");
     console.log(this.state.friendid);
 
-
     //make the api call to the user controller
-    fetch(process.env.REACT_APP_API_PATH+"/connections", {
+    fetch(process.env.REACT_APP_API_PATH + "/connections", {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer '+sessionStorage.getItem("token")
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
       },
       body: JSON.stringify({
         toUserID: this.state.friendid,
         fromUserID: sessionStorage.getItem("user"),
-        attributes:{type:"friend", status:"active"}
-      })
+        attributes: { type: "friend", status: "active" },
+      }),
     })
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(
-        result => {
+        (result) => {
           this.setState({
-            responseMessage: result.Status
+            responseMessage: result.Status,
           });
         },
-        error => {
+        (error) => {
           alert("error!");
         }
       );
@@ -100,7 +102,7 @@ export default class FriendForm extends React.Component {
           Find a Friend!
           <br />
           <div className="autocomplete">
-            <Autocomplete suggestions={this.state.users} selectAutocomplete={e => this.selectAutocomplete(e)} />
+            <Autocomplete suggestions={this.state.users} selectAutocomplete={(e) => this.selectAutocomplete(e)} />
           </div>
         </label>
         <input type="submit" value="submit" />
