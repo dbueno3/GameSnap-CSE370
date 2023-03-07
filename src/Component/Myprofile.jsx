@@ -2,6 +2,9 @@ import { React } from "react";
 import Header from './Header';
 import Myprofilecss from './Myprofilecss.css';
 import userPic from '../assets/user.png';
+import puppyPicture from '../assets/puppy.jpg';
+import sunsetPicture from '../assets/sunset.jpg';
+import ProfileGrid from "./ProfileGrid";
 
 function MyProfile() {
     const user = {
@@ -15,11 +18,29 @@ function MyProfile() {
         followers: 200
     };
 
+    const posts = [
+      {
+        id: 1,
+        image: sunsetPicture,
+        caption: "Beautiful sunset",
+      },
+      {
+        id: 2,
+        image: puppyPicture,
+        caption: "Cute puppy",
+      },
+      {
+        id: 3,
+        image: sunsetPicture,
+        caption: "Beautiful sunset",
+      },
+
+    ];
+
     return (
         <div>
-          <Header
-        user={user}
-      />
+          <Header user={user}/>
+          <ProfileGrid posts={posts} />
         </div>
       );
 }

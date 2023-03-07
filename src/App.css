@@ -299,4 +299,7 @@
   #sidenav {
       display: none;
   }
+  .App-header {
+    display: none;
+  }
 }
