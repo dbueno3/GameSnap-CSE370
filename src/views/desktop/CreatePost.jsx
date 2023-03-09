@@ -6,7 +6,8 @@ import "../style.css";
 
 const CreatePost = () => {
   const [caption, setCaption] = useState("");
-  const formData = new FormData();
+  // eslint-disable-next-line
+  const [formData, addToFormData] = useState(new FormData());
   return (
     <div id="createPostMain">
       <img
@@ -27,6 +28,9 @@ const CreatePost = () => {
           formData.append("uploaderID", sessionStorage.getItem("user"));
           formData.append("attributes", JSON.stringify({}));
           formData.append("file", image);
+          //   for (let [k, v] of formData.entries()) {
+          //     console.log(`${k}: ${v}`);
+          //   }
         }}
       />
       <br />
@@ -57,7 +61,33 @@ const CreatePost = () => {
             })
             .then((result) => {
               const data = JSON.parse(result);
-              //Create the post here
+              console.log(data);
+              //   Create the post here
+              let postImageUrl = `https://webdev.cse.buffalo.edu${data.path}`;
+              fetch(process.env.REACT_APP_API_PATH + "/posts", {
+                method: "post",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: "Bearer " + sessionStorage.getItem("token"),
+                },
+                body: JSON.stringify({
+                  authorID: sessionStorage.getItem("user"),
+                  content: "Image Post",
+                  attributes: {
+                    caption: caption,
+                    mediaUrl: postImageUrl,
+                  },
+                }),
+              })
+                .then((res) => res.json())
+                .then(
+                  (result) => {
+                    console.log("Post was successful");
+                  },
+                  (error) => {
+                    console.log(`error!: ${error}`);
+                  }
+                );
             });
         }}
       >
