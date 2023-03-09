@@ -6,7 +6,7 @@
 
 import React from "react";
 // import "./App.css";
-// import PostForm from "./Component/PostForm.jsx";
+import PostForm from "./Component/PostForm.jsx";
 import FriendList from "./Component/FriendList.jsx";
 import GroupList from "./Component/GroupList.jsx";
 import LoginForm from "./Component/LoginForm.jsx";
@@ -122,8 +122,8 @@ class App extends React.Component {
                 <Route path="/settings" element={<Settings login={this.login} />} />
                 <Route path="/friends" element={<Friends login={this.login} />} />
                 <Route path="/groups" element={<Groups login={this.login} />} />
-                {/* <Route
-                  path="/posts"
+                <Route
+                  path="/postsGiven"
                   element={
                     <Posts
                       doRefreshPosts={this.doRefreshPosts}
@@ -131,7 +131,7 @@ class App extends React.Component {
                       apprefresh={this.state.refreshPosts}
                     />
                   }
-                /> */}
+                />
                 <Route path="/promise" element={<Promise />} />
                 <Route path="/" element={<Landing />} />
 
@@ -220,31 +220,31 @@ const Groups = (props) => {
   );
 };
 
-// const Posts = (props) => {
-//   console.log("RENDERING POSTS");
-//   console.log(typeof props.doRefreshPosts);
+const Posts = (props) => {
+  console.log("RENDERING POSTS");
+  console.log(typeof props.doRefreshPosts);
 
-//   console.log("TEST COMPLETE");
+  console.log("TEST COMPLETE");
 
-//   // if the user is not logged in, show the login form.  Otherwise, show the post form
-//   if (!sessionStorage.getItem("token")) {
-//     console.log("LOGGED OUT");
-//     return (
-//       <div>
-//         <p>CSE 370 Social Media Test Harness</p>
-//         <LoginForm login={props.login} />
-//       </div>
-//     );
-//   } else {
-//     console.log("LOGGED IN");
-//     return (
-//       <div>
-//         <p>CSE 370 Social Media Test Harness</p>
-//         <PostForm refresh={props.apprefresh} />
-//       </div>
-//     );
-//   }
-// };
+  // if the user is not logged in, show the login form.  Otherwise, show the post form
+  if (!sessionStorage.getItem("token")) {
+    console.log("LOGGED OUT");
+    return (
+      <div>
+        <p>CSE 370 Social Media Test Harness</p>
+        <LoginForm login={props.login} />
+      </div>
+    );
+  } else {
+    console.log("LOGGED IN");
+    return (
+      <div>
+        <p>CSE 370 Social Media Test Harness</p>
+        <PostForm refresh={props.apprefresh} />
+      </div>
+    );
+  }
+};
 
 // export the app for use in index.js
 export default App;
