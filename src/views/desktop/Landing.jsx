@@ -1,4 +1,4 @@
-import "./styles/landing.css";
+import "../styles/landing.css";
 
 //Router
 import { useNavigate } from "react-router-dom";

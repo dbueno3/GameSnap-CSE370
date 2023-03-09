@@ -1,13 +1,10 @@
 //Blank profile
-import BProfile from "../assets/blank_profile.png";
+import BProfile from "../../assets/blank_profile.png";
 
 import { useEffect, useState } from "react";
 
 //Router
 import { useNavigate } from "react-router-dom";
-
-//CSS
-import "./style.css";
 
 const UserProfile = () => {
   const [fname, setFname] = useState("");

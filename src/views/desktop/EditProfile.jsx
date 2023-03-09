@@ -1,5 +1,5 @@
 //Blank profile
-import BProfile from "../assets/blank_profile.png";
+import BProfile from "../../assets/blank_profile.png";
 
 import { useEffect, useState } from "react";
 
