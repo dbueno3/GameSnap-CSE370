@@ -1,6 +1,6 @@
 Project Description:
 
-As a group we decided to build a social media platform for gamers. The goal of our platform is to allow gamers to share their contents such as via uploading their play of the game clips or images.
+As a group we decided to build a social media platform for gamers. The goal of our platform is to allow gamers to share their contents such as via uploading their play of the game clips from youtube embed or images.
 Our platform also allows users to engage with other users who have simillar interests in terms of games they play by selecting top 3 games they usually play. This allows our platform to render their feed with relevant contents to them.
 Finally our platform allows users to communicate their friends via messaging services in the application with allowing them to like and comment on each others post.
 
