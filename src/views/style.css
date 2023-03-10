@@ -3,3 +3,36 @@
     height: 25vh;
     border-radius: 100%;
 }
+
+/* Upload post */
+#createPostMain{
+    text-align: center;
+}
+
+.uploadLogo{
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* user posts */
+#userPostsMain{
+    text-align: center;
+    width: 100vw;
+}
+
+/*posts*/
+.post{
+    height:40vh;
+    width:40vw;
+    background-color: white;
+    margin: 10px;
+    text-align: center;
+    color: black
+}
+
+.postImage{
+    max-width: stretch;
+    height: 300px;
+}

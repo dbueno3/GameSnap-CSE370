@@ -17,7 +17,7 @@ import Modal from "./Component/Modal.jsx";
 import Promise from "./Component/Promise.jsx";
 
 //Landing
-import Landing from "./views/Landing.jsx";
+import Landing from "./views/desktop/Landing.jsx";
 
 //About Me
 import Shad from "./views/about_me/shad/Shad.jsx";
@@ -25,10 +25,13 @@ import Ze from "./views/about_me/Ze/ze.jsx";
 import Daniel from "./views/about_me/Daniel/daniel.jsx";
 
 //User
-import SignUp from "./views/SignUp.jsx";
-import Login from "./views/Login.jsx";
-import EditProfile from "./views/EditProfile.jsx";
-import UserProfile from "./views/UserProfile.jsx";
+import SignUp from "./views/desktop/SignUp.jsx";
+import Login from "./views/desktop/Login.jsx";
+import EditProfile from "./views/desktop/EditProfile.jsx";
+import UserProfile from "./views/desktop/UserProfile.jsx";
+
+import UserPosts from "./views/desktop/UserPosts.jsx";
+import CreatePost from "./views/desktop/CreatePost.jsx";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -120,7 +123,7 @@ class App extends React.Component {
                 <Route path="/friends" element={<Friends login={this.login} />} />
                 <Route path="/groups" element={<Groups login={this.login} />} />
                 <Route
-                  path="/posts"
+                  path="/postsGiven"
                   element={
                     <Posts
                       doRefreshPosts={this.doRefreshPosts}
@@ -132,10 +135,15 @@ class App extends React.Component {
                 <Route path="/promise" element={<Promise />} />
                 <Route path="/" element={<Landing />} />
 
+                {/* {Users Profile} */}
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/edit_profile" element={<EditProfile />} />
                 <Route path="/profile" element={<UserProfile />} />
+
+                {/* {Contents} */}
+                <Route path="/create_post" element={<CreatePost />} />
+                <Route path="/posts" element={<UserPosts />} />
 
                 {/* About Me Pages */}
                 <Route path="/about/dev/Shad" element={<Shad />} />
