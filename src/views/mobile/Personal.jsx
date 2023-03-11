@@ -61,8 +61,12 @@ export default class Personal extends React.Component{
             <div className="name">{this.state.Name}</div>
             <div className="website">{this.state.Website}</div>
             <div className="bio">{this.state.Bio}</div>
-            <Link to="/settings" style={{textDecoration: 'none',color:'Black'}}>
+            <Link to="/edit_profile_mobile" style={{textDecoration: 'none',color:'Black'}}>
             <input type="submit" className="Edit-profile" value="Edit-profile"/>
+            </Link>
+            <br></br>
+            <Link to="/make_post_mobile" style={{textDecoration: 'none',color:'Black'}}>
+            <input type="submit" className="Edit-profile" value="Make a post"/>
             </Link>
 
         </div>
