@@ -5,7 +5,7 @@
 */
 
 import React from "react";
-import "./App.css";
+// import "./App.css";
 import PostForm from "./Component/PostForm.jsx";
 import FriendList from "./Component/FriendList.jsx";
 import GroupList from "./Component/GroupList.jsx";
@@ -13,11 +13,28 @@ import LoginForm from "./Component/LoginForm.jsx";
 import Profile from "./Component/Profile.jsx";
 import FriendForm from "./Component/FriendForm.jsx";
 import Modal from "./Component/Modal.jsx";
-import Navbar from "./Component/Navbar.jsx";
+// import Navbar from "./Component/Navbar.jsx";
 import Promise from "./Component/Promise.jsx";
 
+//Landing
+import Landing from "./views/desktop/Landing.jsx";
+
 //About Me
+import Shad from "./views/about_me/shad/Shad.jsx";
 import Ze from "./views/about_me/Ze/ze.jsx";
+import Daniel from "./views/about_me/Daniel/daniel.jsx";
+
+//User
+import SignUp from "./views/desktop/SignUp.jsx";
+import Login from "./views/desktop/Login.jsx";
+import EditProfile from "./views/desktop/EditProfile.jsx";
+import UserProfile from "./views/desktop/UserProfile.jsx";
+
+import UserPosts from "./views/desktop/UserPosts.jsx";
+import CreatePost from "./views/desktop/CreatePost.jsx";
+
+import Personal from "./views/mobile/Personal.jsx"
+import Profile_mobile from "./views/mobile/Profile_mobile.jsx";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -109,7 +126,7 @@ class App extends React.Component {
                 <Route path="/friends" element={<Friends login={this.login} />} />
                 <Route path="/groups" element={<Groups login={this.login} />} />
                 <Route
-                  path="/posts"
+                  path="/postsGiven"
                   element={
                     <Posts
                       doRefreshPosts={this.doRefreshPosts}
@@ -119,19 +136,24 @@ class App extends React.Component {
                   }
                 />
                 <Route path="/promise" element={<Promise />} />
-                <Route
-                  path="/"
-                  element={
-                    <Posts
-                      doRefreshPosts={this.doRefreshPosts}
-                      login={this.login}
-                      apprefresh={this.state.refreshPosts}
-                    />
-                  }
-                />
+                <Route path="/" element={<Landing />} />
+
+                {/* {Users Profile} */}
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/edit_profile" element={<EditProfile />} />
+                <Route path="/profile" element={<UserProfile />} />
+                <Route path="/personal" element={<Personal login={this.login} />}/>
+                <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />}/>
+
+                {/* {Contents} */}
+                <Route path="/create_post" element={<CreatePost />} />
+                <Route path="/posts" element={<UserPosts />} />
 
                 {/* About Me Pages */}
+                <Route path="/about/dev/Shad" element={<Shad />} />
                 <Route path="/about/dev/Ze" element={<Ze />} />
+                <Route path="/about/dev/Daniel" element={<Daniel />} />
               </Routes>
             </div>
           </header>

@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+@media (max-width:500px){
+    .maincontent{
+      background-color: white;
+      color:black
+    }
+    .sidenav{
+      display:none;
+    }
+    .edit-profile{
+      border-radius: 10px;
+      background-color: #d4d2d2;
+      border-color: #d4d2d2;
+      color:white;
+      margin-top: 1.5em;
+      width:20%;
+    }
+    .delete-account{
+      width:50%;
+      background-color: red;
+      color:white;
+      border-color: red;
+      border-radius:10px;
+      height:20%;
+      margin-top:2em;
+      margin-bottom:1em;
+    }
+    
+    .profileform{
+      font-family: 'Kanit', sans-serif;
+      font-size:15px;
+      color:black;
+    }
+    .user-icon{
+      width:15%;
+      height:15%;
+      border-radius:100%;
+    }
+    .edit-title{
+      font-size: 125%;
+      font-family: 'Kanit', sans-serif;
+      background-color: cyan;
+      display: flex;
+    }
+    .change-profile-photo{
+      font-family: 'Kanit', sans-serif;
+      margin-bottom: 3em;
+      font-size: 70%;
+    }
+    .name-field{
+      display:flex;
+      margin-left: 20%;
+    }
+    .box{
+      border-radius: 10px;
+      padding:5px;
+      width: 40%;
+      display:block;
+      margin:auto;
+    }
+    .Cancel{
+      margin-left: 0.5em;;
+    }
+    .edit{
+      position: relative;
+      left: 20%;
+    }
+    .icon{
+      width:15%;
+    }
+    .Parent{
+      color:black;
+    }
+  }

@@ -66,11 +66,6 @@ export default class LoginForm extends React.Component {
             sessionStorage.setItem("token", result.token);
             sessionStorage.setItem("user", result.userID);
 
-            this.setState({
-              sessiontoken: result.token,
-              alanmessage: result.token
-            });
-
             // call refresh on the posting list
             this.refreshPostsFromLogin();
           } else {

@@ -1,60 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-
-#Ze_body {
+#dan_body {
     min-height: 100vh;
     min-width: 100vw;
-    background-color: white;
+    background-color: #8EC5FC;
+
 }
 
-#Ze_body h1 {
-    color:black
+#dan_body h1 {
+    color:cornsilk;
 }
 
-#Ze_main_body{
+#dan_main_body{
     height: 100vh;
     width: 100vw;
 }
 
-#Ze_left {
+#dan_left {
     float: left;
     height: 100vh;
     width:30vw;
     display: flex;
     align-items:center;
     justify-content:center;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #8EC5FC 100%);
 }
 
-#Ze_abt_me_image{
+#dan_abt_me_image{
     height: 50vh;
     margin: 50px;
 }
+#dan_abt_me_image:hover{
+    transform: scale(0.9);
+}
 
-#Ze_right {
+/* #right {
     float: right;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC, #8EC5FC 100%);
     height: 100vh;
     width:70vw;
     text-align: left;
-}
+} */
 
-#Ze_right_info{
+#dan_right_info{
     margin:30px;
-    line-height: -20px;
+    line-height: 20px;
     width: 40vw;
     position: absolute;
     top: 45%;
     left: 60%;
     transform: translate(-50%, -50%);
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Monolisa', sans-serif;
     animation: yourAnimation 1s linear 0s 1 normal none;
 }
 
-#Ze_right_info p{
+#dan_right_info p{
     font-size: 20px;
-    color: black;
+    color: cornsilk;
+    font-weight: bold;
 }
 
 .social{
-    height:20px;
+    height:30px;
     transition: 0.1s ease-in-out;
 }
 
