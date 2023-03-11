@@ -33,6 +33,9 @@ import UserProfile from "./views/desktop/UserProfile.jsx";
 import UserPosts from "./views/desktop/UserPosts.jsx";
 import CreatePost from "./views/desktop/CreatePost.jsx";
 
+import Personal from "./views/mobile/Personal.jsx"
+import Profile_mobile from "./views/mobile/Profile_mobile.jsx";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // toggleModal will both show and hide the modal dialog, depending on current state.  Note that the
@@ -140,6 +143,8 @@ class App extends React.Component {
                 <Route path="/login" element={<Login />} />
                 <Route path="/edit_profile" element={<EditProfile />} />
                 <Route path="/profile" element={<UserProfile />} />
+                <Route path="/personal" element={<Personal login={this.login} />}/>
+                <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />}/>
 
                 {/* {Contents} */}
                 <Route path="/create_post" element={<CreatePost />} />
