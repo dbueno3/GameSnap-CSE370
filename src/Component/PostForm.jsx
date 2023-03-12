@@ -6,7 +6,7 @@ import PostingList from "./PostingList.jsx";
 // make updating the list simpler.  If the post form was contained entirely in a separate component, you would have to do a lot of calling around
 // in order to have the list update.  Communication between components in react is ... fun. 
 export default class PostForm extends React.Component {
-
+  
   constructor(props) {
     super(props);
     this.state = {

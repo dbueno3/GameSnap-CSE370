@@ -74,7 +74,12 @@
     }
     .post_mobile{
       position:relative;
+      background-color: transparent;
+      border:none;
       left:35%;
+      font-size: 90%;
+      font-family: 'Kanit', sans-serif;
+
     }
     
     .post_message{
@@ -84,9 +89,6 @@
       margin-bottom:1.5em;
     }
     .upload_image_mobile{
-      border-radius: 10px;
-      border-width:1px;
-      border-color: black;
       margin-bottom:3em;
     }
 

@@ -52,6 +52,7 @@ const CreatePost = () => {
               Authorization: "Bearer " + sessionStorage.getItem("token"),
             },
             body: formData,
+            
           })
             .then((response) => {
               if (!response.ok) {

@@ -68,6 +68,7 @@ export default class Personal extends React.Component{
             <Link to="/make_post_mobile" style={{textDecoration: 'none',color:'Black'}}>
             <input type="submit" className="Edit-profile" value="Make a post"/>
             </Link>
+            <p>hello</p>
 
         </div>
     );
