@@ -36,6 +36,7 @@ import Make_Post from "./views/mobile/Make_Post.jsx";
 
 import Personal from "./views/mobile/Personal.jsx"
 import Profile_mobile from "./views/mobile/Profile_mobile.jsx";
+import Posts_mobile from "./views/mobile/Posts_mobile.jsx";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -151,6 +152,7 @@ class App extends React.Component {
                 <Route path="/create_post" element={<CreatePost />} />
                 <Route path="/posts" element={<UserPosts />} />
                 <Route path="/make_post_mobile" element={<Make_Post login={this.login}/>} />
+                <Route path="/posts_mobile" element={<Posts_mobile login={this.login}/>} />
 
                 {/* About Me Pages */}
                 <Route path="/about/dev/Shad" element={<Shad />} />

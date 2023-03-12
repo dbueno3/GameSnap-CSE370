@@ -14,7 +14,9 @@ const Make_Post = () => {
             <Link to ="/personal" style={{textDecoration:'none', color:'Black'}}>Cancel</Link>
           </div>
           <div className="edit" style={{color:"black"}}>Make Your Post</div>
-          <button className="post_mobile"
+          <div className='post_mobile'>
+          <Link to="/posts_mobile" >
+          <button 
             onClick={() => {
           //Upload the file first
           fetch(process.env.REACT_APP_API_PATH + `/file-uploads`, {
@@ -48,6 +50,7 @@ const Make_Post = () => {
                     caption: caption,
                     mediaUrl: postImageUrl,
                   },
+                  
                 }),
               })
                 .then((res) => res.json())
@@ -61,7 +64,8 @@ const Make_Post = () => {
                 );
                 });
                 }}>Post</button>
-            
+            </Link>
+            </div>
           </p>
           
             <textarea className="post_message" type="text" placeholder="Say something..."  onChange={(e) => {
@@ -82,4 +86,4 @@ const Make_Post = () => {
         );
       
 }
-export default Make_Post
+export default Make_Post;
