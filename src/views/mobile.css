@@ -3,7 +3,7 @@
 @media (max-width:500px){
     .maincontent{
       background-color: white;
-      color:black
+      color:black;
     }
     .sidenav{
       display:none;
@@ -41,7 +41,9 @@
       font-size: 125%;
       font-family: 'Kanit', sans-serif;
       background-color: cyan;
-      display: flex;
+      display:flex;
+      top:0
+
     }
     .change-profile-photo{
       font-family: 'Kanit', sans-serif;
@@ -84,25 +86,31 @@
     
     .post_message{
       width:400px;
-      height:100px;
+      height:150px;
       border-radius:10px;
-      margin-bottom:1.5em;
+      margin-bottom:3.5em;
     }
     .upload_image_mobile{
-      margin-bottom:3em;
+      margin-bottom:3em;      
     }
 
     .preview_image{
-      display:grid;
-      grid-template-columns: repeat(3,1fr);
-      grid-template-rows: repeat(3,1fr);
-      gap:1em;
+      width:250px;
+      height:250px;
+      margin:auto;
     }
     .preview_mobile{
       border: 1px solid black;
-      width:100px;
-      height: 100px;
+      width:200px;
+      height: 200px;
       margin:auto;
 
+    }
+    .post_list{
+      margin:auto;
+    }
+    .post_list_image{
+      width:200px;
+      height:200px;
     }
 }

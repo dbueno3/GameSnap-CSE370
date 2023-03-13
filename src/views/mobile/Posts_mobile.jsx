@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 const Posts_mobile = () => {
   const [posts, getPosts] = useState([]);
+
   useEffect(() => {
     //Get the users posts
     fetch(process.env.REACT_APP_API_PATH + `/posts?authorID=${sessionStorage.getItem("user")}&sort=newest`, {
@@ -15,7 +16,6 @@ const Posts_mobile = () => {
       .then((res) => {
         if (res) {
           getPosts(res[0]);
-          console.log(getPosts(res[0]))
         }
       });
   }, []);
@@ -23,11 +23,10 @@ const Posts_mobile = () => {
   return (
     <div id="userPostsMain">
       <h1>Your Posts</h1>
-      {/*Posts*/}
       {posts.map((post) => {
         return (
-          <div className="post">
-            {<img src={post.attributes.mediaUrl} alt={post.attributes.caption} className="postImage" />}
+          <div className="post_list">
+            <img src={post.attributes.mediaUrl} alt={post.attributes.caption} className="post_list_image" />
             <p>{post.attributes.caption}</p>
           </div>
         );

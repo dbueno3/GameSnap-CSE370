@@ -7,6 +7,7 @@ const Make_Post = () => {
     const [caption, setCaption] = useState("");
     // eslint-disable-next-line
     const [formData, addToFormData] = useState(new FormData());
+    const [selectedImage,setSelectedImage] = useState(null)
     return (
         <div className="parents">
           <p className="edit-title">
@@ -71,16 +72,30 @@ const Make_Post = () => {
             <textarea className="post_message" type="text" placeholder="Say something..."  onChange={(e) => {
                 setCaption(e.target.value);
             }}/>            
-            <input type="file" id="image_upload" className="upload_image_mobile" style={{display:"none"}} onChange={() =>{
+            <input type="file" id="image_upload" className="upload_image_mobile" style={{display:"none"}} onChange={(event) =>{
                 let image = document.getElementById("image_upload").files[0];
                 formData.append("uploaderID",sessionStorage.getItem("user"));
                 formData.append("attributes",JSON.stringify({}));
                 formData.append("file",image);
+
+                const file = event.target.files[0];
+                const reader = new FileReader();
+
+                reader.readAsDataURL(file);
+
+                reader.onload = () =>{
+                  setSelectedImage(reader.result);
+                };
+                
             }}/>           
 
             <div className='preview_image'>
-                <img src={Preview} alt="blank upload" className='preview_mobile' onClick={(e)=>{document.getElementById("image_upload").click()}}/>
-                
+                <p>Share Your Image</p>
+                {selectedImage ?( <img src={selectedImage} alt="blank upload" className='preview_mobile' 
+                onClick={()=>{document.getElementById("image_upload").click()}}/>
+                ):(
+                <img src={Preview} alt="blank upload" className='preview_mobile' onClick={()=>{document.getElementById("image_upload").click()}}/>)}
+
             </div>
           </div>
         );
