@@ -294,3 +294,12 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  #sidenav {
+      display: none;
+  }
+  .App-header {
+    display: none;
+  }
+}

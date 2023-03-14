@@ -15,6 +15,8 @@ import FriendForm from "./Component/FriendForm.jsx";
 import Modal from "./Component/Modal.jsx";
 // import Navbar from "./Component/Navbar.jsx";
 import Promise from "./Component/Promise.jsx";
+import Myprofile from "./Component/Myprofile.jsx";
+
 
 //Mobile Comment Example
 import CommentPostExampleMobile from "./Component/CommentPostExampleMobile.jsx";
@@ -121,9 +123,12 @@ class App extends React.Component {
       // expressions, and would otherwise capture all the routes.  Ask me how I
       // know this.
       <Router basename={process.env.PUBLIC_URL}>
-        <div className="App">
-          <header className="App-header">
-            {/* <Navbar toggleModal={(e) => toggleModal(this, e)} logout={this.logout} /> */}
+      <div className="App">
+      <Routes>
+      <Route path="/myprofile" element={<Myprofile />} />
+        </Routes>
+        <header className="App-header">
+          {/* <Navbar toggleModal={e => toggleModal(this, e)} logout={this.logout}/> */}
 
             <div className="maincontent" id="mainContent">
               <Routes>
