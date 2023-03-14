@@ -24,13 +24,10 @@ const CreatePost = () => {
         style={{ display: "none" }}
         id="postImageUpload"
         onChange={() => {
-          let image = document.getElementById("postImageUpload").files[0];
+          let media = document.getElementById("postImageUpload").files[0];
           formData.append("uploaderID", sessionStorage.getItem("user"));
           formData.append("attributes", JSON.stringify({}));
-          formData.append("file", image);
-          //   for (let [k, v] of formData.entries()) {
-          //     console.log(`${k}: ${v}`);
-          //   }
+          formData.append("file", media);
         }}
       />
       <br />
@@ -42,6 +39,12 @@ const CreatePost = () => {
           setCaption(e.target.value);
         }}
       />
+      <br />
+      <label for="my-select">Select media type: </label>
+      <select id="my-select" name="my-select" value="none">
+        <option value="option1">image</option>
+        <option value="option2">video</option>
+      </select>
       <br />
       <button
         onClick={() => {
