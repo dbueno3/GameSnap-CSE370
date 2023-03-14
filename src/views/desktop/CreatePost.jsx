@@ -29,6 +29,15 @@ const CreatePost = () => {
           formData.append("uploaderID", sessionStorage.getItem("user"));
           // formData.append("attributes", JSON.stringify({}));
           formData.append("file", media);
+          const input = document.getElementById("postImageUpload");
+          if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              const img = document.getElementById("NewPostImage");
+              img.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+          }
         }}
       />
       <br />
