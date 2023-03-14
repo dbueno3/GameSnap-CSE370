@@ -20,13 +20,16 @@
 #userPostsMain{
     text-align: center;
     width: 100vw;
+    min-height: 100vh;
+    max-height: fit-content;
 }
 
 /*posts*/
 .post{
     min-height:40vh;
     max-height: fit-content;
-    width:40vw;
+    min-width:40vw;
+    max-width: fit-content;
     background-color: white;
     margin: 10px;
     text-align: center;

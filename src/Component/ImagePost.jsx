@@ -1,8 +1,8 @@
 const ImagePost = (props) => {
   return (
     <div className="post">
-      {<img src={props.imageUrl} alt={props.imageCaption} className="postImage" />}
-      <p>{props.imageCaption}</p>
+      {<img src={props.mediaUrl} alt={props.mediaCaption} className="postImage" />}
+      <p>{props.mediaCaption}</p>
     </div>
   );
 };
