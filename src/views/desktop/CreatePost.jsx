@@ -11,18 +11,14 @@ const CreatePost = () => {
   const [formData, addToFormData] = useState(new FormData());
   return (
     <div id="createPostMain">
-      <img
-        src={Upload}
-        alt="blank upload"
-        className="uploadLogo"
-        id="NewPostImage"
-        onClick={(e) => {
-          document.getElementById("postImageUpload").click();
-        }}
-      />
+      <img src={Upload} alt="blank upload" className="uploadLogo" id="NewPostImage" style={{ display: "none" }} />
+      <br />
+      <video id="newVideoPreview" width="640" height="480" controls style={{ display: "none" }}>
+        <source src="" type="video/mp4" />
+      </video>
+      <br />
       <input
         type="file"
-        style={{ display: "none" }}
         id="postImageUpload"
         onChange={() => {
           let media = document.getElementById("postImageUpload").files[0];
@@ -33,8 +29,12 @@ const CreatePost = () => {
           if (input.files && input.files[0]) {
             const reader = new FileReader();
             reader.onload = function (e) {
-              const img = document.getElementById("NewPostImage");
-              img.src = e.target.result;
+              const file = input.files[0];
+              const mediaElement = file.type.startsWith("image/")
+                ? document.getElementById("NewPostImage")
+                : document.getElementById("newVideoPreview");
+              mediaElement.src = e.target.result;
+              mediaElement.style.display = "inline";
             };
             reader.readAsDataURL(input.files[0]);
           }
@@ -54,7 +54,6 @@ const CreatePost = () => {
       <select
         id="media_type"
         name="media_type"
-        value="none"
         onChange={(e) => {
           setMediaType(e.target.value);
         }}
