@@ -16,6 +16,9 @@ import Modal from "./Component/Modal.jsx";
 // import Navbar from "./Component/Navbar.jsx";
 import Promise from "./Component/Promise.jsx";
 
+//Mobile Comment Example
+import CommentPostExampleMobile from "./Component/CommentPostExampleMobile.jsx";
+
 //Landing
 import Landing from "./views/desktop/Landing.jsx";
 
@@ -146,6 +149,9 @@ class App extends React.Component {
                 <Route path="/profile" element={<UserProfile />} />
                 <Route path="/personal" element={<Personal login={this.login} />}/>
                 <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />}/>
+
+                {/* {Mobile Comment Example} */}
+                <Route path="/mobilecomment" element={<CommentPostExampleMobile />} />
 
                 {/* {Contents} */}
                 <Route path="/create_post" element={<CreatePost />} />
