@@ -6,6 +6,7 @@ import "../style.css";
 
 const CreatePost = () => {
   const [caption, setCaption] = useState("");
+  const [mediaType, setMediaType] = useState("");
   // eslint-disable-next-line
   const [formData, addToFormData] = useState(new FormData());
   return (
@@ -25,8 +26,9 @@ const CreatePost = () => {
         id="postImageUpload"
         onChange={() => {
           let media = document.getElementById("postImageUpload").files[0];
+          console.log(media);
           formData.append("uploaderID", sessionStorage.getItem("user"));
-          formData.append("attributes", JSON.stringify({}));
+          // formData.append("attributes", JSON.stringify({}));
           formData.append("file", media);
         }}
       />
@@ -40,14 +42,27 @@ const CreatePost = () => {
         }}
       />
       <br />
-      <label for="my-select">Select media type: </label>
-      <select id="my-select" name="my-select" value="none">
-        <option value="option1">image</option>
-        <option value="option2">video</option>
+      <label htmlFor="my-media_type">Select media type: </label>
+      <select
+        id="media_type"
+        name="media_type"
+        value="none"
+        onChange={(e) => {
+          setMediaType(e.target.value);
+        }}
+      >
+        <option value="image">image</option>
+        <option value="video">video</option>
       </select>
       <br />
       <button
         onClick={() => {
+          formData.append(
+            "attributes",
+            JSON.stringify({
+              mediaType: mediaType,
+            })
+          );
           //Upload the file first
           fetch(process.env.REACT_APP_API_PATH + `/file-uploads`, {
             method: "POST",
@@ -66,7 +81,7 @@ const CreatePost = () => {
               const data = JSON.parse(result);
               console.log(data);
               //   Create the post here
-              let postImageUrl = `https://webdev.cse.buffalo.edu${data.path}`;
+              let postMediaUrl = `https://webdev.cse.buffalo.edu${data.path}`;
               fetch(process.env.REACT_APP_API_PATH + "/posts", {
                 method: "post",
                 headers: {
@@ -75,10 +90,10 @@ const CreatePost = () => {
                 },
                 body: JSON.stringify({
                   authorID: sessionStorage.getItem("user"),
-                  content: "Image Post",
+                  content: mediaType,
                   attributes: {
                     caption: caption,
-                    mediaUrl: postImageUrl,
+                    mediaUrl: postMediaUrl,
                   },
                 }),
               })
