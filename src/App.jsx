@@ -26,6 +26,7 @@ import Landing from "./views/desktop/Landing.jsx";
 import Shad from "./views/about_me/shad/Shad.jsx";
 import Ze from "./views/about_me/Ze/ze.jsx";
 import Daniel from "./views/about_me/Daniel/daniel.jsx";
+import Eric from "/Users/erictomiello/Desktop/School code/370 code/hooligans/src/views/about_me/Eric/Eric.js";
 
 //User
 import SignUp from "./views/desktop/SignUp.jsx";
@@ -162,6 +163,7 @@ class App extends React.Component {
                 <Route path="/about/dev/Shad" element={<Shad />} />
                 <Route path="/about/dev/Ze" element={<Ze />} />
                 <Route path="/about/dev/Daniel" element={<Daniel />} />
+                <Route path="/about/dev/Eric" element={<Eric />} />
               </Routes>
             </div>
           </header>

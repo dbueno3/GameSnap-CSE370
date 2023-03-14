@@ -6,31 +6,38 @@ import "../style.css";
 
 const CreatePost = () => {
   const [caption, setCaption] = useState("");
+  const [mediaType, setMediaType] = useState("");
   // eslint-disable-next-line
   const [formData, addToFormData] = useState(new FormData());
   return (
     <div id="createPostMain">
-      <img
-        src={Upload}
-        alt="blank upload"
-        className="uploadLogo"
-        id="NewPostImage"
-        onClick={(e) => {
-          document.getElementById("postImageUpload").click();
-        }}
-      />
+      <img src={Upload} alt="blank upload" className="uploadLogo" id="NewPostImage" style={{ display: "none" }} />
+      <br />
+      <video id="newVideoPreview" width="640" height="480" controls style={{ display: "none" }}>
+        <source src="" type="video/mp4" />
+      </video>
+      <br />
       <input
         type="file"
-        style={{ display: "none" }}
         id="postImageUpload"
         onChange={() => {
-          let image = document.getElementById("postImageUpload").files[0];
+          let media = document.getElementById("postImageUpload").files[0];
           formData.append("uploaderID", sessionStorage.getItem("user"));
-          formData.append("attributes", JSON.stringify({}));
-          formData.append("file", image);
-          //   for (let [k, v] of formData.entries()) {
-          //     console.log(`${k}: ${v}`);
-          //   }
+          // formData.append("attributes", JSON.stringify({}));
+          formData.append("file", media);
+          const input = document.getElementById("postImageUpload");
+          if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              const file = input.files[0];
+              const mediaElement = file.type.startsWith("image/")
+                ? document.getElementById("NewPostImage")
+                : document.getElementById("newVideoPreview");
+              mediaElement.src = e.target.result;
+              mediaElement.style.display = "inline";
+            };
+            reader.readAsDataURL(input.files[0]);
+          }
         }}
       />
       <br />
@@ -43,8 +50,27 @@ const CreatePost = () => {
         }}
       />
       <br />
+      <label htmlFor="my-media_type">Select media type: </label>
+      <select
+        id="media_type"
+        name="media_type"
+        onChange={(e) => {
+          setMediaType(e.target.value);
+        }}
+      >
+        <option value="none">none</option>
+        <option value="image">image</option>
+        <option value="video">video</option>
+      </select>
+      <br />
       <button
         onClick={() => {
+          formData.append(
+            "attributes",
+            JSON.stringify({
+              mediaType: mediaType,
+            })
+          );
           //Upload the file first
           fetch(process.env.REACT_APP_API_PATH + `/file-uploads`, {
             method: "POST",
@@ -63,7 +89,7 @@ const CreatePost = () => {
               const data = JSON.parse(result);
               console.log(data);
               //   Create the post here
-              let postImageUrl = `https://webdev.cse.buffalo.edu${data.path}`;
+              let postMediaUrl = `https://webdev.cse.buffalo.edu${data.path}`;
               fetch(process.env.REACT_APP_API_PATH + "/posts", {
                 method: "post",
                 headers: {
@@ -72,10 +98,11 @@ const CreatePost = () => {
                 },
                 body: JSON.stringify({
                   authorID: sessionStorage.getItem("user"),
-                  content: "Image Post",
+                  content: mediaType,
                   attributes: {
                     caption: caption,
-                    mediaUrl: postImageUrl,
+                    mediaUrl: postMediaUrl,
+                    mediaType: mediaType,
                   },
                 }),
               })

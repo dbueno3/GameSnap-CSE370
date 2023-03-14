@@ -40,7 +40,7 @@ const Landing = () => {
         <button
           className="button"
           onClick={(e) => {
-            navigate("/eric.html");
+            navigate("/about/dev/Eric");
           }}
         >
           Eric

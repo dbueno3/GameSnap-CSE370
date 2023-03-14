@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 
+//Post Components
+import ImagePost from "../../Component/ImagePost.jsx";
+import VideoPost from "../../Component/VideoPost.jsx";
+
 const UserPosts = () => {
   const [posts, getPosts] = useState([]);
   useEffect(() => {
@@ -23,12 +27,23 @@ const UserPosts = () => {
       <h1>Your Posts</h1>
       {/*Posts*/}
       {posts.map((post) => {
-        return (
-          <div className="post">
-            {<img src={post.attributes.mediaUrl} alt={post.attributes.caption} className="postImage" />}
-            <p>{post.attributes.caption}</p>
-          </div>
-        );
+        if (post.attributes.mediaType === "image") {
+          return (
+            <ImagePost
+              key={post.attributes.caption}
+              mediaUrl={post.attributes.mediaUrl}
+              mediaCaption={post.attributes.caption}
+            />
+          );
+        } else {
+          return (
+            <VideoPost
+              key={post.attributes.caption}
+              mediaUrl={post.attributes.mediaUrl}
+              mediaCaption={post.attributes.caption}
+            />
+          );
+        }
       })}
     </div>
   );
