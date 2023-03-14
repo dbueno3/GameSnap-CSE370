@@ -33,7 +33,8 @@
     background-color: white;
     margin: 10px;
     text-align: center;
-    color: black
+    color: black;
+    display:inline-block;
 }
 
 .postImage{
