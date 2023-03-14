@@ -28,7 +28,7 @@ import Landing from "./views/desktop/Landing.jsx";
 import Shad from "./views/about_me/shad/Shad.jsx";
 import Ze from "./views/about_me/Ze/ze.jsx";
 import Daniel from "./views/about_me/Daniel/daniel.jsx";
-import Eric from "/Users/erictomiello/Desktop/School code/370 code/hooligans/src/views/about_me/Eric/Eric.js";
+import Eric from "./views/about_me/Eric/Eric.jsx";
 
 //User
 import SignUp from "./views/desktop/SignUp.jsx";
@@ -123,12 +123,9 @@ class App extends React.Component {
       // expressions, and would otherwise capture all the routes.  Ask me how I
       // know this.
       <Router basename={process.env.PUBLIC_URL}>
-      <div className="App">
-      <Routes>
-      <Route path="/myprofile" element={<Myprofile />} />
-        </Routes>
-        <header className="App-header">
-          {/* <Navbar toggleModal={e => toggleModal(this, e)} logout={this.logout}/> */}
+        <div className="App">
+          <header className="App-header">
+            {/* <Navbar toggleModal={(e) => toggleModal(this, e)} logout={this.logout} /> */}
 
             <div className="maincontent" id="mainContent">
               <Routes>
@@ -155,6 +152,9 @@ class App extends React.Component {
                 <Route path="/profile" element={<UserProfile />} />
                 <Route path="/personal" element={<Personal login={this.login} />}/>
                 <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />}/>
+
+                {/* {My Profile Mobile} */}
+                <Route path="/myprofile" element={<Myprofile />} />
 
                 {/* {Mobile Comment Example} */}
                 <Route path="/mobilecomment" element={<CommentPostExampleMobile />} />
