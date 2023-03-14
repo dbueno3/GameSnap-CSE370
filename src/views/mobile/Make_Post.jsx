@@ -7,7 +7,8 @@ const Make_Post = () => {
     const [caption, setCaption] = useState("");
     // eslint-disable-next-line
     const [formData, addToFormData] = useState(new FormData());
-    const [selectedImage,setSelectedImage] = useState(null)
+    const [selectedImage,setSelectedImage] = useState(null);
+    const [isVideo,setIsVideo] = useState(false);
     return (
         <div className="parents">
           <p className="edit-title">
@@ -81,7 +82,7 @@ const Make_Post = () => {
 
                 const file = event.target.files[0];
                 const reader = new FileReader();
-
+                setIsVideo(file.type.startsWith("video/"));
                 reader.readAsDataURL(file);
 
                 reader.onload = () =>{
@@ -91,12 +92,13 @@ const Make_Post = () => {
             }}/>           
 
             <div className='preview_image'>
-                <p>Share Your Image</p>
-                {selectedImage ?( <img src={selectedImage} alt="blank upload" className='preview_mobile' 
+                <p>Share Your Image/Video</p>
+                {selectedImage && isVideo?( <video src={selectedImage} controls autoPlay alt="blank upload" className='preview_mobile' 
                 onClick={()=>{document.getElementById("image_upload").click()}}/>
-                ):(
-                <img src={Preview} alt="blank upload" className='preview_mobile' onClick={()=>{document.getElementById("image_upload").click()}}/>)}
-
+                ):selectedImage?(
+                <img src={selectedImage} alt="blank upload" className='preview_mobile' 
+                onClick={()=>{document.getElementById("image_upload").click()}}/>
+                ):(<img src={Preview} alt="blank upload" className='preview_mobile' onClick={()=>{document.getElementById("image_upload").click()}}/>)}
             </div>
           </div>
         );
