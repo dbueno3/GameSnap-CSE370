@@ -26,7 +26,6 @@ const CreatePost = () => {
         id="postImageUpload"
         onChange={() => {
           let media = document.getElementById("postImageUpload").files[0];
-          console.log(media);
           formData.append("uploaderID", sessionStorage.getItem("user"));
           // formData.append("attributes", JSON.stringify({}));
           formData.append("file", media);
@@ -51,6 +50,7 @@ const CreatePost = () => {
           setMediaType(e.target.value);
         }}
       >
+        <option value="none">none</option>
         <option value="image">image</option>
         <option value="video">video</option>
       </select>
@@ -94,6 +94,7 @@ const CreatePost = () => {
                   attributes: {
                     caption: caption,
                     mediaUrl: postMediaUrl,
+                    mediaType: mediaType,
                   },
                 }),
               })

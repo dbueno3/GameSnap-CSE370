@@ -24,7 +24,8 @@
 
 /*posts*/
 .post{
-    height:40vh;
+    min-height:40vh;
+    max-height: fit-content;
     width:40vw;
     background-color: white;
     margin: 10px;
