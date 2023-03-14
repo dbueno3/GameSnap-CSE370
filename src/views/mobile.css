@@ -4,6 +4,7 @@
     .maincontent{
       background-color: white;
       color:black;
+      margin-top:0px;
     }
     .sidenav{
       display:none;
@@ -112,5 +113,8 @@
     .post_list_image{
       width:200px;
       height:200px;
+    }
+    .caption_mobile{
+      margin-top:0px;
     }
 }

@@ -73,6 +73,7 @@ const Make_Post = () => {
                 setCaption(e.target.value);
             }}/>            
             <input type="file" id="image_upload" className="upload_image_mobile" style={{display:"none"}} onChange={(event) =>{
+                
                 let image = document.getElementById("image_upload").files[0];
                 formData.append("uploaderID",sessionStorage.getItem("user"));
                 formData.append("attributes",JSON.stringify({}));

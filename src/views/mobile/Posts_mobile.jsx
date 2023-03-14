@@ -26,8 +26,12 @@ const Posts_mobile = () => {
       {posts.map((post) => {
         return (
           <div className="post_list">
-            <img src={post.attributes.mediaUrl} alt={post.attributes.caption} className="post_list_image" />
-            <p>{post.attributes.caption}</p>
+            {post.attributes.mediaUrl && post.attributes.mediaUrl.endsWith('mp4')?(
+              <video src={post.attributes.mediaUrl} controls autoplay className="post_list_image"/>
+            ):(
+              <img src={post.attributes.mediaUrl} className="post_list_image"/>
+            )}
+            <p className="caption_mobile">{post.attributes.caption}</p>
           </div>
         );
       })}
