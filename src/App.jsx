@@ -23,6 +23,7 @@ import Landing from "./views/desktop/Landing.jsx";
 import Shad from "./views/about_me/shad/Shad.jsx";
 import Ze from "./views/about_me/Ze/ze.jsx";
 import Daniel from "./views/about_me/Daniel/daniel.jsx";
+import Eric from "/Users/erictomiello/Desktop/School code/370 code/hooligans/src/views/about_me/Eric/Eric.js";
 
 //User
 import SignUp from "./views/desktop/SignUp.jsx";
@@ -32,6 +33,10 @@ import UserProfile from "./views/desktop/UserProfile.jsx";
 
 import UserPosts from "./views/desktop/UserPosts.jsx";
 import CreatePost from "./views/desktop/CreatePost.jsx";
+import Make_Post from "./views/mobile/Make_Post.jsx";
+
+import Personal from "./views/mobile/Personal.jsx"
+import Profile_mobile from "./views/mobile/Profile_mobile.jsx";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -140,15 +145,19 @@ class App extends React.Component {
                 <Route path="/login" element={<Login />} />
                 <Route path="/edit_profile" element={<EditProfile />} />
                 <Route path="/profile" element={<UserProfile />} />
+                <Route path="/personal" element={<Personal login={this.login} />}/>
+                <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />}/>
 
                 {/* {Contents} */}
                 <Route path="/create_post" element={<CreatePost />} />
                 <Route path="/posts" element={<UserPosts />} />
+                <Route path="/make_post_mobile" element={<Make_Post login={this.login}/>} />
 
                 {/* About Me Pages */}
                 <Route path="/about/dev/Shad" element={<Shad />} />
                 <Route path="/about/dev/Ze" element={<Ze />} />
                 <Route path="/about/dev/Daniel" element={<Daniel />} />
+                <Route path="/about/dev/Eric" element={<Eric />} />
               </Routes>
             </div>
           </header>
