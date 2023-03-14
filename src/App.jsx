@@ -32,11 +32,11 @@ import UserProfile from "./views/desktop/UserProfile.jsx";
 
 import UserPosts from "./views/desktop/UserPosts.jsx";
 import CreatePost from "./views/desktop/CreatePost.jsx";
-import Make_Post from "./views/mobile/Make_Post.jsx";
+import Make_Post from "./views/mobile/MakePost.jsx";
 
 import Personal from "./views/mobile/Personal.jsx"
-import Profile_mobile from "./views/mobile/Profile_mobile.jsx";
-import Posts_mobile from "./views/mobile/Posts_mobile.jsx";
+import Profile_mobile from "./views/mobile/ProfileMobile.jsx";
+import Posts_mobile from "./views/mobile/PostsMobile.jsx";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
