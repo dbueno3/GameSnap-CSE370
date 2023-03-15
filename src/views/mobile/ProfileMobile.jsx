@@ -1,5 +1,6 @@
 import React from "react";
 import "../mobile.css";
+import avatar from "../../assets/group.png"
 import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 // The Profile component shows data from the user table.  This is set up fairly generically to allow for you to customize
 // user data by adding it to the attributes for each user, which is just a set of name value pairs that you can add things to
@@ -129,9 +130,11 @@ export default class Profile_mobile extends React.Component {
       <div className="edit" style={{color:"black"}}>Edit profile</div>
       </p>
       <div>
+        <img src={avatar} alt="profile_picture" className="profile_picture_mobile"></img>
       <p className="change-profile-photo" style={{color:"black"}}>Change Profile Photo</p>
       </div>
-      <form onSubmit={this.submitHandler} className="profileform">        
+      <form onSubmit={this.submitHandler}>
+        <div className='profileform'>       
         <label style={{color:"black"}}>
           <div className="name-field">
             Name:
@@ -206,6 +209,8 @@ export default class Profile_mobile extends React.Component {
           />
           </div>
         </label>
+        </div> 
+        <br></br>
         <input type="submit" className="edit-profile" value="Save" />
         <br></br>
         <input type="submit" className="delete-account"value="DELETE Account"/>
