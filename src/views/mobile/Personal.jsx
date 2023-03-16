@@ -7,25 +7,7 @@ import React from "react";
 import puppyPicture from '../../assets/puppy.jpg';
 import sunsetPicture from '../../assets/sunset.jpg';
 import ProfileGrid from "./ProfileGrid";
-
-const posts = [
-  {
-    id: 1,
-    image: sunsetPicture,
-    caption: "Beautiful sunset",
-  },
-  {
-    id: 2,
-    image: puppyPicture,
-    caption: "Cute puppy",
-  },
-  {
-    id: 3,
-    image: sunsetPicture,
-    caption: "Beautiful sunset",
-  },
-
-];
+import BottomBar from "./BottomBar";
 
 export default class Personal extends React.Component{
     constructor(props) {
@@ -97,6 +79,7 @@ export default class Personal extends React.Component{
         <div>
           <Header user={this.state}/>
           <ProfileGrid posts={this.state.Posts} />
+          <BottomBar/>
         </div>
           
 
