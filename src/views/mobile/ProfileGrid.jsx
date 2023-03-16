@@ -9,13 +9,13 @@ const ProfileGrid = ({ posts }) => {
             <img src={GridIcon}/>
         </div>
         <div className="profile-grid">
-        {posts.map((post, index) => (
-            <img
-            key={index}
-            className="grid__item"
-            src={post.image}
-            alt={post.caption}
-            />
+        {posts.map((post, index) => (            
+
+        post.attributes.mediaUrl && post.attributes.mediaUrl.endsWith('mp4')?(
+        <video src={post.attributes.mediaUrl} className="grid__item"/>
+        ):(
+        <img src={post.attributes.mediaUrl} className="grid__item" alt={post.attributes.caption}/>
+        )
         ))}
         </div>
     </div>

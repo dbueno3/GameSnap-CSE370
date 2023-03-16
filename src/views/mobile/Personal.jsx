@@ -37,6 +37,7 @@ export default class Personal extends React.Component{
           Bio: "",
           Email: "",
           Phone:"",
+          Posts: [],
           // NOTE : if you wanted to add another user attribute to the profile, you would add a corresponding state element here
         };
       }
@@ -74,14 +75,28 @@ export default class Personal extends React.Component{
               alert("error!");
             }
           );
-    
+          fetch(process.env.REACT_APP_API_PATH + `/posts?authorID=${sessionStorage.getItem("user")}&sort=newest`, {
+            method: "get",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + sessionStorage.getItem("token"),
+            },
+          })
+            .then((res) => res.json())
+            .then((res) => {
+              if (res) {
+                this.setState({
+                  Posts:res[0],
+                });
+              }
+            });
         
       }
     render(){
         return(
         <div>
           <Header user={this.state}/>
-          <ProfileGrid posts={posts} />
+          <ProfileGrid posts={this.state.Posts} />
         </div>
           
 

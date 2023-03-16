@@ -49,11 +49,13 @@ const Header = ({ user }) => {
               alt="Profile"
             />
           </div>
+          <div className='user_information'>
           <div className="header__userProfileName">
             <p>{user.Name}</p>
           </div>
           <p className="small-text">{user.Website}</p>
           <p className="small-text">{user.Bio}</p>
+        </div>
         </div>
         <div className="header__userInfo">
           <div className="header__userInfoStats">
