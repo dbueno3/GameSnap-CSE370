@@ -16,6 +16,7 @@ const Posts_mobile = () => {
       .then((res) => {
         if (res) {
           getPosts(res[0]);
+          console.log(res[0]);
         }
       });
   }, []);
@@ -27,9 +28,9 @@ const Posts_mobile = () => {
         return (
           <div className="post_list">
             {post.attributes.mediaUrl && post.attributes.mediaUrl.endsWith('mp4')?(
-              <video src={post.attributes.mediaUrl} controls autoplay className="post_list_image"/>
+              <video src={post.attributes.mediaUrl} controls autoPlay className="post_list_image"/>
             ):(
-              <img src={post.attributes.mediaUrl} className="post_list_image"/>
+              <img src={post.attributes.mediaUrl} className="post_list_image" alt={post.attributes.caption}/>
             )}
             <p className="caption_mobile">{post.attributes.caption}</p>
           </div>

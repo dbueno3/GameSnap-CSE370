@@ -15,8 +15,6 @@ import FriendForm from "./Component/FriendForm.jsx";
 import Modal from "./Component/Modal.jsx";
 // import Navbar from "./Component/Navbar.jsx";
 import Promise from "./Component/Promise.jsx";
-import Myprofile from "./Component/Myprofile.jsx";
-
 
 //Mobile Comment Example
 import CommentPostExampleMobile from "./Component/CommentPostExampleMobile.jsx";

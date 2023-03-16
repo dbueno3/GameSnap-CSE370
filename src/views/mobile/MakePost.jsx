@@ -9,16 +9,18 @@ const Make_Post = () => {
     const [formData, addToFormData] = useState(new FormData());
     const [selectedImage,setSelectedImage] = useState(null);
     const [isVideo,setIsVideo] = useState(false);
+    
     return (
         <div className="parents">
+          <div>
           <p className="edit-title">
           <div className="Cancel" style={{color:"black"}}>
             <Link to ="/personal" style={{textDecoration:'none', color:'Black'}}>Cancel</Link>
           </div>
           <div className="edit" style={{color:"black"}}>Make Your Post</div>
-          <div className='post_mobile'>
+          <div>
           <Link to="/posts_mobile" >
-          <button 
+          <button className="post_mobile"
             onClick={() => {
           //Upload the file first
           fetch(process.env.REACT_APP_API_PATH + `/file-uploads`, {
@@ -67,8 +69,9 @@ const Make_Post = () => {
                 });
                 }}>Post</button>
             </Link>
-            </div>
+            </div> 
           </p>
+          </div>
           
             <textarea className="post_message" type="text" placeholder="Say something..."  onChange={(e) => {
                 setCaption(e.target.value);
