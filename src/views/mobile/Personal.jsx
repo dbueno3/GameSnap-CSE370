@@ -2,7 +2,30 @@ import image from "../../assets/group.png";
 import post from "../../assets/post_example.jpg";
 import "../mobile.css";
 import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
+import Header from './Header';
 import React from "react";
+import puppyPicture from '../../assets/puppy.jpg';
+import sunsetPicture from '../../assets/sunset.jpg';
+import ProfileGrid from "./ProfileGrid";
+
+const posts = [
+  {
+    id: 1,
+    image: sunsetPicture,
+    caption: "Beautiful sunset",
+  },
+  {
+    id: 2,
+    image: puppyPicture,
+    caption: "Cute puppy",
+  },
+  {
+    id: 3,
+    image: sunsetPicture,
+    caption: "Beautiful sunset",
+  },
+
+];
 
 export default class Personal extends React.Component{
     constructor(props) {
@@ -56,62 +79,12 @@ export default class Personal extends React.Component{
       }
     render(){
         return(
-        <div className="Parent">
-          {this.state.Username ? (
-            <div className="username">{this.state.Username}</div>
-          ):(
-            <p className="blank-line">&nbsp;</p>
-          )
-          }
-            <div className="iconwithfollwers">
-              <img className="icon" alt="user's icon"src={image}></img>
-              <div>
-                <div className="follower_mobile">20</div>
-                <div className="follower_mobile">20</div>
-              </div>
-              <div>
-                <div className="definition_mobile">Posts</div>
-                <div className="definition_mobile">Friends</div>
-              </div>
-
-            </div>
-            <br></br>
-            <br></br>
-            <div className="user_information">
-            {this.state.Name ? (
-            <div className="name">{this.state.Name}</div>
-            ):(
-            <p className="blank-line">&nbsp;</p>
-            )}
-            <div className="website">{this.state.Website}</div>
-            <div className="bio">{this.state.Bio}</div>  
-            </div>
-            <Link to="/edit_profile_mobile" style={{textDecoration: 'none',color:'Black'}}>
-            <input type="submit" className="Edit_profile_personal" value="Edit-profile"/>
-            </Link>
-            <br></br>
-            <div className="post_table">
-              <div className="image-cell">
-                  <img src={post} alt="post_1"/>
-              </div>
-              <div className="image-cell">
-                  <img src={post} alt="post_2"/>
-              </div>
-              <div className="image-cell">
-                  <img src={post} alt="post_3"/>
-              </div>
-              <div className="image-cell">
-                  <img src={post} alt="post_4"/>
-              </div>
-              <div className="image-cell">
-                  <img src={post} alt="post_5"/>
-              </div>
-            </div>
-            <Link to="/make_post_mobile" style={{textDecoration: 'none',color:'Black'}}>
-            <input type="submit" className="make_post_personal" value="Make a post"/>
-            </Link>
-            
+        <div>
+          <Header user={this.state}/>
+          <ProfileGrid posts={posts} />
         </div>
+          
+
     );
     }
 }

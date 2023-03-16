@@ -1,12 +1,21 @@
 import React from "react";
 import "../mobile.css";
 import avatar from "../../assets/group.png"
-import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
+import userPic from '../../assets/user.png';
+
+
+import {BrowserRouter as Router, Route, Routes, Link,useNavigate} from 'react-router-dom';
 // The Profile component shows data from the user table.  This is set up fairly generically to allow for you to customize
 // user data by adding it to the attributes for each user, which is just a set of name value pairs that you can add things to
 // in order to support your group specific functionality.  In this example, we store basic profile information for the user
+function withNavigate(WrappedComponent){
+  return function WithNavigate(props){
+    const navigate = useNavigate();
+    return <WrappedComponent {...props} navigate={navigate}/>;
+  }
+}
 
-export default class Profile_mobile extends React.Component {
+class Profile_mobile extends React.Component {
   
   // The constructor will hold the default values for the state.  This is also where any props that are passed
   // in when the component is instantiated will be read and managed.  
@@ -60,11 +69,11 @@ export default class Profile_mobile extends React.Component {
               // IMPORTANT!  You need to guard against any of these values being null.  If they are, it will
               // try and make the form component uncontrolled, which plays havoc with react
               Name: result.attributes.Name || "",
-              Username: result.attributes.Username || "",
-              Website: result.attributes.Website || "",
-              Bio: result.attributes.Bio || "",
-              Email: result.attributes.Email || "",
-              Phone: result.attributes.Phone || "",
+                  Username: result.attributes.Username || "",
+                  Website: result.attributes.Website || "",
+                  Bio: result.attributes.Bio || "",
+                  Email: result.attributes.Email || "",
+                  Phone: result.attributes.Phone || "",
             });
           }
           }
@@ -100,6 +109,11 @@ export default class Profile_mobile extends React.Component {
           Bio: this.state.Bio,
           Email: this.state.Email,
           Phone: this.state.Phone,
+          posts: this.state.posts,
+          profilePic:this.state.profilePic,
+          profilePictureName:this.state.profilePictureName,
+          following:this.state.following,
+          follower:this.state.follower,
         }
       })
     })
@@ -115,6 +129,7 @@ export default class Profile_mobile extends React.Component {
           alert("error!");
         }
       );
+      this.props.navigate('/personal')
   };
 
   // This is the function that draws the component to the screen.  It will get called every time the
@@ -219,3 +234,4 @@ export default class Profile_mobile extends React.Component {
     );
   }
 }
+export default withNavigate(Profile_mobile);
