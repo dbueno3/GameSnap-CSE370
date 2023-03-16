@@ -106,18 +106,20 @@
     .Parent{
       color:black;
     }
+
     .post_mobile{
-      position:relative;
-      background-color: transparent;
-      border:none;
-      left:35%;
+      position:absolute;
       font-size: 90%;
       font-family: 'Kanit', sans-serif;
-
+      left:100%;
+      transform: translate(-100%);
+      background: none;
+      border: none;
+      cursor:pointer;
     }
     
     .post_message{
-      width:400px;
+      width:90%;
       height:150px;
       border-radius:10px;
       margin-bottom:3.5em;
@@ -127,9 +129,10 @@
     }
 
     .preview_image{
-      width:250px;
-      height:250px;
-      margin:auto;
+      width:50%;
+      position:absolute;
+      left:50%;
+      transform: translate(-50%);
     }
     .preview_mobile{
       border: 1px solid black;

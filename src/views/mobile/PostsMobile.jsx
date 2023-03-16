@@ -27,7 +27,7 @@ const Posts_mobile = () => {
         return (
           <div className="post_list">
             {post.attributes.mediaUrl && post.attributes.mediaUrl.endsWith('mp4')?(
-              <video src={post.attributes.mediaUrl} controls autoplay className="post_list_image"/>
+              <video src={post.attributes.mediaUrl} controls autoPlay className="post_list_image"/>
             ):(
               <img src={post.attributes.mediaUrl} className="post_list_image"/>
             )}
