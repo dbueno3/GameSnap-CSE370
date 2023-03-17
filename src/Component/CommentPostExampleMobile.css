@@ -1,0 +1,160 @@
+.mobilePost {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .mobilePost-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .mobilePost-header img {
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+  
+  .mobilePost-user h3 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+  
+  .mobilePost-user p {
+    margin: 0;
+    color: #777;
+  }
+  
+  .mobilePost-image img {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .mobilePost-footer {
+    margin-top: 1rem;
+  }
+  
+  .mobilePost-actions {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .mobilePost-icon {
+    height: 1.5rem;
+    margin-right: 0.5rem;
+  }
+  
+  .mobilePost-icon img {
+    height: 100%;
+  }
+  
+  .mobilePost-comments {
+    margin-top: 1rem;
+  }
+  
+  .mobilePost-comment {
+    margin-bottom: 1rem;
+  }
+  
+  .mobilePost-user {
+    font-weight: bold;
+  }
+  
+  .mobilePost-comment-actions {
+    margin-top: 0.5rem;
+  }
+  
+  .mobilePost-comment-actions button {
+    margin-right: 0.5rem;
+  }
+  
+  .mobilePost-add-comment {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 0.5rem;
+  }
+  
+  .mobilePost-add-comment input {
+    flex: 1;
+    margin-right: 0.5rem;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+  }
+  
+  .mobilePost-add-comment button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .mobilePost-edit-comment {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 0.5rem;
+  }
+  
+  .mobilePost-edit-comment input {
+    flex: 1;
+    margin-right: 0.5rem;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+  }
+  
+  .mobilePost-edit-comment .submit-button {
+    background-color: #3897f0;
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  .mobilePost-edit-comment .submit-button:focus {
+    outline: none;
+  }
+  
+  .mobilePost-edit-comment .cancel-button {
+    background-color: transparent;
+    border: none;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  .mobilePost-edit-comment .cancel-button:focus {
+    outline: none;
+  }
+  
+  @media (min-width: 768px) {
+    .mobilePost {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .mobilePost {
+      max-width: 700px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .mobilePost {
+      max-width: 900px;
+    }
+  }
+  
+  @media (min-width: 1400px) {
+    .mobilePost {
+      max-width: 1100px;
+    }
+  }
+  

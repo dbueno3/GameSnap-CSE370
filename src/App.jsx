@@ -16,6 +16,9 @@ import Modal from "./Component/Modal.jsx";
 // import Navbar from "./Component/Navbar.jsx";
 import Promise from "./Component/Promise.jsx";
 
+//Mobile Comment Example
+import CommentPostExampleMobile from "./Component/CommentPostExampleMobile.jsx";
+
 //Landing
 import Landing from "./views/desktop/Landing.jsx";
 
@@ -23,6 +26,7 @@ import Landing from "./views/desktop/Landing.jsx";
 import Shad from "./views/about_me/shad/Shad.jsx";
 import Ze from "./views/about_me/Ze/ze.jsx";
 import Daniel from "./views/about_me/Daniel/daniel.jsx";
+import Eric from "./views/about_me/Eric/Eric.jsx";
 
 //User
 import SignUp from "./views/desktop/SignUp.jsx";
@@ -149,6 +153,12 @@ class App extends React.Component {
                 <Route path="/personal" element={<Personal login={this.login} />}/>
                 <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />}/>
 
+                {/* {My Profile Mobile} */}
+                <Route path="/myprofile" element={<Myprofile />} />
+
+                {/* {Mobile Comment Example} */}
+                <Route path="/mobilecomment" element={<CommentPostExampleMobile />} />
+
                 {/* {Contents} */}
                 <Route path="/create_post" element={<CreatePost />} />
                 <Route path="/posts" element={<UserPosts />} />
@@ -160,6 +170,7 @@ class App extends React.Component {
                 <Route path="/about/dev/Shad" element={<Shad />} />
                 <Route path="/about/dev/Ze" element={<Ze />} />
                 <Route path="/about/dev/Daniel" element={<Daniel />} />
+                <Route path="/about/dev/Eric" element={<Eric />} />
               </Routes>
             </div>
           </header>
