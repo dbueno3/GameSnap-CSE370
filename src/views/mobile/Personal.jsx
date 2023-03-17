@@ -10,6 +10,7 @@ import ProfileGrid from "./ProfileGrid";
 import BottomBar from "./BottomBar";
 
 export default class Personal extends React.Component{
+    
     constructor(props) {
         super(props);
         this.state = {
