@@ -1,6 +1,7 @@
 import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 import React from "react";
 import Preview from "../../assets/image-preview.png";
+
 import { useState } from "react";
 
 const Make_Post = () => {
@@ -19,7 +20,7 @@ const Make_Post = () => {
           </div>
           <div className="edit" style={{color:"black"}}>Make Your Post</div>
           <div>
-          <Link to="/posts_mobile" >
+          <Link to="/personal" >
           <button className="post_mobile"
             onClick={() => {
           //Upload the file first
