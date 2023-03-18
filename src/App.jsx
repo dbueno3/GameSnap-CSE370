@@ -152,6 +152,7 @@ class App extends React.Component {
                 <Route path="/profile" element={<UserProfile />} />
                 <Route path="/personal" element={<Personal login={this.login} />} />
                 <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />} />
+                <Route path="/make_post_mobile" element={<Make_Post login={this.login} />} />
                 
                 {/* {Mobile Signin, Signup Example} */}
                 <Route path="/mobilesignup" element={<SignUpMobile />} />

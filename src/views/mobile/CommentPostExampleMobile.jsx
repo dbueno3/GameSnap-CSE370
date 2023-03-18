@@ -66,7 +66,7 @@ const CommentPostExampleMobile = () => {
       <div className="mobilePost-header">
         <img src="https://picsum.photos/50" alt="user avatar" />
         <div className="mobilePost-user">
-          <h3>John Doe</h3>
+          <h3>{location.state.author.attributes.Username}</h3>
           {/* <p>San Francisco, CA</p> */}
         </div>
       </div>
@@ -77,6 +77,8 @@ const CommentPostExampleMobile = () => {
           <img src={location.state.attributes.mediaUrl} className="mobilePost-image" alt={location.state.attributes.caption} />
           ))}
       </div>
+      <p className="caption_mobile_comment">{location.state.author.attributes.Username}: {location.state.attributes.caption}</p>
+
       <div className="mobilePost-footer">
         <div className="mobilePost-actions">
           <div className="mobilePost-icon">
@@ -123,8 +125,8 @@ const CommentPostExampleMobile = () => {
           />
           <button onClick={handleAddComment}>Post</button>
         </div>
+        
       )}
-      
     </div>
   </div>
 </div>
