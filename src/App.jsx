@@ -22,7 +22,7 @@ import Landing from "./views/desktop/Landing.jsx";
 //About Me
 import Shad from "./views/about_me/shad/Shad.jsx";
 import Ze from "./views/about_me/Ze/ze.jsx";
-import Daniel from "./views/about_me/Daniel/daniel.jsx";
+import Daniel from "./views/about_me/Daniel/Daniel.jsx";
 import Eric from "./views/about_me/Eric/Eric.jsx";
 
 //User
