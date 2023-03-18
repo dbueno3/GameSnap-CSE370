@@ -58,10 +58,21 @@
     width: 39%;
 }
 
+.videoPostLeft{
+    width: 39%;
+}
+
+.postVideo{
+    border-radius: 5%;
+    height: 300px;
+}
+
 .postImage{
     border-radius: 5%;
     height: auto;
     width: fit-content;
+    max-width: stretch;
+    height: 300px;
 }
 
 .postCaption{
@@ -70,11 +81,6 @@
     border-radius: 10px;
     float: right;
     height: stretch;
-}
-
-.postImage{
-    max-width: stretch;
-    height: 300px;
 }
 
 #userPostProfile{

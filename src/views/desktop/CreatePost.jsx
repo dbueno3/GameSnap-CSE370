@@ -4,7 +4,11 @@ import { useState } from "react";
 
 import "../style.css";
 
+//Router
+import { useNavigate } from "react-router-dom";
+
 const CreatePost = () => {
+  let navigate = useNavigate();
   const [caption, setCaption] = useState("");
   const [mediaType, setMediaType] = useState("");
   // eslint-disable-next-line
@@ -112,6 +116,7 @@ const CreatePost = () => {
                   .then(
                     (result) => {
                       console.log("Post was successful");
+                      navigate("/user_posts");
                     },
                     (error) => {
                       console.log(`error!: ${error}`);

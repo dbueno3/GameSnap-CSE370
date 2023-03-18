@@ -1,10 +1,14 @@
 const VideoPost = (props) => {
   return (
     <div className="post">
-      <video width="640" height="480" controls>
-        <source src={props.mediaUrl} type="video/mp4" />
-      </video>
-      <p>{props.mediaCaption}</p>
+      <div style={{ float: "left" }} className="videoPostLeft">
+        <video controls className="postVideo" width="100%" height="0" style={{ paddingBottom: "56.25%" }}>
+          <source src={props.mediaUrl} type="video/mp4" />
+        </video>
+      </div>
+      <div className="postCaption">
+        <p>{props.mediaCaption}</p>
+      </div>
     </div>
   );
 };
