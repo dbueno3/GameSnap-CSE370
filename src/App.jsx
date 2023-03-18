@@ -33,6 +33,7 @@ import UserProfile from "./views/desktop/UserProfile.jsx";
 
 import UserPosts from "./views/desktop/UserPosts.jsx";
 import CreatePost from "./views/desktop/CreatePost.jsx";
+import Home from "./views/desktop/Home.jsx";
 import Make_Post from "./views/mobile/MakePost.jsx";
 
 import Personal from "./views/mobile/Personal.jsx";
@@ -156,6 +157,7 @@ class App extends React.Component {
                 {/* {Contents} */}
                 <Route path="/create_post" element={<CreatePost />} />
                 <Route path="/user_posts" element={<UserPosts />} />
+                <Route path="/home" element={<Home />} />
 
                 {/* About Me Pages */}
                 <Route path="/about/dev/Shad" element={<Shad />} />
