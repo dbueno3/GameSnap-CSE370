@@ -35,7 +35,7 @@ import UserPosts from "./views/desktop/UserPosts.jsx";
 import CreatePost from "./views/desktop/CreatePost.jsx";
 import Make_Post from "./views/mobile/MakePost.jsx";
 
-import Personal from "./views/mobile/Personal.jsx"
+import Personal from "./views/mobile/Personal.jsx";
 import Profile_mobile from "./views/mobile/ProfileMobile.jsx";
 import Posts_mobile from "./views/mobile/PostsMobile.jsx";
 import CommentPostExampleMobile from "./views/mobile/CommentPostExampleMobile.jsx";
@@ -147,19 +147,15 @@ class App extends React.Component {
                 <Route path="/login" element={<Login />} />
                 <Route path="/edit_profile" element={<EditProfile />} />
                 <Route path="/profile" element={<UserProfile />} />
-                <Route path="/personal" element={<Personal login={this.login} />}/>
-                <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />}/>
+                <Route path="/personal" element={<Personal login={this.login} />} />
+                <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />} />
 
-                
                 {/* {Mobile Comment Example} */}
                 <Route path="/mobilecomment" element={<CommentPostExampleMobile />} />
 
                 {/* {Contents} */}
                 <Route path="/create_post" element={<CreatePost />} />
-                <Route path="/posts" element={<UserPosts />} />
-                <Route path="/make_post_mobile" element={<Make_Post login={this.login}/>} />
-                <Route path="/posts_mobile" element={<Posts_mobile login={this.login}/>} />
-                <Route path="/mobilecomment" element={<CommentPostExampleMobile />} />
+                <Route path="/user_posts" element={<UserPosts />} />
 
                 {/* About Me Pages */}
                 <Route path="/about/dev/Shad" element={<Shad />} />
