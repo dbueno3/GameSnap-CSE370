@@ -9,9 +9,7 @@ const SignUp = () => {
   let navigate = useNavigate();
   return (
     <div id="signUpMain">
-      <u>
-        <h1>Sign Up</h1>
-      </u>
+        <h1 className="white">Sign Up</h1>
       <input
         type="text"
         name="email"
