@@ -103,3 +103,39 @@
     width: 50px;
     border-radius: 100%;
 }
+
+/* Home feed */
+#homeFeedHeader{
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    background-color: #23282E;
+    top:0;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.homePost{
+    height: 500px;
+    width: 400px;
+    background-color: #5F6A82;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 5px;
+    text-align: left;
+}
+
+.homePostImage{
+    height: 200px;
+    width: stretch;
+    margin: 10px;
+    border-radius: 20px;
+    text-align: left;
+}
+
+.homeFeedProfilePicture{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+}
