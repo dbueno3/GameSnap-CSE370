@@ -143,7 +143,7 @@ class App extends React.Component {
 
                 {/* {Contents} */}
                 <Route path="/create_post" element={<CreatePost />} />
-                <Route path="/posts" element={<UserPosts />} />
+                <Route path="/user_posts" element={<UserPosts />} />
 
                 {/* About Me Pages */}
                 <Route path="/about/dev/Shad" element={<Shad />} />
