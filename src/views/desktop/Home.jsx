@@ -43,15 +43,31 @@ const Home = () => {
     <div id="homeFeedMain">
       <div id="homeFeedHeader">
         <div style={{ float: "right" }}>
-          <img
-            src={proPic}
-            className="profilePictureCircle"
-            alt="profile"
-            style={{ margin: "20px", cursor: "pointer" }}
-            onClick={() => {
-              navigate("/profile");
-            }}
-          />
+          <table style={{ margin: "0", borderCollapse: "collapse" }}>
+            <tr>
+              <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
+                <h6
+                  style={{ margin: 0, cursor: "pointer" }}
+                  onClick={() => {
+                    navigate("/create_post");
+                  }}
+                >
+                  Create a post
+                </h6>
+              </td>
+              <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
+                <img
+                  src={proPic}
+                  className="homeFeedProfilePicture"
+                  alt="profile"
+                  style={{ margin: "20px", cursor: "pointer" }}
+                  onClick={() => {
+                    navigate("/profile");
+                  }}
+                />
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
       <div id="homeFeed">
@@ -63,16 +79,14 @@ const Home = () => {
                   <tr>
                     <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
                       <img
-                        src={proPic}
+                        src={post.author.attributes.profilePicture}
                         className="homeFeedProfilePicture"
                         alt="profile"
                         style={{ margin: "20px", cursor: "pointer" }}
                       />
                     </td>
                     <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
-                      <h6 style={{ margin: 0 }} style={{ cursor: "pointer" }}>
-                        {post.author.attributes.username}
-                      </h6>
+                      <h6 style={{ margin: 0, cursor: "pointer" }}>{post.author.attributes.username}</h6>
                     </td>
                   </tr>
                 </table>
@@ -87,16 +101,14 @@ const Home = () => {
                   <tr>
                     <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
                       <img
-                        src={proPic}
+                        src={post.author.attributes.profilePicture}
                         className="homeFeedProfilePicture"
                         alt="profile"
                         style={{ margin: "20px", cursor: "pointer" }}
                       />
                     </td>
                     <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
-                      <h6 style={{ margin: 0 }} style={{ cursor: "pointer" }}>
-                        {post.author.attributes.username}
-                      </h6>
+                      <h6 style={{ cursor: "pointer" }}>{post.author.attributes.username}</h6>
                     </td>
                   </tr>
                 </table>

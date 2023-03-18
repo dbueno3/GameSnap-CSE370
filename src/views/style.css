@@ -116,6 +116,10 @@
     justify-content: right;
 }
 
+#homeFeed{
+    margin-top: 80px;
+}
+
 .homePost{
     height: 500px;
     width: 400px;
