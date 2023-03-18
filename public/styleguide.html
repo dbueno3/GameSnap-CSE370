@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Style Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+ <style>
+   :root {
+      --color-rich-black: #111724;
+      --color-gunmetal: #282c34;
+      --color-charcoal: #3d4554;
+      --color-lapis-lazuli: #225578;
+      --color-honolulu-blue: #177bbd;
+      --color-error-dark-ui: #b00020;
+    }
+    
+    body {
+      background-color: var(--color-rich-black);
+      color: #fff;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+    
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      background-color: var(--color-gunmetal);
+      padding: 10px 20px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    
+    .navbar-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+    }
+    
+    .navbar-item.active {
+      color: var(--color-honolulu-blue);
+    }
+    
+    .navbar-item:not(.active):hover {
+      color: var(--color-lapis-lazuli);
+    }
+    
+    .navbar-item svg {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 4px;
+    }
+    
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1;
+      display: none;
+    }
+    
+    .modal-heading {
+      font-size: 24px;
+      font-weight: 700;
+      padding: 20px;
+      background-color: var(--color-lapis-lazuli);
+      color: #fff;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+    }
+    
+    .modal-content {
+      padding: 20px;
+      margin: 20px;
+      background-color: var(--color-gunmetal);
+      color: #fff;
+    }
+    
+    .alert {
+      padding: 20px;
+      margin: 20px 0;
+border-radius: 4px;
+font-weight: 700;
+}
+.alert-success {
+  background-color: var(--color-honolulu-blue);
+}
+
+.alert-error {
+  background-color: var(--color-error-dark-ui);
+}
+
+.help-icon {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-lapis-lazuli);
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.help-content {
+  font-size: 14px;
+  margin-left: 5px;
+  color: var(--color-lapis-lazuli);
+}
+
+form {
+  margin-top: 50px;
+}
+
+form label {
+  display: block;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+form input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  background-color: var(--color-gunmetal);
+  color: #fff;
+}
+
+form input[type="submit"] {
+  background-color: var(--color-honolulu-blue);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+form input[type="submit"]:hover {
+  background-color: var(--color-lapis-lazuli);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.text-muted {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .navbar-item {
+    flex-grow: unset;
+    margin-right: 20px;
+  }
+  
+  .navbar-item:last-child {
+    margin-right: 0;
+  }
+}
+.tooltip {
+   position: relative;
+   display: inline-block;
+   border-bottom: 1px dotted rgb(255, 255, 255);
+}
+
+.tooltip .tooltip-text {
+   visibility: hidden;
+   position: absolute;
+   bottom: 100%;
+   left: 50%;
+   transform: translateX(-50%);
+   background-color: var(--color-honolulu-blue);
+   color: white;
+   padding: 5px;
+   border-radius: 5px;
+   font-size: 14px;
+   width: 150px;
+   text-align: center;
+   opacity: 0;
+   transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+   visibility: visible;
+   opacity: 1;
+}
+
+pre, code {
+  font-family: monospace, monospace;
+}
+pre {
+  overflow: auto;
+  background-color: var(--color-gunmetal);
+}
+pre > code {
+  display: block;
+  padding: 1rem;
+  word-wrap: normal;
+}
+
+</style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#" class="navbar-item active">
+        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M22.3794 11.5358V22H16.1538V17C16.1538 14.7909 14.3629 13 12.1538 13C9.94466 13 8.1538 14.7909 8.1538 17V22H2.17432L2.17432 11.5358L12.2769 2L22.3794 11.5358Z" fill="black"/>
+            <path d="M22.3794 22V22.5H22.8794V22H22.3794ZM22.3794 11.5358H22.8794V11.3202L22.7227 11.1722L22.3794 11.5358ZM16.1538 22H15.6538V22.5H16.1538V22ZM8.1538 22V22.5H8.6538V22H8.1538ZM2.17432 22H1.67432V22.5H2.17432L2.17432 22ZM2.17432 11.5358L1.83111 11.1722L1.67432 11.3202V11.5358H2.17432ZM12.2769 2L12.6201 1.63639L12.2769 1.31244L11.9337 1.63639L12.2769 2ZM22.8794 22V11.5358H21.8794V22H22.8794ZM16.1538 22.5H22.3794V21.5H16.1538V22.5ZM16.6538 22V17H15.6538L15.6538 22H16.6538ZM16.6538 17C16.6538 14.5147 14.6391 12.5 12.1538 12.5V13.5C14.0868 13.5 15.6538 15.067 15.6538 17H16.6538ZM12.1538 12.5C9.66852 12.5 7.6538 14.5147 7.6538 17H8.6538C8.6538 15.067 10.2208 13.5 12.1538 13.5V12.5ZM7.6538 17V22H8.6538V17H7.6538ZM2.17432 22.5H8.1538V21.5H2.17432L2.17432 22.5ZM1.67432 11.5358L1.67432 22H2.67432L2.67432 11.5358H1.67432ZM11.9337 1.63639L1.83111 11.1722L2.51752 11.8994L12.6201 2.36361L11.9337 1.63639ZM22.7227 11.1722L12.6201 1.63639L11.9337 2.36361L22.0362 11.8994L22.7227 11.1722Z" fill="black"/>
+            </svg>
+      <span>Home</span>
+    </a>
+    <a href="#" class="navbar-item">
+        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.3105 10C18.3105 14.4649 14.6514 18.1 10.1182 18.1C5.58502 18.1 1.92588 14.4649 1.92588 10C1.92588 5.53513 5.58502 1.9 10.1182 1.9C14.6514 1.9 18.3105 5.53513 18.3105 10Z" stroke="black" stroke-width="1.8"/>
+            <path d="M22.2412 22L16.1797 16" stroke="black" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+    <span>Search</span>
+    </a>
+    <a href="#" class="navbar-item">
+        <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.0717 12.75H8.98963C8.57542 12.75 8.23193 12.41 8.23193 12C8.23193 11.59 8.57542 11.25 8.98963 11.25H17.0717C17.4859 11.25 17.8294 11.59 17.8294 12C17.8294 12.41 17.4859 12.75 17.0717 12.75Z" fill="black"/>
+            <path d="M13.0306 16.75C12.6164 16.75 12.2729 16.41 12.2729 16V8C12.2729 7.59 12.6164 7.25 13.0306 7.25C13.4448 7.25 13.7883 7.59 13.7883 8V16C13.7883 16.41 13.4448 16.75 13.0306 16.75Z" fill="black"/>
+            <path d="M16.0614 22.75H9.9999C4.51421 22.75 2.17041 20.43 2.17041 15V9C2.17041 3.57 4.51421 1.25 9.9999 1.25H16.0614C21.5471 1.25 23.8909 3.57 23.8909 9V15C23.8909 20.43 21.5471 22.75 16.0614 22.75ZM9.9999 2.75C5.34262 2.75 3.68579 4.39 3.68579 9V15C3.68579 19.61 5.34262 21.25 9.9999 21.25H16.0614C20.7187 21.25 22.3755 19.61 22.3755 15V9C22.3755 4.39 20.7187 2.75 16.0614 2.75H9.9999Z" fill="black"/>
+            </svg>
+    <span>Add Post</span>
+    </a>
+    <a href="#" class="navbar-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.5 10.5002H15.5M7 18.4302H11L15.45 21.3902C15.6002 21.4903 15.7747 21.5478 15.955 21.5564C16.1353 21.5651 16.3145 21.5247 16.4736 21.4395C16.6328 21.3543 16.7658 21.2275 16.8585 21.0727C16.9512 20.9178 17.0001 20.7407 17 20.5602V18.4302C20 18.4302 22 16.4302 22 13.4302V7.43018C22 4.43018 20 2.43018 17 2.43018H7C4 2.43018 2 4.43018 2 7.43018V13.4302C2 16.4302 4 18.4302 7 18.4302Z" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>            
+    <span>Message</span>
+    </a>
+    <a href="#" class="navbar-item">
+    <img style="width:24px;height: 24px;" src="user.png"/>
+<span>Profile</span>
+</a>
+
+  </nav>
+  
+      <div class="container">
+        
+        <h1 class="text-center mb-0 mt-0">STYLE GUIDE</h1>
+        <p class="text-center text-muted">This is a page for the style guide</p>
+
+        <h1>TypoGraphy</h1>
+        <p>For heading, we are using Poppins and for body text we are using Roboto</p>
+        <section>
+            <h1 style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 48px;">Heading 1</h1>
+            <p style="font-family: 'Roboto', sans-serif; font-size: 16px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien non nisi fringilla aliquam.</p>
+            
+            <h2 style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 36px;">Heading 2</h2>
+            <p style="font-family: 'Roboto', sans-serif; font-size: 14px;">Nulla hendrerit, massa eu bibendum viverra, lectus massa elementum nunc, non bibendum ipsum nisi non urna.</p>
+            
+            <h3 style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 24px;">Heading 3</h3>
+            <p style="font-family: 'Roboto', sans-serif; font-size: 12px;">Maecenas vestibulum, urna id cursus rhoncus, sapien quam molestie felis, in tincidunt metus tellus vel sem.</p>
+            
+            <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 18px;">Heading 4</h4>
+            <p style="font-family: 'Roboto', sans-serif; font-size: 10px;">Fusce eget eros magna. In hac habitasse platea dictumst. Suspendisse sit amet est et mi molestie vulputate.</p>
+          </section>
+          <pre><code>
+            &lt;h1 style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 48px;"&gt;Heading 1&lt;/h1&gt;
+            &lt;p style="font-family: 'Roboto', sans-serif; font-size: 16px;"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien non nisi fringilla aliquam.&lt;/p&gt;
+
+            &lt;h2 style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 36px;"&gt;Heading 2&lt;/h2&gt;
+            &lt;p style="font-family: 'Roboto', sans-serif; font-size: 14px;"&gt;Nulla hendrerit, massa eu bibendum viverra, lectus massa elementum nunc, non bibendum ipsum nisi non urna.&lt;/p&gt;
+                       
+            &lt;h3 style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 24px;"&gt;Heading 3&lt;/h3&gt;
+            &lt;p style="font-family: 'Roboto', sans-serif; font-size: 12px;"&gt;Maecenas vestibulum, urna id cursus rhoncus, sapien quam molestie felis, in tincidunt metus tellus vel sem.&lt;/p&gt;
+                       
+            &lt;h4 style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 18px;"&gt;Heading 4&lt;/h4&gt;
+            &lt;p style="font-family: 'Roboto', sans-serif; font-size: 10px;"&gt;Fusce eget eros magna. In hac habitasse platea dictumst. Suspendisse sit amet est et mi molestie vulputate.&lt;/p&gt;
+            </code></pre>
+          
+        <section>
+            <h2>Color Palette</h2>
+            <p>This app uses a dark color scheme to provide a modern and sleek look. The color palette is made up of the following five colors:</p>
+          
+            <ul>
+              <li><strong>Rich Black:</strong> #111724</li>
+              <li><strong>Gunmetal:</strong> #282c34</li>
+              <li><strong>Charcoal:</strong> #3d4554</li>
+              <li><strong>Lapis Lazuli:</strong> #225578</li>
+              <li><strong>Honolulu Blue:</strong> #177bbd</li>
+            </ul>
+          
+            <p>The primary color used throughout the app is Honolulu Blue, which is used for important buttons and links, as well as for the active state of the bottom navigation items. The other colors are used to provide contrast and create visual interest, and are mainly used for background colors, borders, and accents.</p>
+          
+            <h3>Example Usage:</h3>
+            <div class="color-palette">
+              <div class="color-swatch" style="background-color: #111724;">
+                <span>Rich Black</span>
+                <span>#111724</span>
+              </div>
+              <div class="color-swatch" style="background-color: #282c34;">
+                <span>Gunmetal</span>
+                <span>#282c34</span>
+              </div>
+              <div class="color-swatch" style="background-color: #3d4554;">
+                <span>Charcoal</span>
+                <span>#3d4554</span>
+              </div>
+              <div class="color-swatch" style="background-color: #225578;">
+                <span>Lapis Lazuli</span>
+                <span>#225578</span>
+              </div>
+              <div class="color-swatch" style="background-color: #177bbd;">
+                <span>Honolulu Blue</span>
+                <span>#177bbd</span>
+              </div>
+            </div>
+          </section>          
+        <form>
+            <h2>Form Example with Fields</h2>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <label for="confirm-password">Confirm Password</label>
+            <h2>Button Example</h2>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+            <input type="submit" value="Sign Up">
+          </form>
+            <pre><code>
+                &lt;form&gt;
+                &lt;label for="email"&gt;Email&lt;/label&gt;
+                &lt;input type="email" id="email" name="email" required&gt;
+                &lt;label for="password"&gt;Password&lt;/label&gt;
+                &lt;input type="password" id="password" name="password" required&gt;
+                &lt;label for="confirm-password"&gt;Confirm Password&lt;/label&gt;
+                &lt;input type="password" id="confirm-password" name="confirm-password" required&gt;
+                &lt;input type="submit" value="Sign Up"&gt;
+                &lt;/form&gt;
+                </code></pre>
+          <br>
+          <h2>Methods for inline help Tooltips</h2>
+          <p>Tooltips are a common method for providing inline help to users. They are small pop-ups that appear when the user hovers over or clicks on an element, providing additional information or context.         </p>
+          <div class="tooltip">
+            Hover over me
+            <span class="tooltip-text">This is a tooltip!</span>
+         </div>
+         <pre>
+            <code>
+                &lt;div class="tooltip"&gt;
+                Hover over me
+                &lt;span class="tooltip-text"&gt;This is a tooltip!&lt;/span&gt;
+                &lt;/div&gt;
+            </code>
+         </pre>
+
+         <h2>Treatment of Feedback</h2>
+         <p>Popup and modals are combined to be also used as Treatment of Feedback (both success and error conditions)
+        </p>
+
+         <div class="alert alert-success">
+            Success message goes here
+          </div>
+          <!-- Alert Error -->
+          <div class="alert alert-error">
+            Error message goes here
+          </div>
+        <pre>
+            <code>
+                &lt;div class="alert alert-success"&gt;
+                Success message goes here
+                &lt;/div&gt;
+                &lt;!-- Alert Error --&gt;
+                &lt;div class="alert alert-error"&gt;
+                Error message goes here
+                &lt;/div&gt;
+            </code>
+        </pre>
+        <h2>Size/position/interaction guidelines for popups/modals</h2>
+        <p>
+            Size: Popups/modals should be appropriately sized based on their content and purpose. They should not be too small or too large, and should be large enough to display all necessary information and controls.
+For desktop, the recommended size is 500-700px width and 300-500px height. For mobile devices, the size should be adjusted accordingly to fit the smaller screen.
+Position:
+Popups/modals should be positioned in the center of the screen
+Popups/modals should have clear and prominent close or dismiss buttons that are easy to find and use.
+Popups/modals should be closed by clicking outside of the modalPopups/modals should not be used excessively, 
+Popups/modals should not take up too much screen real estate and hence should be placed on top of the screen.
+        </p>
+
+
+
+          <!-- <div class="content-section">
+            <h2 style="font-family: Poppins, sans-serif;">Content</h2>
+            
+            <p style="font-size: 18px; font-family: Roboto, sans-serif; font-weight: 400;">Paragraphs are set in Graphik Regular (400).</p>
+            
+            <h3 style="font-size: 20px; font-family: Roboto, sans-serif; font-weight: 400;">Large</h3>
+            <p style="font-size: 18px; font-family: Roboto, sans-serif; font-weight: 400;">Help Scout is designed with your customers in mind. Provide email and live chat with a personal touch, and deliver help content right where your customers need it, all in one place, all for one low price.</p>
+            
+            <h3 style="font-size: 18px; font-family: Roboto, sans-serif; font-weight: 400;">Medium</h3>
+            <p style="font-size: 18px; font-family: Roboto, sans-serif; font-weight: 400;">Help Scout is designed with your customers in mind. Provide email and live chat with a personal touch, and deliver help content right where your customers need it, all in one place, all for one low price.</p>
+            
+            <h3 style="font-size: 15px; font-family: Roboto, sans-serif; font-weight: 400;">Small</h3>
+            <p style="font-size: 15px; font-family: Roboto, sans-serif; font-weight: 400;">Help Scout is designed with your customers in mind. Provide email and live chat with a personal touch, and deliver help content right where your customers need it, all in one place, all for one low price.</p>
+          </div> -->
+
+          <h2>Navigation Style</h2>
+          <p>For navigation we are using a bottom bar for menu for both desktop and mobile </p>
+          <nav style="display: flex;
+          justify-content: space-between;
+          background-color: var(--color-gunmetal);
+          padding: 10px 20px;">
+            <a href="#" class="navbar-item active">
+                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M22.3794 11.5358V22H16.1538V17C16.1538 14.7909 14.3629 13 12.1538 13C9.94466 13 8.1538 14.7909 8.1538 17V22H2.17432L2.17432 11.5358L12.2769 2L22.3794 11.5358Z" fill="black"/>
+                    <path d="M22.3794 22V22.5H22.8794V22H22.3794ZM22.3794 11.5358H22.8794V11.3202L22.7227 11.1722L22.3794 11.5358ZM16.1538 22H15.6538V22.5H16.1538V22ZM8.1538 22V22.5H8.6538V22H8.1538ZM2.17432 22H1.67432V22.5H2.17432L2.17432 22ZM2.17432 11.5358L1.83111 11.1722L1.67432 11.3202V11.5358H2.17432ZM12.2769 2L12.6201 1.63639L12.2769 1.31244L11.9337 1.63639L12.2769 2ZM22.8794 22V11.5358H21.8794V22H22.8794ZM16.1538 22.5H22.3794V21.5H16.1538V22.5ZM16.6538 22V17H15.6538L15.6538 22H16.6538ZM16.6538 17C16.6538 14.5147 14.6391 12.5 12.1538 12.5V13.5C14.0868 13.5 15.6538 15.067 15.6538 17H16.6538ZM12.1538 12.5C9.66852 12.5 7.6538 14.5147 7.6538 17H8.6538C8.6538 15.067 10.2208 13.5 12.1538 13.5V12.5ZM7.6538 17V22H8.6538V17H7.6538ZM2.17432 22.5H8.1538V21.5H2.17432L2.17432 22.5ZM1.67432 11.5358L1.67432 22H2.67432L2.67432 11.5358H1.67432ZM11.9337 1.63639L1.83111 11.1722L2.51752 11.8994L12.6201 2.36361L11.9337 1.63639ZM22.7227 11.1722L12.6201 1.63639L11.9337 2.36361L22.0362 11.8994L22.7227 11.1722Z" fill="black"/>
+                    </svg>
+              <span>Home</span>
+            </a>
+            <a href="#" class="navbar-item">
+                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.3105 10C18.3105 14.4649 14.6514 18.1 10.1182 18.1C5.58502 18.1 1.92588 14.4649 1.92588 10C1.92588 5.53513 5.58502 1.9 10.1182 1.9C14.6514 1.9 18.3105 5.53513 18.3105 10Z" stroke="black" stroke-width="1.8"/>
+                    <path d="M22.2412 22L16.1797 16" stroke="black" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+            <span>Search</span>
+            </a>
+            <a href="#" class="navbar-item">
+                <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.0717 12.75H8.98963C8.57542 12.75 8.23193 12.41 8.23193 12C8.23193 11.59 8.57542 11.25 8.98963 11.25H17.0717C17.4859 11.25 17.8294 11.59 17.8294 12C17.8294 12.41 17.4859 12.75 17.0717 12.75Z" fill="black"/>
+                    <path d="M13.0306 16.75C12.6164 16.75 12.2729 16.41 12.2729 16V8C12.2729 7.59 12.6164 7.25 13.0306 7.25C13.4448 7.25 13.7883 7.59 13.7883 8V16C13.7883 16.41 13.4448 16.75 13.0306 16.75Z" fill="black"/>
+                    <path d="M16.0614 22.75H9.9999C4.51421 22.75 2.17041 20.43 2.17041 15V9C2.17041 3.57 4.51421 1.25 9.9999 1.25H16.0614C21.5471 1.25 23.8909 3.57 23.8909 9V15C23.8909 20.43 21.5471 22.75 16.0614 22.75ZM9.9999 2.75C5.34262 2.75 3.68579 4.39 3.68579 9V15C3.68579 19.61 5.34262 21.25 9.9999 21.25H16.0614C20.7187 21.25 22.3755 19.61 22.3755 15V9C22.3755 4.39 20.7187 2.75 16.0614 2.75H9.9999Z" fill="black"/>
+                    </svg>
+            <span>Add Post</span>
+            </a>
+            <a href="#" class="navbar-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.5 10.5002H15.5M7 18.4302H11L15.45 21.3902C15.6002 21.4903 15.7747 21.5478 15.955 21.5564C16.1353 21.5651 16.3145 21.5247 16.4736 21.4395C16.6328 21.3543 16.7658 21.2275 16.8585 21.0727C16.9512 20.9178 17.0001 20.7407 17 20.5602V18.4302C20 18.4302 22 16.4302 22 13.4302V7.43018C22 4.43018 20 2.43018 17 2.43018H7C4 2.43018 2 4.43018 2 7.43018V13.4302C2 16.4302 4 18.4302 7 18.4302Z" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>            
+            <span>Message</span>
+            </a>
+            <a href="#" class="navbar-item">
+            <img style="width:24px;height: 24px;" src="user.png"/>
+        <span>Profile</span>
+        </a>
+        
+          </nav>
+          <pre><code>&lt;!-- Navbar HTML --&gt;
+            &lt;nav class="navbar"&gt;
+              &lt;a href="#" class="navbar-item active"&gt;
+                &lt;!-- SVG icon removed for simplicity --&gt;
+                &lt;span&gt;Home&lt;/span&gt;
+              &lt;/a&gt;
+              &lt;a href="#" class="navbar-item"&gt;
+                &lt;!-- SVG icon removed for simplicity --&gt;
+                &lt;span&gt;Search&lt;/span&gt;
+              &lt;/a&gt;
+              &lt;a href="#" class="navbar-item"&gt;
+                &lt;!-- SVG icon removed for simplicity --&gt;
+                &lt;span&gt;Add Post&lt;/span&gt;
+              &lt;/a&gt;
+              &lt;a href="#" class="navbar-item"&gt;
+                &lt;!-- SVG icon removed for simplicity --&gt;
+                &lt;span&gt;Message&lt;/span&gt;
+              &lt;/a&gt;
+              &lt;a href="#" class="navbar-item"&gt;
+                &lt;!-- Import SVG icon code removed for simplicity --&gt;
+                &lt;img style="width:24px;height: 24px;" src="user.png"/&gt;
+                &lt;span&gt;Profile&lt;/span&gt;
+              &lt;/a&gt;
+            &lt;/nav&gt;</code></pre>
+
+
+          <div class="content-section">
+            <h2 style="font-family: Poppins, sans-serif;">Content</h2>
+            
+            <p style="font-size: 18px; font-family: Roboto, sans-serif; font-weight: 400;">Paragraphs are set in Graphik Regular (400).</p>
+            
+            <h3 style="font-size: 20px; font-family: Roboto, sans-serif; font-weight: 400;">Large</h3>
+            <p style="font-size: 18px; font-family: Roboto, sans-serif; font-weight: 400;">Help Scout is designed with your customers in mind. Provide email and live chat with a personal touch, and deliver help content right where your customers need it, all in one place, all for one low price.</p>
+            
+            <h3 style="font-size: 18px; font-family: Roboto, sans-serif; font-weight: 400;">Medium</h3>
+            <p style="font-size: 18px; font-family: Roboto, sans-serif; font-weight: 400;">Help Scout is designed with your customers in mind. Provide email and live chat with a personal touch, and deliver help content right where your customers need it, all in one place, all for one low price.</p>
+            
+            <h3 style="font-size: 15px; font-family: Roboto, sans-serif; font-weight: 400;">Small</h3>
+            <p style="font-size: 15px; font-family: Roboto, sans-serif; font-weight: 400;">Help Scout is designed with your customers in mind. Provide email and live chat with a personal touch, and deliver help content right where your customers need it, all in one place, all for one low price.</p>
+          </div>
+          
+        </div>
+    </body>
+    </html>
+

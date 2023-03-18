@@ -1,0 +1,189 @@
+/* Profile Page */
+.blankProfileImage{
+    height: 25vh;
+    border-radius: 100%;
+}
+
+/* Upload post */
+#createPostMain{
+    text-align: center;
+}
+
+#createPostHolder{
+    background-color: #3D4554;
+    margin:5%;
+    border-radius: 1%;
+    text-align: left;
+    padding: 20px;
+}
+
+#NewPostImage{
+    width: 100%;
+    height: 100%;
+}
+
+#newVideoPreview{
+    width: 100%;
+    height: 100%;
+}
+
+.uploadLogo{
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* user posts */
+#userPostsMain{
+    text-align: center;
+    width: 100vw;
+    min-height: 100vh;
+    max-height: fit-content;
+}
+
+/*posts*/
+.post{
+    border-radius: 1%;
+    width: 65%;
+    background-color: #3D4554;
+    height: 300px;
+    text-align: left;
+    padding: 20px;
+    float: right;
+    margin: 5px;
+}
+
+.imagePostLeft{
+    width: 39%;
+}
+
+.videoPostLeft{
+    width: 39%;
+}
+
+.postVideo{
+    border-radius: 5%;
+    height: 300px;
+}
+
+.postImage{
+    border-radius: 5%;
+    height: auto;
+    width: fit-content;
+    max-width: stretch;
+    height: 300px;
+}
+
+.postCaption{
+    background-color: #225578;
+    width: 60%;
+    border-radius: 10px;
+    float: right;
+    height: stretch;
+}
+
+#userPostProfile{
+    float: left;
+    width: 31%;
+    height: fit-content;
+    background-color: #3D4554;
+    position: fixed;
+    border-radius: 2%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    
+}
+
+.profilePictureCircle{
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
+/* Home feed */
+#homeFeedHeader{
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    background-color: #23282E;
+    top:0;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.homePost{
+    height: 500px;
+    width: 400px;
+    background-color: #5F6A82;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 5px;
+    text-align: left;
+}
+
+.homePostImage{
+    height: 200px;
+    width: stretch;
+    margin: 10px;
+    border-radius: 20px;
+    text-align: left;
+}
+
+.homeFeedProfilePicture{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+}
+
+/* Home feed */
+#homeFeedHeader{
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    background-color: #23282E;
+    top:0;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+#homeFeed{
+    margin-top: 80px;
+}
+
+.homePost{
+    height: 500px;
+    width: 400px;
+    background-color: #5F6A82;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 5px;
+    text-align: left;
+}
+
+.homePostImage{
+    height: 200px;
+    width: stretch;
+    margin: 10px;
+    border-radius: 20px;
+    text-align: left;
+}
+
+.homeFeedProfilePicture{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+}
+
+.HomePostVideo{
+    height: 200px;
+    width: stretch;
+    margin: 10px;
+    border-radius: 20px;
+    text-align: left;
+}

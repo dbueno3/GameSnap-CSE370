@@ -1,0 +1,76 @@
+Sprint 1 Usability Testing
+
+Tested by Ze Chen
+Task 1: I asked my user to just click around and see how the app looks like.
+      	Feedback: There were a lot of empty spaces in the login page when I first looked at it, could add more elements on it. The color of the overall design is boring, and should use more diverse themes. And there is no way for me to log out in the settings page.    	
+      	
+Task 2: I asked my user to focus more on the home page and see how the homepage is connected to other pages.
+      	Feedback: Should add more effects while changing the page, all the pages just changed in one moment like a PowerPoint, and there is a large white box in the homepage which gives me no idea about what that is.
+      	
+Task 3: I asked my user to take a look at the user’s own page and other user’s home page and give some feedback about those.
+      	Feedback: There are a few buttons that I thought would give me some feedback, but they didn’t. For example, in the user’s own page, the ‘show more’ button in the bottom does not give me any feedback and in the accept friend request page, the notification of the friend request from other users’ does not disappear after I click accept or reject.
+ 
+      	Task 4: I told my user to give some feedback about the rest of the pages if he has anything to say about it.
+      	Feedback: In the message page, there is a whole box in the right button corner which does not give me any ideas about what that is and in the settings page, there is only one button I can click in the left, but there are a lot of empty buttons left.
+
+Conclusion: Based on the initial testing, there are a few aspects that need to be improved. First, the theme of the overall design should be more diverse or attractive. Second, adding a logout functionality in the settings page which we all forgot in the first sprint while designing the application. Third, provide all the places in the pages a clear functionality or feedback to make the user not confused about what they can do with those fields. Last, give more effects while changing the pages to another.
+
+Sprint 1: Usability testing:
+Tested by: Daniel Bueno
+
+Task 1: On the desktop wireframe. Let my roommate, try out the figma wireframe
+
+During the test, my roommate tried to make a post and was not able to update the social media fee. As well as, my roommate making a comment that there was not a delete post which was not part of the UI. As well as there was some flow 
+
+Task 2: On the desktop wireframe, Let my roommate point out any flaws in the desktop wireframe
+
+There were some flaws regarding posing on the desktop, however there was a flaw on the fidelity of the UI, while the wireframe to me was just a suggestion on how the template of our app could have looked like. So while the wireframe is bland. My roommate stated there was “there should be more fidelity on the UI” since the color of the desktop wireframe is just gray and white.  
+
+Task 3: On the mobile wireframe,  Let my roommate tryout the figma wireframe
+
+During the task there was a flow to the application, however when my roommate tried to upload a post, the post button was not working. However, there was a section on deleting an account but not deleting a post.  
+
+Task 4: On the mobile wireframe, let my roommate point out any flaw in the mobile wireframe  
+
+There was some similarity between our social media UI and Instagram UI so we will need to update the UI since it has a flaw that was pointed out. As well as provide any possible game uploads to the search feed to make the UX better since some of the images in the search feed were not related to gaming. As well as being able to add a UI Page on deleting a post. 
+
+Conclusion:
+  
+In the upcoming sprints, we will make a new UI that includes a delete a post on the desktop wireframe. As well as add another UI that will include a new post updating the upload feed on the platform on the desktop version. On the mobile wireframe, we will need to update the UI due to it looking almost exactly like Instagram As well as be able to add a “create post” and “delete post” on the mobile wireframe.    
+
+
+
+
+
+
+
+Sprint 1 Usability Testing
+Tested by Eric Tomiello
+
+Task: Macbook Prototype. I gave my friend the figma using the macbook prototype and asked him to just click through the figma and point out things he likes/dislikes.
+
+Problems
+Can't click remember me
+Confused by look of home page, why are three post next to each other
+Liked the thoroughness of the delete and account but thing page looked a little bland
+Likes the look of the profile
+
+Solutions to fix this
+
+Remember me is not needed for the figma as its not possible to code that on figma and it's just a box being clicked 
+Will fix the layout of the homepage to make it make more sense
+Add more options in the settings tab
+Only gonna make a few changes to the looks of profile
+
+
+
+Task: Mobile Prototype. I gave my friend the figma using the mobile prototype and asked him to just click through the figma and point out things he likes/dislikes.
+
+Looks a lot like instagram
+The bottom of the screen gets cut off a little
+Cut offs make things confusing 
+
+Solutions to fix this
+
+Change the layout and color scheme slightly. Don't need to change it too much, just as of now its way too similar to instagram
+The screen being cut of may be my fault for selecting wrong iphone prototype but if its correct it is way too confusing and needs to be shrunk
