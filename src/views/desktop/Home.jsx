@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const [posts, getPosts] = useState([]);
   const [proPic, setPropic] = useState("");
-  const [username, setUsername] = useState("");
   let navigate = useNavigate();
   useEffect(() => {
     //Get the user
@@ -21,7 +20,6 @@ const Home = () => {
       .then((result) => {
         if (result) {
           let info = result.attributes;
-          setUsername(info.username);
           setPropic(info.profilePicture);
         }
       });
@@ -58,37 +56,57 @@ const Home = () => {
       </div>
       <div id="homeFeed">
         {posts.map((post) => {
-          return (
-            <div key={post.attributes.caption} className="homePost">
-              <table style={{ margin: "0", borderCollapse: "collapse" }}>
-                <tr>
-                  <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
-                    <img
-                      src={proPic}
-                      className="homeFeedProfilePicture"
-                      alt="profile"
-                      style={{ margin: "20px", cursor: "pointer" }}
-                      onClick={() => {
-                        navigate("/profile");
-                      }}
-                    />
-                  </td>
-                  <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
-                    <h6
-                      style={{ margin: 0 }}
-                      style={{ cursor: "pointer" }}
-                      onClick={() => {
-                        navigate("/profile");
-                      }}
-                    >
-                      {username}
-                    </h6>
-                  </td>
-                </tr>
-              </table>
-              <img src={post.attributes.mediaUrl} className="homePostImage" />
-            </div>
-          );
+          if (post.attributes.mediaType === "image") {
+            return (
+              <div key={post.attributes.caption} className="homePost">
+                <table style={{ margin: "0", borderCollapse: "collapse" }}>
+                  <tr>
+                    <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
+                      <img
+                        src={proPic}
+                        className="homeFeedProfilePicture"
+                        alt="profile"
+                        style={{ margin: "20px", cursor: "pointer" }}
+                      />
+                    </td>
+                    <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
+                      <h6 style={{ margin: 0 }} style={{ cursor: "pointer" }}>
+                        {post.author.attributes.username}
+                      </h6>
+                    </td>
+                  </tr>
+                </table>
+                <img alt="post" src={post.attributes.mediaUrl} className="homePostImage" />
+                <h6>Caption: {post.attributes.caption}</h6>
+              </div>
+            );
+          } else {
+            return (
+              <div key={post.attributes.caption} className="homePost">
+                <table style={{ margin: "0", borderCollapse: "collapse" }}>
+                  <tr>
+                    <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
+                      <img
+                        src={proPic}
+                        className="homeFeedProfilePicture"
+                        alt="profile"
+                        style={{ margin: "20px", cursor: "pointer" }}
+                      />
+                    </td>
+                    <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
+                      <h6 style={{ margin: 0 }} style={{ cursor: "pointer" }}>
+                        {post.author.attributes.username}
+                      </h6>
+                    </td>
+                  </tr>
+                </table>
+                <video controls className="HomePostVideo" width="100%" height="0">
+                  <source src={post.attributes.mediaUrl} type="video/mp4" />
+                </video>
+                <h6>Caption: {post.attributes.caption}</h6>
+              </div>
+            );
+          }
         })}
       </div>
     </div>
