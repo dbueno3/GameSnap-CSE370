@@ -39,6 +39,8 @@ import Personal from "./views/mobile/Personal.jsx";
 import Profile_mobile from "./views/mobile/ProfileMobile.jsx";
 import Posts_mobile from "./views/mobile/PostsMobile.jsx";
 import CommentPostExampleMobile from "./views/mobile/CommentPostExampleMobile.jsx";
+import SignUpMobile from "./views/mobile/Signupmobile.jsx";
+import LoginMobile from "./views/mobile/LoginMobile.jsx";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -149,6 +151,10 @@ class App extends React.Component {
                 <Route path="/profile" element={<UserProfile />} />
                 <Route path="/personal" element={<Personal login={this.login} />} />
                 <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />} />
+                
+                {/* {Mobile Signin, Signup Example} */}
+                <Route path="/mobilesignup" element={<SignUpMobile />} />
+                <Route path="/mobilelogin" element={<LoginMobile />} />
 
                 {/* {Mobile Comment Example} */}
                 <Route path="/mobilecomment" element={<CommentPostExampleMobile />} />

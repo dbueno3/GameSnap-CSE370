@@ -199,7 +199,7 @@ class Profile_mobile extends React.Component {
           />
           </div>
         </label>
-        <p style={{color:"black"}}>Private Information</p>
+        <p>Private Information</p>
         <label style={{color:"black"}}>
         <div className="name-field">
           Email:
