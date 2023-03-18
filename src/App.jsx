@@ -17,20 +17,31 @@ import Modal from "./Component/Modal.jsx";
 import Promise from "./Component/Promise.jsx";
 
 //Landing
-import Landing from "./views/Landing.jsx";
+import Landing from "./views/desktop/Landing.jsx";
 
 //About Me
 import Shad from "./views/about_me/shad/Shad.jsx";
-
 import Ze from "./views/about_me/Ze/ze.jsx";
 import Daniel from "./views/about_me/Daniel/daniel.jsx";
-
+import Eric from "./views/about_me/Eric/Eric.jsx";
 
 //User
-import SignUp from "./views/SignUp.jsx";
-import Login from "./views/Login.jsx";
-import EditProfile from "./views/EditProfile.jsx";
-import UserProfile from "./views/UserProfile.jsx";
+import SignUp from "./views/desktop/SignUp.jsx";
+import Login from "./views/desktop/Login.jsx";
+import EditProfile from "./views/desktop/EditProfile.jsx";
+import UserProfile from "./views/desktop/UserProfile.jsx";
+
+import Home from "./views/desktop/Home.jsx";
+import UserPosts from "./views/desktop/UserPosts.jsx";
+import CreatePost from "./views/desktop/CreatePost.jsx";
+import Make_Post from "./views/mobile/MakePost.jsx";
+
+import Personal from "./views/mobile/Personal.jsx";
+import Profile_mobile from "./views/mobile/ProfileMobile.jsx";
+import Posts_mobile from "./views/mobile/PostsMobile.jsx";
+import CommentPostExampleMobile from "./views/mobile/CommentPostExampleMobile.jsx";
+import SignUpMobile from "./views/mobile/Signupmobile.jsx";
+import LoginMobile from "./views/mobile/LoginMobile.jsx";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -122,7 +133,7 @@ class App extends React.Component {
                 <Route path="/friends" element={<Friends login={this.login} />} />
                 <Route path="/groups" element={<Groups login={this.login} />} />
                 <Route
-                  path="/posts"
+                  path="/postsGiven"
                   element={
                     <Posts
                       doRefreshPosts={this.doRefreshPosts}
@@ -134,13 +145,31 @@ class App extends React.Component {
                 <Route path="/promise" element={<Promise />} />
                 <Route path="/" element={<Landing />} />
 
+                {/* {Users Profile} */}
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/edit_profile" element={<EditProfile />} />
                 <Route path="/profile" element={<UserProfile />} />
+                <Route path="/personal" element={<Personal login={this.login} />} />
+                <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />} />
+                
+                {/* {Mobile Signin, Signup Example} */}
+                <Route path="/mobilesignup" element={<SignUpMobile />} />
+                <Route path="/mobilelogin" element={<LoginMobile />} />
+
+                {/* {Mobile Comment Example} */}
+                <Route path="/mobilecomment" element={<CommentPostExampleMobile />} />
+
+                {/* {Contents} */}
+                <Route path="/create_post" element={<CreatePost />} />
+                <Route path="/user_posts" element={<UserPosts />} />
+                <Route path="/home" element={<Home />} />
 
                 {/* About Me Pages */}
                 <Route path="/about/dev/Shad" element={<Shad />} />
+                <Route path="/about/dev/Ze" element={<Ze />} />
+                <Route path="/about/dev/Daniel" element={<Daniel />} />
+                <Route path="/about/dev/Eric" element={<Eric />} />
               </Routes>
             </div>
           </header>

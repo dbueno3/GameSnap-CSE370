@@ -1,4 +1,4 @@
-import "./styles/landing.css";
+import "../styles/landing.css";
 
 //Router
 import { useNavigate } from "react-router-dom";
@@ -40,7 +40,7 @@ const Landing = () => {
         <button
           className="button"
           onClick={(e) => {
-            navigate("/eric.html");
+            navigate("/about/dev/Eric");
           }}
         >
           Eric
