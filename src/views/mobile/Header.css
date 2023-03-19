@@ -1,6 +1,10 @@
 .bold {
     font-weight: bold;
     font-weight: bolder;
+    color:black
+  }
+  .header__userProfileName p {
+    color:black
   }
   .header {
     display: flex;

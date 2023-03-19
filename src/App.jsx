@@ -22,7 +22,7 @@ import Landing from "./views/desktop/Landing.jsx";
 //About Me
 import Shad from "./views/about_me/shad/Shad.jsx";
 import Ze from "./views/about_me/Ze/ze.jsx";
-import Daniel from "./views/about_me/Daniel/daniel.jsx";
+import Daniel from "./views/about_me/Daniel/Daniel.jsx";
 import Eric from "./views/about_me/Eric/Eric.jsx";
 
 //User
@@ -152,6 +152,7 @@ class App extends React.Component {
                 <Route path="/profile" element={<UserProfile />} />
                 <Route path="/personal" element={<Personal login={this.login} />} />
                 <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />} />
+                <Route path="/make_post_mobile" element={<Make_Post login={this.login} />} />
                 
                 {/* {Mobile Signin, Signup Example} */}
                 <Route path="/mobilesignup" element={<SignUpMobile />} />

@@ -45,7 +45,7 @@ const Header = ({ user }) => {
           <div className="header__userProfilePicContainer">
             <img
               className="header__userProfilePic"
-              src={userPic}
+              src={user.Profile_Image}
               alt="Profile"
             />
           </div>

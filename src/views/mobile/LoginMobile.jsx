@@ -53,7 +53,7 @@ const LoginMobile = () => {
                   sessionStorage.setItem("token", result.token);
                   sessionStorage.setItem("user", result.userID);
 
-                  navigate("/profile");
+                  navigate("/edit_profile_mobile");
                 } else {
                   // if the login failed, remove any infomation from the session state
                   sessionStorage.removeItem("token");

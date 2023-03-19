@@ -133,6 +133,9 @@
   .mobilePost-edit-comment .cancel-button:focus {
     outline: none;
   }
+  .caption_mobile_comment{
+    text-align: left;
+  }
   
   @media (min-width: 768px) {
     .mobilePost {

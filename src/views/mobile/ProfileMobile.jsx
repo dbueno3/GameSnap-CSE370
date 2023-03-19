@@ -28,6 +28,7 @@ class Profile_mobile extends React.Component {
       Bio: "",
       Email: "",
       Phone:"",
+      Profile_Image:{},
       // NOTE : if you wanted to add another user attribute to the profile, you would add a corresponding state element here
     };
     this.fieldChangeHandler.bind(this);
@@ -74,6 +75,7 @@ class Profile_mobile extends React.Component {
                   Bio: result.attributes.Bio || "",
                   Email: result.attributes.Email || "",
                   Phone: result.attributes.Phone || "",
+                  Profile_Image: result.attributes.Profile_Image || "",
             });
           }
           }
@@ -114,6 +116,7 @@ class Profile_mobile extends React.Component {
           profilePictureName:this.state.profilePictureName,
           following:this.state.following,
           follower:this.state.follower,
+          Profile_Image:this.state.Profile_Image,
         }
       })
     })
@@ -144,11 +147,26 @@ class Profile_mobile extends React.Component {
       </div>
       <div className="edit" style={{color:"black"}}>Edit profile</div>
       </p>
-      <div>
-        <img src={avatar} alt="profile_picture" className="profile_picture_mobile"></img>
-      <p className="change-profile-photo" style={{color:"black"}}>Change Profile Photo</p>
-      </div>
       <form onSubmit={this.submitHandler}>
+      <input type="file" id="profile_image_upload" style={{display:"none"}} onChange={(event) =>{
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        reader.onload = () =>{
+          this.state.Profile_Image = reader.result;
+          
+          this.setState({
+            ["Profile_Image"]: reader.result
+          });
+        };
+        }}/> 
+        {this.state.Profile_Image?(
+        <img src={this.state.Profile_Image} alt="profile_picture" className="profile_picture_mobile" onClick={()=>{document.getElementById("profile_image_upload").click()}}></img>
+        ):(
+        <img src={avatar} alt="profile_picture" className="profile_picture_mobile" onClick={()=>{document.getElementById("profile_image_upload").click()}}></img>
+        )}
+      <p className="change-profile-photo" style={{color:"white"}}>Change Profile Photo</p>
         <div className='profileform'>       
         <label style={{color:"black"}}>
           <div className="name-field">
