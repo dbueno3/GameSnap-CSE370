@@ -42,6 +42,8 @@ import Posts_mobile from "./views/mobile/PostsMobile.jsx";
 import CommentPostExampleMobile from "./views/mobile/CommentPostExampleMobile.jsx";
 import SignUpMobile from "./views/mobile/Signupmobile.jsx";
 import LoginMobile from "./views/mobile/LoginMobile.jsx";
+import MobileHome from "./views/mobile/MobileHome";
+
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -153,6 +155,8 @@ class App extends React.Component {
                 <Route path="/personal" element={<Personal login={this.login} />} />
                 <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />} />
                 <Route path="/make_post_mobile" element={<Make_Post login={this.login} />} />
+                <Route path="/mobilehome" element={<MobileHome />} />
+
                 
                 {/* {Mobile Signin, Signup Example} */}
                 <Route path="/mobilesignup" element={<SignUpMobile />} />
