@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 //Post Components
 import EditImagePost from "./EditImagePost.jsx";
 import EditVideoPost from "./EditVideoPost.jsx";
+import { useNavigate } from "react-router-dom";
 
 const EditPosts = () => {
+  const navigate = useNavigate();
   const [posts, getPosts] = useState([]);
   const [username, setUsername] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
@@ -68,7 +70,11 @@ const EditPosts = () => {
         </div>
       </div>
       {/*Posts*/}
+      <button className="edit_post" onClick={()=>{
+        navigate("/user_posts")
+      }}>Back</button>
       {posts.map((post) => {
+        console.log(post)
         if (post.attributes.mediaType === "image") {
           return (
             <EditImagePost
@@ -84,6 +90,7 @@ const EditPosts = () => {
               key={post.attributes.caption}
               mediaUrl={post.attributes.mediaUrl}
               mediaCaption={post.attributes.caption}
+              postid={post.id}
             />
           );
         }

@@ -138,12 +138,12 @@
     text-align: left;
   }
   .delete_post_mobile{
-    float:right;
-    margin-left: 50%;
+    right:0;
+    position:absolute;
   }
   .delete_icon_mobile{
-    width:45%;
-    height:45%;
+    width:30px;
+    height:30px;
   }
   
   @media (min-width: 768px) {

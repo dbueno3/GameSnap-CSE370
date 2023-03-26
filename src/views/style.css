@@ -45,13 +45,14 @@
 /*posts*/
 .post{
     border-radius: 1%;
-    width: 63%;
+    width: 60%;
     background-color: #3D4554;
     height: 300px;
     text-align: left;
     padding: 20px;
     float: right;
     margin: 5px;
+    position:relative;
 }
 
 .imagePostLeft{
@@ -191,4 +192,14 @@
     display:block;
     float:right;
     margin-top: 0.5em;
+}
+
+.delete_post_desktop{
+    width:2%;
+    height:4%;
+    position:absolute;
+    bottom:2px;
+    right:0;
+    transform: translate(-50%,0%)
+    
 }

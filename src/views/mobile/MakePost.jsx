@@ -3,8 +3,10 @@ import React from "react";
 import Preview from "../../assets/image-preview.png";
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Make_Post = () => {
+    let navigate = useNavigate();
     const [caption, setCaption] = useState("");
     // eslint-disable-next-line
     const [formData, addToFormData] = useState(new FormData());
@@ -20,7 +22,6 @@ const Make_Post = () => {
           </div>
           <div className="edit" style={{color:"black"}}>Make Your Post</div>
           <div>
-          <Link to="/personal" >
           <button className="post_mobile"
             onClick={() => {
           //Upload the file first
@@ -62,6 +63,7 @@ const Make_Post = () => {
                 .then(
                   (result) => {
                     console.log("Post was successful");
+                    navigate('/personal')
                   },
                   (error) => {
                     console.log(`error!: ${error}`);
@@ -69,7 +71,6 @@ const Make_Post = () => {
                 );
                 });
                 }}>Post</button>
-            </Link>
             </div> 
           </p>
           </div>
