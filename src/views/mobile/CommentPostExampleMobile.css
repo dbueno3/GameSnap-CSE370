@@ -10,6 +10,7 @@
   }
   
   .mobilePost-header img {
+    display:inline-block;
     border-radius: 50%;
     margin-right: 0.5rem;
   }
@@ -135,6 +136,14 @@
   }
   .caption_mobile_comment{
     text-align: left;
+  }
+  .delete_post_mobile{
+    float:right;
+    margin-left: 50%;
+  }
+  .delete_icon_mobile{
+    width:45%;
+    height:45%;
   }
   
   @media (min-width: 768px) {

@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 
 //Post Components
-import ImagePost from "../../Component/ImagePost.jsx";
-import VideoPost from "../../Component/VideoPost.jsx";
-import { useNavigate } from "react-router-dom";
+import EditImagePost from "./EditImagePost.jsx";
+import EditVideoPost from "./EditVideoPost.jsx";
 
-
-const UserPosts = () => {
-  const navigate = useNavigate();
+const EditPosts = () => {
   const [posts, getPosts] = useState([]);
   const [username, setUsername] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
+  
+
   useEffect(() => {
     //Get the user information
     fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
@@ -69,21 +68,19 @@ const UserPosts = () => {
         </div>
       </div>
       {/*Posts*/}
-      <button className="edit_post" onClick={()=>{
-        navigate("/edit_posts")
-      }}>Edit Your Posts</button>
       {posts.map((post) => {
         if (post.attributes.mediaType === "image") {
           return (
-            <ImagePost
+            <EditImagePost
               key={post.attributes.caption}
               mediaUrl={post.attributes.mediaUrl}
               mediaCaption={post.attributes.caption}
+              postid={post.id}
             />
           );
         } else {
           return (
-            <VideoPost
+            <EditVideoPost
               key={post.attributes.caption}
               mediaUrl={post.attributes.mediaUrl}
               mediaCaption={post.attributes.caption}
@@ -95,4 +92,4 @@ const UserPosts = () => {
   );
 };
 
-export default UserPosts;
+export default EditPosts;

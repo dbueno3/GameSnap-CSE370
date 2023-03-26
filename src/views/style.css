@@ -45,7 +45,7 @@
 /*posts*/
 .post{
     border-radius: 1%;
-    width: 65%;
+    width: 63%;
     background-color: #3D4554;
     height: 300px;
     text-align: left;
@@ -85,10 +85,9 @@
 
 #userPostProfile{
     float: left;
-    width: 31%;
+    width: 30%;
     height: fit-content;
     background-color: #3D4554;
-    position: fixed;
     border-radius: 2%;
     text-align: center;
     display: flex;
@@ -186,4 +185,10 @@
     margin: 10px;
     border-radius: 20px;
     text-align: left;
+}
+
+.edit_post{
+    display:block;
+    float:right;
+    margin-top: 0.5em;
 }

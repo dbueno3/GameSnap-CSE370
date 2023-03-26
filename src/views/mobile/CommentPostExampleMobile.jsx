@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import './CommentPostExampleMobile.css';
 import LikeImage from '../../assets/like.png';
 import {useLocation} from 'react-router-dom'
+import BottomBar from "./BottomBar";
+import { useNavigate } from "react-router-dom";
+import DeletePost from '../../assets/delete.png'
 
 const CommentPostExampleMobile = () => {
+  let navigate = useNavigate();
   const [comments, setComments] = useState([
     { id: 1, user: 'Jane Smith', comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
     { id: 2, user: 'Bob Johnson', comment: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }
@@ -18,6 +22,7 @@ const CommentPostExampleMobile = () => {
     setNewComment(comment);
   };
   const location = useLocation();
+  console.log(location.state.id);
 
   const handleUpdateComment = () => {
     if (newComment.trim() === '') {
@@ -68,6 +73,26 @@ const CommentPostExampleMobile = () => {
         <div className="mobilePost-user">
           <h3>{location.state.author.attributes.Username}</h3>
           {/* <p>San Francisco, CA</p> */}
+        </div>
+        <div className='delete_post_mobile'>
+          <img src={DeletePost} className="delete_icon_mobile" onClick={()=>{
+            fetch(process.env.REACT_APP_API_PATH + "/posts/" + location.state.id, {
+              method: "DELETE",
+              headers: {
+                'Authorization': 'Bearer '+sessionStorage.getItem("token")
+              }
+            })
+            .then(response => {
+              if (!response.ok){
+                throw new Error("Failed to delete the post");
+              }
+              console.log("Post deleted successfully");
+              navigate("/personal")
+            })
+            .catch(error => {
+              console.error(error);
+            })
+          }}/>
         </div>
       </div>
       <div className="mobilePost-image">
@@ -129,6 +154,7 @@ const CommentPostExampleMobile = () => {
       )}
     </div>
   </div>
+  <BottomBar/>
 </div>
 
   );

@@ -1,13 +1,9 @@
-import image from "../../assets/group.png";
-import post from "../../assets/post_example.jpg";
 import "../mobile.css";
-import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 import Header from './Header';
 import React from "react";
-import puppyPicture from '../../assets/puppy.jpg';
-import sunsetPicture from '../../assets/sunset.jpg';
 import ProfileGrid from "./ProfileGrid";
 import BottomBar from "./BottomBar";
+
 
 export default class Personal extends React.Component{
     
