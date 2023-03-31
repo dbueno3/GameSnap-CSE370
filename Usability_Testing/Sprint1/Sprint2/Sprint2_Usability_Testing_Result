@@ -1,0 +1,54 @@
+Sprint2_Usability_Testing
+
+Result/Changes:
+
+Based on the feedback from our testers, there are a few things that we need to change and
+improve.
+
+Desktop version:
+
+First, and this is the most important part. Right now for the desktop version and mobile version,
+it seems like they are two different applications. And it’s true because while we were doing that,
+we have two code bases for desktop and mobile, which would cause the non-relation between
+desktop and mobile. It will be a huge change to our application that we need to have only one
+code base for the desktop and mobile application.
+
+Second, right now the application for the desktop version does not have a way for the user to
+navigate pages, the users have to follow the path we told them during testing and type it into the
+url to navigate the pages they want. We need to add a register button in the login page for the
+user to create an account. After login, we need to provide a way for the user to navigate to the
+home page. And after the user posts their posts, we need to provide a way for the user to go
+back to the home page and a way for the user to navigate to their personal page in the
+homepage.
+
+Third, right now the sign up is navigating to the edit profile page, and since we don’t have a
+logout functionality in our application, it means the user will have to go to the login page from
+the url path which does not make any sense, so we will need to change the page that is
+navigated to login page after the user registered their account..
+
+Fourth, in the profile page, we need to provide a more clear way to let the user know they could
+change their profile picture by clicking the icon. And if the user doesn’t set the profile picture but
+still clicks the submit button in the profile page, it needs to have an error message come out to
+tell the user to set the profile picture. And after the user changes the profile picture, they should
+be able to see the icon change to the picture they submitted so that they will know they
+submitted successfully.
+
+Mobile version:
+
+First, in the edit profile page, the blue top bar seems not harmonious with the background. And
+while the user edits their profile, they seem not knowing they should have a profile picture. So
+we will need to either have an error message pop out if there is no profile picture when the user
+saves their profile information or have a default profile picture if the users don’t set one.
+
+Second, in the users’ personal page, the page looks like it’s being cut off and has a half page
+black. We will need to have the blue bar in the bottom of the page so that even if the user does
+not have any posts, it will still take up the whole page.
+
+Third, in the commenting page, the comment bar does not have the same style with the
+background and it’s hard to see the submit comment button. And we will need to fix that by
+changing its css style.
+
+Fourth, right now the sign up is navigating to the edit profile page, and since we don’t have a
+logout functionality in our application, it means the user will have to go to the login page from
+the url path which does not make any sense, so we will need to change the page that is
+navigated after the user registered their account.
