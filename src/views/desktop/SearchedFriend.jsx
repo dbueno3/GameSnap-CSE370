@@ -6,14 +6,29 @@ import RenderProfile from "../../Component/RenderProfile.jsx";
 const SearchedFriend = () => {
   const params = useParams();
   const userId = params.userId;
-  const [requestStatus, setRequestStatus] = useState("pending");
-  //   useEffect(()={
-
-  //   },[])
+  const [requestStatus, setRequestStatus] = useState("");
+  useEffect(() => {
+    fetch(
+      process.env.REACT_APP_API_PATH + `/connections?fromUserID=${sessionStorage.getItem("user")}&toUserID=${userId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        if (res[0][0].hasOwnProperty("attributes")) {
+          setRequestStatus(res[0][0].attributes.requestStatus);
+        }
+      });
+  }, []);
   return (
     <RenderProfile userId={userId}>
       <button
-        style={requestStatus === "pending" ? { display: "inline-block" } : { display: "none" }}
+        style={requestStatus === "" ? { display: "inline-block" } : { display: "none" }}
         id="sendRequestButton"
         onClick={() => {
           fetch(process.env.REACT_APP_API_PATH + `/connections`, {
@@ -35,6 +50,7 @@ const SearchedFriend = () => {
             }
             if (response.ok) {
               document.getElementById("requestSentText").style.display = "block";
+              document.getElementById("requestSentText").style.color = "teal";
               document.getElementById("sendRequestButton").style.display = "none";
             }
           });
@@ -42,7 +58,10 @@ const SearchedFriend = () => {
       >
         Add friend
       </button>
-      <h6 id="requestSentText" style={{ color: "teal", display: "none" }}>
+      <h6
+        id="requestSentText"
+        style={requestStatus === "pending" ? { display: "inline-block", color: "teal" } : { display: "none" }}
+      >
         Friend Request Sent!
       </h6>
     </RenderProfile>
