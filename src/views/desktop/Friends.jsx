@@ -34,7 +34,7 @@ const Friends = () => {
                   if (res[0][0] === undefined) {
                     alert("user not found");
                   } else {
-                    navigate(`/search/${searchedUser}`);
+                    navigate(`/search/${res[0][0].id}`);
                   }
                 }
               });

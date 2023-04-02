@@ -172,7 +172,7 @@ class App extends React.Component {
                 <Route path="/create_post" element={<CreatePost />} />
                 <Route path="/user_posts" element={<UserPosts />} />
                 <Route path="/friends" element={<Friends />} />
-                <Route path="/search/:username" element={<SearchedFriend />} />
+                <Route path="/search/:userId" element={<SearchedFriend />} />
                 <Route path="/home" element={<Home />} />
 
                 {/* About Me Pages */}
