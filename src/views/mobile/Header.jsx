@@ -55,6 +55,7 @@ const Header = ({ user }) => {
           </div>
           <p className="small-text">{user.Website}</p>
           <p className="small-text">{user.Bio}</p>
+          <p className="small-text"><b>{user.private ? 'The profile is private' : 'The profile is public'}</b></p>
         </div>
         </div>
         <div className="header__userInfo">

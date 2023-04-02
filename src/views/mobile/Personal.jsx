@@ -18,6 +18,7 @@ export default class Personal extends React.Component{
           Phone:"",
           Posts: [],
           Profile_Image:{},
+          private: false
           // NOTE : if you wanted to add another user attribute to the profile, you would add a corresponding state element here
         };
       }
@@ -48,6 +49,7 @@ export default class Personal extends React.Component{
                   Email: result.attributes.Email || "",
                   Phone: result.attributes.Phone || "",
                   Profile_Image: result.attributes.Profile_Image || "",
+                  private: result.attributes.private || false
                 });
               }
               }
