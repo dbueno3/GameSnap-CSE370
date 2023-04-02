@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Friends = () => {
   const [searchedUser, setSearchedUser] = useState("");
+  let navigate = useNavigate();
   return (
     <div id="friendPageMain">
       <div id="searchBoxContainer">
@@ -30,9 +32,9 @@ const Friends = () => {
               .then((res) => {
                 if (res) {
                   if (res[0][0] === undefined) {
-                    console.log("user not found");
+                    alert("user not found");
                   } else {
-                    console.log(res[0][0]);
+                    navigate(`/search/${searchedUser}`);
                   }
                 }
               });

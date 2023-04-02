@@ -46,6 +46,7 @@ import MobileHome from "./views/mobile/MobileHome";
 import EditPosts from "./views/desktop/EditPost.jsx";
 
 import Friends from "./views/desktop/Friends.jsx";
+import SearchedFriend from "./views/desktop/SearchedFriend.jsx";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -171,6 +172,7 @@ class App extends React.Component {
                 <Route path="/create_post" element={<CreatePost />} />
                 <Route path="/user_posts" element={<UserPosts />} />
                 <Route path="/friends" element={<Friends />} />
+                <Route path="/search/:username" element={<SearchedFriend />} />
                 <Route path="/home" element={<Home />} />
 
                 {/* About Me Pages */}
