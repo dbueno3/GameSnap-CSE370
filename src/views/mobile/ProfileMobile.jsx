@@ -29,6 +29,7 @@ class Profile_mobile extends React.Component {
       Email: "",
       Phone:"",
       Profile_Image:{},
+      private: false,
       // NOTE : if you wanted to add another user attribute to the profile, you would add a corresponding state element here
     };
     this.fieldChangeHandler.bind(this);
@@ -38,12 +39,13 @@ class Profile_mobile extends React.Component {
   // it keeps the state current so that when we submit the form, we can pull the value to update from the state.  Note that
   // we manage multiple fields with one function and no conditional logic, because we are passing in the name of the state
   // object as an argument to this method.  
-  fieldChangeHandler(field, e) {
+  fieldChangeHandler(field, value) {
     console.log("field change");
     this.setState({
-      [field]: e.target.value
+      [field]: value
     });
   }
+  
 
   
   // This is the function that will get called the first time that the component gets rendered.  This is where we load the current
@@ -69,13 +71,14 @@ class Profile_mobile extends React.Component {
             this.setState({
               // IMPORTANT!  You need to guard against any of these values being null.  If they are, it will
               // try and make the form component uncontrolled, which plays havoc with react
-              Name: result.attributes.Name || "",
+                  Name: result.attributes.Name || "",
                   Username: result.attributes.Username || "",
                   Website: result.attributes.Website || "",
                   Bio: result.attributes.Bio || "",
                   Email: result.attributes.Email || "",
                   Phone: result.attributes.Phone || "",
                   Profile_Image: result.attributes.Profile_Image || "",
+                  private: result.attributes.private || false,
             });
           }
           }
@@ -117,6 +120,7 @@ class Profile_mobile extends React.Component {
           following:this.state.following,
           follower:this.state.follower,
           Profile_Image:this.state.Profile_Image,
+          private:this.state.private,
         }
       })
     })
@@ -131,7 +135,7 @@ class Profile_mobile extends React.Component {
         error => {
           alert("error!");
         }
-      );
+      );    
       this.props.navigate('/personal')
   };
 
@@ -149,6 +153,7 @@ class Profile_mobile extends React.Component {
       </p>
       <form onSubmit={this.submitHandler}>
       <input type="file" id="profile_image_upload" style={{display:"none"}} onChange={(event) =>{
+        console.log("Image Changed");
         const file = event.target.files[0];
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -175,7 +180,7 @@ class Profile_mobile extends React.Component {
             type="text"            
             className="box"
             placeholder="Your name.."
-            onChange={e => this.fieldChangeHandler("Name", e)}
+            onChange={e => this.fieldChangeHandler("Name", e.target.value)}
             value={this.state.Name}
           />
           </div>
@@ -188,7 +193,7 @@ class Profile_mobile extends React.Component {
             className="box"
             type="text"
             placeholder="Your username.."
-            onChange={e => this.fieldChangeHandler("Username", e)}
+            onChange={e => this.fieldChangeHandler("Username", e.target.value)}
             value={this.state.Username}
           />
           </div>
@@ -200,7 +205,7 @@ class Profile_mobile extends React.Component {
             className="box"
             type="text"
             placeholder="Your website.."
-            onChange={e => this.fieldChangeHandler("Website", e)}
+            onChange={e => this.fieldChangeHandler("Website", e.target.value)}
             value={this.state.Website}
           />
         </div>
@@ -212,11 +217,22 @@ class Profile_mobile extends React.Component {
             className="box"
             type="text"
             placeholder="Your bio.."
-            onChange={e => this.fieldChangeHandler("Bio", e)}
+            onChange={e => this.fieldChangeHandler("Bio", e.target.value)}
             value={this.state.Bio}
           />
           </div>
         </label>
+        <label style={{color:"black"}}>
+        <div className="name-field">
+          Private Profile:
+          <input
+            type="checkbox"
+            onChange={e => this.fieldChangeHandler("private", e.target.checked)}
+            checked={this.state.private}
+          />
+          </div>
+        </label>
+        <small style={{color: "white"}}>Private profile will only share your posts with people who follow you</small>          
         <p>Private Information</p>
         <label style={{color:"black"}}>
         <div className="name-field">
@@ -225,7 +241,7 @@ class Profile_mobile extends React.Component {
             className="box"
             type="text"
             placeholder="Your email.."
-            onChange={e => this.fieldChangeHandler("Email", e)}
+            onChange={e => this.fieldChangeHandler("Email", e.target.value)}
             value={this.state.Email}
           />
           </div>
@@ -237,16 +253,15 @@ class Profile_mobile extends React.Component {
             className="box"
             type="text"
             placeholder="Your phone.."
-            onChange={e => this.fieldChangeHandler("Phone", e)}
+            onChange={e => this.fieldChangeHandler("Phone", e.target.value)}
             value={this.state.Phone}
           />
           </div>
         </label>
-        </div> 
+        <input type="submit" className="submit-button" value="Save" />
+        <input type="submit" className="submit-button"value="DELETE Account"/>
+        </div>
         <br></br>
-        <input type="submit" className="edit-profile" value="Save" />
-        <br></br>
-        <input type="submit" className="delete-account"value="DELETE Account"/>
       </form>
       </div>
     );
