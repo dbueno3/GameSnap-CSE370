@@ -45,6 +45,7 @@ import LoginMobile from "./views/mobile/LoginMobile.jsx";
 import MobileHome from "./views/mobile/MobileHome";
 import EditPosts from "./views/desktop/EditPost.jsx";
 
+import Friends from "./views/desktop/Friends.jsx";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -133,7 +134,7 @@ class App extends React.Component {
             <div className="maincontent" id="mainContent">
               <Routes>
                 <Route path="/settings" element={<Settings login={this.login} />} />
-                <Route path="/friends" element={<Friends login={this.login} />} />
+                {/* <Route path="/friends" element={<Friends login={this.login} />} /> */}
                 <Route path="/groups" element={<Groups login={this.login} />} />
                 <Route
                   path="/postsGiven"
@@ -158,7 +159,7 @@ class App extends React.Component {
                 <Route path="/make_post_mobile" element={<Make_Post login={this.login} />} />
                 <Route path="/mobilehome" element={<MobileHome />} />
                 <Route path="/edit_posts" element={<EditPosts login={this.login} />} />
-                
+
                 {/* {Mobile Signin, Signup Example} */}
                 <Route path="/mobilesignup" element={<SignUpMobile />} />
                 <Route path="/mobilelogin" element={<LoginMobile />} />
@@ -169,6 +170,7 @@ class App extends React.Component {
                 {/* {Contents} */}
                 <Route path="/create_post" element={<CreatePost />} />
                 <Route path="/user_posts" element={<UserPosts />} />
+                <Route path="/friends" element={<Friends />} />
                 <Route path="/home" element={<Home />} />
 
                 {/* About Me Pages */}
@@ -208,25 +210,25 @@ const Settings = (props) => {
   );
 };
 
-const Friends = (props) => {
-  // if the user is not logged in, show the login form.  Otherwise, show the post form
-  if (!sessionStorage.getItem("token")) {
-    console.log("LOGGED OUT");
-    return (
-      <div>
-        <p>CSE 370 Social Media Test Harness</p>
-        <LoginForm login={props.login} />
-      </div>
-    );
-  }
-  return (
-    <div>
-      <p>Friends</p>
-      <FriendForm userid={sessionStorage.getItem("user")} />
-      <FriendList userid={sessionStorage.getItem("user")} />
-    </div>
-  );
-};
+// const Friends = (props) => {
+//   // if the user is not logged in, show the login form.  Otherwise, show the post form
+//   if (!sessionStorage.getItem("token")) {
+//     console.log("LOGGED OUT");
+//     return (
+//       <div>
+//         <p>CSE 370 Social Media Test Harness</p>
+//         <LoginForm login={props.login} />
+//       </div>
+//     );
+//   }
+//   return (
+//     <div>
+//       <p>Friends</p>
+//       <FriendForm userid={sessionStorage.getItem("user")} />
+//       <FriendList userid={sessionStorage.getItem("user")} />
+//     </div>
+//   );
+// };
 
 const Groups = (props) => {
   // if the user is not logged in, show the login form.  Otherwise, show the post form

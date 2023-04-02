@@ -60,7 +60,7 @@ const Home = () => {
                   src={proPic}
                   className="homeFeedProfilePicture"
                   alt="profile"
-                  style={{ margin: "20px", cursor: "pointer" }}
+                  style={{ margin: "20px", cursor: "pointer", verticalAlign: "middle" }}
                   onClick={() => {
                     navigate("/profile");
                   }}
