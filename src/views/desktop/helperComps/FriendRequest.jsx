@@ -1,4 +1,44 @@
+import { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 const FriendRequest = (props) => {
+  const [status, setStatus] = useState("pending");
+  let navigate = useNavigate();
+
+  const handleAccept = () => {
+    fetch(process.env.REACT_APP_API_PATH + `/connections/${props.requestId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        fromUserID: props.requestUserId,
+        toUserID: sessionStorage.getItem("user"),
+        attributes: {
+          requestStatus: "active",
+        },
+      }),
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          setStatus("accepted");
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
+        } else {
+          console.log("Error:", response.status);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+  const handleReject = () => {
+    console.log("Reject button clicked");
+  };
+
   return (
     <table style={{ margin: "0", borderCollapse: "collapse" }}>
       <tr>
@@ -18,39 +58,64 @@ const FriendRequest = (props) => {
           </h6>
         </td>
         <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "20px" }}>
-          <p style={{ fontSize: "20px", display: "inline-block", verticalAlign: "middle", marginRight: "10px" }}>
+          <p
+            style={{ fontSize: "20px", display: "inline-block", verticalAlign: "middle", marginRight: "10px" }}
+            onClick={() => {
+              navigate(`/search/${props.requestUserId}`);
+            }}
+          >
             {props.requestUsername}
           </p>
-          <button
-            style={{
-              backgroundColor: "green",
-              cursor: "pointer",
-              color: "white",
-              width: "30px",
-              height: "30px",
-              borderRadius: "50%",
-              border: "none",
-              fontSize: "20px",
-              verticalAlign: "middle",
-            }}
-          >
-            ✓
-          </button>
-          <button
-            style={{
-              backgroundColor: "red",
-              color: "white",
-              cursor: "pointer",
-              width: "30px",
-              height: "30px",
-              borderRadius: "50%",
-              border: "none",
-              fontSize: "20px",
-              verticalAlign: "middle",
-            }}
-          >
-            ✗
-          </button>
+          {status === "pending" && (
+            <>
+              <button
+                style={{
+                  backgroundColor: "green",
+                  cursor: "pointer",
+                  color: "white",
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "50%",
+                  border: "none",
+                  fontSize: "20px",
+                  verticalAlign: "middle",
+                }}
+                onClick={handleAccept}
+              >
+                ✓
+              </button>
+              <button
+                style={{
+                  backgroundColor: "red",
+                  color: "white",
+                  cursor: "pointer",
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "50%",
+                  border: "none",
+                  fontSize: "20px",
+                  verticalAlign: "middle",
+                }}
+                onClick={handleReject}
+              >
+                ✗
+              </button>
+            </>
+          )}
+          {status === "accepted" && (
+            <p
+              style={{
+                fontSize: "20px",
+                display: "inline-block",
+                verticalAlign: "middle",
+                marginRight: "10px",
+                fontStyle: "italic",
+                color: "teal",
+              }}
+            >
+              Accepted
+            </p>
+          )}
         </td>
       </tr>
     </table>
