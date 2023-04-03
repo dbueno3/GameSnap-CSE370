@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import FriendStatus from "./helperComps/FriendStatus.jsx";
+
 const Friends = () => {
   const [searchedUser, setSearchedUser] = useState("");
+  const [renderStat, setRenderStat] = useState("active");
+  const [currentNav, setCurrentNav] = useState("friends");
   let navigate = useNavigate();
   return (
     <div id="friendPageMain">
@@ -48,8 +52,51 @@ const Friends = () => {
         <br />
       </div>
       <div id="friendStatusNav">
-        <h6 style={{ display: "inline-block" }}>Friends</h6>
-        <h6 style={{ display: "inline-block", marginLeft: "10px" }}>Requests</h6>
+        <h6
+          className="friendMenu"
+          style={
+            currentNav === "friends"
+              ? { display: "inline-block", textDecoration: "underline", fontStyle: "italic" }
+              : { display: "inline-block" }
+          }
+          onClick={(e) => {
+            setRenderStat("active");
+            setCurrentNav("friends");
+          }}
+        >
+          Friends
+        </h6>
+        <h6
+          className="friendMenu"
+          style={
+            currentNav === "pending"
+              ? { display: "inline-block", textDecoration: "underline", fontStyle: "italic", marginLeft: "10px" }
+              : { display: "inline-block", marginLeft: "10px" }
+          }
+          onClick={(e) => {
+            setRenderStat("pending");
+            setCurrentNav("pending");
+          }}
+        >
+          Requests
+        </h6>
+        <h6
+          className="friendMenu"
+          style={
+            currentNav === "sent"
+              ? { display: "inline-block", textDecoration: "underline", fontStyle: "italic", marginLeft: "10px" }
+              : { display: "inline-block", marginLeft: "10px" }
+          }
+          onClick={(e) => {
+            setRenderStat("sent");
+            setCurrentNav("sent");
+          }}
+        >
+          Sent
+        </h6>
+      </div>
+      <div id="friendStatusBody">
+        <FriendStatus status={renderStat} />
       </div>
     </div>
   );

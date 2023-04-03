@@ -218,3 +218,12 @@
 #friendStatusNav{
     text-align: left;
 }
+
+#friendStatusBody{
+    text-align: left;
+}
+
+.friendMenu:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
