@@ -36,7 +36,26 @@ const FriendRequest = (props) => {
   };
 
   const handleReject = () => {
-    console.log("Reject button clicked");
+    fetch(process.env.REACT_APP_API_PATH + `/connections/${props.requestId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+    })
+      .then((response) => {
+        if (response.status === 204) {
+          setStatus("rejected");
+          setTimeout(() => {
+            window.location.reload();
+          }, 500);
+        } else {
+          console.log("Error:", response.status);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
@@ -114,6 +133,20 @@ const FriendRequest = (props) => {
               }}
             >
               Accepted
+            </p>
+          )}
+          {status === "rejected" && (
+            <p
+              style={{
+                fontSize: "20px",
+                display: "inline-block",
+                verticalAlign: "middle",
+                marginRight: "10px",
+                fontStyle: "italic",
+                color: "red",
+              }}
+            >
+              Rejected
             </p>
           )}
         </td>

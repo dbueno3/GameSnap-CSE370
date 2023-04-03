@@ -70,8 +70,8 @@ const Friends = () => {
           className="friendMenu"
           style={
             currentNav === "pending"
-              ? { display: "inline-block", textDecoration: "underline", fontStyle: "italic", marginLeft: "10px" }
-              : { display: "inline-block", marginLeft: "10px" }
+              ? { display: "inline-block", textDecoration: "underline", fontStyle: "italic", marginLeft: "30px" }
+              : { display: "inline-block", marginLeft: "30px" }
           }
           onClick={(e) => {
             setRenderStat("pending");
@@ -84,8 +84,8 @@ const Friends = () => {
           className="friendMenu"
           style={
             currentNav === "sent"
-              ? { display: "inline-block", textDecoration: "underline", fontStyle: "italic", marginLeft: "10px" }
-              : { display: "inline-block", marginLeft: "10px" }
+              ? { display: "inline-block", textDecoration: "underline", fontStyle: "italic", marginLeft: "30px" }
+              : { display: "inline-block", marginLeft: "30px" }
           }
           onClick={(e) => {
             setRenderStat("sent");
