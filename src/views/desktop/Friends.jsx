@@ -33,6 +33,9 @@ const Friends = () => {
                 if (res) {
                   if (res[0][0] === undefined) {
                     alert("user not found");
+                    // eslint-disable-next-line
+                  } else if (res[0][0].id == sessionStorage.getItem("user")) {
+                    navigate(`/profile`);
                   } else {
                     navigate(`/search/${res[0][0].id}`);
                   }
