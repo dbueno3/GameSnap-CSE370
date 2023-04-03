@@ -20,10 +20,29 @@ const SearchedFriend = () => {
     )
       .then((res) => res.json())
       .then((res) => {
+        console.log(res);
         if (res[0][0].hasOwnProperty("attributes")) {
           setRequestStatus(res[0][0].attributes.requestStatus);
         }
       });
+    fetch(
+      process.env.REACT_APP_API_PATH + `/connections?fromUserID=${userId}&toUserID=${sessionStorage.getItem("user")}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        if (res[0][0].hasOwnProperty("attributes")) {
+          setRequestStatus("pendingRequest");
+        }
+      });
+    // eslint-disable-next-line
   }, []);
   return (
     <RenderProfile userId={userId}>
@@ -63,6 +82,12 @@ const SearchedFriend = () => {
         style={requestStatus === "pending" ? { display: "inline-block", color: "teal" } : { display: "none" }}
       >
         Friend Request Sent!
+      </h6>
+      <h6
+        id="requestPendingText"
+        style={requestStatus === "pendingRequest" ? { display: "inline-block", color: "teal" } : { display: "none" }}
+      >
+        Friend Request Pending
       </h6>
     </RenderProfile>
   );

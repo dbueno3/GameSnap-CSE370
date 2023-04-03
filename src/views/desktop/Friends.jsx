@@ -42,6 +42,11 @@ const Friends = () => {
         >
           Search
         </button>
+        <br />
+      </div>
+      <div id="friendStatusNav">
+        <h6 style={{ display: "inline-block" }}>Friends</h6>
+        <h6 style={{ display: "inline-block", marginLeft: "10px" }}>Requests</h6>
       </div>
     </div>
   );
