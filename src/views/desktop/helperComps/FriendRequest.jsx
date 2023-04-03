@@ -25,7 +25,7 @@ const FriendRequest = (props) => {
           setStatus("accepted");
           setTimeout(() => {
             window.location.reload();
-          }, 1500);
+          }, 500);
         } else {
           console.log("Error:", response.status);
         }

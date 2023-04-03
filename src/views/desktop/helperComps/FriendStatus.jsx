@@ -1,4 +1,5 @@
 import FriendRequest from "./FriendRequest";
+import FriendActive from "./FriendActive";
 
 import { useEffect, useState } from "react";
 
@@ -79,7 +80,7 @@ const FriendStatus = (props) => {
       .then((res) => res.json())
       .then((res) => {
         if (res[0].length >= 1) {
-          setActive((prevActive) => prevActive + res[0]);
+          res[0].length > 0 && setActive((prevActive) => prevActive.concat(res[0]));
         }
       });
   }, []);
@@ -101,7 +102,21 @@ const FriendStatus = (props) => {
       </>
     );
   } else if (props.status === "active") {
-    return <h6>These are your friends</h6>;
+    return (
+      <>
+        {active.map((friend) => {
+          let username = friend.fromUser.attributes.username;
+          let proPic = friend.fromUser.attributes.profilePicture;
+          let uid = friend.fromUser.id;
+          if (friend.fromUser.id == sessionStorage.getItem("user")) {
+            username = friend.toUser.attributes.username;
+            proPic = friend.toUser.attributes.profilePicture;
+            uid = friend.toUser.id;
+          }
+          return <FriendActive key={friend.id} username={username} profilePicture={proPic} userId={uid} />;
+        })}
+      </>
+    );
   } else if (props.status === "sent") {
     return <h6>These people you have sent requests to</h6>;
   } else {
