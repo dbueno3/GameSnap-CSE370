@@ -46,7 +46,14 @@ const NavbarOwn = () => {
             />
           </td>
           <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "10px" }}>
-            <GoSignOut className="navbarIcon" />
+            <GoSignOut
+              className="navbarIcon"
+              onClick={() => {
+                sessionStorage.removeItem("token");
+                sessionStorage.removeItem("user");
+                navigate("/login");
+              }}
+            />
           </td>
           <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "10px" }}>
             <img

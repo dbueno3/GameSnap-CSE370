@@ -5,6 +5,7 @@ import ImagePost from "../../Component/ImagePost.jsx";
 import VideoPost from "../../Component/VideoPost.jsx";
 import { useNavigate } from "react-router-dom";
 
+import NavbarOwn from "../../Component/NavbarOwn.jsx";
 
 const UserPosts = () => {
   const navigate = useNavigate();
@@ -42,56 +43,64 @@ const UserPosts = () => {
       });
   }, []);
   return (
-    <div id="userPostsMain">
-      <div id="userPostProfile">
-        <div>
-          <table style={{ backgroundColor: "#5F6A82", color: "black", width: "50%", borderRadius: "20px" }}>
-            <tr>
-              <td style={{ textAlign: "center", verticalAlign: "middle", width: "20%" }}>
-                <img src={profilePicture} alt="Profile" className="profilePictureCircle" />
-              </td>
-              <td style={{ textAlign: "left", verticalAlign: "middle", width: "10%" }}>
-                <h6 style={{ margin: 0 }}>{username}</h6>
-              </td>
-              <td></td>
-            </tr>
-            <tr>
-              <th style={{ fontSize: "14px", padding: "5px", width: "33.33%" }}>Following</th>
-              <th style={{ fontSize: "14px", padding: "5px", width: "33.33%" }}>Followers</th>
-              <th style={{ fontSize: "14px", padding: "5px", width: "33.33%" }}>Likes</th>
-            </tr>
-            <tr>
-              <td style={{ fontSize: "14px", padding: "5px", width: "33.33%" }}>0</td>
-              <td style={{ fontSize: "14px", padding: "5px", width: "33.33%" }}>0</td>
-              <td style={{ fontSize: "14px", padding: "5px", width: "33.33%" }}>0</td>
-            </tr>
-          </table>
+    <>
+      <NavbarOwn />
+      <div id="userPostsMain">
+        <div id="userPostProfile">
+          <div>
+            <table style={{ backgroundColor: "#5F6A82", color: "black", width: "50%", borderRadius: "20px" }}>
+              <tr>
+                <td style={{ textAlign: "center", verticalAlign: "middle", width: "20%" }}>
+                  <img src={profilePicture} alt="Profile" className="profilePictureCircle" />
+                </td>
+                <td style={{ textAlign: "left", verticalAlign: "middle", width: "10%" }}>
+                  <h6 style={{ margin: 0 }}>{username}</h6>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <th style={{ fontSize: "14px", padding: "5px", width: "33.33%" }}>Following</th>
+                <th style={{ fontSize: "14px", padding: "5px", width: "33.33%" }}>Followers</th>
+                <th style={{ fontSize: "14px", padding: "5px", width: "33.33%" }}>Likes</th>
+              </tr>
+              <tr>
+                <td style={{ fontSize: "14px", padding: "5px", width: "33.33%" }}>0</td>
+                <td style={{ fontSize: "14px", padding: "5px", width: "33.33%" }}>0</td>
+                <td style={{ fontSize: "14px", padding: "5px", width: "33.33%" }}>0</td>
+              </tr>
+            </table>
+          </div>
         </div>
+        {/*Posts*/}
+        <button
+          className="edit_post"
+          onClick={() => {
+            navigate("/edit_posts");
+          }}
+        >
+          Edit Your Posts
+        </button>
+        {posts.map((post) => {
+          if (post.attributes.mediaType === "image") {
+            return (
+              <ImagePost
+                key={post.attributes.caption}
+                mediaUrl={post.attributes.mediaUrl}
+                mediaCaption={post.attributes.caption}
+              />
+            );
+          } else {
+            return (
+              <VideoPost
+                key={post.attributes.caption}
+                mediaUrl={post.attributes.mediaUrl}
+                mediaCaption={post.attributes.caption}
+              />
+            );
+          }
+        })}
       </div>
-      {/*Posts*/}
-      <button className="edit_post" onClick={()=>{
-        navigate("/edit_posts")
-      }}>Edit Your Posts</button>
-      {posts.map((post) => {
-        if (post.attributes.mediaType === "image") {
-          return (
-            <ImagePost
-              key={post.attributes.caption}
-              mediaUrl={post.attributes.mediaUrl}
-              mediaCaption={post.attributes.caption}
-            />
-          );
-        } else {
-          return (
-            <VideoPost
-              key={post.attributes.caption}
-              mediaUrl={post.attributes.mediaUrl}
-              mediaCaption={post.attributes.caption}
-            />
-          );
-        }
-      })}
-    </div>
+    </>
   );
 };
 
