@@ -232,3 +232,26 @@
     cursor: pointer;
     text-decoration: underline;
 }
+
+/* Navabar */
+#navbarOwnMain {
+    width: 100vw;
+    height: 50px;
+    background-color: #282c34;
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .navbarIcon {
+    cursor: pointer;
+    margin-right: 10px;
+    transition: 0.1s ease-in-out;
+    vertical-align: middle
+  }
+
+  .navbarIcon:hover{
+    transform: scale(1.1);
+  }
