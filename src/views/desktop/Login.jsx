@@ -30,6 +30,30 @@ const Login = () => {
         }}
       />
       <br />
+      <div
+        style={{
+          width: "100vw",
+          textAlign: "center",
+          justifyContent: "center",
+          display: "inline",
+        }}
+      >
+        <p
+          style={{
+            fontSize: "10px",
+            cursor: "pointer",
+            justifyContent: "center",
+            width: "fit-content",
+            display: "inline",
+          }}
+          onClick={() => {
+            navigate("/signup");
+          }}
+        >
+          Don't have an account? Create one
+        </p>
+      </div>
+      <br />
       <button
         onClick={() => {
           fetch(process.env.REACT_APP_API_PATH + "/auth/login", {

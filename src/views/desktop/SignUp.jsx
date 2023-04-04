@@ -9,7 +9,9 @@ const SignUp = () => {
   let navigate = useNavigate();
   return (
     <div id="signUpMain">
+      <u>
         <h1 className="white">Sign Up</h1>
+      </u>
       <input
         type="text"
         name="email"
@@ -27,6 +29,30 @@ const SignUp = () => {
           setPassword(e.target.value);
         }}
       />
+      <br />
+      <div
+        style={{
+          width: "100vw",
+          textAlign: "center",
+          justifyContent: "center",
+          display: "inline",
+        }}
+      >
+        <p
+          style={{
+            fontSize: "10px",
+            cursor: "pointer",
+            justifyContent: "center",
+            width: "fit-content",
+            display: "inline",
+          }}
+          onClick={() => {
+            navigate("/login");
+          }}
+        >
+          Already have an account? Log in
+        </p>
+      </div>
       <br />
       <button
         onClick={() => {
