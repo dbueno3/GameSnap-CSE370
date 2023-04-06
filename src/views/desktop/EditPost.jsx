@@ -74,7 +74,6 @@ const EditPosts = () => {
         navigate("/user_posts")
       }}>Back</button>
       {posts.map((post) => {
-        console.log(post)
         if (post.attributes.mediaType === "image") {
           return (
             <EditImagePost

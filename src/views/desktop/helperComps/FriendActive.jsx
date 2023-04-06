@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom";
-
+import { BiEdit } from "react-icons/bi";
+import ConfirmEditFriend from "../ConfirmEditFriend";
+import { useState } from 'react';
 const FriendActive = (props) => {
   let navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <table style={{ margin: "0", borderCollapse: "collapse" }}>
       <tr>
@@ -24,6 +27,9 @@ const FriendActive = (props) => {
           >
             {props.username}
           </p>
+          <BiEdit className="edit_friend" style={{width: "20px", height: "20px" ,verticalAlign: "middle", marginRight: "10px" }} onClick={() => setIsOpen(true)}/>
+          <ConfirmEditFriend open={isOpen} onClose={() => setIsOpen(false)} profileimage={props.profilePicture} username={props.username}>
+          </ConfirmEditFriend>
         </td>
       </tr>
     </table>
