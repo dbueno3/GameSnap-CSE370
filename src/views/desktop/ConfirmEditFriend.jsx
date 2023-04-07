@@ -101,6 +101,77 @@ const ConfirmEditFriend = ({ open, children, onClose, profileimage, username, fr
       });
   };
 
+  const block = (connId, from, to) => {
+    fetch(process.env.REACT_APP_API_PATH + `/connections/${connId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        fromUserID: from,
+        toUserID: to,
+        attributes: {
+          requestStatus: "blocked",
+        },
+      }),
+    });
+  };
+
+  const handleBlock = () => {
+    //Get the right connectionID toUserID
+    fetch(
+      process.env.REACT_APP_API_PATH +
+        `/connections?fromUserID=${sessionStorage.getItem(
+          "user"
+        )}&toUserID=${friendId}&attributes=%7B%0A%20%20%22path%22%3A%20%22requestStatus%22%2C%0A%20%20%22equals%22%3A%20%22active%22%0A%7D`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        if (result[0].length <= 0) {
+          return;
+        } else {
+          block(result[0][0].id, result[0][0].fromUserID, result[0][0].toUserID);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+
+    //Get the right connectionID fromUserID
+    fetch(
+      process.env.REACT_APP_API_PATH +
+        `/connections?fromUserID=${friendId}&toUserID=${sessionStorage.getItem(
+          "user"
+        )}&attributes=%7B%0A%20%20%22path%22%3A%20%22requestStatus%22%2C%0A%20%20%22equals%22%3A%20%22active%22%0A%7D`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        if (result[0].length <= 0) {
+          return;
+        } else {
+          block(result[0][0].id, result[0][0].fromUserID, result[0][0].toUserID);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   if (!open) return null;
   return (
     <div style={overlay_styles}>
@@ -131,7 +202,7 @@ const ConfirmEditFriend = ({ open, children, onClose, profileimage, username, fr
           <button
             className="Block"
             onClick={() => {
-              onClose();
+              handleBlock();
             }}
           >
             Block
