@@ -211,6 +211,7 @@
 
 /* Friends page */
 #friendPageMain{
+    margin-top: 40px;
     min-height: 100vh;
     width: 100vw;
     padding: 10px;
@@ -238,6 +239,7 @@
     width: 100vw;
     height: 50px;
     background-color: #282c34;
+    position: fixed;
     top: 0;
     display: flex;
     align-items: center;
