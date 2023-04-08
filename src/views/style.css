@@ -317,3 +317,25 @@
     background-color: #8B0000;
     box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
   }
+
+  .unblock {
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+  }
+
+  .unblock:hover {
+    background-color: #20db59;
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+  }

@@ -53,22 +53,11 @@ const FriendBlock = (props) => {
           </p>
         </td>
         <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "20px" }}>
-          <button
+          <button className="unblock"
             onClick={() => {
               handleUnblock();
             }}
-            style={{
-              backgroundColor: "green",
-              cursor: "pointer",
-              color: "white",
-              height: "30px",
-              border: "none",
-              fontSize: "20px",
-              verticalAlign: "middle",
-            }}
-          >
-            Unblock
-          </button>
+          >Unblock</button>
         </td>
       </tr>
     </table>

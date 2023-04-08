@@ -119,7 +119,8 @@ const ConfirmEditFriend = ({ open, onClose, profileimage, username, friendId }) 
           />
           <span style={{marginLeft: "20px", textAlign: "center", verticalAlign: "middle" }}>{username}</span>
         </div>
-        <span style={{fontSize:'15px'}}>After unfriend, if the user sets its account to private, you will no longer able to see its contents.</span>
+        <div style={{fontSize:'15px'}}>After unfriend, you will also be removed by his/her friend list.</div>
+        <div style={{fontSize:'15px'}}>They will not receive notification about this. </div>
         <div>
           <button
             className="Unfollow"

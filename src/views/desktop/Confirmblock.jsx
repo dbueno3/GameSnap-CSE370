@@ -124,7 +124,7 @@ const Confirmblock = ({ open, onClose, profileimage, username, friendId }) => {
           />
           <span style={{ marginLeft: "20px", textAlign: "center", verticalAlign: "middle"}}>{username}</span>
         </div>
-        <p style={{fontSize:'15px'}}>This user will no longer have access to any of your contents</p>
+        <p style={{fontSize:'15px'}}>This user will no longer have access to any of your contents.</p>
         <div>
           <button
             className="Block"
