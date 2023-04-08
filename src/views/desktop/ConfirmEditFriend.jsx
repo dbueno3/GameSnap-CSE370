@@ -113,6 +113,7 @@ const ConfirmEditFriend = ({ open, children, onClose, profileimage, username, fr
         toUserID: to,
         attributes: {
           requestStatus: "blocked",
+          blockInitiator: sessionStorage.getItem("user"),
         },
       }),
     });

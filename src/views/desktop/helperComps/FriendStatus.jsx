@@ -1,5 +1,6 @@
 import FriendRequest from "./FriendRequest";
 import FriendActive from "./FriendActive";
+import FriendBlock from "./FriendBlock";
 
 import { useEffect, useState } from "react";
 
@@ -84,6 +85,26 @@ const FriendStatus = (props) => {
           res[0].length > 0 && setActive((prevActive) => prevActive.concat(res[0]));
         }
       });
+    //Friends Blocked
+    fetch(
+      process.env.REACT_APP_API_PATH +
+        `/connections?attributes=%7B%0A%20%20%22path%22%3A%20%22blockInitiator%22%2C%0A%20%20%22equals%22%3A%20%22${sessionStorage.getItem(
+          "user"
+        )}%22%0A%7D`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        if (res[0].length >= 1) {
+          setBlock(res[0]);
+        }
+      });
   }, []);
 
   if (props.status === "pending") {
@@ -121,7 +142,22 @@ const FriendStatus = (props) => {
   } else if (props.status === "sent") {
     return <h6>These people you have sent requests to</h6>;
   } else if (props.status === "blocked") {
-    return <h6>These people you blocked</h6>;
+    return (
+      <>
+        {block.map((usr) => {
+          let username = usr.fromUser.attributes.username;
+          let proPic = usr.fromUser.attributes.profilePicture;
+          let uid = usr.fromUser.id;
+          let initiator = usr.attributes.blockInitiator;
+          if (initiator == uid) {
+            username = usr.toUser.attributes.username;
+            proPic = usr.toUser.attributes.profilePicture;
+            uid = usr.toUser.id;
+          }
+          return <FriendBlock requestUsername={username} requestUserId={uid} requestImage={proPic} />;
+        })}
+      </>
+    );
   } else {
     return <h6>Anything else</h6>;
   }
