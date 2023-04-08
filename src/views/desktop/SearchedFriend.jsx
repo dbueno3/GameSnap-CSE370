@@ -9,6 +9,7 @@ const SearchedFriend = () => {
   const params = useParams();
   const userId = params.userId;
   const [requestStatus, setRequestStatus] = useState("");
+  const [block, setBlock] = useState(false);
   useEffect(() => {
     fetch(
       process.env.REACT_APP_API_PATH + `/connections?fromUserID=${sessionStorage.getItem("user")}&toUserID=${userId}`,
@@ -24,7 +25,11 @@ const SearchedFriend = () => {
       .then((res) => {
         console.log(res);
         if (res[0][0].hasOwnProperty("attributes")) {
-          setRequestStatus(res[0][0].attributes.requestStatus);
+          if (res[0][0].attributes.requestStatus === "blocked") {
+            setBlock(true);
+          } else {
+            setRequestStatus(res[0][0].attributes.requestStatus);
+          }
         }
       });
     fetch(
@@ -41,7 +46,11 @@ const SearchedFriend = () => {
       .then((res) => {
         console.log(res);
         if (res[0][0].hasOwnProperty("attributes")) {
-          setRequestStatus("pendingRequest");
+          if (res[0][0].attributes.requestStatus === "blocked") {
+            setBlock(true);
+          } else {
+            setRequestStatus("pendingRequest");
+          }
         }
       });
     // eslint-disable-next-line
@@ -51,7 +60,7 @@ const SearchedFriend = () => {
       <NavbarOwn />
       <RenderProfile userId={userId}>
         <button
-          style={requestStatus === "" ? { display: "inline-block" } : { display: "none" }}
+          style={requestStatus === "" && !block ? { display: "inline-block" } : { display: "none" }}
           id="sendRequestButton"
           onClick={() => {
             fetch(process.env.REACT_APP_API_PATH + `/connections`, {
@@ -92,6 +101,9 @@ const SearchedFriend = () => {
           style={requestStatus === "pendingRequest" ? { display: "inline-block", color: "teal" } : { display: "none" }}
         >
           Friend Request Pending
+        </h6>
+        <h6 style={block ? { display: "inline-block", color: "teal" } : { display: "none" }}>
+          This profile can't be send a request
         </h6>
       </RenderProfile>
     </>
