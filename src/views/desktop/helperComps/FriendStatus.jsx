@@ -7,6 +7,7 @@ const FriendStatus = (props) => {
   const [pending, setPending] = useState([]);
   const [active, setActive] = useState([]);
   const [sent, setSent] = useState([]);
+  const [block, setBlock] = useState([]);
 
   useEffect(() => {
     //Requests
@@ -119,6 +120,8 @@ const FriendStatus = (props) => {
     );
   } else if (props.status === "sent") {
     return <h6>These people you have sent requests to</h6>;
+  } else if (props.status === "blocked") {
+    return <h6>These people you blocked</h6>;
   } else {
     return <h6>Anything else</h6>;
   }

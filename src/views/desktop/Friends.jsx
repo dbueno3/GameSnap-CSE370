@@ -97,6 +97,20 @@ const Friends = () => {
           >
             Sent
           </h6>
+          <h6
+            className="friendMenu"
+            style={
+              currentNav === "block"
+                ? { display: "inline-block", textDecoration: "underline", fontStyle: "italic", marginLeft: "30px" }
+                : { display: "inline-block", marginLeft: "30px" }
+            }
+            onClick={(e) => {
+              setRenderStat("blocked");
+              setCurrentNav("blocked");
+            }}
+          >
+            Blocked
+          </h6>
         </div>
         <div id="friendStatusBody">
           <FriendStatus status={renderStat} />
