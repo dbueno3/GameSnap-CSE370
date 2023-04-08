@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { BiEdit } from "react-icons/bi";
 import ConfirmEditFriend from "../ConfirmEditFriend";
+import Confirmblock from "../Confirmblock";
 import { useState } from "react";
 const FriendActive = (props) => {
   let navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(false);
+  const [unfriendisOpen, setunfriendIsOpen] = useState(false);
+  const [blockisOpen, setblockIsOpen] = useState(false);
   return (
     <table style={{ margin: "0", borderCollapse: "collapse" }}>
       <tr>
@@ -27,18 +28,29 @@ const FriendActive = (props) => {
           >
             {props.username}
           </p>
-          <BiEdit
-            className="edit_friend"
-            style={{ width: "20px", height: "20px", verticalAlign: "middle", marginRight: "10px" }}
-            onClick={() => setIsOpen(true)}
-          />
+          <button className="Unfollow" 
+            onClick={() => setunfriendIsOpen(true)}
+            >Unfriend</button>
+            
+          <button className="Block"
+            onClick={() => setblockIsOpen(true)}
+            >Block</button>
+
           <ConfirmEditFriend
-            open={isOpen}
-            onClose={() => setIsOpen(false)}
+            open={unfriendisOpen}
+            onClose={() => setunfriendIsOpen(false)}
             profileimage={props.profilePicture}
             username={props.username}
             friendId={props.userId}
           ></ConfirmEditFriend>
+
+          <Confirmblock
+            open={blockisOpen}
+            onClose={() => setblockIsOpen(false)}
+            profileimage={props.profilePicture}
+            username={props.username}
+            friendId={props.userId}
+          ></Confirmblock>
         </td>
       </tr>
     </table>

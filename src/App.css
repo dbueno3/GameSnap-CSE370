@@ -157,7 +157,7 @@
 
 
 .maincontent{
-  display: flex;
+  /*display: flex; remove this line for removing unexpect top space in the webpage*/
   flex-direction: column;
 
   justify-content: center;

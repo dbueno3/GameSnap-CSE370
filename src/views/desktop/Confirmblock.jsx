@@ -24,30 +24,27 @@ const overlay_styles = {
   backgroundColor: "rgba(0,0,0,.7)",
   zIndex: 1000,
 };
-const ConfirmEditFriend = ({ open, onClose, profileimage, username, friendId }) => {
-  const Unfriend = (connIdPr) => {
-    fetch(process.env.REACT_APP_API_PATH + `/connections/${connIdPr}`, {
-      method: "DELETE",
+const Confirmblock = ({ open, onClose, profileimage, username, friendId }) => {
+
+  const block = (connId, from, to) => {
+    fetch(process.env.REACT_APP_API_PATH + `/connections/${connId}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + sessionStorage.getItem("token"),
       },
-    })
-      .then((response) => {
-        if (response.status === 204) {
-          onClose();
-          setTimeout(() => {
-            window.location.reload();
-          }, 500);
-        } else {
-          console.log("Error:", response.status);
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+      body: JSON.stringify({
+        fromUserID: from,
+        toUserID: to,
+        attributes: {
+          requestStatus: "blocked",
+          blockInitiator: sessionStorage.getItem("user"),
+        },
+      }),
+    });
   };
-  const handleUnfriend = () => {
+
+  const handleBlock = () => {
     //Get the right connectionID toUserID
     fetch(
       process.env.REACT_APP_API_PATH +
@@ -67,7 +64,11 @@ const ConfirmEditFriend = ({ open, onClose, profileimage, username, friendId }) 
         if (result[0].length <= 0) {
           return;
         } else {
-          Unfriend(result[0][0].id);
+          block(result[0][0].id, result[0][0].fromUserID, result[0][0].toUserID);
+          onClose();
+          setTimeout(() => {
+            window.location.reload();
+          }, 500);
         }
       })
       .catch((error) => {
@@ -93,7 +94,11 @@ const ConfirmEditFriend = ({ open, onClose, profileimage, username, friendId }) 
         if (result[0].length <= 0) {
           return;
         } else {
-          Unfriend(result[0][0].id);
+          block(result[0][0].id, result[0][0].fromUserID, result[0][0].toUserID);
+          onClose();
+          setTimeout(() => {
+            window.location.reload();
+          }, 500);
         }
       })
       .catch((error) => {
@@ -117,14 +122,14 @@ const ConfirmEditFriend = ({ open, onClose, profileimage, username, friendId }) 
             style={{ verticalAlign: "middle", height: "35px", width: "35px", borderRadius: "100%" }}
             alt="edit_friend"
           />
-          <span style={{marginLeft: "20px", textAlign: "center", verticalAlign: "middle" }}>{username}</span>
+          <span style={{ marginLeft: "20px", textAlign: "center", verticalAlign: "middle"}}>{username}</span>
         </div>
-        <span style={{fontSize:'15px'}}>After unfriend, if the user sets its account to private, you will no longer able to see its contents.</span>
+        <p style={{fontSize:'15px'}}>This user will no longer have access to any of your contents</p>
         <div>
           <button
-            className="Unfollow"
+            className="Block"
             onClick={() => {
-              handleUnfriend();
+              handleBlock();
             }}
           >
             Confirm
@@ -135,4 +140,4 @@ const ConfirmEditFriend = ({ open, onClose, profileimage, username, friendId }) 
   );
 };
 
-export default ConfirmEditFriend;
+export default Confirmblock;
