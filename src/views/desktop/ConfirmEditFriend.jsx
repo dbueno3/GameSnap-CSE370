@@ -140,6 +140,10 @@ const ConfirmEditFriend = ({ open, children, onClose, profileimage, username, fr
           return;
         } else {
           block(result[0][0].id, result[0][0].fromUserID, result[0][0].toUserID);
+          onClose();
+          setTimeout(() => {
+            window.location.reload();
+          }, 500);
         }
       })
       .catch((error) => {
@@ -166,6 +170,10 @@ const ConfirmEditFriend = ({ open, children, onClose, profileimage, username, fr
           return;
         } else {
           block(result[0][0].id, result[0][0].fromUserID, result[0][0].toUserID);
+          onClose();
+          setTimeout(() => {
+            window.location.reload();
+          }, 500);
         }
       })
       .catch((error) => {

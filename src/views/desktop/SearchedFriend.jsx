@@ -103,7 +103,7 @@ const SearchedFriend = () => {
           Friend Request Pending
         </h6>
         <h6 style={block ? { display: "inline-block", color: "teal" } : { display: "none" }}>
-          This profile can't be send a request
+          This profile can't be accessed
         </h6>
       </RenderProfile>
     </>

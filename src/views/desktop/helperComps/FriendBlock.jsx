@@ -2,6 +2,28 @@ import { useNavigate } from "react-router-dom";
 
 const FriendBlock = (props) => {
   let navigate = useNavigate();
+  const handleUnblock = () => {
+    //Just delete the connection
+    fetch(process.env.REACT_APP_API_PATH + `/connections/${props.connId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+    })
+      .then((response) => {
+        if (response.status === 204) {
+          setTimeout(() => {
+            window.location.reload();
+          }, 500);
+        } else {
+          console.log("Error:", response.status);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
   return (
     <table style={{ margin: "0", borderCollapse: "collapse" }}>
       <tr>
@@ -29,6 +51,24 @@ const FriendBlock = (props) => {
           >
             {props.requestUsername}
           </p>
+        </td>
+        <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "20px" }}>
+          <button
+            onClick={() => {
+              handleUnblock();
+            }}
+            style={{
+              backgroundColor: "green",
+              cursor: "pointer",
+              color: "white",
+              height: "30px",
+              border: "none",
+              fontSize: "20px",
+              verticalAlign: "middle",
+            }}
+          >
+            Unblock
+          </button>
         </td>
       </tr>
     </table>

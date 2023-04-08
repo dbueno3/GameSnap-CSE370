@@ -100,7 +100,7 @@ const Friends = () => {
           <h6
             className="friendMenu"
             style={
-              currentNav === "block"
+              currentNav === "blocked"
                 ? { display: "inline-block", textDecoration: "underline", fontStyle: "italic", marginLeft: "30px" }
                 : { display: "inline-block", marginLeft: "30px" }
             }

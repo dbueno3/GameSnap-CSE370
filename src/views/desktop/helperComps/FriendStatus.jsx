@@ -154,7 +154,7 @@ const FriendStatus = (props) => {
             proPic = usr.toUser.attributes.profilePicture;
             uid = usr.toUser.id;
           }
-          return <FriendBlock requestUsername={username} requestUserId={uid} requestImage={proPic} />;
+          return <FriendBlock requestUsername={username} requestUserId={uid} requestImage={proPic} connId={usr.id} />;
         })}
       </>
     );
