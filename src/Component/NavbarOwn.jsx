@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { FaUserFriends } from "react-icons/fa";
 import { GoSignOut } from "react-icons/go";
+import { CiBitcoin } from "react-icons/ci"
+import { MdHome } from "react-icons/md";
+import {CiUser} from "react-icons/ci" 
 
 const NavbarOwn = () => {
   let navigate = useNavigate();
@@ -29,6 +32,22 @@ const NavbarOwn = () => {
     <div id="navbarOwnMain">
       <table className='navbartable'>
         <tr>
+        <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "10px" }}>
+            <CiUser
+              className="navbarIcon"
+              onClick={() => {
+                navigate("/user_posts");
+              }}
+            />
+          </td>
+        <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "10px" }}>
+            <MdHome
+              className="navbarIcon"
+              onClick={() => {
+                navigate("/home");
+              }}
+            />
+          </td>
           <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "10px" }}>
             <BsFillPlusCircleFill
               className="navbarIcon"
@@ -46,12 +65,20 @@ const NavbarOwn = () => {
             />
           </td>
           <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "10px" }}>
+            <CiBitcoin
+              className="navbarIcon"
+              onClick={() => {
+                navigate("/about-team");
+              }}
+            />
+          </td>
+          <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "10px" }}>
             <GoSignOut
               className="navbarIcon"
               onClick={() => {
                 sessionStorage.removeItem("token");
                 sessionStorage.removeItem("user");
-                navigate("/login");
+                navigate("/");
               }}
             />
           </td>

@@ -57,6 +57,8 @@ const SearchedFriend = () => {
   }, []);
   return (
     <>
+    <br />
+    <br />
       <NavbarOwn />
       <RenderProfile userId={userId}>
         <button

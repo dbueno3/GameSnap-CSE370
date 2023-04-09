@@ -9,7 +9,10 @@ const UserProfile = () => {
   return (
     <>
       <NavbarOwn />
+      <br />
+      <br />
       <RenderProfile userId={sessionStorage.getItem("user")}>
+        
         <button
           onClick={() => {
             navigate("/edit_profile");

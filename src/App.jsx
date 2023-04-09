@@ -13,7 +13,6 @@ import LoginForm from "./Component/LoginForm.jsx";
 import Profile from "./Component/Profile.jsx";
 import FriendForm from "./Component/FriendForm.jsx";
 import Modal from "./Component/Modal.jsx";
-// import Navbar from "./Component/Navbar.jsx";
 import Promise from "./Component/Promise.jsx";
 
 //Landing
@@ -71,6 +70,7 @@ class App extends React.Component {
       refreshPosts: false,
       logout: false,
       login: false,
+  
     };
 
     // in the event we need a handle back to the parent from a child component,
@@ -148,11 +148,11 @@ class App extends React.Component {
                   }
                 />
                 <Route path="/promise" element={<Promise />} />
-                <Route path="/" element={<Landing />} />
+                <Route path="/about-team" element={<Landing />} />
 
                 {/* {Users Profile} */}
                 <Route path="/signup" element={<SignUp />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<Login />} />
                 <Route path="/edit_profile" element={<EditProfile />} />
                 <Route path="/profile" element={<UserProfile />} />
                 <Route path="/personal" element={<Personal login={this.login} />} />

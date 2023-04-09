@@ -57,7 +57,7 @@ const SignUp = () => {
             display: "inline",
           }}
           onClick={() => {
-            navigate("/login");
+            navigate("/");
           }}
         >
           Already have an account? Log in

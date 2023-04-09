@@ -1,4 +1,5 @@
 import "../styles/landing.css";
+import NavbarOwn from "../../Component/NavbarOwn.jsx";
 
 //Router
 import { useNavigate } from "react-router-dom";
@@ -7,6 +8,8 @@ const Landing = () => {
   let navigate = useNavigate();
   return (
     <div id="landing">
+      <NavbarOwn></NavbarOwn>
+      <br />
       <h1>Meet the Devs</h1>
       <hr />
       <div id="devTeam">

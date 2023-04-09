@@ -45,6 +45,7 @@ const UserPosts = () => {
   return (
     <>
       <NavbarOwn />
+      <br />
       <div id="userPostsMain">
         <div id="userPostProfile">
           <div>
