@@ -5,12 +5,13 @@ const modal_styles = {
   position: "fixed",
   top: "50%",
   left: "50%",
+  width: "350px",
   transform: "translate(-50%,-50%)",
   backgroundColor: "#5F6A82",
   paddingTop: "50px",
   paddingBottom: "50px",
-  paddingRight: "100px",
-  paddingLeft: "100px",
+  paddingRight: "20px",
+  paddingLeft: "20px",
   borderRadius: "25px",
   zIndex: 1000,
 };
@@ -120,11 +121,11 @@ const Confirmblock = ({ open, onClose, profileimage, username, friendId }) => {
           <img
             src={profileimage}
             style={{ verticalAlign: "middle", height: "35px", width: "35px", borderRadius: "100%" }}
-            alt="edit_friend"
+            alt="block_friend"
           />
-          <span style={{ marginLeft: "20px", textAlign: "center", verticalAlign: "middle"}}>{username}</span>
+          <span style={{marginLeft: "10px", textAlign: "center", verticalAlign: "middle", color:'white' }}>{username}</span>
         </div>
-        <p style={{fontSize:'15px'}}>This user will no longer have access to any of your contents.</p>
+        <p className="ConfirmMessage">{username} will no longer have access to view your contents.</p>
         <div>
           <button
             className="Block"

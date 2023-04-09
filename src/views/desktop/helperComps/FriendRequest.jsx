@@ -70,15 +70,14 @@ const FriendRequest = (props) => {
           >
             <img
               src={props.requestImage}
-              className="homeFeedProfilePicture"
+              className="friendpicture"
               alt="profile"
               style={{ margin: "20px", cursor: "pointer", verticalAlign: "middle" }}
             />
           </h6>
         </td>
         <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "20px" }}>
-          <p
-            style={{ fontSize: "20px", display: "inline-block", verticalAlign: "middle", marginRight: "10px" }}
+          <p className="friendname"
             onClick={() => {
               navigate(`/search/${props.requestUserId}`);
             }}
@@ -98,13 +97,14 @@ const FriendRequest = (props) => {
                   border: "none",
                   fontSize: "20px",
                   verticalAlign: "middle",
+                  marginLeft:'10px'
                 }}
                 onClick={handleAccept}
               >
                 ✓
               </button>
               <button
-                style={{
+                style={{ 
                   backgroundColor: "red",
                   color: "white",
                   cursor: "pointer",
@@ -114,6 +114,7 @@ const FriendRequest = (props) => {
                   border: "none",
                   fontSize: "20px",
                   verticalAlign: "middle",
+                  marginLeft:'10px'
                 }}
                 onClick={handleReject}
               >

@@ -208,8 +208,19 @@
     transform: translate(-50%,0%)
     
 }
-
-/* Friends page */
+@media (min-width:451px){
+    .friendname{
+        font-size: 20px;
+        display:inline-block; 
+        vertical-align: middle; 
+        margin-right: 10px;
+    }
+    .friendpicture{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+}
+    /* Friends page */
 #friendPageMain{
     margin-top: 40px;
     /*min-height: 100vh;
@@ -217,16 +228,10 @@
     padding: 10px;
 }
 
-#searchBoxContainer{
-    position: absolute;
-}
-
-#friendStatusNav{
-    text-align: left;
-}
 
 #friendStatusBody{
-    text-align: left;
+    display: flex;
+    justify-content: center;
 }
 
 .friendMenu:hover{
@@ -272,7 +277,7 @@
     cursor: pointer;
   }
 
-  .Unfollow {
+  .Unfriend {
     background-color: gray;
     border: none;
     color: white;
@@ -291,7 +296,7 @@
     vertical-align: middle;
   }
   
-  .Unfollow:hover {
+  .Unfriend:hover {
     background-color: #4f574f;
     box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
   }
@@ -338,4 +343,263 @@
   .unblock:hover {
     background-color: #20db59;
     box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .search{
+    background-color: rgb(61, 117, 132);
+    border: none;
+    color: white;
+    padding: 8px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+    
+  }
+
+  .search:hover{
+    background-color: #24118e;
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+  }
+
+.searchBoxContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 4px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    width:30vw;
+    margin-left: 35%;
+  }
+  
+  .searchBoxContainer input[type="text"] {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 16px;
+  }
+  .searchbox{
+    width:5vw;
+  }
+  .ConfirmMessage{
+    color:white;
+    text-align:center;
+    font-size:15px;
+  }
+  .navbartable{
+    margin: 0;
+    border-Collapse: collapse; 
+    float: right;
+  }
+}
+  @media (max-width:450px){
+    .friendname{
+        font-size: 30px;
+        display:inline-block; 
+        vertical-align: middle; 
+        margin-right: 10px;
+    }
+    .friendpicture{
+        height: 50px;
+        width: 50px;
+        border-radius: 100%;
+    }
+    /* Friends page */
+#friendPageMain{
+    margin-top: 40px;
+    /*min-height: 100vh;
+    width: 100vw;*/ /*need to be tested in different size of screen, looks better if remove this.*/
+    padding: 10px;
+}
+
+#searchBoxContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+#friendStatusBody{
+    display: flex;
+    justify-content: center;
+}
+
+.friendMenu:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Navabar */
+#navbarOwnMain {
+    width: 100vw;
+    height: 50px;
+    color:white;
+    background-color: #282c34;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .navbarIcon {
+    cursor: pointer;
+    margin-right: 10px;
+    transition: 0.1s ease-in-out;
+    vertical-align: middle;
+    width:30px;
+    height:30px;
+  }
+
+  .navbarIcon:hover{
+    transform: scale(1.1);
+  }
+
+  .edit_friend:hover{
+    transform: scale(1.1);
+  }
+
+  .close{
+    position: absolute;
+    top:6px;
+    right:6px;
+  }
+  
+  .close:hover{
+    color: black;
+    cursor: pointer;
+  }
+
+  .Unfriend {
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    margin-right:15px;
+    margin-left: 15px;
+    vertical-align: middle;
+  }
+  
+  .Unfriend:hover {
+    background-color: #4f574f;
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .Block {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+  }
+  
+  .Block:hover {
+    background-color: #8B0000;
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .unblock {
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+  }
+
+  .unblock:hover {
+    background-color: #20db59;
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+  }
+  .search{
+    background-color: rgb(61, 117, 132);
+    border: none;
+    color: white;
+    padding: 8px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+    
+  }
+
+  .search:hover{
+    background-color: #24118e;
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+  }
+
+.searchBoxContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 4px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    width:80vw;
+    margin-left: 10%;
+  }
+  
+  .searchBoxContainer input[type="text"] {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 16px;
+  }
+  .searchbox{
+    width:5vw;
+  }
+  .ConfirmMessage{
+    color:white;
+    text-align:center;
+    font-size:15px;
+  }
+  .friendMenu{
+    font-size: 20px;
+  }
+  .navbartable{
+    width:100vw;
+  }
   }

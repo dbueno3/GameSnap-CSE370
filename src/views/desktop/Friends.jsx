@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import FriendStatus from "./helperComps/FriendStatus.jsx";
 import NavbarOwn from "../../Component/NavbarOwn.jsx";
-
+import { BiSearch } from "react-icons/bi";
 const Friends = () => {
   const [searchedUser, setSearchedUser] = useState("");
   const [renderStat, setRenderStat] = useState("active");
@@ -13,16 +13,15 @@ const Friends = () => {
     <>
       <NavbarOwn />
       <div id="friendPageMain">
-        <div id="searchBoxContainer">
-          <input
+        <div className="searchBoxContainer">
+          <input className="searchbox"
             type="text"
-            style={{ width: "50vw" }}
             placeholder="username of a user"
             onChange={(e) => {
               setSearchedUser(e.target.value);
             }}
           />
-          <button
+          <BiSearch className="search"
             onClick={() => {
               fetch(
                 process.env.REACT_APP_API_PATH +
@@ -50,8 +49,7 @@ const Friends = () => {
                 });
             }}
           >
-            Search
-          </button>
+          </BiSearch>
           <br />
         </div>
         <div id="friendStatusNav">

@@ -13,15 +13,14 @@ const FriendActive = (props) => {
           <h6 style={{ margin: 0, cursor: "pointer" }}>
             <img
               src={props.profilePicture}
-              className="homeFeedProfilePicture"
+              className="friendpicture"
               alt="profile"
               style={{ margin: "20px", cursor: "pointer", verticalAlign: "middle" }}
             />
           </h6>
         </td>
         <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "20px" }}>
-          <p
-            style={{ fontSize: "20px", display: "inline-block", verticalAlign: "middle", marginRight: "10px" }}
+          <p className="friendname"
             onClick={() => {
               navigate(`/search/${props.userId}`);
             }}
@@ -29,7 +28,7 @@ const FriendActive = (props) => {
             {props.username}
           </p>
           
-          <button className="Unfollow" 
+          <button className="Unfriend" 
             onClick={() => setunfriendIsOpen(true)}
             >Unfriend</button>
             

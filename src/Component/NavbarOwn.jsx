@@ -27,7 +27,7 @@ const NavbarOwn = () => {
   }, []);
   return (
     <div id="navbarOwnMain">
-      <table style={{ margin: "0", borderCollapse: "collapse", float: "right" }}>
+      <table className='navbartable'>
         <tr>
           <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "10px" }}>
             <BsFillPlusCircleFill
@@ -60,7 +60,7 @@ const NavbarOwn = () => {
               src={proPic}
               className="homeFeedProfilePicture navbarIcon"
               alt="profile"
-              style={{ margin: "20px", cursor: "pointer", verticalAlign: "middle" }}
+              style={{ cursor: "pointer", verticalAlign: "middle" }}
               onClick={() => {
                 navigate("/profile");
               }}

@@ -5,12 +5,13 @@ const modal_styles = {
   position: "fixed",
   top: "50%",
   left: "50%",
+  width: "350px",
   transform: "translate(-50%,-50%)",
   backgroundColor: "#5F6A82",
   paddingTop: "50px",
   paddingBottom: "50px",
-  paddingRight: "100px",
-  paddingLeft: "100px",
+  paddingRight: "20px",
+  paddingLeft: "20px",
   borderRadius: "25px",
   zIndex: 1000,
 };
@@ -117,13 +118,14 @@ const ConfirmEditFriend = ({ open, onClose, profileimage, username, friendId }) 
             style={{ verticalAlign: "middle", height: "35px", width: "35px", borderRadius: "100%" }}
             alt="edit_friend"
           />
-          <span style={{marginLeft: "20px", textAlign: "center", verticalAlign: "middle" }}>{username}</span>
+          <span style={{marginLeft: "20px", textAlign: "center", verticalAlign: "middle", color:'white' }}>{username}</span>
         </div>
-        <div style={{fontSize:'15px'}}>After unfriend, you will also be removed by his/her friend list.</div>
-        <div style={{fontSize:'15px'}}>They will not receive notification about this. </div>
+        <div className="ConfirmMessage">
+          <div>Unfriend with {username}. This user will not receive any notifications</div>
+        </div>
         <div>
           <button
-            className="Unfollow"
+            className="Unfriend"
             onClick={() => {
               handleUnfriend();
             }}
