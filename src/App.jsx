@@ -34,7 +34,6 @@ import Home from "./views/desktop/Home.jsx";
 import UserPosts from "./views/desktop/UserPosts.jsx";
 import CreatePost from "./views/desktop/CreatePost.jsx";
 import Make_Post from "./views/mobile/MakePost.jsx";
-
 import Personal from "./views/mobile/Personal.jsx";
 import Profile_mobile from "./views/mobile/ProfileMobile.jsx";
 import Posts_mobile from "./views/mobile/PostsMobile.jsx";
@@ -167,7 +166,6 @@ class App extends React.Component {
 
                 {/* {Mobile Comment Example} */}
                 <Route path="/mobilecomment" element={<CommentPostExampleMobile />} />
-
                 {/* {Contents} */}
                 <Route path="/create_post" element={<CreatePost />} />
                 <Route path="/user_posts" element={<UserPosts />} />
