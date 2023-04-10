@@ -14,7 +14,7 @@ const EditProfile = () => {
   const [bio, setBio] = useState("");
   const [username, setUsername] = useState("");
   const [proPicOld, setNewOldProPic] = useState("");
-  const [privateAccount, setPrivate] = useState(false)
+  const [privateAccount, setPrivate] = useState(false);
 
   // eslint-disable-next-line
   const [formData, addToFormData] = useState(new FormData());
@@ -35,7 +35,7 @@ const EditProfile = () => {
           setLname(result.lastName);
           setBio(result.bio);
           setUsername(result.username);
-          setPrivate(result.privateAccount)
+          setPrivate(result.privateAccount);
           setNewOldProPic(result.profilePicture);
         }
       });
@@ -77,26 +77,24 @@ const EditProfile = () => {
         <br />
         <input type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)} />
         <br />
-        <select name="Profile Privacy" id="PrivacySelect" onChange={(e)=>{
-          setPrivate(e.target.value)
-        }}>
+        <select
+          name="Profile Privacy"
+          id="PrivacySelect"
+          onChange={(e) => {
+            setPrivate(e.target.value);
+          }}
+        >
           <option value="Select"> Select Profile Option</option>
-          <option value="Private Account"> Profile Privacy: Private</option>
-          <option value="Public Account"> Profile Privacy: Public</option>
+          <option value={true}> Profile Privacy: Private</option>
+          <option value={false}> Profile Privacy: Public</option>
         </select>
         <br />
         <textarea placeholder="Bio" value={bio} onChange={(e) => setBio(e.target.value)} />
         <br />
         <button
           onClick={() => {
-            if (privateAccount === "publci"){
-              consol
-            }else if(privateAccount == false){console.log("Public");}
-            else{
-              setPrivate(false);
-            }  
             //TODO: Check for empty image
-            
+
             fetch(process.env.REACT_APP_API_PATH + `/file-uploads`, {
               method: "POST",
               headers: {
@@ -112,10 +110,13 @@ const EditProfile = () => {
               })
               .then((result) => {
                 const data = JSON.parse(result);
-                console.log(data);
+                if (privateAccount == "Private Account") {
+                  setPrivate(true);
+                } else if (privateAccount == "Public Account") {
+                  setPrivate(false);
+                }
                 //   Create the post here
                 let proPic = `https://webdev.cse.buffalo.edu${data.path}`;
-                console.log(proPic);
                 fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
                   method: "PATCH",
                   headers: {

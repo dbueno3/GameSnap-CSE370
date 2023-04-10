@@ -9,7 +9,7 @@ const RenderProfile = (props) => {
   const [bio, setBio] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [privateAccount, setPrivate] = useState(false)
+  const [privateAccount, setPrivate] = useState("");
   const [proPic, setPropic] = useState("");
   useEffect(() => {
     fetch(process.env.REACT_APP_API_PATH + `/users/${props.userId}`, {
@@ -28,7 +28,7 @@ const RenderProfile = (props) => {
           setBio(info.bio);
           setUsername(info.username);
           setEmail(result.email);
-          setPrivate(result.privateAccount)
+          setPrivate(info.privateAccount);
           setPropic(info.profilePicture);
         }
       });
@@ -41,7 +41,7 @@ const RenderProfile = (props) => {
       <h4>Last Name: {lname}</h4>
       <h4>Username: {username}</h4>
       <h4>Email: {email}</h4>
-      <h4>Profile Privacy: {privateAccount} </h4>
+      <h4>Profile Privacy: {privateAccount == "true" ? "Private" : "Public"} </h4>
       <h4>Bio : {bio}</h4>
       {props.children}
     </div>
