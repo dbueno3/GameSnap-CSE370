@@ -28,13 +28,15 @@ const FriendActive = (props) => {
             {props.username}
           </p>
           
-          <button className="Unfriend" 
+            <button className="Unfriend" 
             onClick={() => setunfriendIsOpen(true)}
             >Unfriend</button>
             
           <button className="Block"
             onClick={() => setblockIsOpen(true)}
             >Block</button>
+          
+          
 
           <ConfirmEditFriend
             open={unfriendisOpen}
