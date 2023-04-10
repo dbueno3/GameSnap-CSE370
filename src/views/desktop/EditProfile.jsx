@@ -35,6 +35,7 @@ const EditProfile = () => {
           setLname(result.lastName);
           setBio(result.bio);
           setUsername(result.username);
+          setPrivate(result.privateAccount)
           setNewOldProPic(result.profilePicture);
         }
       });
@@ -88,13 +89,14 @@ const EditProfile = () => {
         <br />
         <button
           onClick={() => {
-            if (privateAccount === "private"){
-              setPrivate(true);
-            }else if(privateAccount === "public"){setPrivate();}
+            if (privateAccount === "publci"){
+              consol
+            }else if(privateAccount == false){console.log("Public");}
             else{
               setPrivate(false);
             }  
             //TODO: Check for empty image
+            
             fetch(process.env.REACT_APP_API_PATH + `/file-uploads`, {
               method: "POST",
               headers: {
@@ -125,6 +127,7 @@ const EditProfile = () => {
                       firstName: fname,
                       lastName: lname,
                       username: username,
+                      privateAccount: privateAccount,
                       bio: bio,
                       profilePicture: proPicOld === "" ? proPicOld : proPic,
                     },
