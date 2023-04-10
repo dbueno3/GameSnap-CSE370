@@ -121,16 +121,6 @@
     justify-content: right;
 }
 
-.homePost{
-    height: 500px;
-    width: 400px;
-    background-color: #5F6A82;
-    border-radius: 20px;
-    display: inline-block;
-    margin: 5px;
-    text-align: left;
-}
-
 .homePostImage{
     height: 200px;
     width: stretch;
@@ -162,7 +152,8 @@
 }
 
 .homePost{
-    height: 500px;
+    min-height: 500px;
+    height: fit-content;
     width: 400px;
     background-color: #5F6A82;
     border-radius: 20px;
