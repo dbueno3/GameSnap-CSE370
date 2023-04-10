@@ -46,6 +46,8 @@ import EditPosts from "./views/desktop/EditPost.jsx";
 import Friends from "./views/desktop/Friends.jsx";
 import SearchedFriend from "./views/desktop/SearchedFriend.jsx";
 
+import RenderPost from "./Component/RenderPost.jsx";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // toggleModal will both show and hide the modal dialog, depending on current state.  Note that the
@@ -69,7 +71,6 @@ class App extends React.Component {
       refreshPosts: false,
       logout: false,
       login: false,
-  
     };
 
     // in the event we need a handle back to the parent from a child component,
@@ -178,6 +179,9 @@ class App extends React.Component {
                 <Route path="/about/dev/Ze" element={<Ze />} />
                 <Route path="/about/dev/Daniel" element={<Daniel />} />
                 <Route path="/about/dev/Eric" element={<Eric />} />
+
+                {/* Test pages */}
+                <Route path="/test/renderPost/:userId" element={<RenderPost />} />
               </Routes>
             </div>
           </header>
