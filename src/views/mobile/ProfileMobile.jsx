@@ -29,6 +29,7 @@ class Profile_mobile extends React.Component {
       Email: "",
       Phone:"",
       Profile_Image:{},
+      Topics: "",
       private: false,
       // NOTE : if you wanted to add another user attribute to the profile, you would add a corresponding state element here
     };
@@ -78,6 +79,7 @@ class Profile_mobile extends React.Component {
                   Email: result.attributes.Email || "",
                   Phone: result.attributes.Phone || "",
                   Profile_Image: result.attributes.Profile_Image || "",
+                  Topics: result.attributes.Topics || "",
                   private: result.attributes.private || false,
             });
           }
@@ -117,6 +119,7 @@ class Profile_mobile extends React.Component {
           posts: this.state.posts,
           profilePic:this.state.profilePic,
           profilePictureName:this.state.profilePictureName,
+          Topics:this.state.Topics,
           following:this.state.following,
           follower:this.state.follower,
           Profile_Image:this.state.Profile_Image,
@@ -135,7 +138,7 @@ class Profile_mobile extends React.Component {
         error => {
           alert("error!");
         }
-      );    
+      );
       this.props.navigate('/personal')
   };
 
@@ -184,7 +187,7 @@ class Profile_mobile extends React.Component {
             value={this.state.Name}
           />
           </div>
-          
+
         </label>
         <label style={{color:"black"}}>
         <div className="name-field">
@@ -219,6 +222,18 @@ class Profile_mobile extends React.Component {
             placeholder="Your bio.."
             onChange={e => this.fieldChangeHandler("Bio", e.target.value)}
             value={this.state.Bio}
+          />
+          </div>
+        </label>
+        <label style={{color:"black"}}>
+        <div className="name-field">
+          Topics:
+          <input
+            className="box"
+            type="text"
+            placeholder="Add topics separated by comma"
+            onChange={e => this.fieldChangeHandler("Topics", e.target.value)}
+            value={this.state.Topics}
           />
           </div>
         </label>
