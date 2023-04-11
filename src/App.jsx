@@ -49,7 +49,6 @@ import SearchedFriend from "./views/desktop/SearchedFriend.jsx";
 import RenderPost from "./Component/RenderPost.jsx";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
 // toggleModal will both show and hide the modal dialog, depending on current state.  Note that the
 // contents of the modal dialog are set separately before calling toggle - this is just responsible
 // for showing and hiding the component
@@ -149,7 +148,6 @@ class App extends React.Component {
                 />
                 <Route path="/promise" element={<Promise />} />
                 <Route path="/about-team" element={<Landing />} />
-
                 {/* {Users Profile} */}
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/" element={<Login />} />

@@ -9,6 +9,11 @@ const Home = () => {
   const [posts, getPosts] = useState([]);
   const [proPic, setPropic] = useState("");
   let navigate = useNavigate();
+  
+  const handleSubmission =(event)=>{
+    event.preventDefault();
+    navigate("/profile")
+  }
   useEffect(() => {
     //Get the user
     fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
@@ -47,7 +52,7 @@ const Home = () => {
       <div id="homeFeedMain">
         <div id="homeFeed">
           {posts.map((post) => {
-            if (post.attributes.mediaType === "image") {
+            if (post.attributes && post.attributes.mediaType && post.attributes.mediaType === "image") {
               return (
                 <div key={post.attributes.caption} className="homePost">
                   <table style={{ margin: "0", borderCollapse: "collapse" }}>
@@ -67,9 +72,21 @@ const Home = () => {
                   </table>
                   <img alt="post" src={post.attributes.mediaUrl} className="homePostImage" />
                   <h6>Caption: {post.attributes.caption}</h6>
+                  <div>
+                    <form onSubmit={handleSubmission} style={{"alignItems":"center", "justifyContent": "center"}}>
+                      <label style={{"textAlign": "center"}}>
+                        Add A Comment to Post 
+                        <br />
+                        <div className="cont" style={{"display":"flex", "justifyContent": "center"}}><textarea rows="10" cols="40"/></div>
+                      </label>
+                      <br />
+                      <input type="submit" value="submit" style={{"float":"center"}}/>
+                      <br />
+                    </form>
+                  </div>
                 </div>
               );
-            } else {
+            } else if (post.attributes && post.attributes.mediaUrl && post.attributes.mediaUrl === "video/mp4") {
               return (
                 <div key={post.attributes.caption} className="homePost">
                   <table style={{ margin: "0", borderCollapse: "collapse" }}>
@@ -93,6 +110,9 @@ const Home = () => {
                   <h6>Caption: {post.attributes.caption}</h6>
                 </div>
               );
+            }
+            else {
+              
             }
           })}
         </div>
