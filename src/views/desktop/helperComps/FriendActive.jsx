@@ -7,7 +7,7 @@ const FriendActive = (props) => {
   const [unfriendisOpen, setunfriendIsOpen] = useState(false);
   const [blockisOpen, setblockIsOpen] = useState(false);
   return (
-    <table style={{ margin: "0", borderCollapse: "collapse" }}>
+    <table style={{margin: "0", borderCollapse: "collapse" }}>
       <tr>
         <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
           <h6 style={{ margin: 0, cursor: "pointer" }}>

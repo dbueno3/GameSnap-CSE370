@@ -231,6 +231,7 @@
 
 #friendStatusBody{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -430,6 +431,7 @@
 
 #friendStatusBody{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
