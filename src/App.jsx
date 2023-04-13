@@ -137,7 +137,7 @@ class App extends React.Component {
               <Routes>
                 <Route path="/settings" element={<Settings login={this.login} />} />
                 {/* <Route path="/friends" element={<Friends login={this.login} />} /> */}
-                <Route path="/groups" element={<Groups login={this.login} />} />
+                <Route path="/groups" element={<Posts login={this.login} />} />
                 <Route
                   path="/postsGiven"
                   element={

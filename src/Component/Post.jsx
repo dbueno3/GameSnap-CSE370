@@ -94,6 +94,7 @@ export default class Post extends React.Component {
       .then(
         result => {
           this.props.loadPosts();
+          console.log(thisPostID)
         },
         error => {
           alert("error!"+error);
