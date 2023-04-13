@@ -222,6 +222,7 @@
 
 #friendStatusBody{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -394,14 +395,14 @@
 }
   @media (max-width:450px){
     .friendname{
-        font-size: 30px;
+        font-size: 20px;
         display:inline-block; 
         vertical-align: middle; 
         margin-right: 10px;
     }
     .friendpicture{
-        height: 50px;
-        width: 50px;
+        height: 40px;
+        width: 40px;
         border-radius: 100%;
     }
     /* Friends page */
@@ -421,6 +422,7 @@
 
 #friendStatusBody{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -474,7 +476,7 @@
     background-color: gray;
     border: none;
     color: white;
-    padding: 12px 16px;
+    padding: 10px 14px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -498,7 +500,7 @@
     background-color: red;
     border: none;
     color: white;
-    padding: 12px 16px;
+    padding: 10px 14px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -588,7 +590,7 @@
     font-size:15px;
   }
   .friendMenu{
-    font-size: 20px;
+    font-size: 0.8em;
   }
   .navbartable{
     width:100vw;

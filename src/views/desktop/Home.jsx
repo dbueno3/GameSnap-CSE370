@@ -8,13 +8,28 @@ import NavbarOwn from "../../Component/NavbarOwn.jsx";
 const Home = () => {
   const [posts, getPosts] = useState([]);
   const [proPic, setPropic] = useState("");
+  const [blocklist, setBlockList] = useState([])
   let navigate = useNavigate();
   
-  const handleSubmission =(event)=>{
-    event.preventDefault();
-    navigate("/profile")
-  }
   useEffect(() => {
+    //get the block list
+    fetch(process.env.REACT_APP_API_PATH+`/post-reactions?reactorID=${sessionStorage.getItem("user")}`, {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+sessionStorage.getItem("token")
+      },
+      })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res) {
+            for(let i =0;i<res[0].length;i++){
+              const item = res[0][i].postID
+              setBlockList(preArray => [...preArray, item])
+            }
+          }
+      });
+    
     //Get the user
     fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
       method: "get",
@@ -41,18 +56,44 @@ const Home = () => {
       .then((res) => res.json())
       .then((res) => {
         if (res) {
-          //   console.log(res[0]);
           getPosts(res[0]);
         }
       });
   }, []);
+  
+  const Block = (postid) => {
+    fetch(process.env.REACT_APP_API_PATH+"/post-reactions", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+sessionStorage.getItem("token")
+      },
+      body: JSON.stringify({
+        reactorID: sessionStorage.getItem("user"),
+        postID: postid,
+        name: "block"
+      })
+      })
+      .then(
+        result => {
+          window.location.reload();
+        },
+        error => {
+          alert("error!"+error);
+        }
+      );
+  }
+
   return (
     <>
       <NavbarOwn />
       <div id="homeFeedMain">
         <div id="homeFeed">
+          {console.log(blocklist)}
           {posts.map((post) => {
-            if (post.attributes && post.attributes.mediaType && post.attributes.mediaType === "image") {
+            console.log(post.id)
+            if (!blocklist.includes(post.id)){
+            if (post.attributes.mediaType === "image") {
               return (
                 <div key={post.attributes.caption} className="homePost">
                   <table style={{ margin: "0", borderCollapse: "collapse" }}>
@@ -72,18 +113,7 @@ const Home = () => {
                   </table>
                   <img alt="post" src={post.attributes.mediaUrl} className="homePostImage" />
                   <h6>Caption: {post.attributes.caption}</h6>
-                  <div>
-                    <form onSubmit={handleSubmission} style={{"alignItems":"center", "justifyContent": "center"}}>
-                      <label style={{"textAlign": "center"}}>
-                        Add A Comment to Post 
-                        <br />
-                        <div className="cont" style={{"display":"flex", "justifyContent": "center"}}><textarea rows="10" cols="40"/></div>
-                      </label>
-                      <br />
-                      <input type="submit" value="submit" style={{"float":"center"}}/>
-                      <br />
-                    </form>
-                  </div>
+                  <button onClick={() => Block(post.id)}>block</button>
                 </div>
               );
             } else if (post.attributes && post.attributes.mediaUrl && post.attributes.mediaUrl === "video/mp4") {
@@ -108,12 +138,11 @@ const Home = () => {
                     <source src={post.attributes.mediaUrl} type="video/mp4" />
                   </video>
                   <h6>Caption: {post.attributes.caption}</h6>
+                  <button onClick={() => Block(post.id)}>block</button>
                 </div>
               );
             }
-            else {
-              
-            }
+          }
           })}
         </div>
       </div>
