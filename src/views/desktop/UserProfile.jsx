@@ -21,7 +21,6 @@ const UserProfile = () => {
         </button>
         <button
           onClick={() => {
-            console.log(sessionStorage.getItem("email"));
             fetch(process.env.REACT_APP_API_PATH + `/auth/request-reset`, {
               method: "POST",
               headers: {
