@@ -9,11 +9,10 @@ const LoginMobile = () => {
   let navigate = useNavigate();
   return (
     <div id="loginMain">
-        <h1>Login</h1>
-        <label className="label white left-align-text">
-          Email:</label>
+      <h1>Login</h1>
+      <label className="label white left-align-text">Email:</label>
       <input
-      className="input"
+        className="input"
         type="text"
         name="email"
         placeholder="email"
@@ -21,10 +20,9 @@ const LoginMobile = () => {
           setEmail(e.target.value);
         }}
       />
-      <label className="label white left-align-text">
-          Password:</label>
+      <label className="label white left-align-text">Password:</label>
       <input
-            className="input"
+        className="input"
         type="password"
         name="passoword"
         placeholder="password"
@@ -33,7 +31,7 @@ const LoginMobile = () => {
         }}
       />
       <br />
-      <button 
+      <button
         onClick={() => {
           fetch(process.env.REACT_APP_API_PATH + "/auth/login", {
             method: "post",
@@ -52,12 +50,13 @@ const LoginMobile = () => {
                   // set the auth token and user ID in the session state
                   sessionStorage.setItem("token", result.token);
                   sessionStorage.setItem("user", result.userID);
-
+                  sessionStorage.setItem("email", result.email);
                   navigate("/edit_profile_mobile");
                 } else {
                   // if the login failed, remove any infomation from the session state
                   sessionStorage.removeItem("token");
                   sessionStorage.removeItem("user");
+                  sessionStorage.removeItem("email");
                 }
               },
               (error) => {
@@ -65,11 +64,14 @@ const LoginMobile = () => {
               }
             );
         }}
-        className="submit-button">
+        className="submit-button"
+      >
         Login
       </button>
-      <br/>
-      <button className="secondary-button" onClick={() => navigate("/mobilesignup")}>Signup</button>
+      <br />
+      <button className="secondary-button" onClick={() => navigate("/mobilesignup")}>
+        Signup
+      </button>
     </div>
   );
 };

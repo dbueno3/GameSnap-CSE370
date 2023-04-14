@@ -102,11 +102,12 @@ const SignUp = () => {
                     // set the auth token and user ID in the session state
                     sessionStorage.setItem("token", result.token);
                     sessionStorage.setItem("user", result.userID);
-
+                    sessionStorage.setItem("email", email);
                     navigate("/profile");
                   } else {
                     // if the login failed, remove any infomation from the session state
                     sessionStorage.removeItem("token");
+                    sessionStorage.removeItem("email");
                     sessionStorage.removeItem("user");
                   }
                 },

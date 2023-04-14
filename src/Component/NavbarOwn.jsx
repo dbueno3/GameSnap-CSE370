@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { FaUserFriends } from "react-icons/fa";
 import { GoSignOut } from "react-icons/go";
-import { CiBitcoin } from "react-icons/ci"
+import { CiBitcoin } from "react-icons/ci";
 import { MdHome } from "react-icons/md";
-import {CiUser} from "react-icons/ci" 
+import { CiUser } from "react-icons/ci";
 
 const NavbarOwn = () => {
   let navigate = useNavigate();
@@ -30,9 +30,9 @@ const NavbarOwn = () => {
   }, []);
   return (
     <div id="navbarOwnMain">
-      <table className='navbartable'>
+      <table className="navbartable">
         <tr>
-        <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "10px" }}>
+          <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "10px" }}>
             <CiUser
               className="navbarIcon"
               onClick={() => {
@@ -40,7 +40,7 @@ const NavbarOwn = () => {
               }}
             />
           </td>
-        <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "10px" }}>
+          <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "10px" }}>
             <MdHome
               className="navbarIcon"
               onClick={() => {
@@ -78,6 +78,7 @@ const NavbarOwn = () => {
               onClick={() => {
                 sessionStorage.removeItem("token");
                 sessionStorage.removeItem("user");
+                sessionStorage.removeItem("email");
                 navigate("/");
               }}
             />
