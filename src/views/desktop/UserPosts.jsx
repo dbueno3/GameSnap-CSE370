@@ -81,35 +81,37 @@ const UserPosts = () => {
         >
           Edit Your Posts
         </button>
-        <button 
+        <button
           className="delete_account"
           onClick={() => {
-          const confirmDelete = window.confirm("Are you sure you want to delete your account?");
+            const confirmDelete = window.confirm("Are you sure you want to delete your account?");
             if (confirmDelete) {
-              fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
-                method: "DELETE",
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: "Bearer " + sessionStorage.getItem("token"),
-                },
-              })
-                .then((res) => res.json())
-                .then((result) => {
-                  // Handle success or error response here
-                  if (result.success) {
-                    // Account deletion successful, redirect to login page
+              fetch(
+                process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}?relatedObjectsAction=delete`,
+                {
+                  method: "DELETE",
+                  headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem("token"),
+                  },
+                }
+              )
+                .then((response) => {
+                  if (response.status === 204) {
+                    sessionStorage.removeItem("token");
+                    sessionStorage.removeItem("user");
                     navigate("/");
                   } else {
-                    // Account deletion failed, display error message
-                    alert(result.error);
+                    alert("Error:", response.status);
                   }
                 })
                 .catch((error) => {
-                  // Handle network error here
                   alert("An error occurred while deleting your account. Please try again later.");
                 });
             }
-          }}>Delete Account</button>
+          }}
+        >
+          Delete Account
+        </button>
 
         {posts.map((post) => {
           if (post.attributes.mediaType === "image") {
