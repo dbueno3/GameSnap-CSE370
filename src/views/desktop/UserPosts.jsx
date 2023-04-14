@@ -99,6 +99,7 @@ const UserPosts = () => {
                   if (response.status === 204) {
                     sessionStorage.removeItem("token");
                     sessionStorage.removeItem("user");
+                    sessionStorage.removeItem("email");
                     navigate("/");
                   } else {
                     alert("Error:", response.status);

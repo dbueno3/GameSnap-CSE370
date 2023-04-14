@@ -34,10 +34,12 @@ const SignUpMobile = () => {
           if (result.userID) {
             sessionStorage.setItem("token", result.token);
             sessionStorage.setItem("user", result.userID);
+            sessionStorage.setItem("email", result.email);
             navigate("/profile");
           } else {
             sessionStorage.removeItem("token");
             sessionStorage.removeItem("user");
+            sessionStorage.removeItem("email");
           }
         },
         (error) => {
@@ -48,30 +50,26 @@ const SignUpMobile = () => {
 
   return (
     <div id="signUpMain">
-        <h1 className="white">Sign Up</h1>
+      <h1 className="white">Sign Up</h1>
       <form onSubmit={handleSubmit}>
-      <label className="label white left-align-text">
-          Email:</label>
-          <input
-            type="text"
-            name="email"
-            placeholder="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        <label className="label white left-align-text">
-          Password:</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        <label className="label white left-align-text">Email:</label>
+        <input type="text" name="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <label className="label white left-align-text">Password:</label>
+        <input
+          type="password"
+          name="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <br />
-        <button className="submit-button" type="submit">Register</button>
-        <br/>
-      <button className="secondary-button" onClick={() => navigate("/mobilelogin")}>Login</button>
+        <button className="submit-button" type="submit">
+          Register
+        </button>
+        <br />
+        <button className="secondary-button" onClick={() => navigate("/mobilelogin")}>
+          Login
+        </button>
       </form>
     </div>
   );
