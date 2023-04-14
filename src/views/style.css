@@ -189,6 +189,13 @@
     float:right;
     margin-top: 0.5em;
 }
+.delete_account{
+  color: red;
+  display:block;
+  float:right;
+  margin-top: 0.5em;
+  margin-right: 20px;
+}
 
 .delete_post_desktop{
     width:2%;

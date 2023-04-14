@@ -81,8 +81,10 @@ const UserPosts = () => {
         >
           Edit Your Posts
         </button>
-        <button onClick={() => {
-            const confirmDelete = window.confirm("Are you sure you want to delete your account?");
+        <button 
+          className="delete_account"
+          onClick={() => {
+          const confirmDelete = window.confirm("Are you sure you want to delete your account?");
             if (confirmDelete) {
               fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
                 method: "DELETE",
