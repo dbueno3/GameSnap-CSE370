@@ -81,14 +81,12 @@ const UserPosts = () => {
         >
           Edit Your Posts
         </button>
-        <button
-          className="delete_account"
-          onClick={() => {
-            navigate("/delete_account");
-          }}
-        >
-          Delete your Account
-        </button>
+        <button onClick={() => {
+        const confirmDelete = window.confirm("Are you sure you want to delete your account?");
+        if (confirmDelete) {
+          // TODO: Implement account deletion logic here
+        }
+      }}>Delete Account</button>
         {posts.map((post) => {
           if (post.attributes.mediaType === "image") {
             return (

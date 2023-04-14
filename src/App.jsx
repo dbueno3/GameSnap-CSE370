@@ -42,7 +42,6 @@ import SignUpMobile from "./views/mobile/Signupmobile.jsx";
 import LoginMobile from "./views/mobile/LoginMobile.jsx";
 import MobileHome from "./views/mobile/MobileHome";
 import EditPosts from "./views/desktop/EditPost.jsx";
-import DeleteAccount from "./views/desktop/DeleteAccount.jsx";
 
 import Friends from "./views/desktop/Friends.jsx";
 import SearchedFriend from "./views/desktop/SearchedFriend.jsx";
@@ -154,7 +153,6 @@ class App extends React.Component {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/" element={<Login />} />
                 <Route path="/edit_profile" element={<EditProfile />} />
-                <Route path="/delete_account" element={<DeleteAccount />} />
                 <Route path="/profile" element={<UserProfile />} />
                 <Route path="/personal" element={<Personal login={this.login} />} />
                 <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />} />
