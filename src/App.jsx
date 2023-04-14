@@ -29,6 +29,7 @@ import SignUp from "./views/desktop/SignUp.jsx";
 import Login from "./views/desktop/Login.jsx";
 import EditProfile from "./views/desktop/EditProfile.jsx";
 import UserProfile from "./views/desktop/UserProfile.jsx";
+import ResetPassword from "./views/desktop/ResetPassword.jsx";
 
 import Home from "./views/desktop/Home.jsx";
 import UserPosts from "./views/desktop/UserPosts.jsx";
@@ -163,6 +164,7 @@ class App extends React.Component {
                 {/* {Mobile Signin, Signup Example} */}
                 <Route path="/mobilesignup" element={<SignUpMobile />} />
                 <Route path="/mobilelogin" element={<LoginMobile />} />
+                <Route path="/reset_password" element={<ResetPassword />} />
 
                 {/* {Mobile Comment Example} */}
                 <Route path="/mobilecomment" element={<CommentPostExampleMobile />} />
