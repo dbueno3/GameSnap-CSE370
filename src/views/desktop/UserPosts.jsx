@@ -81,6 +81,38 @@ const UserPosts = () => {
         >
           Edit Your Posts
         </button>
+        <button
+          className="delete_account"
+          onClick={() => {
+            const confirmDelete = window.confirm("Are you sure you want to delete your account?");
+            if (confirmDelete) {
+              fetch(
+                process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}?relatedObjectsAction=delete`,
+                {
+                  method: "DELETE",
+                  headers: {
+                    Authorization: "Bearer " + sessionStorage.getItem("token"),
+                  },
+                }
+              )
+                .then((response) => {
+                  if (response.status === 204) {
+                    sessionStorage.removeItem("token");
+                    sessionStorage.removeItem("user");
+                    navigate("/");
+                  } else {
+                    alert("Error:", response.status);
+                  }
+                })
+                .catch((error) => {
+                  alert("An error occurred while deleting your account. Please try again later.");
+                });
+            }
+          }}
+        >
+          Delete Account
+        </button>
+
         {posts.map((post) => {
           if (post.attributes.mediaType === "image") {
             return (
