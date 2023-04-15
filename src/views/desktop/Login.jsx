@@ -47,6 +47,21 @@ const Login = () => {
             display: "inline",
           }}
           onClick={() => {
+            navigate("/reset_password_info");
+          }}
+        >
+          Forgot password?
+        </p>
+        <br />
+        <p
+          style={{
+            fontSize: "10px",
+            cursor: "pointer",
+            justifyContent: "center",
+            width: "fit-content",
+            display: "inline",
+          }}
+          onClick={() => {
             navigate("/signup");
           }}
         >
