@@ -8,14 +8,17 @@ const ResetPasswordLogin = () => {
   let navigate = useNavigate();
   return (
     <>
+    <u>
       <h6>Reset Password</h6>
+      </u>
       <input
         type="text"
-        placeholder="email"
+        placeholder="Enter Email"
         onChange={(e) => {
           setEmail(e.target.value);
         }}
       />
+      <br></br>
       <button
         onClick={() => {
           fetch(process.env.REACT_APP_API_PATH + `/auth/request-reset`, {
