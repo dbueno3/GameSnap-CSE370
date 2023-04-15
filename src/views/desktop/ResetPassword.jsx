@@ -2,7 +2,6 @@
 import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
-import { BsFileEarmarkImage } from "react-icons/bs";
 
 const ResetPassword = () => {
   const[email, setEmail] = useState("")
@@ -12,8 +11,7 @@ const ResetPassword = () => {
   const [token, setToken] = useState("");
   let navigate = useNavigate();
 
-
-
+  
   return (
     <>
     <u>
@@ -24,12 +22,14 @@ const ResetPassword = () => {
       value={email}
       name="email"
       placeholder="email"
-      onChange={(e)=> {
+      onChange={ async (e)=> {
+        e.preventDefault();
         setEmail(e.target.value); 
       }}
+
       />
       <br/>
-        <button
+        <button 
         onClick={() => {
           fetch(process.env.REACT_APP_API_PATH + `/auth/request-reset`, {
             method: "GET",
@@ -38,7 +38,7 @@ const ResetPassword = () => {
               Authorization: "Bearer " + sessionStorage.getItem("token"),
             },
             body: JSON.stringify({
-              email: "email"
+              email: email
             }),
           })
             .then((response) => {
@@ -49,7 +49,7 @@ const ResetPassword = () => {
               }
             })
             .catch((error) => {
-              alert("An error occurred while sending the token to your email.");
+              alert("error");
             });
         }}
       >

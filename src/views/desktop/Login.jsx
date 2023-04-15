@@ -68,6 +68,7 @@ const Login = () => {
         onClick={() => {
           navigate("/reset_password");
         }}
+        
         > 
         Forgot Your Password? Click Here!! 
         </p>
