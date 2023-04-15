@@ -2,16 +2,63 @@
 import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
+import { BsFileEarmarkImage } from "react-icons/bs";
 
 const ResetPassword = () => {
+  const[email, setEmail] = useState("")
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [token, setToken] = useState("");
   let navigate = useNavigate();
+
+
+
   return (
     <>
+    <u>
+    <h6 style={{fontSize:"13px"}}>Enter your email that is accociated with your account </h6>
+    </u>
+      <input
+      type="email"
+      value={email}
+      name="email"
+      placeholder="email"
+      onChange={(e)=> {
+        setEmail(e.target.value); 
+      }}
+      />
+      <br/>
+        <button
+        onClick={() => {
+          fetch(process.env.REACT_APP_API_PATH + `/auth/request-reset`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + sessionStorage.getItem("token"),
+            },
+            body: JSON.stringify({
+              email: "email"
+            }),
+          })
+            .then((response) => {
+              if (response.status === 200) {
+                navigate("/reset_password");
+              } else {
+                alert("Error 404:", response.status);
+              }
+            })
+            .catch((error) => {
+              alert("An error occurred while sending the token to your email.");
+            });
+        }}
+      >
+        Submit Email
+      </button>
+      <br />
+
       <h5 style={{ color: "green" }}>A one time auth token was sent to {sessionStorage.getItem("email")}</h5>
+    
       <p style={{ fontSize: "10px" }}>If you did not receive the email, you can try again using the button below</p>
       <button
         onClick={() => {
@@ -52,7 +99,7 @@ const ResetPassword = () => {
       <br />
       <input
         type="password"
-        placeholder="new password*"
+        placeholder="New password*"
         onChange={(e) => {
           setPassword(e.target.value);
         }}
@@ -60,7 +107,7 @@ const ResetPassword = () => {
       <br />
       <input
         type="password"
-        placeholder="confirm password*"
+        placeholder="Confirm password*"
         onChange={(e) => {
           setConfirmPassword(e.target.value);
         }}
