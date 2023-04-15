@@ -2,17 +2,24 @@
 import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
+import { BsFileEarmarkImage } from "react-icons/bs";
 
 const ResetPassword = () => {
+  const[email, setEmail] = useState("")
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [token, setToken] = useState("");
   let navigate = useNavigate();
+
+
+
   return (
     <>
       <h5 style={{ color: "green" }}>A one time auth token was sent to {sessionStorage.getItem("email")}</h5>
+
       <p style={{ fontSize: "10px" }}>If you did not receive the email, you can try again using the button below</p>
+      
       <button
         onClick={() => {
           fetch(process.env.REACT_APP_API_PATH + `/auth/request-reset`, {
@@ -52,7 +59,7 @@ const ResetPassword = () => {
       <br />
       <input
         type="password"
-        placeholder="new password*"
+        placeholder="New password*"
         onChange={(e) => {
           setPassword(e.target.value);
         }}
@@ -60,7 +67,7 @@ const ResetPassword = () => {
       <br />
       <input
         type="password"
-        placeholder="confirm password*"
+        placeholder="Confirm password*"
         onChange={(e) => {
           setConfirmPassword(e.target.value);
         }}
