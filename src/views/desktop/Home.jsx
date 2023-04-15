@@ -62,27 +62,31 @@ const Home = () => {
   }, []);
   
   const Block = (postid) => {
-    fetch(process.env.REACT_APP_API_PATH+"/post-reactions", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer '+sessionStorage.getItem("token")
-      },
-      body: JSON.stringify({
-        reactorID: sessionStorage.getItem("user"),
-        postID: postid,
-        name: "block"
-      })
-      })
-      .then(
-        result => {
-          window.location.reload();
-        },
-        error => {
-          alert("error!"+error);
-        }
-      );
-  }
+    if (window.confirm("Are you sure you want to block this post?")) {
+        fetch(process.env.REACT_APP_API_PATH+"/post-reactions", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer '+sessionStorage.getItem("token")
+          },
+          body: JSON.stringify({
+            reactorID: sessionStorage.getItem("user"),
+            postID: postid,
+            name: "block"
+          })
+        })
+        .then(
+          result => {
+            window.location.reload();
+          },
+          error => {
+            alert("error!"+error);
+          }
+        );
+    }
+};
+
+
 
   return (
     <>
@@ -96,6 +100,7 @@ const Home = () => {
             if (post.attributes.mediaType === "image") {
               return (
                 <div key={post.attributes.caption} className="homePost">
+                  <button onClick={() => Block(post.id)} className="blockButton">Block</button>
                   <table style={{ margin: "0", borderCollapse: "collapse" }}>
                     <tr>
                       <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
@@ -113,12 +118,12 @@ const Home = () => {
                   </table>
                   <img alt="post" src={post.attributes.mediaUrl} className="homePostImage" />
                   <h6>Caption: {post.attributes.caption}</h6>
-                  <button onClick={() => Block(post.id)}>block</button>
                 </div>
               );
             } else if (post.attributes && post.attributes.mediaUrl && post.attributes.mediaUrl === "video/mp4") {
               return (
                 <div key={post.attributes.caption} className="homePost">
+                  <button onClick={() => Block(post.id)} className="blockButton">Block</button>
                   <table style={{ margin: "0", borderCollapse: "collapse" }}>
                     <tr>
                       <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
@@ -138,7 +143,6 @@ const Home = () => {
                     <source src={post.attributes.mediaUrl} type="video/mp4" />
                   </video>
                   <h6>Caption: {post.attributes.caption}</h6>
-                  <button onClick={() => Block(post.id)}>block</button>
                 </div>
               );
             }
