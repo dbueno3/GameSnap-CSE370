@@ -3,10 +3,14 @@ import React, { useState } from "react";
 //Router
 import { useNavigate } from "react-router-dom";
 
+
+
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let navigate = useNavigate();
+
   return (
     <div id="loginMain">
       <u>
@@ -47,11 +51,41 @@ const Login = () => {
             display: "inline",
           }}
           onClick={() => {
+            navigate("/reset_password_info");
+          }}
+        >
+          Forgot password?
+        </p>
+        <br />
+        <p
+          style={{
+            fontSize: "10px",
+            cursor: "pointer",
+            justifyContent: "center",
+            width: "fit-content",
+            display: "inline",
+          }}
+          onClick={() => {
             navigate("/signup");
           }}
         >
           Don't have an account? Create one
         </p>
+        <br />
+        {/* <p
+        style={{
+          fontSize: "10px",
+          cursor: "pointer",
+          justifyContent: "center",
+          width: "fit-content",
+          display: "inline",
+        }}
+        onClick={() => {
+          navigate("/reset_password");
+        }}
+        > 
+        Forgot Your Password? Click Here!! 
+        </p> */}
       </div>
       <br />
       <button
