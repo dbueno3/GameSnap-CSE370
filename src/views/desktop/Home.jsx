@@ -9,6 +9,9 @@ const Home = () => {
   const [posts, getPosts] = useState([]);
   const [proPic, setPropic] = useState("");
   const [blocklist, setBlockList] = useState([])
+  const [searchinput, setSearchInput] = useState("");
+  const [searchresult, setSearchResult] = useState([])
+
   let navigate = useNavigate();
   
   useEffect(() => {
@@ -86,16 +89,43 @@ const Home = () => {
     }
 };
 
+  const SearchByContent = (searchinput) =>{
+    navigate(`/searchcontent?data=${searchinput}&type=${'content'}`)
+  };
+
+  const SearchByUser = (searchinput) =>{
+    navigate(`/searchcontent?data=${searchinput}&type=${'user'}`)
+  };
+
 
 
   return (
     <>
       <NavbarOwn />
       <div id="homeFeedMain">
+      <div>
+          <input
+            type="text"
+            onChange={(e) => {
+              setSearchInput(e.target.value);
+            }}
+          />
+          <br />
+        </div>
+        <button className="SearchByUser"
+            onClick={() => {
+              SearchByUser(searchinput, posts)
+            }}
+          >search by user
+          </button>
+          <button className="SearchByContent"
+            onClick={() => {
+              SearchByContent(searchinput, posts)
+            }}
+          >search by content
+          </button>
         <div id="homeFeed">
-          {console.log(blocklist)}
           {posts.map((post) => {
-            console.log(post.id)
             if (!blocklist.includes(post.id)){
             if (post.attributes.mediaType === "image") {
               return (
