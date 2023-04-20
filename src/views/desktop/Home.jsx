@@ -104,7 +104,7 @@ const Home = () => {
       <NavbarOwn />
       <div id="homeFeedMain">
       <div>
-          <input
+          <input className="Search"
             type="text"
             onChange={(e) => {
               setSearchInput(e.target.value);
