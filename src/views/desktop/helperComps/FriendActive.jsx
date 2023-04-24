@@ -7,7 +7,7 @@ const FriendActive = (props) => {
   const [unfriendisOpen, setunfriendIsOpen] = useState(false);
   const [blockisOpen, setblockIsOpen] = useState(false);
   return (
-    <table style={{margin: "0", borderCollapse: "collapse" }}>
+    <table style={{ margin: "0", borderCollapse: "collapse" }}>
       <tr>
         <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
           <h6 style={{ margin: 0, cursor: "pointer" }}>
@@ -20,23 +20,55 @@ const FriendActive = (props) => {
           </h6>
         </td>
         <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "20px" }}>
-          <p className="friendname"
+          <p
+            className="friendname"
             onClick={() => {
               navigate(`/search/${props.userId}`);
             }}
           >
             {props.username}
           </p>
-          
-            <button className="Unfriend" 
-            onClick={() => setunfriendIsOpen(true)}
-            >Unfriend</button>
-            
-          <button className="Block"
-            onClick={() => setblockIsOpen(true)}
-            >Block</button>
-          
-          
+
+          <button className="Unfriend" onClick={() => setunfriendIsOpen(true)}>
+            Unfriend
+          </button>
+
+          <button className="Block" onClick={() => setblockIsOpen(true)}>
+            Block
+          </button>
+
+          <button
+            className="Message"
+            onClick={() => {
+              //Create a connection
+              fetch(process.env.REACT_APP_API_PATH + `/connections`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: "Bearer " + sessionStorage.getItem("token"),
+                },
+                body: JSON.stringify({
+                  fromUserID: sessionStorage.getItem("user"),
+                  toUserID: props.userId,
+                  attributes: {
+                    conType: "chat",
+                  },
+                }),
+              })
+                .then((response) => {
+                  if (response.status === 201) {
+                    console.log("Connection created");
+                  } else {
+                    console.log("Error:", response.status);
+                  }
+                })
+                .catch((error) => {
+                  console.error("Error:", error);
+                });
+            }}
+          >
+            Message
+          </button>
 
           <ConfirmEditFriend
             open={unfriendisOpen}

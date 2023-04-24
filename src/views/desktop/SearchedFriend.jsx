@@ -57,8 +57,8 @@ const SearchedFriend = () => {
   }, []);
   return (
     <>
-    <br />
-    <br />
+      <br />
+      <br />
       <NavbarOwn />
       <RenderProfile userId={userId}>
         <button
@@ -75,6 +75,7 @@ const SearchedFriend = () => {
                 fromUserID: sessionStorage.getItem("user"),
                 toUserID: userId,
                 attributes: {
+                  conType: "network",
                   requestStatus: "pending",
                 },
               }),

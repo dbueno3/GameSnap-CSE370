@@ -316,6 +316,23 @@
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     vertical-align: middle;
   }
+
+  .Message{
+    background-color: rgb(6, 97, 97);
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+  }
   
   .Block:hover {
     background-color: #8B0000;
