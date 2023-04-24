@@ -18,6 +18,17 @@
 }
 }
 
+.blockButton {
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+  background: #FF4136;
+  color: #fff;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
 
 .deletePost{
   width:100%;
