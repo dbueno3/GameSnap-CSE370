@@ -43,7 +43,7 @@ const Explore = () => {
           console.log("Response",res[0]);
           let topicsSplit = topics.split(",");
           let filteredPosts = res[0].filter((post) => {
-            if(topicsSplit.some(topic=>post.attributes.caption.toLowerCase().includes(topic.toLowerCase()))){
+            if(post.attributes.caption && topicsSplit.some(topic => post.attributes.caption.toLowerCase().includes(topic.toLowerCase()))){
               return post;
             }
           })

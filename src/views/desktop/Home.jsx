@@ -104,21 +104,21 @@ const Home = () => {
       <NavbarOwn />
       <div id="homeFeedMain">
       <div>
-          <input className="Search"
+          <input className="Search input-box-white"
             type="text"
+            placeholder="Search"
             onChange={(e) => {
               setSearchInput(e.target.value);
             }}
           />
-          <br />
         </div>
-        <button className="SearchByUser"
+        <button className="SearchByUser submit-button"
             onClick={() => {
               SearchByUser(searchinput, posts)
             }}
           >search by user
           </button>
-          <button className="SearchByContent"
+          <button className="SearchByContent submit-button"
             onClick={() => {
               SearchByContent(searchinput, posts)
             }}
