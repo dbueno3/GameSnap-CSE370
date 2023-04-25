@@ -29,20 +29,36 @@ const Chat = () => {
         setUser(result.attributes.username);
       });
 
-    fetch(process.env.REACT_APP_API_PATH + `/connections/${connId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + sessionStorage.getItem("token"),
-      },
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        setConnInfo(result);
-        if (result.attributes.chatHistory) {
-          setMessages(result.attributes.chatHistory);
-        }
-      });
+    let pollInterval = null;
+
+    const startPolling = () => {
+      pollInterval = setInterval(() => {
+        fetch(process.env.REACT_APP_API_PATH + `/connections/${connId}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + sessionStorage.getItem("token"),
+          },
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            setConnInfo(result);
+            if (result.attributes.chatHistory) {
+              setMessages(result.attributes.chatHistory);
+            }
+          });
+      }, 5000);
+    };
+
+    const stopPolling = () => {
+      clearInterval(pollInterval);
+    };
+
+    startPolling();
+
+    return () => {
+      stopPolling();
+    };
   }, []);
 
   const handleMessageSend = () => {
