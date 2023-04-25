@@ -46,6 +46,7 @@ import MobileHome from "./views/mobile/MobileHome";
 import EditPosts from "./views/desktop/EditPost.jsx";
 import SearchContent from "./views/desktop/SearchContent.jsx";
 import Messages from "./views/desktop/Messages.jsx";
+import Chat from "./views/desktop/Chat.jsx";
 
 import Friends from "./views/desktop/Friends.jsx";
 import SearchedFriend from "./views/desktop/SearchedFriend.jsx";
@@ -181,6 +182,8 @@ class App extends React.Component {
                 <Route path="/explore" element={<Explore />} />
                 <Route path="/searchcontent" element={<SearchContent />} />
                 <Route path="/chat" element={<Messages />} />
+                <Route path="/chat/:connId" element={<Chat />} />
+
                 {/* About Me Pages */}
                 <Route path="/about/dev/Shad" element={<Shad />} />
                 <Route path="/about/dev/Ze" element={<Ze />} />

@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import react from "react";
 import NavbarOwn from "../../Component/NavbarOwn";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "../style.css";
 
 import { BsArrowLeftRight } from "react-icons/bs";
 
 const Messages = () => {
+  let navigate = useNavigate();
   const [conns, setConns] = useState([]);
   useEffect(() => {
     //Get the from "user" ids
@@ -40,7 +41,13 @@ const Messages = () => {
             {conns.map((conn) => {
               return (
                 <div>
-                  <td className="msgThread" style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
+                  <td
+                    className="msgThread"
+                    style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}
+                    onClick={() => {
+                      navigate(`/chat/${conn.id}`);
+                    }}
+                  >
                     <h6 style={{ margin: 0, cursor: "pointer", display: "inline-block" }}>
                       <img
                         src={conn.fromUser.attributes.profilePicture}
