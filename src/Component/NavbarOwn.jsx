@@ -7,6 +7,7 @@ import { GoSignOut } from "react-icons/go";
 import { CiBitcoin } from "react-icons/ci";
 import { MdHome } from "react-icons/md";
 import { CiUser } from "react-icons/ci";
+import { BsFillChatFill } from "react-icons/bs";
 
 const NavbarOwn = () => {
   let navigate = useNavigate();
@@ -61,6 +62,14 @@ const NavbarOwn = () => {
               className="navbarIcon"
               onClick={() => {
                 navigate("/friends");
+              }}
+            />
+          </td>
+          <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "10px" }}>
+            <BsFillChatFill
+              className="navbarIcon"
+              onClick={() => {
+                navigate("/chat");
               }}
             />
           </td>
