@@ -9,6 +9,19 @@
     text-align: center;
 }
 
+.input-box-white {
+  display: block;
+    width: 80%;
+    margin: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    background-color: var(--color-gunmetal);
+    color: #fff;
+}
+
 /* Upload post */
 #createPostMain{
     text-align: center;
