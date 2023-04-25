@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import react from "react";
 import NavbarOwn from "../../Component/NavbarOwn";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "../style.css";
 
 import { BsArrowLeftRight } from "react-icons/bs";
 
 const Messages = () => {
+  let navigate = useNavigate();
   const [conns, setConns] = useState([]);
   useEffect(() => {
     //Get the from "user" ids
@@ -26,8 +27,26 @@ const Messages = () => {
     )
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
-        setConns(result[0]);
+        setConns((prevConns) => [...prevConns, ...result[0]]);
+      });
+
+    //Get the from "to" ids
+    fetch(
+      process.env.REACT_APP_API_PATH +
+        `/connections?toUserID=${sessionStorage.getItem(
+          "user"
+        )}&attributes=%7B%0A%20%20%22path%22%3A%20%22conType%22%2C%0A%20%20%22equals%22%3A%20%22chat%22%0A%7D`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        setConns((prevConns) => [...new Set([...prevConns, ...result[0]])]);
       });
   }, []);
   return (
@@ -38,9 +57,16 @@ const Messages = () => {
         <table style={{ marginTop: "50px", borderCollapse: "collapse" }}>
           <tr>
             {conns.map((conn) => {
+              console.log(conns);
               return (
                 <div>
-                  <td className="msgThread" style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
+                  <td
+                    className="msgThread"
+                    style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}
+                    onClick={() => {
+                      navigate(`/chat/${conn.id}`);
+                    }}
+                  >
                     <h6 style={{ margin: 0, cursor: "pointer", display: "inline-block" }}>
                       <img
                         src={conn.fromUser.attributes.profilePicture}
