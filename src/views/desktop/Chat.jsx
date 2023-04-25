@@ -8,32 +8,27 @@ import "../style.css";
 const Chat = () => {
   const params = useParams();
   const connId = params.connId;
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      from: "John",
-      to: "Mary",
-      message: "Hello Mary, how are you?",
-      timestamp: "2022-04-25T12:34:56Z",
-    },
-    {
-      id: 2,
-      from: "Mary",
-      to: "John",
-      message: "Hi John, I'm good, thanks! How about you?",
-      timestamp: "2022-04-25T12:35:23Z",
-    },
-    {
-      id: 3,
-      from: "John",
-      to: "Mary",
-      message: "I'm doing well, thanks!",
-      timestamp: "2022-04-25T12:36:12Z",
-    },
-  ]);
+
+  const [chatInput, setChatInput] = useState("");
+  const [user, setUser] = useState("");
+  const [connInfo, setConnInfo] = useState({});
+  const [messages, setMessages] = useState([]);
 
   //Get the connection
   useEffect(() => {
+    //Get the current username
+    fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        setUser(result.attributes.username);
+      });
+
     fetch(process.env.REACT_APP_API_PATH + `/connections/${connId}`, {
       method: "GET",
       headers: {
@@ -43,22 +38,60 @@ const Chat = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        setConnInfo(result);
+        if (result.attributes.chatHistory) {
+          setMessages(result.attributes.chatHistory);
+        }
       });
   }, []);
+
+  const handleMessageSend = () => {
+    fetch(process.env.REACT_APP_API_PATH + `/connections/${connId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        fromUserID: connInfo.fromUser.id,
+        toUserID: connInfo.toUser.id,
+        attributes: {
+          conType: "chat",
+          chatHistory: [
+            ...messages,
+            {
+              id: messages.length + 1,
+              from: user,
+              to: connInfo.toUser.attributes.username,
+              message: chatInput,
+              timestamp: new Date().toISOString(),
+            },
+          ],
+        },
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.attributes.chatHistory) {
+          setMessages(result.attributes.chatHistory);
+        }
+        setChatInput("");
+      });
+  };
 
   return (
     <>
       <NavbarOwn />
       <div class="chatRoom">
         <div>
-          {messages.map((msg) => (
-            <div key={msg.id}>
-              <p>
-                {msg.from}: {msg.message}
-              </p>
-            </div>
-          ))}
+          {messages.length > 0 &&
+            messages.map((msg) => (
+              <div key={msg.id}>
+                <p>
+                  {msg.from}: {msg.message}
+                </p>
+              </div>
+            ))}
         </div>
         <div className="chatInputContainer">
           <input
@@ -66,8 +99,12 @@ const Chat = () => {
             className="chatInput"
             type="text"
             placeholder="Say something nice"
+            value={chatInput}
+            onChange={(e) => {
+              setChatInput(e.target.value);
+            }}
           />
-          <button style={{ width: "8%", bottom: 0, right: 0 }} className="chatInput">
+          <button style={{ width: "8%", bottom: 0, right: 0 }} className="chatInput" onClick={handleMessageSend}>
             Send
           </button>
         </div>
