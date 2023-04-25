@@ -238,6 +238,22 @@
     text-decoration: underline;
 }
 
+.MessagesPage{
+  margin: 20px;
+  margin-top: 80px;
+  text-align: left;
+}
+
+.msgThread{
+  transition: 0.2s ease-in-out;
+}
+
+.msgThread:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+
 /* Navabar */
 #navbarOwnMain {
     width: 100vw;
