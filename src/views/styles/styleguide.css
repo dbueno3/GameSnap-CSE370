@@ -56,6 +56,7 @@ color: #ececec
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 10;
   }
   
   .navbar-item {
@@ -177,7 +178,17 @@ background-color: var(--color-gunmetal);
 color: #fff;
 }
 #signUpMain {
-    margin:10px
+  margin:10px
+}
+
+p {
+  font-size: 16px; cursor: pointer; width: fit-content; display: inline;
+}
+
+.label {
+  display: block;
+  margin-top: 20px;
+  justify-content: flex-start;
 }
 
 form input[type="submit"] {
@@ -200,7 +211,7 @@ margin-top: 20px;
 }
 
 .submit-button {
-    background-color: var(--color-honolulu-blue);
+background-color: var(--color-honolulu-blue);
 color: #fff;
 padding: 10px 20px;
 border-radius: 4px;
@@ -208,8 +219,24 @@ border: none;
 font-size: 16px;
 cursor: pointer;
 margin-top: 20px;
-width: 90%;
+width: 100%;
 }
+
+.red {
+  background-color: red !important;
+}
+
+.small-button-green {
+  background-color: var(--color-charcoal);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  }
+
 .secondary-button{
     background-color: var(--color-lapis-lazuli);
 color: #fff;
@@ -219,10 +246,7 @@ border: none;
 font-size: 16px;
 cursor: pointer;
 margin-top: 20px;
-width: 90%;
-}
-#loginMain{
-    margin: 10px;
+width: 100%;
 }
 
 form input[type="submit"]:hover {

@@ -13,13 +13,13 @@ const ResetPassword = () => {
   let navigate = useNavigate();
 
   return (
-    <>
-    
-
-      <h5 style={{ color: "green" }}>A one time auth token was sent to {sessionStorage.getItem("email")}</h5>
-      <p style={{ fontSize: "10px" }}>If you did not receive the email, you can try again using the button below</p>
-
+    <div className="container">
+      <div class="alert alert-success">
+      <h4>A one time auth token was sent to {sessionStorage.getItem("email")}</h4>
+      <p>If you did not receive the email, you can try again using the button below</p>
+      <br></br>
       <button
+        className="small-button-green"
         onClick={() => {
           fetch(process.env.REACT_APP_API_PATH + `/auth/request-reset`, {
             method: "POST",
@@ -45,35 +45,45 @@ const ResetPassword = () => {
       >
         Send token again
       </button>
-      <u>
-        <h6>Reset Password</h6>
-      </u>
+      </div>
+      
+      <h1 className="large-emoji-icon">🤦‍♂️</h1>
+      <h1>Reset Password</h1>
+      <label>Auth Token</label>
       <input
+      className="input-box-white"
         type="text"
-        placeholder="auth token*"
+        placeholder="auth token"
         onChange={(e) => {
           setToken(e.target.value);
         }}
       />
-      <br />
+      <label>New Password</label>
       <input
         type="password"
-        placeholder="New password*"
+        className="input-box-white"
+        placeholder="New password"
         onChange={(e) => {
           setPassword(e.target.value);
         }}
       />
-      <br />
+      <label>Confirm Password</label>
       <input
         type="password"
+        className="input-box-white"
         placeholder="Confirm password*"
         onChange={(e) => {
           setConfirmPassword(e.target.value);
         }}
       />
-      <br />
-      <p style={{ color: "red", fontSize: "10px" }}>{error}</p>
+      { error &&(
+        <div class="alert alert-error">
+        <p style={{ fontSize: "10px" }}>{error}</p>
+      </div>
+      )}
+
       <button
+        className="submit-button"
         onClick={() => {
           if (password !== confirmPassword) {
             setError("Passwords don't match");
@@ -103,7 +113,7 @@ const ResetPassword = () => {
       >
         Reset
       </button>
-    </>
+    </div>
   );
 };
 

@@ -58,22 +58,16 @@ const CreatePost = () => {
           </div>
           <br />
           <textarea
+            className="input-box-white"
             placeholder="Caption"
-            style={{ borderRadius: "1%", height: "300px", width: "100%" }}
+            style={{ borderRadius: "1%", height: "300px", width: "90%" }}
             onChange={(e) => {
               setCaption(e.target.value);
             }}
           />
           <br />
-          <br />
           <button
-            style={{
-              width: "100%",
-              backgroundColor: "#177BBD",
-              height: "30px",
-              borderRadius: "20px",
-              color: "white",
-            }}
+            className="submit-button"
             onClick={() => {
               formData.append(
                 "attributes",

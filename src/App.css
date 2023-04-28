@@ -1,7 +1,6 @@
 /* For gods sake, please replace this with styles that are less horrifying than these */
- .App {
-  text-align: center;
-} 
+.App {
+}
 
 .App-logo {
   height: 40vmin;
@@ -13,7 +12,6 @@
   display: flex;
   flex-direction: row;
   align-items: flex-center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 }
@@ -118,6 +116,7 @@
 .App-link {
   color: #09d3ac;
 }
+
 
 .postlist {
   text-align: left;
