@@ -9,37 +9,39 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   let navigate = useNavigate();
   return (
-    <div id="signUpMain">
-      <u>
-        <h1 className="white">Sign Up</h1>
-      </u>
+    <div class="container">
+      <h1 className="center-text large-emoji-icon">🔏</h1>
+      <h1 className="white center-text">Sign Up</h1>
+      <label for="email">Email</label>
       <input
         type="text"
         name="email"
-        placeholder="email*"
+        placeholder="email"
+        className="input-box-white"
         onChange={(e) => {
           setEmail(e.target.value);
         }}
       />
-      <br />
+      <label for="password">Password</label>
       <input
         type="password"
         name="passoword"
-        placeholder="password*"
+        className="input-box-white"
+        placeholder="password"
         onChange={(e) => {
           setPassword(e.target.value);
         }}
       />
-      <br />
+      <label for="confirmPassword">Confirm Password</label>
       <input
         type="password"
         name="confirmPassword"
-        placeholder="Confirm Password*"
+        className="input-box-white"
+        placeholder="Confirm Password"
         onChange={(e) => {
           setConfirmPassword(e.target.value);
         }}
       />
-      <br />
       <div
         style={{
           width: "100vw",
@@ -50,7 +52,7 @@ const SignUp = () => {
       >
         <p
           style={{
-            fontSize: "10px",
+            fontSize: "16px",
             cursor: "pointer",
             justifyContent: "center",
             width: "fit-content",
@@ -103,7 +105,7 @@ const SignUp = () => {
                     sessionStorage.setItem("token", result.token);
                     sessionStorage.setItem("user", result.userID);
                     sessionStorage.setItem("email", email);
-                    navigate("/profile");
+                    navigate("/edit_profile_mobile");
                   } else {
                     // if the login failed, remove any infomation from the session state
                     sessionStorage.removeItem("token");
@@ -117,6 +119,7 @@ const SignUp = () => {
               );
           }
         }}
+        className="submit-button"
       >
         Register
       </button>
