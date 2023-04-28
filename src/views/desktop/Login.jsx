@@ -12,83 +12,40 @@ const Login = () => {
   let navigate = useNavigate();
 
   return (
-    <div id="loginMain">
-      <u>
-        <h1>Login</h1>
-      </u>
+    <div id="loginMain" class="container">
+      <h1 className="center-text large-emoji-icon">🔐</h1>
+        <h1 className="center-text">Login</h1>
+      <label for="email">Email</label>
       <input
         type="text"
         name="email"
         placeholder="email"
+        className="input-box-white"
         onChange={(e) => {
           setEmail(e.target.value);
         }}
       />
-      <br />
+      <label for="password left">Password</label>
       <input
         type="password"
-        name="passoword"
+        name="password"
         placeholder="password"
+        className="input-box-white"
         onChange={(e) => {
           setPassword(e.target.value);
         }}
       />
-      <br />
-      <div
-        style={{
-          width: "100vw",
-          textAlign: "center",
-          justifyContent: "center",
-          display: "inline",
-        }}
-      >
+      <div>
         <p
-          style={{
-            fontSize: "10px",
-            cursor: "pointer",
-            justifyContent: "center",
-            width: "fit-content",
-            display: "inline",
-          }}
           onClick={() => {
             navigate("/reset_password_info");
           }}
         >
           Forgot password?
         </p>
-        <br />
-        <p
-          style={{
-            fontSize: "10px",
-            cursor: "pointer",
-            justifyContent: "center",
-            width: "fit-content",
-            display: "inline",
-          }}
-          onClick={() => {
-            navigate("/signup");
-          }}
-        >
-          Don't have an account? Create one
-        </p>
-        <br />
-        {/* <p
-        style={{
-          fontSize: "10px",
-          cursor: "pointer",
-          justifyContent: "center",
-          width: "fit-content",
-          display: "inline",
-        }}
-        onClick={() => {
-          navigate("/reset_password");
-        }}
-        > 
-        Forgot Your Password? Click Here!! 
-        </p> */}
       </div>
-      <br />
       <button
+      className="submit-button"
         onClick={() => {
           fetch(process.env.REACT_APP_API_PATH + "/auth/login", {
             method: "post",
@@ -125,6 +82,13 @@ const Login = () => {
       >
         Login
       </button>
+      <br />
+      <button className="secondary-button"
+          onClick={() => {
+            navigate("/signup");
+          }}
+        >Sign up
+        </button>
     </div>
   );
 };

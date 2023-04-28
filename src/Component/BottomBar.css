@@ -20,6 +20,7 @@
   .bottombar__icon{
     width: 24px;
     height: 24px;
+    color: #000000 !important;
   }
   
   .bottom-bar__icon:hover {

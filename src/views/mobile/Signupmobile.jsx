@@ -35,7 +35,7 @@ const SignUpMobile = () => {
             sessionStorage.setItem("token", result.token);
             sessionStorage.setItem("user", result.userID);
             sessionStorage.setItem("email", result.email);
-            navigate("/profile");
+            navigate("/edit_profile_mobile");
           } else {
             sessionStorage.removeItem("token");
             sessionStorage.removeItem("user");

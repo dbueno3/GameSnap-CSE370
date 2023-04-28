@@ -1,7 +1,7 @@
 import React from "react";
-import "../mobile.css";
 import avatar from "../../assets/group.png"
 import userPic from '../../assets/user.png';
+import { FaUserCircle } from "react-icons/fa";
 
 
 import {BrowserRouter as Router, Route, Routes, Link,useNavigate} from 'react-router-dom';
@@ -22,14 +22,15 @@ class Profile_mobile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Name: "",
-      Username: "",
-      Website: "",
-      Bio: "",
-      Email: "",
+      firstName: "",
+      lastName: "",
+      username: "",
+      website: "",
+      bio: "",
+      email: "",
       Phone:"",
-      Profile_Image:{},
-      Topics: "",
+      profilePicture:"",
+      topics: "",
       private: false,
       // NOTE : if you wanted to add another user attribute to the profile, you would add a corresponding state element here
     };
@@ -72,13 +73,14 @@ class Profile_mobile extends React.Component {
             this.setState({
               // IMPORTANT!  You need to guard against any of these values being null.  If they are, it will
               // try and make the form component uncontrolled, which plays havoc with react
-                  Name: result.attributes.Name || "",
-                  Username: result.attributes.Username || "",
-                  Website: result.attributes.Website || "",
-                  Bio: result.attributes.Bio || "",
-                  Email: result.attributes.Email || "",
-                  Phone: result.attributes.Phone || "",
-                  Profile_Image: result.attributes.Profile_Image || "",
+                  firstNname: result.attributes.firstName || "",
+                  lastName: result.attributes.lastName || "",
+                  username: result.attributes.username || "",
+                  website: result.attributes.website || "",
+                  bio: result.attributes.bio || "",
+                  email: result.attributes.email || "",
+                  phone: result.attributes.phone || "",
+                  profilePicture: result.attributes.profilePicture || "",
                   Topics: result.attributes.Topics || "",
                   private: result.attributes.private || false,
             });
@@ -100,7 +102,7 @@ class Profile_mobile extends React.Component {
     //keep the form from actually submitting, since we are handling the action ourselves via
     //the fetch calls to the API
     event.preventDefault();
-
+    
     //make the api call to the user controller, and update the user fields (username, firstname, lastname)
     fetch(process.env.REACT_APP_API_PATH+"/users/"+sessionStorage.getItem("user"), {
       method: "PATCH",
@@ -110,19 +112,16 @@ class Profile_mobile extends React.Component {
       },
       body: JSON.stringify({
         attributes: {
-          Name: this.state.Name,
-          Username: this.state.Username,
+          firstName: this.state.firstName,
+          lastName: this.state.lastName,
+          username: this.state.username,
           Website: this.state.Website,
-          Bio: this.state.Bio,
-          Email: this.state.Email,
-          Phone: this.state.Phone,
+          bio: this.state.bio,
+          email: this.state.email,
+          phone: this.state.phone,
           posts: this.state.posts,
-          profilePic:this.state.profilePic,
-          profilePictureName:this.state.profilePictureName,
+          profilePicture:this.state.profilePicture,
           Topics:this.state.Topics,
-          following:this.state.following,
-          follower:this.state.follower,
-          Profile_Image:this.state.Profile_Image,
           private:this.state.private,
         }
       })
@@ -133,13 +132,16 @@ class Profile_mobile extends React.Component {
           this.setState({
             responseMessage: result.Status
           });
-          console.log(result)
+          console.log(result);
+          //wait for 20 seconds
+          setTimeout(() => {
+          }, 20000);
+          this.props.navigate('/home')
         },
         error => {
           alert("error!");
         }
       );
-      this.props.navigate('/personal')
   };
 
   // This is the function that draws the component to the screen.  It will get called every time the
@@ -147,13 +149,7 @@ class Profile_mobile extends React.Component {
   // as you type them.
   render() {
     return (
-      <div className="parents">
-      <p className="edit-title">
-      <div className="Cancel" style={{color:"black"}}>
-        <Link to ="/personal" style={{textDecoration:'none', color:'Black'}}>Cancel</Link>
-      </div>
-      <div className="edit" style={{color:"black"}}>Edit profile</div>
-      </p>
+      <div className="container">
       <form onSubmit={this.submitHandler}>
       <input type="file" id="profile_image_upload" style={{display:"none"}} onChange={(event) =>{
         console.log("Image Changed");
@@ -162,42 +158,59 @@ class Profile_mobile extends React.Component {
         reader.readAsDataURL(file);
 
         reader.onload = () =>{
-          this.state.Profile_Image = reader.result;
-          
-          this.setState({
-            ["Profile_Image"]: reader.result
-          });
+          const profilePicture = reader.result;
+          this.setState({ profilePicture });
         };
         }}/> 
-        {this.state.Profile_Image?(
-        <img src={this.state.Profile_Image} alt="profile_picture" className="profile_picture_mobile" onClick={()=>{document.getElementById("profile_image_upload").click()}}></img>
+        {this.state.profilePicture?(
+        <img src={this.state.profilePicture}
+        width={80}
+        height={80}
+        alt="profile_picture"
+        onClick={()=>{document.getElementById("profile_image_upload").click()}}></img>
         ):(
-        <img src={avatar} alt="profile_picture" className="profile_picture_mobile" onClick={()=>{document.getElementById("profile_image_upload").click()}}></img>
+          <FaUserCircle
+          size={80}
+          style={{ margin: "20px", cursor: "pointer" }}
+          onClick={()=>{document.getElementById("profile_image_upload").click()}}/>
         )}
-      <p className="change-profile-photo" style={{color:"white"}}>Change Profile Photo</p>
-        <div className='profileform'>       
+        <br/>
+        <p className="change-profile-photo" style={{color:"white"}}>Change Profile Photo</p>
+        <div className='profileform'>
         <label style={{color:"black"}}>
           <div className="name-field">
-            Name:
+            First Name:
           <input
-            type="text"            
-            className="box"
+            type="text"
             placeholder="Your name.."
-            onChange={e => this.fieldChangeHandler("Name", e.target.value)}
-            value={this.state.Name}
+            onChange={e => this.fieldChangeHandler("firstName", e.target.value)}
+            value={this.state.firstName}
           />
           </div>
 
         </label>
+
+        <label style={{color:"black"}}>
+          <div className="name-field">
+            Last Name:
+          <input
+            type="text"
+            placeholder="Your name.."
+            onChange={e => this.fieldChangeHandler("lastName", e.target.value)}
+            value={this.state.lastName}
+          />
+          </div>
+
+        </label>
+
         <label style={{color:"black"}}>
         <div className="name-field">
           Username:
           <input
-            className="box"
             type="text"
             placeholder="Your username.."
-            onChange={e => this.fieldChangeHandler("Username", e.target.value)}
-            value={this.state.Username}
+            onChange={e => this.fieldChangeHandler("username", e.target.value)}
+            value={this.state.username}
           />
           </div>
         </label>
@@ -208,8 +221,8 @@ class Profile_mobile extends React.Component {
             className="box"
             type="text"
             placeholder="Your website.."
-            onChange={e => this.fieldChangeHandler("Website", e.target.value)}
-            value={this.state.Website}
+            onChange={e => this.fieldChangeHandler("website", e.target.value)}
+            value={this.state.website}
           />
         </div>
         </label>
@@ -220,8 +233,8 @@ class Profile_mobile extends React.Component {
             className="box"
             type="text"
             placeholder="Your bio.."
-            onChange={e => this.fieldChangeHandler("Bio", e.target.value)}
-            value={this.state.Bio}
+            onChange={e => this.fieldChangeHandler("bio", e.target.value)}
+            value={this.state.bio}
           />
           </div>
         </label>
@@ -237,17 +250,17 @@ class Profile_mobile extends React.Component {
           />
           </div>
         </label>
-        <label style={{color:"black"}}>
-        <div className="name-field">
-          Private Profile:
-          <input
+        <br/>
+        <div className="tooltip">
+          Private Profile
+          <span className="tooltip-text">Private profile will only share your posts with people who follow you</span>
+        </div>
+        <input
+            className="left-text left-checkbox"
             type="checkbox"
             onChange={e => this.fieldChangeHandler("private", e.target.checked)}
             checked={this.state.private}
           />
-          </div>
-        </label>
-        <small style={{color: "white"}}>Private profile will only share your posts with people who follow you</small>          
         <p>Private Information</p>
         <label style={{color:"black"}}>
         <div className="name-field">
@@ -256,8 +269,8 @@ class Profile_mobile extends React.Component {
             className="box"
             type="text"
             placeholder="Your email.."
-            onChange={e => this.fieldChangeHandler("Email", e.target.value)}
-            value={this.state.Email}
+            onChange={e => this.fieldChangeHandler("email", e.target.value)}
+            value={this.state.email}
           />
           </div>
         </label>
@@ -268,13 +281,41 @@ class Profile_mobile extends React.Component {
             className="box"
             type="text"
             placeholder="Your phone.."
-            onChange={e => this.fieldChangeHandler("Phone", e.target.value)}
-            value={this.state.Phone}
+            onChange={e => this.fieldChangeHandler("phone", e.target.value)}
+            value={this.state.phone}
           />
           </div>
         </label>
         <input type="submit" className="submit-button" value="Save" />
-        <input type="submit" className="submit-button"value="DELETE Account"/>
+        <button
+          className="submit-button"
+          onClick={() => {
+            fetch(process.env.REACT_APP_API_PATH + `/auth/request-reset`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+              },
+              body: JSON.stringify({
+                email: sessionStorage.getItem("email"),
+              }),
+            })
+              .then((response) => {
+                if (response.status === 200) {
+                  navigate("/reset_password");
+                } else {
+                  alert("Error:", response.status);
+                }
+              })
+              .catch((error) => {
+                alert("An error occurred while sending the token to your email. Please try again later.");
+              });
+          }}
+        >
+          Reset Password
+        </button>
+
+        <input type="submit" className="submit-button red"value="Delete Account"/>
         </div>
         <br></br>
       </form>

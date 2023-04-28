@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import NavbarOwn from "../../Component/NavbarOwn.jsx";
+import { FaUserCircle } from "react-icons/fa";
 
 const Home = () => {
   const [posts, getPosts] = useState([]);
@@ -102,8 +103,8 @@ const Home = () => {
   return (
     <>
       <NavbarOwn />
-      <div id="homeFeedMain">
-      <div>
+      <div id="homeFeedMain" className="container">
+        <div class="container">
           <input className="Search input-box-white"
             type="text"
             placeholder="Search"
@@ -111,7 +112,6 @@ const Home = () => {
               setSearchInput(e.target.value);
             }}
           />
-        </div>
         <button className="SearchByUser submit-button"
             onClick={() => {
               SearchByUser(searchinput, posts)
@@ -124,8 +124,10 @@ const Home = () => {
             }}
           >search by content
           </button>
+        </div>
         <div id="homeFeed">
           {posts.map((post) => {
+            console.log(post.author);
             if (!blocklist.includes(post.id)){
             if (post.attributes.mediaType === "image") {
               return (
@@ -134,12 +136,20 @@ const Home = () => {
                   <table style={{ margin: "0", borderCollapse: "collapse" }}>
                     <tr>
                       <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
+                      {post.author.attributes.profilePicture ? (
                         <img
                           src={post.author.attributes.profilePicture}
                           className="homeFeedProfilePicture"
                           alt="profile"
                           style={{ margin: "20px", cursor: "pointer" }}
                         />
+                      ) : (
+                        <FaUserCircle
+                          className="homeFeedProfilePicture"
+                          size={40}
+                          style={{ margin: "20px", cursor: "pointer" }}
+                        />
+                      )}
                       </td>
                       <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
                         <h6 style={{ margin: 0, cursor: "pointer" }}>{post.author.attributes.username}</h6>
@@ -147,22 +157,30 @@ const Home = () => {
                     </tr>
                   </table>
                   <img alt="post" src={post.attributes.mediaUrl} className="homePostImage" />
-                  <h6>Caption: {post.attributes.caption}</h6>
+                  <p>&nbsp;&nbsp;{post.attributes.caption}</p>
                 </div>
               );
             } else if (post.attributes && post.attributes.mediaUrl && post.attributes.mediaUrl === "video/mp4") {
               return (
-                <div key={post.attributes.caption} className="homePost">
+                <div key={post.attributes.caption} className="homePost container">
                   <button onClick={() => Block(post.id)} className="blockButton">Block</button>
                   <table style={{ margin: "0", borderCollapse: "collapse" }}>
                     <tr>
                       <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
+                      {post.author.attributes.profilePicture ? (
                         <img
                           src={post.author.attributes.profilePicture}
                           className="homeFeedProfilePicture"
                           alt="profile"
                           style={{ margin: "20px", cursor: "pointer" }}
                         />
+                      ) : (
+                        <FaUserCircle
+                          className="homeFeedProfilePicture"
+                          size={40}
+                          style={{ margin: "20px", cursor: "pointer" }}
+                        />
+                      )}
                       </td>
                       <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
                         <h6 style={{ cursor: "pointer" }}>{post.author.attributes.username}</h6>
@@ -172,7 +190,7 @@ const Home = () => {
                   <video controls className="HomePostVideo" width="100%" height="0">
                     <source src={post.attributes.mediaUrl} type="video/mp4" />
                   </video>
-                  <h6>Caption: {post.attributes.caption}</h6>
+                  <p>&nbsp;&nbsp;{post.attributes.caption}</p>
                 </div>
               );
             }
