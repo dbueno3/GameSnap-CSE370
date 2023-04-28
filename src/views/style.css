@@ -17,6 +17,7 @@
 
 .large-emoji-icon {
   font-size: 80px;
+  margin-bottom: -12px;
 }
 .input-box-white {
   display: block;
@@ -180,6 +181,9 @@
   flex-wrap: wrap;
     justify-content: center;
 }
+#homeFeedMain {
+  padding-bottom: 200px;
+}
 
 .homePost{
     height: fit-content;
@@ -190,6 +194,7 @@
     margin: 5px;
     text-align: left;
     padding: 10px;
+    z-index: 1;
 }
 .homePost::marker{
   content: " "

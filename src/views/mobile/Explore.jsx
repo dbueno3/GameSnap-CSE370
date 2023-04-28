@@ -56,7 +56,11 @@ const Explore = () => {
     <>
       <NavbarOwn />
       <div id="homeFeedMain">
+        <h1 className="logo center-text large-emoji-icon">🌎</h1>
+        <h1 className="center-text">Explore</h1>
+        <h5 className="center-text">Find posts which match your interests</h5>
         <div id="homeFeed">
+          
           {posts.map((post) => {
             if (post.attributes.mediaType === "image") {
               return (

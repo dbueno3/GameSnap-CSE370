@@ -17,6 +17,7 @@ function withNavigate(WrappedComponent){
 
 class Profile_mobile extends React.Component {
   
+  
   // The constructor will hold the default values for the state.  This is also where any props that are passed
   // in when the component is instantiated will be read and managed.  
   constructor(props) {
@@ -73,7 +74,7 @@ class Profile_mobile extends React.Component {
             this.setState({
               // IMPORTANT!  You need to guard against any of these values being null.  If they are, it will
               // try and make the form component uncontrolled, which plays havoc with react
-                  firstNname: result.attributes.firstName || "",
+                  firstName: result.attributes.firstName || "",
                   lastName: result.attributes.lastName || "",
                   username: result.attributes.username || "",
                   website: result.attributes.website || "",
@@ -287,7 +288,7 @@ class Profile_mobile extends React.Component {
           </div>
         </label>
         <input type="submit" className="submit-button" value="Save" />
-        <button
+        {/* <button
           className="submit-button"
           onClick={() => {
             fetch(process.env.REACT_APP_API_PATH + `/auth/request-reset`, {
@@ -313,7 +314,7 @@ class Profile_mobile extends React.Component {
           }}
         >
           Reset Password
-        </button>
+        </button> */}
 
         <input type="submit" className="submit-button red"value="Delete Account"/>
         </div>
