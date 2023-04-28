@@ -55,6 +55,14 @@ const NavbarOwn = () => {
             />
             <span>Home</span>
           </Link>
+          <Link to="/explore" className="navbar-item">
+            <img
+              className="bottombar__icon"
+              src={searchIcon || 'https://via.placeholder.com/20'}
+              alt="explore"
+            />
+            <span>Explore</span>
+          </Link>
 
           <Link to="/friends" className="navbar-item">
             <FaUserFriends
@@ -80,29 +88,6 @@ const NavbarOwn = () => {
           />
           <span>Chat</span>
       </Link>
-          {/* <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "10px" }}>
-            <CiBitcoin
-              className="navbarIcon"
-              onClick={() => {
-                navigate("/about-team");
-              }}
-            />
-          </td>
-          <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "10px" }}>
-            <GoSignOut
-              className="navbarIcon"
-              onClick={() => {
-                sessionStorage.removeItem("token");
-                sessionStorage.removeItem("user");
-                sessionStorage.removeItem("email");
-                navigate("/");
-              }}
-            />
-          </td> */}
-          
-        {/* </tr>
-      </table> */}
-
 <Link to="/edit_profile_mobile" className="navbar-item">
             <img
               src={proPic}
