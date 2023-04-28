@@ -66,7 +66,7 @@ const Login = () => {
                   sessionStorage.setItem("user", result.userID);
                   sessionStorage.setItem("email", email);
 
-                  navigate("/profile");
+                  navigate("/home");
                 } else {
                   // if the login failed, remove any infomation from the session state
                   sessionStorage.removeItem("token");
