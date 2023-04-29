@@ -5,9 +5,9 @@ import NavbarOwn from "../../Component/NavbarOwn.jsx";
 
 const TopGames = () => {
   return (
-    <>
-      <NavbarOwn />
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <NavbarOwn />
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <h1 style={{ marginBottom: '20px' }}>The Top Ranked Games</h1>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: '10px' }}>
@@ -21,7 +21,12 @@ const TopGames = () => {
               backgroundPosition: 'center'
             }}>
             </div>
-            <p style={{ textAlign: 'center', marginTop: '10px' }}>The #2 Game</p>
+            <div style={{ 
+              textAlign: 'center', 
+              marginTop: '10px', 
+              alignItems: 'center' }}>
+              <p style={{ margin: 0 }}>The #2 Game</p>
+            </div>
           </div>
           <div style={{ 
             display: 'flex',
@@ -39,9 +44,14 @@ const TopGames = () => {
               backgroundPosition: 'center'
             }}>
             </div>
-            <p style={{ textAlign: 'center', marginTop: '10px' }}>The #1 Game</p>
+            <div style={{ 
+              textAlign: 'center', 
+              marginTop: '10px', 
+              alignItems: 'center' }}>
+              <p style={{ margin: 0 }}>The #1 Game</p>
+            </div>
           </div>
-          <div style={{ 
+          <div style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -58,11 +68,16 @@ const TopGames = () => {
               backgroundPosition: 'center'
             }}>
             </div>
-            <p style={{ textAlign: 'center', marginTop: '-10px' }}>The #3 Game</p>
+            <div style={{ 
+              textAlign: 'center', 
+              marginTop: '10px', 
+              alignItems: 'center' }}>
+              <p style={{ margin: 0 }}>The #3 Game</p>
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
