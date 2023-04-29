@@ -3,6 +3,10 @@ import avatar from "../../assets/group.png"
 import userPic from '../../assets/user.png';
 import { FaUserCircle } from "react-icons/fa";
 
+import rainbowSeigeImage from "../../assets/rainbowseige.jpeg";
+import fortniteImage from "../../assets/fortnite.jpg";
+import minecraftImage from "../../assets/minecraft.png";
+import modernWarfareImage from "../../assets/modernwarfare.jpg";
 
 import {BrowserRouter as Router, Route, Routes, Link,useNavigate} from 'react-router-dom';
 // The Profile component shows data from the user table.  This is set up fairly generically to allow for you to customize
@@ -33,6 +37,7 @@ class Profile_mobile extends React.Component {
       profilePicture:"",
       topics: "",
       private: false,
+      games: []
       // NOTE : if you wanted to add another user attribute to the profile, you would add a corresponding state element here
     };
     this.fieldChangeHandler.bind(this);
@@ -49,6 +54,20 @@ class Profile_mobile extends React.Component {
     });
   }
   
+  handleCheckboxChange = (event) => {
+    const { value, checked } = event.target;
+    const { games } = this.state;
+
+    if (checked) {
+      this.setState({
+        games: [...games, value],
+      });
+    } else {
+      this.setState({
+        games: games.filter((game) => game !== value),
+      });
+    }
+  };
 
   
   // This is the function that will get called the first time that the component gets rendered.  This is where we load the current
@@ -84,6 +103,7 @@ class Profile_mobile extends React.Component {
                   profilePicture: result.attributes.profilePicture || "",
                   Topics: result.attributes.Topics || "",
                   private: result.attributes.private || false,
+                  games: result.attributes.games || []
             });
           }
           }
@@ -103,7 +123,6 @@ class Profile_mobile extends React.Component {
     //keep the form from actually submitting, since we are handling the action ourselves via
     //the fetch calls to the API
     event.preventDefault();
-    
     //make the api call to the user controller, and update the user fields (username, firstname, lastname)
     fetch(process.env.REACT_APP_API_PATH+"/users/"+sessionStorage.getItem("user"), {
       method: "PATCH",
@@ -124,6 +143,7 @@ class Profile_mobile extends React.Component {
           profilePicture:this.state.profilePicture,
           Topics:this.state.Topics,
           private:this.state.private,
+          games: this.state.games,
         }
       })
     })
@@ -149,6 +169,13 @@ class Profile_mobile extends React.Component {
   // state changes, automatically.  This is why you see the username and firstname change on the screen
   // as you type them.
   render() {
+    const checkboxOptions = [
+      { id: 1, text: "Rainbow Siege", image: rainbowSeigeImage },
+      { id: 2, text: "Fortnite", image: fortniteImage },
+      { id: 3, text: "Minecraft", image: minecraftImage },
+      { id: 4, text: "Modern Warfare", image: modernWarfareImage },
+      // Add more checkbox options as needed
+    ];
     return (
       <div className="container">
       <form onSubmit={this.submitHandler}>
@@ -250,6 +277,26 @@ class Profile_mobile extends React.Component {
             value={this.state.Topics}
           />
           </div>
+        
+          <div className="checkbox-container">
+            Games
+            {checkboxOptions.map((option) => (
+              <label key={option.id} className="checkbox-label">
+                <div className="checkbox-content">
+                  <input
+                    type="checkbox"
+                    className="checkbox-profile"
+                    value={option.text}
+                    checked={this.state.games.includes(option.text)}
+                    onChange={this.handleCheckboxChange}
+                  />
+                  <img src={option.image} width={100} height={100} alt={option.text} className="checkbox-image" />
+                  <span className="checkbox-text">{option.text}</span>
+                </div>
+              </label>
+            ))}
+        </div>
+
         </label>
         <br/>
         <div className="tooltip">
