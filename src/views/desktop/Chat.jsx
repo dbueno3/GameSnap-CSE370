@@ -99,6 +99,7 @@ const Chat = () => {
     <>
       <NavbarOwn />
       <div class="chatRoom">
+
         <div>
           {messages.length > 0 &&
             messages.map((msg) => (
@@ -111,7 +112,7 @@ const Chat = () => {
         </div>
         <div className="chatInputContainer">
           <input
-            style={{ width: "90%", bottom: 0, left: 0 }}
+            style={{ position: "fixed", width: "75%", bottom: 80, left: 20 }}
             className="chatInput"
             type="text"
             placeholder="Say something nice"
@@ -120,7 +121,7 @@ const Chat = () => {
               setChatInput(e.target.value);
             }}
           />
-          <button style={{ width: "8%", bottom: 0, right: 0 }} className="chatInput" onClick={handleMessageSend}>
+          <button style={{position:"fixed",  width: "13%", bottom: 78, right: 1 }} className="chatInput" onClick={handleMessageSend}>
             Send
           </button>
         </div>

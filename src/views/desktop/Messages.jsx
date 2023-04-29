@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import react from "react";
 import NavbarOwn from "../../Component/NavbarOwn";
 import { useNavigate } from "react-router-dom";
 
@@ -53,8 +52,10 @@ const Messages = () => {
     <>
       <NavbarOwn />
       <div className="MessagesPage">
-        <h4>Message Threads</h4>
-        <table style={{ marginTop: "50px", borderCollapse: "collapse" }}>
+        <u>
+        <h3>Message Threads</h3>
+        </u>
+        <table style={{ marginTop: "50px", borderCollapse: "collapse" , textAlign:"center", width:"100vw", height:"100vh"}}>
           <tr>
             {conns.map((conn) => {
               console.log(conns);
