@@ -47,6 +47,8 @@ import EditPosts from "./views/desktop/EditPost.jsx";
 import SearchContent from "./views/desktop/SearchContent.jsx";
 import Messages from "./views/desktop/Messages.jsx";
 import Chat from "./views/desktop/Chat.jsx";
+import TopGames from "./views/desktop/topGames.jsx";
+
 
 import Friends from "./views/desktop/Friends.jsx";
 import SearchedFriend from "./views/desktop/SearchedFriend.jsx";
@@ -164,6 +166,8 @@ class App extends React.Component {
                 <Route path="/make_post_mobile" element={<Make_Post login={this.login} />} />
                 <Route path="/mobilehome" element={<MobileHome />} />
                 <Route path="/edit_posts" element={<EditPosts login={this.login} />} />
+                <Route path="/top_games" element={<TopGames />} />
+
 
                 {/* {Mobile Signin, Signup Example} */}
                 <Route path="/mobilesignup" element={<SignUpMobile />} />
