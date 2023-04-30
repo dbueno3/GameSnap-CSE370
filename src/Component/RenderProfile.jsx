@@ -3,6 +3,9 @@ import BProfile from "../assets/blank_profile.png";
 
 import { useEffect, useState } from "react";
 
+import twitch_logo from "../assets/twitch_logo.png";
+import youtube_logo from "../assets/youtube_logo.png";
+
 const RenderProfile = (props) => {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
@@ -32,6 +35,8 @@ const RenderProfile = (props) => {
           setEmail(result.email);
           setPrivate(info.privateAccount);
           setPropic(info.profilePicture);
+          setYoutube(info.youtube || "");
+          setTwitch(info.twitch || "");
         }
       });
   }, []);
@@ -54,6 +59,13 @@ const RenderProfile = (props) => {
                 : "Your Posts are visible to people who you are not friends with"}
             </span>
           </div>
+          <br />
+          <a href={youtube}>
+            <img style={youtube != "" ? { height: "30px" } : { display: "none" }} src={youtube_logo} />
+          </a>
+          <a href={twitch}>
+            <img style={twitch != "" ? { height: "30px" } : { display: "none" }} src={twitch_logo} />
+          </a>
         </div>
       </div>
       {props.children}
