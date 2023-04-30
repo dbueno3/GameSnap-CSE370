@@ -3,6 +3,9 @@ import BProfile from "../assets/blank_profile.png";
 
 import { useEffect, useState } from "react";
 
+import twitch_logo from "../assets/twitch_logo.png";
+import youtube_logo from "../assets/youtube_logo.png";
+
 const RenderProfile = (props) => {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
@@ -11,6 +14,8 @@ const RenderProfile = (props) => {
   const [email, setEmail] = useState("");
   const [privateAccount, setPrivate] = useState("");
   const [proPic, setPropic] = useState("");
+  const [youtube, setYoutube] = useState("");
+  const [twitch, setTwitch] = useState("");
   useEffect(() => {
     fetch(process.env.REACT_APP_API_PATH + `/users/${props.userId}`, {
       method: "get",
@@ -30,6 +35,8 @@ const RenderProfile = (props) => {
           setEmail(result.email);
           setPrivate(info.privateAccount);
           setPropic(info.profilePicture);
+          setYoutube(info.youtube || "");
+          setTwitch(info.twitch || "");
         }
       });
   }, []);
@@ -38,21 +45,31 @@ const RenderProfile = (props) => {
     <div id="ProfilePageMain">
       <h4 className="center-text">{username}</h4>
       <div className="header-image-text">
-      <img src={proPic === "" ? BProfile : proPic} alt="blank_profile" className="center-text blankProfileImage" />
-      <div class="profile-info">
-        <p className="right-text">{fname + " " + lname}</p>
-        <br/>
-        <p className="bio">{bio}</p>
-        <br/>
-        <div class="tooltip">
-          {privateAccount === "true" ? "🔒 Private Profile" : "🔓 Public Profile"}
-          <span class="tooltip-text">{privateAccount === "true" ? "Your Posts are only shared with your friends" : "Your Posts are visible to people who you are not friends with"}</span>
+        <img src={proPic === "" ? BProfile : proPic} alt="blank_profile" className="center-text blankProfileImage" />
+        <div class="profile-info">
+          <p className="right-text">{fname + " " + lname}</p>
+          <br />
+          <p className="bio">{bio}</p>
+          <br />
+          <div class="tooltip">
+            {privateAccount === "true" ? "🔒 Private Profile" : "🔓 Public Profile"}
+            <span class="tooltip-text">
+              {privateAccount === "true"
+                ? "Your Posts are only shared with your friends"
+                : "Your Posts are visible to people who you are not friends with"}
+            </span>
+          </div>
+          <br />
+          <a href={youtube}>
+            <img style={youtube != "" ? { height: "30px" } : { display: "none" }} src={youtube_logo} />
+          </a>
+          <a href={twitch}>
+            <img style={twitch != "" ? { height: "30px" } : { display: "none" }} src={twitch_logo} />
+          </a>
         </div>
-      </div>
       </div>
       {props.children}
     </div>
-
   );
 };
 
