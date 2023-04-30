@@ -88,7 +88,7 @@ const NavbarOwn = () => {
           />
           <span>Chat</span>
       </Link>
-<Link to="/edit_profile_mobile" className="navbar-item">
+<Link to="/profile" className="navbar-item">
             <img
               src={proPic}
               className="bottombar__icon"

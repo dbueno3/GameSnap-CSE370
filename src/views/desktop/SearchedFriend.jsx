@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import RenderProfile from "../../Component/RenderProfile.jsx";
 
 import NavbarOwn from "../../Component/NavbarOwn.jsx";
+import UserGame from "../../Component/UserGame.jsx";
+import UserPosts from "../../Component/UserPosts.jsx";
 
 const SearchedFriend = () => {
   const params = useParams();
   const userId = params.userId;
   const [requestStatus, setRequestStatus] = useState("");
   const [block, setBlock] = useState(false);
+  
   useEffect(() => {
     fetch(
       process.env.REACT_APP_API_PATH + `/connections?fromUserID=${sessionStorage.getItem("user")}&toUserID=${userId}`,
@@ -56,7 +59,7 @@ const SearchedFriend = () => {
     // eslint-disable-next-line
   }, []);
   return (
-    <>
+    <div className="container">
       <br />
       <br />
       <NavbarOwn />
@@ -108,8 +111,17 @@ const SearchedFriend = () => {
         <h6 style={block ? { display: "inline-block", color: "teal" } : { display: "none" }}>
           This profile can't be accessed
         </h6>
+        <div className="grow-vertical">
+          <h4>Top Games</h4>
+          <UserGame user={userId} />
+          <br/>
+          <div>
+            <h4 className="nobottom-margin left-text">Posts</h4>
+            <UserPosts user={userId} />
+          </div>
+        </div>
       </RenderProfile>
-    </>
+    </div>
   );
 };
 

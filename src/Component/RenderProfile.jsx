@@ -36,15 +36,23 @@ const RenderProfile = (props) => {
 
   return (
     <div id="ProfilePageMain">
-      <img src={proPic === "" ? BProfile : proPic} alt="blank_profile" className="blankProfileImage" />
-      <h4>First Name: {fname}</h4>
-      <h4>Last Name: {lname}</h4>
-      <h4>Username: {username}</h4>
-      <h4>Email: {email}</h4>
-      <h4>Profile Privacy: {privateAccount == "true" ? "Private" : "Public"} </h4>
-      <h4>Bio : {bio}</h4>
+      <h4 className="center-text">{username}</h4>
+      <div className="header-image-text">
+      <img src={proPic === "" ? BProfile : proPic} alt="blank_profile" className="center-text blankProfileImage" />
+      <div class="profile-info">
+        <p className="right-text">{fname + " " + lname}</p>
+        <br/>
+        <p className="bio">{bio}</p>
+        <br/>
+        <div class="tooltip">
+          {privateAccount === "true" ? "🔒 Private Profile" : "🔓 Public Profile"}
+          <span class="tooltip-text">{privateAccount === "true" ? "Your Posts are only shared with your friends" : "Your Posts are visible to people who you are not friends with"}</span>
+        </div>
+      </div>
+      </div>
       {props.children}
     </div>
+
   );
 };
 
