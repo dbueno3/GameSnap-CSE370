@@ -1,0 +1,100 @@
+.chatRoom {
+    margin: 0 auto;
+    max-width: 600px;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 70px;
+}
+
+.messageContainer {
+    display: flex;
+    margin-bottom: 10px;
+    align-self: flex-start;
+}
+
+.messageContainer.sent {
+    align-self: flex-end;
+}
+
+.userProfile {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.userProfile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.messageContent {
+    background-color: #35839bbd;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    word-wrap: break-word;
+}
+
+.chatInput {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+}
+
+.chatInputContainer {
+    position: fixed;
+    bottom: 80px;
+    left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.saySomethingContainer {
+    background-color: lightblue;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.sendButtonContainer {
+    background-color: blue;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.chatInput:focus {
+    outline: none;
+}
+
+.chatInput::placeholder {
+    color: #a6a6a6;
+}
+
+.chatInputBtn {
+    width: 80px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background-color: #008CBA;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.chatInputBtn:hover {
+    background-color: #007a8c;
+}

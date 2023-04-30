@@ -2,8 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import NavbarOwn from "../../Component/NavbarOwn";
-
-import "../style.css";
+import "../styles/chat.css"
 
 const Chat = () => {
   const params = useParams();
@@ -13,6 +12,9 @@ const Chat = () => {
   const [user, setUser] = useState("");
   const [connInfo, setConnInfo] = useState({});
   const [messages, setMessages] = useState([]);
+  const [userProfile, setUserProfile] = useState(null);
+
+
 
   //Get the connection
   useEffect(() => {
@@ -27,6 +29,19 @@ const Chat = () => {
       .then((res) => res.json())
       .then((result) => {
         setUser(result.attributes.username);
+      });
+    // get the current user profile 
+    fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        setUserProfile(result.attributes.profilePicture)
+        console.log(result)
       });
 
     let pollInterval = null;
@@ -99,35 +114,48 @@ const Chat = () => {
     <>
       <NavbarOwn />
       <div class="chatRoom">
-
+        {/* This is where i will display User Profile when they send a message */}
         <div>
           {messages.length > 0 &&
             messages.map((msg) => (
               <div key={msg.id}>
-                <p>
-                  {msg.from}: {msg.message}
-                </p>
+                <div className={`messageContainer ${msg.from === user ? "sent" : ""}`}>
+                  <div className="messageContent">
+                    <p>
+                      {msg.from}: {msg.message}
+                    </p>
+                  </div>
+                  {/* Display user profile if message was sent by current user */}
+                  {msg.from === user && userProfile && (
+                    <div className="userProfile">
+                      <img src={userProfile} alt="User Profile" />
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
         </div>
+
         <div className="chatInputContainer">
-          <input
-            style={{ position: "fixed", width: "75%", bottom: 80, left: 20 }}
-            className="chatInput"
-            type="text"
-            placeholder="Say something nice"
-            value={chatInput}
-            onChange={(e) => {
-              setChatInput(e.target.value);
-            }}
-          />
-          <button style={{position:"fixed",  width: "13%", bottom: 78, right: 1 }} className="chatInput" onClick={handleMessageSend}>
+            <input
+            className="saySomethingContainer"
+              type="text"
+              placeholder="Say something nice"
+              value={chatInput}
+              onChange={(e) => {
+                setChatInput(e.target.value);
+              }}
+            />
+          </div>
+          <div className="sendButtonContainer" onClick={handleMessageSend}>
             Send
-          </button>
+          </div>
         </div>
-      </div>
     </>
   );
+
+
+
 };
 
 export default Chat;
