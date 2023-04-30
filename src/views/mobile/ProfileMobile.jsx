@@ -135,7 +135,7 @@ class Profile_mobile extends React.Component {
           firstName: this.state.firstName,
           lastName: this.state.lastName,
           username: this.state.username,
-          Website: this.state.Website,
+          website: this.state.website,
           bio: this.state.bio,
           email: this.state.email,
           phone: this.state.phone,
@@ -363,10 +363,40 @@ class Profile_mobile extends React.Component {
           Reset Password
         </button> */}
 
-        <input type="submit" className="submit-button red"value="Delete Account"/>
         </div>
-        <br></br>
       </form>
+      <button className="submit-button red" value="Delete Account"
+        onClick={() => {
+        const confirmDelete = window.confirm("Are you sure you want to delete your account?");
+        console.log(confirmDelete)
+        if (confirmDelete) {
+          fetch(
+            process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}?relatedObjectsAction=delete`,
+            {
+              method: "DELETE",
+              headers: {
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+              },
+            }
+          )
+            .then((response) => {
+              console.log(response)
+              if (response.status === 204) {
+                sessionStorage.removeItem("token");
+                sessionStorage.removeItem("user");
+                sessionStorage.removeItem("email");
+                this.props.navigate("/");
+              } else {
+                alert("Error:", response.status);
+              }
+            })
+            .catch((error) => {
+              alert("An error occurred while deleting your account. Please try again later.");
+            });
+        }else{
+          this.props.navigate("/edit_profile_mobile");
+        }
+      }}>Delete Account</button>
       </div>
     );
   }

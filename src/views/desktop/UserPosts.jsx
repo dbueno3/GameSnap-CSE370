@@ -82,6 +82,14 @@ const UserPosts = () => {
           Edit Your Posts
         </button>
         <button
+          className="view_top"
+          onClick={() => {
+            navigate("/top_games");
+          }}
+        >
+          View the top rated games!
+        </button>
+        <button
           className="delete_account"
           onClick={() => {
             const confirmDelete = window.confirm("Are you sure you want to delete your account?");
