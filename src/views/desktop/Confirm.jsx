@@ -2,14 +2,18 @@ import React from 'react'
 import { useNavigate } from "react-router-dom";
 
 const modal_styles = {
-    position:'fixed',
-    top:'50%',
-    left:'50%',
-    transform:'translate(-50%,-50%)',
-    backgroundColor:'#5F6A82',
-    padding:'50px',
-    borderRadius:'15px',
-    zIndex: 1000
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  width: "350px",
+  transform: "translate(-50%,-50%)",
+  backgroundColor: "#5F6A82",
+  paddingTop: "50px",
+  paddingBottom: "50px",
+  paddingRight: "20px",
+  paddingLeft: "20px",
+  borderRadius: "25px",
+  zIndex: 1000,
 
 }
 
@@ -36,7 +40,7 @@ const Confirm = ({open, children, onClose, postid}) =>{
               throw new Error("Failed to delete the post");
             }
             console.log("Post deleted successfully");
-            navigate('/user_posts')
+            window.location.reload();
           })
           .catch(error => {
             console.error(error);
@@ -48,9 +52,11 @@ const Confirm = ({open, children, onClose, postid}) =>{
     return (
         <div style={overlay_styles}>
             <div style={modal_styles}>
-                {children}
-                <button onClick={()=>{onClose();delete_post(postid);}}>Delete</button>
-                <button onClick={onClose}>Cancel</button>
+                <div className="ConfirmMessage">{children}</div>
+                <div style={{display:'flex',justifyContent:"center"}}>
+                <button className="Block" onClick={()=>{onClose();delete_post(postid);}}>Delete</button>
+                <button className="cancel" onClick={onClose}>Cancel</button>
+                </div>
             </div>
         </div>
     )

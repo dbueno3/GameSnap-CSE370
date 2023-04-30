@@ -29,7 +29,7 @@ const FriendActive = (props) => {
             {props.username}
           </p>
 
-          <button className="Unfriend" onClick={() => setunfriendIsOpen(true)}>
+          <button className="cancel" onClick={() => setunfriendIsOpen(true)}>
             Unfriend
           </button>
 

@@ -253,13 +253,13 @@
 }
 
 .delete_post_desktop{
-    width:2%;
-    height:4%;
-    position:absolute;
-    bottom:2px;
-    right:0;
-    transform: translate(-50%,0%)
-    
+    cursor:pointer;
+    float:right;
+}
+.delete_post_desktop:hover{
+  color:red;
+  background-color: #f5edec;
+  border-radius: 50%;
 }
 @media (min-width:451px){
     .friendname{
@@ -291,6 +291,16 @@
 .friendMenu:hover{
     cursor: pointer;
     text-decoration: underline;
+}
+
+.delete_post_desktop{
+  cursor:pointer;
+  float:right;
+}
+.delete_post_desktop:hover{
+color:red;
+background-color: #f5edec;
+border-radius: 50%;
 }
 
 .MessagesPage{
@@ -363,7 +373,7 @@
   }
 
   .Unfriend {
-    background-color: gray;
+    background-color: red;
     border: none;
     color: white;
     padding: 8px 14px;
@@ -382,6 +392,29 @@
   }
   
   .Unfriend:hover {
+    background-color: #8B0000;
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+  }
+  .cancel {
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    margin-right:15px;
+    margin-left: 15px;
+    vertical-align: middle;
+  }
+  
+  .cancel:hover {
     background-color: #4f574f;
     box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
   }
@@ -586,9 +619,32 @@
     color: black;
     cursor: pointer;
   }
+  .cancel {
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 10px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    margin-right:15px;
+    margin-left: 15px;
+    vertical-align: middle;
+  }
+  
+  .cancel:hover {
+    background-color: #4f574f;
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+  }
 
   .Unfriend {
-    background-color: gray;
+    background-color: red;
     border: none;
     color: white;
     padding: 10px 14px;

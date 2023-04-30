@@ -77,19 +77,13 @@ const EditPosts = () => {
         if (post.attributes.mediaType === "image") {
           return (
             <EditImagePost
-              key={post.attributes.caption}
-              mediaUrl={post.attributes.mediaUrl}
-              mediaCaption={post.attributes.caption}
-              postid={post.id}
+              post={post}
             />
           );
         } else {
           return (
             <EditVideoPost
-              key={post.attributes.caption}
-              mediaUrl={post.attributes.mediaUrl}
-              mediaCaption={post.attributes.caption}
-              postid={post.id}
+              post={post}
             />
           );
         }
