@@ -12,7 +12,7 @@ const RenderProfile = (props) => {
   const [bio, setBio] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [privateAccount, setPrivate] = useState("");
+  const [privateAccount, setPrivate] = useState(false);
   const [proPic, setPropic] = useState("");
   const [youtube, setYoutube] = useState("");
   const [twitch, setTwitch] = useState("");
@@ -33,13 +33,13 @@ const RenderProfile = (props) => {
           setBio(info.bio);
           setUsername(info.username);
           setEmail(result.email);
-          setPrivate(info.privateAccount);
+          setPrivate(info.private);
           setPropic(info.profilePicture);
           setYoutube(info.youtube || "");
           setTwitch(info.twitch || "");
         }
       });
-  }, []);
+  },);
 
   return (
     <div id="ProfilePageMain">
@@ -52,9 +52,9 @@ const RenderProfile = (props) => {
           <p className="bio">{bio}</p>
           <br />
           <div class="tooltip">
-            {privateAccount === "true" ? "🔒 Private Profile" : "🔓 Public Profile"}
+            {privateAccount === true ? "🔒 Private Profile" : "🔓 Public Profile"}
             <span class="tooltip-text">
-              {privateAccount === "true"
+              {privateAccount === true
                 ? "Your Posts are only shared with your friends"
                 : "Your Posts are visible to people who you are not friends with"}
             </span>
