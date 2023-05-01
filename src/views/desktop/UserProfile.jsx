@@ -24,6 +24,14 @@ const UserProfile = () => {
         >
           Edit Account
         </button>
+        <button
+          className="view_top"
+          onClick={() => {
+            navigate("/top_games");
+          }}
+        >
+          View the top rated games!
+        </button>
         {/* {we dont need reset password here ?} */}
         {/* <button
           onClick={() => {
