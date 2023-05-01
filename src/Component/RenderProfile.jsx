@@ -9,7 +9,7 @@ const RenderProfile = (props) => {
   const [bio, setBio] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [privateAccount, setPrivate] = useState("");
+  const [privateAccount, setPrivate] = useState(false);
   const [proPic, setPropic] = useState("");
   useEffect(() => {
     fetch(process.env.REACT_APP_API_PATH + `/users/${props.userId}`, {
@@ -28,11 +28,11 @@ const RenderProfile = (props) => {
           setBio(info.bio);
           setUsername(info.username);
           setEmail(result.email);
-          setPrivate(info.privateAccount);
+          setPrivate(info.private);
           setPropic(info.profilePicture);
         }
       });
-  }, []);
+  },);
 
   return (
     <div id="ProfilePageMain">
@@ -45,8 +45,8 @@ const RenderProfile = (props) => {
         <p className="bio">{bio}</p>
         <br/>
         <div class="tooltip">
-          {privateAccount === "true" ? "🔒 Private Profile" : "🔓 Public Profile"}
-          <span class="tooltip-text">{privateAccount === "true" ? "Your Posts are only shared with your friends" : "Your Posts are visible to people who you are not friends with"}</span>
+          {privateAccount === true ? "🔒 Private Profile" : "🔓 Public Profile"}
+          <span class="tooltip-text">{privateAccount === true ? "Your Posts are only shared with your friends" : "Your Posts are visible to people who you are not friends with"}</span>
         </div>
       </div>
       </div>
