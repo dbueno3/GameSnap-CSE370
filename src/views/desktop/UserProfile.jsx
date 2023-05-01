@@ -3,23 +3,29 @@ import { useNavigate } from "react-router-dom";
 
 import RenderProfile from "../../Component/RenderProfile.jsx";
 import NavbarOwn from "../../Component/NavbarOwn.jsx";
+import UserGame from "../../Component/UserGame.jsx";
+import UserPosts from "../../Component/UserPosts.jsx";
 
 const UserProfile = () => {
   let navigate = useNavigate();
+  let userId = sessionStorage.getItem("user");
   return (
-    <>
+    <div className="container">
       <NavbarOwn />
       <br />
       <br />
       <RenderProfile userId={sessionStorage.getItem("user")}>
+        <br/>
         <button
+          className="submit-button"
           onClick={() => {
-            navigate("/edit_profile");
+            navigate("/edit_profile_mobile");
           }}
         >
           Edit Account
         </button>
-        <button
+        {/* {we dont need reset password here ?} */}
+        {/* <button
           onClick={() => {
             fetch(process.env.REACT_APP_API_PATH + `/auth/request-reset`, {
               method: "POST",
@@ -44,9 +50,17 @@ const UserProfile = () => {
           }}
         >
           Reset Password
-        </button>
+        </button> */}
+        <div className="grow-vertical">
+          <UserGame user={userId} />
+          <br/>
+          <div>
+            <h4 className="nobottom-margin left-text">Posts</h4>
+            <UserPosts user={userId} />
+          </div>
+        </div>
       </RenderProfile>
-    </>
+    </div>
   );
 };
 

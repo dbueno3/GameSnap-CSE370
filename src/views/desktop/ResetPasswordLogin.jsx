@@ -7,11 +7,11 @@ const ResetPasswordLogin = () => {
   const [email, setEmail] = useState("");
   let navigate = useNavigate();
   return (
-    <>
-    <u>
-      <h6>Reset Password</h6>
-      </u>
+    <div className="container">
+      <h1 className="center-text large-emoji-icon">🤦‍♂️</h1>
+      <h1>Reset Password</h1>
       <input
+      className="input-box-white"
         type="text"
         placeholder="Enter Email"
         onChange={(e) => {
@@ -20,6 +20,7 @@ const ResetPasswordLogin = () => {
       />
       <br></br>
       <button
+      className="submit-button"
         onClick={() => {
           fetch(process.env.REACT_APP_API_PATH + `/auth/request-reset`, {
             method: "POST",
@@ -45,7 +46,7 @@ const ResetPasswordLogin = () => {
       >
         Send token
       </button>
-    </>
+    </div>
   );
 };
 

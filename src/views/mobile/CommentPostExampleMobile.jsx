@@ -22,7 +22,7 @@ const CommentPostExampleMobile = () => {
     setNewComment(comment);
   };
   const location = useLocation();
-  console.log(location.state.id);
+  // console.log(location.state.id);
 
   const handleUpdateComment = () => {
     if (newComment.trim() === '') {

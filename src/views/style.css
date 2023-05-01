@@ -4,9 +4,37 @@
     border-radius: 100%;
 }
 
-/*login signup*/
-#loginMain{
-    text-align: center;
+.center-text {
+  text-align: center;
+}
+
+.left-text {
+  text-align: left
+}
+.left-checkbox {
+  width: auto;
+}
+
+.large-emoji-icon {
+  font-size: 80px;
+  margin-bottom: -12px;
+}
+.input-box-white {
+  display: block;
+  font-size: 16px;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  margin-right: 10px;
+  background-color: var(--color-gunmetal);
+  color: #fff;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.left {
+  float: left;
 }
 
 /* Upload post */
@@ -149,17 +177,44 @@
 
 #homeFeed{
     margin-top: 80px;
+    display: flex;
+  flex-wrap: wrap;
+    justify-content: center;
+}
+#homeFeedMain {
+  padding-bottom: 200px;
 }
 
 .homePost{
-    min-height: 500px;
     height: fit-content;
     width: 400px;
     background-color: #5F6A82;
     border-radius: 20px;
-    display: inline-block;
+    display: list-item;
     margin: 5px;
     text-align: left;
+    padding: 10px;
+    z-index: 1;
+}
+.homePost::marker{
+  content: " "
+}
+
+.userPost{
+  height: fit-content;
+  background-color: #5F6A82;
+  border-radius: 20px;
+  display: list-item;
+  margin: 5px;
+  text-align: left;
+  padding: 10px;
+  z-index: 1;
+}::marker{
+  content: " "
+}
+
+.userPostDiv {
+  margin-bottom: 80px;
 }
 
 .homePostImage{
@@ -238,6 +293,38 @@
     text-decoration: underline;
 }
 
+.MessagesPage{
+  margin: 20px;
+  margin-top: 80px;
+  text-align: left;
+}
+
+.msgThread{
+  transition: 0.2s ease-in-out;
+}
+
+.chatRoom{
+  width: 80%;
+  text-align: center;
+  height: 100vh;
+  margin-left: 10%;
+  margin-right: 10%;
+  position: relative;
+  display: inline;
+}
+
+.chatInput{
+  height: 30px;
+  border-radius: 10px;
+  position: fixed;
+}
+
+.msgThread:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+
 /* Navabar */
 #navbarOwnMain {
     width: 100vw;
@@ -249,7 +336,6 @@
     align-items: center;
     justify-content: flex-end;
   }
-  
   .navbarIcon {
     cursor: pointer;
     margin-right: 10px;
@@ -302,6 +388,23 @@
 
   .Block {
     background-color: red;
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+  }
+
+  .Message{
+    background-color: rgb(6, 97, 97);
     border: none;
     color: white;
     padding: 8px 14px;
@@ -398,6 +501,10 @@
     margin: 0;
     border-Collapse: collapse; 
     float: right;
+  }
+
+  .Search{
+    margin-top: 5em;;
   }
 }
   @media (max-width:450px){
@@ -562,7 +669,6 @@
     cursor: pointer;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     vertical-align: middle;
-    
   }
 
   .search:hover{
@@ -604,3 +710,63 @@
     width:100vw;
   }
   }
+
+  .center-text {
+    text-align: center;
+  }
+  
+  .header-image-text {
+    display: flex;
+    align-items: center;
+  }
+  
+  .center-text {
+    text-align: center;
+  }
+  
+  .blankProfileImage {
+    display: block;
+    margin-right: 10px;
+  }
+  
+  .text-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .bio {
+    text-align: center;
+  }
+.game-list {
+  float:left;
+  padding:0;
+}
+.game-list ::marker {
+  content : "";
+}
+.game-list-item {
+  float:left;
+}
+/* make text to go to the next line if text length is greater than
+image in game list item widht*/
+.game-list-text {
+  display: inline-block;
+  width: 100%;
+  word-break: break-all;
+}
+
+.nobottom-margin {
+  margin-bottom: 0;
+}
+
+.grow-vertical {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.userPostFeed {
+  margin-top: 80px;
+  display: flex;
+  flex-wrap: wrap;
+}

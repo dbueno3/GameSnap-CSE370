@@ -1,70 +1,63 @@
 import { useEffect, useState } from "react";
-
-//Router
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import NavbarOwn from "../../Component/NavbarOwn.jsx";
+const UserPosts = (props) => {
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [posts, setPosts] = useState([]);
 
-const Explore = () => {
-  const [posts, getPosts] = useState([]);
-  const [proPic, setPropic] = useState("");
-  const [topics, setTopics] = useState("");
-  let navigate = useNavigate();
-  useEffect(() => {
-    //Get the user
-    fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
-      method: "get",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + sessionStorage.getItem("token"),
-      },
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result) {
-          let info = result.attributes;
-          console.log("User Results",info);
-          console.log("Topics",info.Topics);
-          setTopics(info.Topics);
-          setPropic(info.profilePicture);
-        }
-      });
-    //Get the users posts
-    fetch(process.env.REACT_APP_API_PATH + `/posts`, {
-      method: "get",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + sessionStorage.getItem("token"),
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res) {
-          console.log("Response",res[0]);
-          let topicsSplit = topics.split(",");
-          let filteredPosts = res[0].filter((post) => {
-            if(post.attributes.caption && topicsSplit.some(topic => post.attributes.caption.toLowerCase().includes(topic.toLowerCase()))){
-              return post;
+    useEffect(() => {
+        fetch(process.env.REACT_APP_API_PATH + `/users/${props.user}`, {
+          method: "get",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + sessionStorage.getItem("token"),
+          },
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            if (result) {
+              console.log("Username", result);
+              console.log(result.attributes);
+              setUsername(result.attributes.username);
+              setEmail(result.email);
             }
-          })
-          console.log("Filtered Posts",filteredPosts);
-          getPosts(filteredPosts);
-        }
+          });
       });
-  }, []);
-  return (
-    <>
-      <NavbarOwn />
+      useEffect(() => {
+        console.log("Check username", username);
+        if (username !== "") {
+          fetch(process.env.REACT_APP_API_PATH + `/posts`, {
+            method: "get",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + sessionStorage.getItem("token"),
+            },
+          })
+            .then((res) => res.json())
+            .then((res) => {
+              if (res) {
+                let filteredPosts = res[0].filter((post) => {
+                  return post.author.attributes.username === username;
+                });
+                console.log("Filtered Posts", filteredPosts);
+                setPosts(filteredPosts);
+              }
+            });
+        }
+      }, [username]);
+
+    return (
+    
       <div id="homeFeedMain">
-        <h1 className="logo center-text large-emoji-icon">🌎</h1>
-        <h1 className="center-text">Explore</h1>
-        <h5 className="center-text">Find posts which match your interests</h5>
-        <div id="homeFeed">
-          
+        <div className="userPostFeed">
+            <br/>
           {posts.map((post) => {
-            if (post.attributes.mediaType === "image") {
+            console.log("usernameperpost",username);
+            if (post.attributes.mediaType === "image" && post.author.attributes.username === username) {
               return (
-                <div key={post.attributes.caption} className="homePost">
+                <div key={post.attributes.caption} className="userPost">
                   <table style={{ margin: "0", borderCollapse: "collapse" }}>
                     <tr>
                       <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
@@ -112,8 +105,7 @@ const Explore = () => {
           })}
         </div>
       </div>
-    </>
-  );
+    );
 };
 
-export default Explore;
+export default UserPosts;

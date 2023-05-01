@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
 @media (max-width:450px){
-    .maincontent{
+    /* .maincontent{
       background-color: white;
       color:black;
     }
@@ -207,6 +207,6 @@
     .blank-line{
       height:1em;
       background-color: white;
-    }
+    } */
     
 }

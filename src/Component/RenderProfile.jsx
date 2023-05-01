@@ -9,7 +9,7 @@ const RenderProfile = (props) => {
   const [bio, setBio] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [privateAccount, setPrivate] = useState("");
+  const [privateAccount, setPrivate] = useState(false);
   const [proPic, setPropic] = useState("");
   useEffect(() => {
     fetch(process.env.REACT_APP_API_PATH + `/users/${props.userId}`, {
@@ -28,23 +28,31 @@ const RenderProfile = (props) => {
           setBio(info.bio);
           setUsername(info.username);
           setEmail(result.email);
-          setPrivate(info.privateAccount);
+          setPrivate(info.private);
           setPropic(info.profilePicture);
         }
       });
-  }, []);
+  },);
 
   return (
     <div id="ProfilePageMain">
-      <img src={proPic === "" ? BProfile : proPic} alt="blank_profile" className="blankProfileImage" />
-      <h4>First Name: {fname}</h4>
-      <h4>Last Name: {lname}</h4>
-      <h4>Username: {username}</h4>
-      <h4>Email: {email}</h4>
-      <h4>Profile Privacy: {privateAccount == "true" ? "Private" : "Public"} </h4>
-      <h4>Bio : {bio}</h4>
+      <h4 className="center-text">{username}</h4>
+      <div className="header-image-text">
+      <img src={proPic === "" ? BProfile : proPic} alt="blank_profile" className="center-text blankProfileImage" />
+      <div class="profile-info">
+        <p className="right-text">{fname + " " + lname}</p>
+        <br/>
+        <p className="bio">{bio}</p>
+        <br/>
+        <div class="tooltip">
+          {privateAccount === true ? "🔒 Private Profile" : "🔓 Public Profile"}
+          <span class="tooltip-text">{privateAccount === true ? "Your Posts are only shared with your friends" : "Your Posts are visible to people who you are not friends with"}</span>
+        </div>
+      </div>
+      </div>
       {props.children}
     </div>
+
   );
 };
 
