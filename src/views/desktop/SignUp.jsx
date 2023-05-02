@@ -12,15 +12,16 @@ const SignUp = () => {
   let navigate = useNavigate();
   return (
     <div id="signUpContainer" className="container">
-      <div class="container left landingLogo">
-        <img src={logo_mini} style={{ height: "100px" }} />
-        <br />
-        <h1>GameSnap</h1>
-        <h6>Share Your Best Game Moments with Friends - One Moment at A Time</h6>
-      </div>
-      <div id="signupMain" class="container right">
-        <h1 className="center-text large-emoji-icon">🔏</h1>
-        <h1 className="white center-text">Sign Up</h1>
+      <div id="signupMain" class="container">
+        <div style={{ textAlign: "center" }}>
+          <div class="container landingLogo" style={{ display: "inline-block" }}>
+            <img src={logo_mini} style={{ height: "80px" }} />
+            <br />
+            <h1>GameSnap</h1>
+            <h6>Share Your Best Game Moments with Friends - One Moment at A Time</h6>
+          </div>
+          <hr />
+        </div>
         <label for="email">Email</label>
         <input
           type="text"
