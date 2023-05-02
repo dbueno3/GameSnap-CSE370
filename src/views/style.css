@@ -37,6 +37,42 @@
   float: left;
 }
 
+.right {
+  float: right;
+}
+
+#landingLogo {
+  text-align: center;
+  padding-top: 100px;
+}
+
+#loginMain {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0 20px;
+}
+
+#loginMain h1 {
+  font-size: 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+  #landingLogo {
+    padding-top: 200px;
+  }
+
+  #loginMain {
+    padding: 0;
+  }
+}
+
+#loginMainContainer{
+  padding-top: 10%;
+}
+
+
 /* Upload post */
 #createPostMain{
     text-align: center;
