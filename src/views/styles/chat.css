@@ -1,0 +1,145 @@
+.chatRoom {
+    margin: 0 auto;
+    max-width: 600px;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 70px;
+}
+
+.messageContainer {
+    display: flex;
+    margin-bottom: 10px;
+    margin-left: 1px;
+    align-self: flex-start;
+}
+
+.messageContainer.sent {
+    align-self: flex-end;
+    margin: auto;
+
+}
+
+.userProfile {
+    width: 30px;
+    height: 30px;
+    margin-right: 2px;
+    vertical-align: middle;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.userProfile img {
+    width: 100%;
+    vertical-align: auto;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.messageContent {
+    background-color: #3ea5c4bd;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    word-wrap: break-word;
+}
+
+.sent .messageContent {
+    background-color: #3b9bb8bd;
+    margin-left: auto;
+}
+
+.messageContentContainer {
+    display: flex;
+    align-items: center;
+}
+
+.chatInput {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+}
+
+.chatInputContainer {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-75%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    vertical-align: middle;
+}
+
+
+
+.saySomethingContainer {
+    background-color: rgb(205, 209, 196);
+    padding: 10px;
+    align-items: center;
+    border-radius: 60px;
+    text-align: center;
+    color: rgb(77, 156, 216);
+    width: 350px;
+    margin-right: 15px;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.sendButtonContainer {
+    background-color: rgb(27, 88, 241);
+    padding: 10px;
+    border-radius: 89px;
+    color: rgb(255, 249, 249);
+    cursor: pointer;
+    text-align: center;
+    height: 25px;
+    width: 89px;
+    position: fixed;
+    bottom: 78px;
+    left: 64%;
+    transform: translateX(-50%);
+}
+
+
+/*For screens smaller than 600px */
+@media (max-width: 600px) {
+    .chatRoom {
+        height: calc(100vh - 130px);
+        margin-bottom: 0;
+    }
+
+    .messageContent {
+        max-width: 80%;
+    }
+
+    .saySomethingContainer {
+        width: 250px;
+        margin-right: 0;
+    }
+}
+/*For screens smaller than 600px */
+@media (max-width: 600px) {
+    .sendButtonContainer {
+        position: fixed;
+        bottom: 75px;
+        left: 340px;  /* Add this property to move the button to the right */
+        height: 28px;
+        width: 105px;
+        margin-right: 10px;
+        text-align: center;
+        border-radius: 85px;
+        background-color: rgb(27, 88, 241);
+        color: rgb(255, 249, 249);
+        cursor: pointer;
+      }
+}
