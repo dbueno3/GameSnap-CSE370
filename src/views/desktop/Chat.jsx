@@ -120,12 +120,22 @@ const Chat = () => {
             messages.map((msg) => (
               <div key={msg.id}>
                 <div className={`messageContainer ${msg.from === user ? "sent" : ""}`}>
+                  {msg.from !== user && connInfo.toUser.attributes.profilePicture && (
+                    <div className="userProfile">
+                      <img src={connInfo.toUser.attributes.profilePicture} alt={`${connInfo.toUser.attributes.username}'s Profile`} />
+                    </div>
+                  )}
                   <div className="messageContent">
                     <p>
                       {msg.from}: {msg.message}
                     </p>
                   </div>
-                  {/* Display user profile if message was sent by current user */}
+                  {msg.from !== user && connInfo.fromUser && connInfo.fromUser.attributes.profilePicture && (
+                    <div className="userProfile">
+                      <img src={connInfo.fromUser.attributes.profilePicture} alt={`${connInfo.fromUser.attributes.username}'s Profile`} />
+                    </div>
+                  )}
+
                   {msg.from === user && userProfile && (
                     <div className="userProfile">
                       <img src={userProfile} alt="User Profile" />
@@ -134,23 +144,24 @@ const Chat = () => {
                 </div>
               </div>
             ))}
+
         </div>
 
         <div className="chatInputContainer">
-            <input
+          <input
             className="saySomethingContainer"
-              type="text"
-              placeholder="Say something nice"
-              value={chatInput}
-              onChange={(e) => {
-                setChatInput(e.target.value);
-              }}
-            />
-          </div>
-          <div className="sendButtonContainer" onClick={handleMessageSend}>
-            Send
-          </div>
+            type="text"
+            placeholder="Say something nice"
+            value={chatInput}
+            onChange={(e) => {
+              setChatInput(e.target.value);
+            }}
+          />
         </div>
+        <div className="sendButtonContainer" onClick={handleMessageSend}>
+          Send
+        </div>
+      </div>
     </>
   );
 

@@ -43,6 +43,15 @@
     word-wrap: break-word;
 }
 
+.sent .messageContent {
+    background-color: #008CBA;
+}
+
+.messageContentContainer {
+    display: flex;
+    align-items: center;
+}
+
 .chatInput {
     padding: 10px;
     border-radius: 5px;
