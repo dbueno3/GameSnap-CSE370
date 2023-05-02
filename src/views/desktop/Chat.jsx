@@ -120,9 +120,14 @@ const Chat = () => {
             messages.map((msg) => (
               <div key={msg.id}>
                 <div className={`messageContainer ${msg.from === user ? "sent" : ""}`}>
-                  {msg.from !== user && connInfo.toUser.attributes.profilePicture && (
+                  {/* {msg.from !== user && connInfo.toUser.attributes.profilePicture && (
                     <div className="userProfile">
                       <img src={connInfo.toUser.attributes.profilePicture} alt={`${connInfo.toUser.attributes.username}'s Profile`} />
+                    </div>
+                  )} */}
+                      {msg.from !== user && connInfo.fromUser && connInfo.fromUser.attributes.profilePicture && (
+                    <div className="userProfile">
+                      <img src={connInfo.fromUser.attributes.profilePicture} alt={`${connInfo.fromUser.attributes.username}'s Profile`} />
                     </div>
                   )}
                   <div className="messageContent">
@@ -130,11 +135,6 @@ const Chat = () => {
                       {msg.from}: {msg.message}
                     </p>
                   </div>
-                  {msg.from !== user && connInfo.fromUser && connInfo.fromUser.attributes.profilePicture && (
-                    <div className="userProfile">
-                      <img src={connInfo.fromUser.attributes.profilePicture} alt={`${connInfo.fromUser.attributes.username}'s Profile`} />
-                    </div>
-                  )}
 
                   {msg.from === user && userProfile && (
                     <div className="userProfile">
@@ -146,7 +146,7 @@ const Chat = () => {
             ))}
 
         </div>
-
+        <div>
         <div className="chatInputContainer">
           <input
             className="saySomethingContainer"
@@ -156,11 +156,12 @@ const Chat = () => {
             onChange={(e) => {
               setChatInput(e.target.value);
             }}
-          />
-        </div>
+            />
+          </div>
         <div className="sendButtonContainer" onClick={handleMessageSend}>
           Send
         </div>
+      </div>
       </div>
     </>
   );
