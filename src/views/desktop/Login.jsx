@@ -3,7 +3,6 @@ import React, { useState } from "react";
 //Router
 import { useNavigate } from "react-router-dom";
 
-import logo from "../../assets/logo_full.png";
 import logo_mini from "../../assets/logo_mini.png";
 
 const Login = () => {
@@ -13,7 +12,7 @@ const Login = () => {
 
   return (
     <div id="loginMainContainer" className="container">
-      <div id="landingLogo" class="container left">
+      <div class="container left landingLogo">
         <img src={logo_mini} style={{ height: "100px" }} />
         <br />
         <h1>GameSnap</h1>
