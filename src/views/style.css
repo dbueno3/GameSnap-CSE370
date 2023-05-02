@@ -364,6 +364,14 @@ border-radius: 50%;
 
 
 /* Navabar */
+.navbar a:hover{
+  text-decoration: none;
+}
+
+.bottombar_profile{
+  border-radius: 100%;
+}
+
 #navbarOwnMain {
     width: 100vw;
     height: 50px;
