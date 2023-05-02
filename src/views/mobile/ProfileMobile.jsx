@@ -366,10 +366,12 @@ class Profile_mobile extends React.Component {
                 />
               </div>
             </label>
-            <input type="submit" className="submit-button" value="Save" />
-            {/* <button
-          className="submit-button"
-          onClick={() => {
+            <input type="submit" className="submit-button" value="Save" /> 
+          </div>
+        </form>
+        <button
+              className="submit-button"
+              onClick={() => {
             fetch(process.env.REACT_APP_API_PATH + `/auth/request-reset`, {
               method: "POST",
               headers: {
@@ -382,7 +384,7 @@ class Profile_mobile extends React.Component {
             })
               .then((response) => {
                 if (response.status === 200) {
-                  navigate("/reset_password");
+                  this.props.navigate("/reset_password");
                 } else {
                   alert("Error:", response.status);
                 }
@@ -393,9 +395,7 @@ class Profile_mobile extends React.Component {
           }}
         >
           Reset Password
-        </button> */}
-          </div>
-        </form>
+        </button>
         <button
           className="submit-button red"
           value="Delete Account"

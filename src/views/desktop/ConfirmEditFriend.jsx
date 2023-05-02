@@ -132,6 +132,8 @@ const ConfirmEditFriend = ({ open, onClose, profileimage, username, friendId }) 
           >
             Confirm
           </button>
+          <button className="cancel" onClick={onClose}>Cancel</button>
+
         </div>
       </div>
     </div>

@@ -48,9 +48,12 @@ const TopGames = () => {
     { id: 4, text: "Modern Warfare", image: modernWarfareImage },
     // Add more checkbox options as needed
     ];
-  return (
+    
+    return (
+      <>
+        <NavbarOwn />
+        <br />
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
-    <NavbarOwn />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <h1 style={{ marginBottom: '20px' }}>The Top Ranked Games</h1>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
@@ -78,6 +81,7 @@ const TopGames = () => {
                 marginTop: '10px', 
                 alignItems: 'center' }}>
                 <p style={{ margin: 0 }}>{map[1][0]}</p>
+                
               </div>
               <div 
                   style={{ 
@@ -112,6 +116,8 @@ const TopGames = () => {
             }}>
             </div>
             <div style={{ 
+              display: 'flex',
+              justifyContent: 'flex-end',
               textAlign: 'center', 
               marginTop: '10px', 
               alignItems: 'center' }}>
@@ -134,8 +140,8 @@ const TopGames = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                height: '100%',
-                marginLeft: '10px'
+                marginLeft: '10px',
+
               }}>
                 <div style={{ 
                   height: '200px', 
@@ -167,6 +173,7 @@ const TopGames = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
