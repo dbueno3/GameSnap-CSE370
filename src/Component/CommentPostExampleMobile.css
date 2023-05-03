@@ -1,4 +1,237 @@
-.mobilePost {
+  @media (min-width:451px){
+    .backbutton{
+      width:3%;
+      height:3%;
+      cursor: pointer;
+    }
+    .Comment{
+      background-color: rgb(61, 117, 132);
+      border: none;
+      color: white;
+      padding: 6px 6px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 12px;
+      margin: 4px 2px;
+      border-radius: 50px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      vertical-align: middle;
+      
+    }
+  
+    .Comment:hover{
+      background-color: #75ad8e;
+      box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+    }
+    .CommentBoxContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+      border-radius: 20px;
+      padding: 4px;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+      width:30%;
+      
+    }
+    
+    .CommentBoxContainer input[type="text"] {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 16px;
+    }
+    .Commentbox{
+      width:5vw;
+    }
+    .mobilePost {
+      border: 1px solid #ccc;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .mobilePost-header {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .mobilePost-header img {
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      width:5%;
+      height:5%;
+    }
+    
+    .mobilePost-user h3 {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+    
+    .mobilePost-user p {
+      margin: 0;
+      color: #777;
+    }
+    
+    .mobilePost-image img {
+      width: 30%;
+      margin-top: 1rem;
+      display:flex;
+    }
+    
+    .mobilePost-footer {
+      margin-top: 1rem;
+    }
+    
+    .mobilePost-actions {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    
+    .mobilePost-icon {
+      height: 1.5rem;
+      margin-right: 0.5rem;
+    }
+    
+    .mobilePost-icon img {
+      height: 100%;
+    }
+    
+    .mobilePost-comments {
+      margin-top: 1rem;
+    }
+    
+    .mobilePost-comment {
+      margin-bottom: 1rem;
+    }
+    
+    .mobilePost-user {
+      font-weight: bold;
+    }
+    
+    .mobilePost-comment-actions {
+      margin-top: 0.5rem;
+    }
+    
+    .mobilePost-comment-actions button {
+      margin-right: 0.5rem;
+    }
+    
+    .mobilePost-add-comment {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 30px;
+      padding: 0.5rem;
+    }
+    
+    .mobilePost-add-comment input {
+      flex: 1;
+      margin-right: 0.5rem;
+      border: none;
+      outline: none;
+      font-size: 0.9rem;
+    }
+    
+    .mobilePost-add-comment button {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+    
+    .mobilePost-edit-comment {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 30px;
+      padding: 0.5rem;
+    }
+    
+    .mobilePost-edit-comment input {
+      flex: 1;
+      margin-right: 0.5rem;
+      border: none;
+      outline: none;
+      font-size: 0.9rem;
+    }
+    
+    .mobilePost-edit-comment .submit-button {
+      background-color: #3897f0;
+      border: none;
+      border-radius: 30px;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+    
+    .mobilePost-edit-comment .submit-button:focus {
+      outline: none;
+    }
+    
+    .mobilePost-edit-comment .cancel-button {
+      background-color: transparent;
+      border: none;
+      color: #000;
+      cursor: pointer;
+    }
+    
+    .mobilePost-edit-comment .cancel-button:focus {
+      outline: none;
+    }
+    
+  }
+@media (max-width:451px){
+  .backbutton{
+    width:7%;
+    height:7%
+  }
+  .Comment{
+    background-color: rgb(61, 117, 132);
+    border: none;
+    color: white;
+    padding: 8px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+    
+  }
+
+  .CommentBoxContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 4px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    width:90%;
+  }
+  
+  .CommentBoxContainer input[type="text"] {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 16px;
+  }
+  .Commentbox{
+    width:5vw;
+  }
+  .mobilePost {
     border: 1px solid #ccc;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -6,12 +239,14 @@
   
   .mobilePost-header {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
   }
   
   .mobilePost-header img {
     border-radius: 50%;
     margin-right: 0.5rem;
+    width:10%;
+    height:10%;
   }
   
   .mobilePost-user h3 {
@@ -26,7 +261,10 @@
   
   .mobilePost-image img {
     width: 100%;
+    display: flex;
+    margin:auto;
     margin-top: 1rem;
+
   }
   
   .mobilePost-footer {
@@ -133,6 +371,8 @@
     outline: none;
   }
   
+}
+
   @media (min-width: 768px) {
     .mobilePost {
       max-width: 500px;

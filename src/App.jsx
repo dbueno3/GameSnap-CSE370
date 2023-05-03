@@ -29,6 +29,7 @@ import SignUp from "./views/desktop/SignUp.jsx";
 import Login from "./views/desktop/Login.jsx";
 import EditProfile from "./views/desktop/EditProfile.jsx";
 import UserProfile from "./views/desktop/UserProfile.jsx";
+import OtherUserProfile from "./views/desktop/OtherUserProfile.jsx";
 import ResetPassword from "./views/desktop/ResetPassword.jsx";
 import ResetPasswordLogin from "./views/desktop/ResetPasswordLogin.jsx";
 
@@ -39,7 +40,7 @@ import Make_Post from "./views/mobile/MakePost.jsx";
 import Personal from "./views/mobile/Personal.jsx";
 import Profile_mobile from "./views/mobile/ProfileMobile.jsx";
 import Posts_mobile from "./views/mobile/PostsMobile.jsx";
-import CommentPostExampleMobile from "./views/mobile/CommentPostExampleMobile.jsx";
+import CommentPostExampleMobile from "./Component/CommentPostExampleMobile.jsx";
 import SignUpMobile from "./views/mobile/Signupmobile.jsx";
 import LoginMobile from "./views/mobile/LoginMobile.jsx";
 import MobileHome from "./views/mobile/MobileHome";
@@ -161,6 +162,7 @@ class App extends React.Component {
                 <Route path="/" element={<Login />} />
                 <Route path="/edit_profile" element={<EditProfile />} />
                 <Route path="/profile" element={<UserProfile />} />
+                <Route path="/otherprofile" element={<OtherUserProfile />} />
                 <Route path="/personal" element={<Personal login={this.login} />} />
                 <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />} />
                 <Route path="/make_post_mobile" element={<Make_Post login={this.login} />} />

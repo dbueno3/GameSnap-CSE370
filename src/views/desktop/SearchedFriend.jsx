@@ -5,7 +5,7 @@ import RenderProfile from "../../Component/RenderProfile.jsx";
 
 import NavbarOwn from "../../Component/NavbarOwn.jsx";
 import UserGame from "../../Component/UserGame.jsx";
-import UserPosts from "../../Component/UserPosts.jsx";
+import OtherUserPosts from "../../Component/OtherUserPosts.jsx";
 
 const SearchedFriend = () => {
   const params = useParams();
@@ -117,7 +117,7 @@ const SearchedFriend = () => {
           <br/>
           <div>
             <h4 className="nobottom-margin left-text">Posts</h4>
-            <UserPosts user={userId} />
+            <OtherUserPosts user={userId} />
           </div>
         </div>
       </RenderProfile>

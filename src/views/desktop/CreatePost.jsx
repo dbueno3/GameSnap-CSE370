@@ -107,6 +107,7 @@ const CreatePost = () => {
                         caption: caption,
                         mediaUrl: postMediaUrl,
                         mediaType: mediaType,
+                        comment:[],
                       },
                     }),
                   })
@@ -114,7 +115,7 @@ const CreatePost = () => {
                     .then(
                       (result) => {
                         console.log("Post was successful");
-                        navigate("/user_posts");
+                        navigate("/home");
                       },
                       (error) => {
                         console.log(`error!: ${error}`);
