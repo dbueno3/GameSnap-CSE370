@@ -65,6 +65,11 @@
   text-align: left;
 }
 
+.passwordConstraint{
+  font-size: 10px;
+  color:#5F6A82;
+}
+
 /* Upload post */
 #createPostMain{
     text-align: center;
