@@ -299,7 +299,7 @@ class Profile_mobile extends React.Component {
                 />
               </div>
               <div className="name-field">
-                Twitch:
+                Youtube:
                 <input
                   className="box"
                   type="text"
