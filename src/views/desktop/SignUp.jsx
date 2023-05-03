@@ -9,6 +9,13 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  //Constraints
+  const [passLen, setPassLen] = useState(0);
+  const [checkNum, setCheckNum] = useState(false);
+  const [capital, setCapital] = useState(false);
+  const [specialChar, setSpecialChar] = useState(false);
+
   let navigate = useNavigate();
   return (
     <div id="signUpContainer" className="container">
@@ -39,9 +46,60 @@ const SignUp = () => {
           className="input-box-white"
           placeholder="password"
           onChange={(e) => {
-            setPassword(e.target.value);
+            let pass = e.target.value;
+            setPassword(pass);
+            setPassLen(pass.length);
+            //Num
+            if (/\d/.test(pass)) {
+              setCheckNum(true);
+            } else {
+              setCheckNum(false);
+            }
+
+            //special Char
+            if (/[~`!#$%\^&*+=\-\[\]\\';,/{}@|\\":<>\?]/g.test(pass)) {
+              setSpecialChar(true);
+            } else {
+              setSpecialChar(false);
+            }
+
+            if (pass.length >= 1) {
+              for (var i = 0; i < pass.length; i++) {
+                if (pass.charAt(i) == pass.charAt(i).toUpperCase() && pass.charAt(i).match(/[a-z]/i)) {
+                  setCapital(true);
+                  return;
+                } else {
+                  setCapital(false);
+                }
+              }
+            } else {
+              setCapital(false);
+            }
           }}
         />
+        <div>
+          <div style={{ display: "inline" }} className="left">
+            <p className="passwordConstraint" style={passLen >= 8 ? { color: "green" } : { color: "#5F6A82" }}>
+              Password is more than 8 characters
+            </p>
+            <br />
+            <p className="passwordConstraint" style={capital ? { color: "green" } : { color: "#5F6A82" }}>
+              Password has 1 capital letter
+            </p>
+          </div>
+          <div style={{ display: "inline" }} className="right">
+            <p className="passwordConstraint" style={specialChar ? { color: "green" } : { color: "#5F6A82" }}>
+              Password has one special character
+            </p>
+            <br />
+            <p className="passwordConstraint" style={checkNum ? { color: "green" } : { color: "#5F6A82" }}>
+              Password has a number
+            </p>
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
         <label for="confirmPassword">Confirm Password</label>
         <input
           type="password"
@@ -78,10 +136,19 @@ const SignUp = () => {
         <br />
         <button
           onClick={() => {
+            //NEED TO FIX ALERTS
             if (email === "" || !email.includes("@")) {
               alert("Please input a valid email");
             } else if (password !== confirmPassword) {
               alert("password don't match");
+            } else if (passLen < 8) {
+              alert("Password is too short");
+            } else if (!checkNum) {
+              alert("Password does not contain a number");
+            } else if (!capital) {
+              alert("Password does not contain a capital letter");
+            } else if (!specialChar) {
+              alert("Password does not contain a special character");
             } else {
               fetch(process.env.REACT_APP_API_PATH + "/auth/signup", {
                 method: "post",
