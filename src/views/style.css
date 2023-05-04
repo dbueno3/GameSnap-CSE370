@@ -227,6 +227,7 @@
 
 .userPost{
   height: fit-content;
+  width: 400px;
   background-color: #5F6A82;
   border-radius: 20px;
   display: list-item;
@@ -243,11 +244,13 @@
 }
 
 .homePostImage{
-    height: 200px;
-    width: stretch;
-    margin: 10px;
-    border-radius: 20px;
-    text-align: left;
+  height: 300px;
+  max-width: fit-content;
+  margin: 10px auto;
+  border-radius: 20px;
+  text-align: left;
+  display: flex;
+  align-items: center;
 }
 
 .homeFeedProfilePicture{
@@ -257,7 +260,7 @@
 }
 
 .HomePostVideo{
-    height: 200px;
+    height: 300px;
     width: stretch;
     margin: 10px;
     border-radius: 20px;

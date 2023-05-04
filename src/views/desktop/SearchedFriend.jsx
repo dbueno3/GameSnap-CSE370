@@ -12,8 +12,25 @@ const SearchedFriend = () => {
   const userId = params.userId;
   const [requestStatus, setRequestStatus] = useState("");
   const [block, setBlock] = useState(false);
-  
+
+  const [privateProfile, setPrivateProfile] = useState("");
+
   useEffect(() => {
+    fetch(process.env.REACT_APP_API_PATH + `/users/${userId}`, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result) {
+          let info = result.attributes;
+          console.log(info.private);
+          setPrivateProfile(info.private);
+        }
+      });
     fetch(
       process.env.REACT_APP_API_PATH + `/connections?fromUserID=${sessionStorage.getItem("user")}&toUserID=${userId}`,
       {
@@ -47,7 +64,6 @@ const SearchedFriend = () => {
     )
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         if (res[0][0].hasOwnProperty("attributes")) {
           if (res[0][0].attributes.requestStatus === "blocked") {
             setBlock(true);
@@ -64,7 +80,8 @@ const SearchedFriend = () => {
       <br />
       <NavbarOwn />
       <RenderProfile userId={userId}>
-        <button className="add_friend"
+        <button
+          className="add_friend"
           style={requestStatus === "" && !block ? { display: "inline-block" } : { display: "none" }}
           id="sendRequestButton"
           onClick={() => {
@@ -114,10 +131,10 @@ const SearchedFriend = () => {
         <div className="grow-vertical">
           <h4>Top Games</h4>
           <UserGame user={userId} />
-          <br/>
+          <br />
           <div>
             <h4 className="nobottom-margin left-text">Posts</h4>
-            <OtherUserPosts user={userId} />
+            {requestStatus != "active" && privateProfile ? <OtherUserPosts user={userId} /> : ""}
           </div>
         </div>
       </RenderProfile>

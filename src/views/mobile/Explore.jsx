@@ -23,8 +23,8 @@ const Explore = () => {
       .then((result) => {
         if (result) {
           let info = result.attributes;
-          console.log("User Results",info);
-          console.log("Topics",info.Topics);
+          console.log("User Results", info);
+          console.log("Topics", info.Topics);
           setTopics(info.Topics);
           setPropic(info.profilePicture);
         }
@@ -40,14 +40,17 @@ const Explore = () => {
       .then((res) => res.json())
       .then((res) => {
         if (res) {
-          console.log("Response",res[0]);
+          console.log("Response", res[0]);
           let topicsSplit = topics.split(",");
           let filteredPosts = res[0].filter((post) => {
-            if(post.attributes.caption && topicsSplit.some(topic => post.attributes.caption.toLowerCase().includes(topic.toLowerCase()))){
+            if (
+              post.attributes.caption &&
+              topicsSplit.some((topic) => post.attributes.caption.toLowerCase().includes(topic.toLowerCase()))
+            ) {
               return post;
             }
-          })
-          console.log("Filtered Posts",filteredPosts);
+          });
+          console.log("Filtered Posts", filteredPosts);
           getPosts(filteredPosts);
         }
       });
@@ -60,7 +63,6 @@ const Explore = () => {
         <h1 className="center-text">Explore</h1>
         <h5 className="center-text">Find posts which match your interests</h5>
         <div id="homeFeed">
-          
           {posts.map((post) => {
             if (post.attributes.mediaType === "image") {
               return (
@@ -72,15 +74,24 @@ const Explore = () => {
                           src={post.author.attributes.profilePicture}
                           className="homeFeedProfilePicture"
                           alt="profile"
-                          style={{ margin: "20px", cursor: "pointer" }}
+                          style={{ margin: "20px" }}
                         />
                       </td>
                       <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
-                        <h6 style={{ margin: 0, cursor: "pointer" }}>{post.author.attributes.username}</h6>
+                        <h6 style={{ margin: 0 }}>{post.author.attributes.username}</h6>
                       </td>
                     </tr>
                   </table>
-                  <img alt="post" src={post.attributes.mediaUrl} className="homePostImage" />
+                  <div
+                    style={{
+                      width: "inherit",
+                      height: "inherit",
+                      textAlign: "center",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <img alt="post" src={post.attributes.mediaUrl} className="homePostImage" />
+                  </div>
                   <h6>Caption: {post.attributes.caption}</h6>
                 </div>
               );
@@ -94,11 +105,11 @@ const Explore = () => {
                           src={post.author.attributes.profilePicture}
                           className="homeFeedProfilePicture"
                           alt="profile"
-                          style={{ margin: "20px", cursor: "pointer" }}
+                          style={{ margin: "20px" }}
                         />
                       </td>
                       <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
-                        <h6 style={{ cursor: "pointer" }}>{post.author.attributes.username}</h6>
+                        <h6>{post.author.attributes.username}</h6>
                       </td>
                     </tr>
                   </table>
