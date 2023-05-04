@@ -64,7 +64,7 @@ const Explore = () => {
           {posts.map((post) => {
             if (post.attributes.mediaType === "image") {
               return (
-                <div key={post.attributes.caption} className="homePost">
+                <div key={post.id} className="homePost">
                   <table style={{ margin: "0", borderCollapse: "collapse" }}>
                     <tr>
                       <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>
@@ -86,7 +86,7 @@ const Explore = () => {
               );
             } else {
               return (
-                <div key={post.attributes.caption} className="homePost">
+                <div key={post.id} className="homePost">
                   <table style={{ margin: "0", borderCollapse: "collapse" }}>
                     <tr>
                       <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px" }}>

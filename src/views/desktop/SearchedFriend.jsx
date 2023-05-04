@@ -64,7 +64,7 @@ const SearchedFriend = () => {
       <br />
       <NavbarOwn />
       <RenderProfile userId={userId}>
-        <button
+        <button className="add_friend"
           style={requestStatus === "" && !block ? { display: "inline-block" } : { display: "none" }}
           id="sendRequestButton"
           onClick={() => {

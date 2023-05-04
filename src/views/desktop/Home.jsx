@@ -128,12 +128,11 @@ const Home = () => {
           </button>
         </div>
         <div id="homeFeed">
-          {console.log(posts)}
           {posts.map((post) => {
             if (!blocklist.includes(post.id)){
             if (post.attributes.mediaType === "image") {
               return (
-                <div key={post.attributes.caption} className="homePost">
+                <div key={post.id} className="homePost">
                   <button onClick={() => Block(post.id)} className="blockButton">Block</button>
                   <table style={{ margin: "0", borderCollapse: "collapse" }}>
                     <tr>
@@ -165,7 +164,7 @@ const Home = () => {
               );
             } else {
               return (
-                <div key={post.attributes.caption} className="homePost">
+                <div key={post.id} className="homePost">
                   <button onClick={() => Block(post.id)} className="blockButton">Block</button>
                   <table style={{ margin: "0", borderCollapse: "collapse" }}>
                     <tr>
