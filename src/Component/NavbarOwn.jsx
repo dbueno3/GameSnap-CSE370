@@ -53,22 +53,22 @@ const NavbarOwn = () => {
         <img className="bottombar__icon" src={homeIcon || "https://via.placeholder.com/20"} alt="Home" />
         <span className="navbarText">Home</span>
       </Link>
-      <Link to="/explore" className={`navbar-item ${isActive("/home")}`}>
+      <Link to="/explore" className={`navbar-item ${isActive("/explore")}`}>
         <img className="bottombar__icon" src={searchIcon || "https://via.placeholder.com/20"} alt="explore" />
         <span className="navbarText">Explore</span>
       </Link>
 
-      <Link to="/friends" className={`navbar-item ${isActive("/home")}`}>
+      <Link to="/friends" className={`navbar-item ${isActive("/friends")}`}>
         <FaUserFriends color={"black"} className="bottombar__icon" />
         <span className="navbarText">Friends</span>
       </Link>
 
-      <Link to="/create_post" className={`navbar-item ${isActive("/home")}`}>
+      <Link to="/create_post" className={`navbar-item ${isActive("/create_post")}`}>
         <img className="bottombar__icon" src={addIcon || "https://via.placeholder.com/20"} alt="Create Post" />
         <span className="navbarText">Post</span>
       </Link>
 
-      <Link to="/chat" className={`navbar-item ${isActive("/home")}`}>
+      <Link to="/chat" className={`navbar-item ${isActive("/chat")}`}>
         <img className="bottombar__icon" src={messageIcon || "https://via.placeholder.com/20"} alt="Chat" />
         <span className="navbarText">Chat</span>
       </Link>
