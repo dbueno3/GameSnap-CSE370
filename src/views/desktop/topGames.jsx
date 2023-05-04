@@ -66,8 +66,8 @@ const TopGames = () => {
               marginRight: '10px' }}>
             
               <div style={{ 
-                height: '300px', 
-                width: '300px', 
+                height: '130px', 
+                width: '130px', 
                 marginTop: 'auto', 
                 marginBottom: 'auto',
                 backgroundImage: `url(${option.image})`,
@@ -78,7 +78,7 @@ const TopGames = () => {
   
               <div style={{ 
                 textAlign: 'center', 
-                marginTop: '10px', 
+                marginTop: 'auto', 
                 alignItems: 'center' }}>
                 <p style={{ margin: 0 }}>{map[1][0]}</p>
                 
@@ -86,7 +86,7 @@ const TopGames = () => {
               <div 
                   style={{ 
                   textAlign: 'center', 
-                  marginTop: '10px', 
+                  marginTop: '2px', 
                   alignItems: 'center' }}>
                   <p style={{ margin: 0 }}>{map[1][1]} users like</p>
                 </div>
@@ -106,10 +106,10 @@ const TopGames = () => {
             alignItems: 'center',
             height: '100%'
           }}>
-            <div style={{ 
-              height: '400px', 
-              width: '400px', 
-              marginRight: '10px', 
+            <div className="firstTopGame" style={{ 
+              height: '225px', 
+              width: '225px', 
+              marginRight: 'auto', 
               backgroundImage: `url(${option.image}`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
@@ -126,7 +126,7 @@ const TopGames = () => {
             <div 
                   style={{ 
                   textAlign: 'center', 
-                  marginTop: '10px', 
+                  marginTop: '2px', 
                   alignItems: 'center' }}>
                   <p style={{ margin: 0 }}>{map[0][1]} users like</p>
                 </div>
@@ -144,8 +144,8 @@ const TopGames = () => {
 
               }}>
                 <div style={{ 
-                  height: '200px', 
-                  width: '200px', 
+                  height: '75px', 
+                  width: '75px', 
                   marginTop: 'auto', 
                   marginBottom: 'auto',
                   backgroundImage: `url(${option.image}`,
@@ -162,7 +162,7 @@ const TopGames = () => {
                 <div 
                   style={{ 
                   textAlign: 'center', 
-                  marginTop: '10px', 
+                  marginTop: '2px', 
                   alignItems: 'center' }}>
                   <p style={{ margin: 0 }}>{map[2][1]} users like</p>
                 </div>

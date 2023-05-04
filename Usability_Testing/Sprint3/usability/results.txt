@@ -1,0 +1,86 @@
+Usability Testing 
+
+Result/Changes:
+Based on what our testers told us, the app has a lot of work to do. 
+They noticed many things that we were missing that well get into here.
+
+Task 1:
+They all struggled to be able to find out how to delete a post. Once
+ they did figure out how to delete it they thought the icon looked ugly.
+They think it should be made more clear how to get to the screen to delete 
+a post if you dont like it.
+
+
+
+Task 2:
+When asked about the caption this method seems to be very favorable. They found it very easy
+They mentioned how they didnt see the website name or logo anywhere on the screen.
+They think that that should be a very important part to a project.
+to see, however one tester
+
+did use the word "a lot" when describing the caption due to the large size of them.
+The first question was to rate how easy it was for them to read the prompt. These are the results
+in order . This
+comes out to an average of 9.33/10. The reasoning for this was because the font was so big
+they were effortlessly able to
+read this.
+The next question was about how they felt about the size of the font. They said in order 7,7,7.
+They all had the same feeling about
+this one. When I asked them to explain why they chose this number they just said that it was
+larger than they needed.
+
+Task 3:
+This was a much quicker task. Due to this method being the one post displayed per line, it took
+a decently long time to get to the bottom.
+One tester however mentioned that they didn't mind it since other social media platforms use
+the same style. When asked to rate this
+The testers said . This comes out to an average of 
+Three post displayed per line:
+
+Task 1:
+The first question asked to them was what they thought about the clearness of the picture they
+were seeing.
+They tested with random images which led to them using different image sizes. I thought it was
+important
+to allow for different image sizes, because it's possible a user tries to upload an image of the
+same size.
+For the clearness, the ratings in order were . This comes out to an average of  Most
+images came
+out looking pretty clear. When asked how they thought of the three post compared to the
+singular post, one
+tester said he enjoyed it because he's able to see a lot of information at one time
+When testing for what they thought of the size of the image they seemed to enjoy it. Their
+ratings in order were
+ This comes out to an average rating of The testers mainly had the same feeling.
+By making the post smaller
+testers were able to see a lot of images which they seemed to enjoy. Even though tester #2
+disliked the image quality
+they still gave the image size a rating of a .
+
+Task 2:
+The next test was the caption. Testers felt that because the post were so close to each other
+that it led to
+there is a lot of text on the screen at once. When asked to rate reading the caption 1-10, they
+said
+7,6,6. That's an average of 6.33/10. Even though they complained about the quantity of text
+they didn't
+let it affect their ability to read a single post.
+When testing the size of the font they said 5 This comes to an average of 6/10.
+
+Task 3:
+This is the main advantage that this test has over the other. Testers were able to get to the
+bottom three times as fast.
+This is something that can be very helpful as the app continues to grow. When asked to rate it
+1-10, they said 8,8,9. That
+comes to an average of 8.33/10. Users enjoyed the quick speed and were able to find posts
+quickly.
+Comparison:
+Overall testers seemed to enjoy both options. The main appeal to the single post was suppose
+to be that it made the comments and
+image more viewable. However it seemed to have the opposite effect as some testers became
+overwhelmed from the size.
+It also did take a very long time to reach the bottom of the single post. Testers complained about
+the the three post being
+too text heavy, however they all rated the captions decently high so it didn't seem to be too
+much of an issue. The testers
+preferred the three post format as they felt it is more effective for utilizing efficiency on our app.

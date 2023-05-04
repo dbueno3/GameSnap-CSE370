@@ -1,0 +1,45 @@
+Usability Testing Script
+Introduction:
+
+Hi, {user’s name}. My name is {my name}, how are you doing today?
+I really appreciate you taking time to participate in this testing.
+So let me explain how this will go. I will start by asking a few background questions about
+yourself. And I will then ask you to perform some tasks on our social media application. Once
+the tasks have been completed, I would like you to give some feedback about our application.
+Do you have any questions before we start?
+Background question:
+
+So, {user’s name}. What social media platforms are you using in your daily life?
+Which one do you use the most?
+How often do you use this social media?
+
+Tasks:
+Thanks for your answers. We are now ready to start the test. Before we start, I would like to
+remind you of a few things. First off, remember that we aren’t testing you today, we’re testing
+our application. So if something isn’t working, don’t worry, it’s a problem with our software and
+not something you’ve done wrong. In fact, there are no wrong answers here. Don’t feel bad
+while complaining about this application. The more feedback you give, the better change we
+could make to our application.
+
+Guidelines:
+The main thing that is being tested today is we are trying to 
+figure out the problems that out app currently has.
+So let’s being, please go to the link that is provided and share your screen
+Task 1:
+So right now I would like you to try to delete a photo
+How hard was it to figure out how to do that 
+What do you think about the size of the picture, give it a rating of 1-10?
+Task 2:
+Now using the same post from Task 1, I want you to look at the caption?
+How hard do you think it is for you to read the caption,, give it a rating of 1-10?
+Do you like the size of the font, give it a rating of 1-10?
+Task 3:
+So right now I would like you to try to scroll to the bottom of the page.
+Was that a reasonable amount of time to get to the bottom of the page, give it a rating of 1-10?
+Feedback:
+And that’s the final task finished. Before we leave I would like to ask you about some general
+feedback about our application so far?
+Thank you for that. Is there anything you would like to add before we finish up?
+Great, I would like to end this testing at this moment. Thank you again so much for taking the
+time to take this test. Your feedback will be extremely helpful for us. I would like to end this
+testing at this moment. Have a nice day!
