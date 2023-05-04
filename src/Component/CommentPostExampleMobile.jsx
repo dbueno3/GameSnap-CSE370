@@ -1,126 +1,127 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CommentPostExampleMobile.css';
 import LikeImage from '../assets/like.png';
+import {useLocation, useNavigate} from 'react-router-dom'
+import { AiOutlinePlus } from "react-icons/ai";
+import {BsBackspace} from "react-icons/bs"
 
 const CommentPostExampleMobile = () => {
-  const [comments, setComments] = useState([
-    { id: 1, user: 'Jane Smith', comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-    { id: 2, user: 'Bob Johnson', comment: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }
-  ]);
-  const [newComment, setNewComment] = useState('');
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [editCommentId, setEditCommentId] = useState(null);
+  let navigate = useNavigate();
+  const location = useLocation()
+  const searchParams = new URLSearchParams(location.search)
+  const postid = searchParams.get('id')
+  const [postinformation, setPostinformation] = useState(null)
+  const [comment, setComment] = useState('')
+  const [oldcomment,setOldcomment] = useState(null)
+  const [commentposter, setCommentposter] = useState('')
 
-  const handleEditComment = (id, comment) => {
-    setIsEditMode(true);
-    setEditCommentId(id);
-    setNewComment(comment);
-  };
 
-  const handleUpdateComment = () => {
-    if (newComment.trim() === '') {
-      setError('Comment cannot be empty');
-      return;
-    }
-    const updatedComments = comments.map((comment) =>
-      comment.id === editCommentId ? { ...comment, comment: newComment } : comment
-    );
-    setComments(updatedComments);
-    setNewComment('');
-    setIsEditMode(false);
-    setEditCommentId(null);
-  };
-  
+  const MakeComment = (postid,comment,poster,caption,type,url) =>{
 
-  const handleAddComment = () => {
-    if (newComment.trim() === '') {
-      setError('Comment cannot be empty');
-      return;
-    }
-    const newComments = [...comments, { id: generateId(), user: 'John Doe', comment: newComment }];
-    setComments(newComments);
-    setNewComment('');
-  };
+    fetch(process.env.REACT_APP_API_PATH + "/posts/" + postid, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        attributes: {
+          caption:caption,
+          mediaType:type,
+          mediaUrl:url,
+          comment:[...oldcomment, [poster,comment]],
+        },
+      }),
+    })
+    .then((res) => 
+      {window.location.reload();}
+    )}
 
-  const setError = (error) => {
-    console.error(error);
-    window.alert(error);
-  };
+  useEffect(()=>{
 
-  const generateId = () => {
-    const timestamp = new Date().getTime();
-    const randomNumber = Math.floor(Math.random() * 1000000);
-    return `${timestamp}-${randomNumber}`;
-  };
+    fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result) {
+          setCommentposter(result.attributes.username)
+        }
+      });
 
-  const handleDeleteComment = (id) => {
-    const updatedComments = comments.filter((comment) => comment.id !== id);
-    setComments(updatedComments);
-  };
-
-  const filteredComments = comments.filter((comment) => comment.user === 'John Doe');
+    fetch(process.env.REACT_APP_API_PATH + `/posts/${postid}`, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res) {
+          setPostinformation(res)
+          setOldcomment(res.attributes.comment)
+        }
+      });
+  }, []);
+ 
+  if (postinformation === null || oldcomment === null){
+    return null;
+  }
 
   return (
-<div className="mobilePost">
+   <div className="mobilePost">
       <div className="mobilePost-header">
-        <img src="https://picsum.photos/50" alt="user avatar" />
+        <img src={postinformation.author.attributes.profilePicture} alt="user avatar" />
         <div className="mobilePost-user">
-          <h3>John Doe</h3>
-          {/* <p>San Francisco, CA</p> */}
+          <h3>{postinformation.author.attributes.username}</h3>
         </div>
+        <BsBackspace className='backbutton' onClick={() => {
+            navigate("/home");
+          }}>Back</BsBackspace>
       </div>
-      <div className="mobilePost-image">
-        <img src="https://picsum.photos/600" alt="post image" />
+      {console.log(postinformation.attributes.mediaType)}
+      {postinformation.attributes.mediaType === 'image'?(
+        <div className="mobilePost-image">
+        <img src={postinformation.attributes.mediaUrl} alt="post image" />
       </div>
+      ):(
+      
+      <video controls className="HomePostVideo" width="100%" height="0">
+      <source src={postinformation.attributes.mediaUrl} type="video/mp4" />
+      </video>
+      )}
       <div className="mobilePost-footer">
         <div className="mobilePost-actions">
           <div className="mobilePost-icon">
             <img src={LikeImage} alt="like icon" />
           </div>
-          <p>1,234 likes</p>
+          <p>0 likes</p>
         </div>
-        <div className="mobilePost-comments">
-          {filteredComments.map((comment) =>
-            comment.id === editCommentId && isEditMode ? (
-              <div className="mobilePost-edit-comment" key={comment.id}>
-                <input
-                  type="text"
-                  value={newComment}
-                  onChange={(e) => setNewComment(e.target.value)}
-                  placeholder="Update your comment..."
-                />
-                <div className="mobilePost-edit-buttons">
-                  <button onClick={handleUpdateComment}>Save</button>
-                  <button onClick={() => setIsEditMode(false)}>Cancel</button>
-                </div>
-              </div>
-            ) : (
-              <div className="mobilePost-comment" key={comment.id}>
-                <p>
-                  <span className="mobilePost-user">{comment.user}:</span> {comment.comment}
-                </p>
-                {comment.user === 'John Doe' && (
-                  <div className="mobilePost-comment-actions">
-                    <button onClick={() => handleEditComment(comment.id, comment.comment)}>Edit</button>
-                    <button onClick={() => handleDeleteComment(comment.id)}>Delete</button>
-                  </div>
-                )}
-              </div>
-            )
-          )}
-                {!isEditMode && (
-        <div className="mobilePost-add-comment">
-          <input
+        <div>&nbsp;&nbsp;{postinformation.author.attributes.username}: {postinformation.attributes.caption}</div>
+        
+        {oldcomment.map((comment) =>{
+          return(        
+          <div>&nbsp;&nbsp;{comment[0]}: {comment[1]}</div>
+          )
+        })}
+        <div className="CommentBoxContainer">
+          <input className="Commentbox"
             type="text"
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-            placeholder="Add a comment..."
+            placeholder={`Add a comment for ${postinformation.author.attributes.username}`}
+            onChange={(e) => {
+              setComment(e.target.value);
+            }}
           />
-          <button onClick={handleAddComment}>Post</button>
+          <AiOutlinePlus className="Comment"
+          onClick={() => MakeComment(postid,comment,commentposter,postinformation.attributes.caption,postinformation.attributes.mediaType,postinformation.attributes.mediaUrl)}>
+          </AiOutlinePlus>
+          <br />
         </div>
-      )}
-      
-    </div>
   </div>
 </div>
 

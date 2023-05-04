@@ -156,7 +156,7 @@ class Profile_mobile extends React.Component {
           console.log(result);
           //wait for 20 seconds
           setTimeout(() => {}, 20000);
-          this.props.navigate("/home");
+          this.props.navigate("/profile");
         },
         (error) => {
           alert("error!");
@@ -299,7 +299,7 @@ class Profile_mobile extends React.Component {
                 />
               </div>
               <div className="name-field">
-                Twitch:
+                Youtube:
                 <input
                   className="box"
                   type="text"

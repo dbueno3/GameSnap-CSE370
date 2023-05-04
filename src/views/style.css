@@ -65,6 +65,11 @@
   text-align: left;
 }
 
+.passwordConstraint{
+  font-size: 10px;
+  color:#5F6A82;
+}
+
 /* Upload post */
 #createPostMain{
     text-align: center;
@@ -177,14 +182,6 @@
     justify-content: right;
 }
 
-.homePostImage{
-    height: 200px;
-    width: stretch;
-    margin: 10px;
-    border-radius: 20px;
-    text-align: left;
-}
-
 .homeFeedProfilePicture{
     height: 30px;
     width: 30px;
@@ -290,6 +287,33 @@
   border-radius: 50%;
 }
 @media (min-width:451px){
+  .add_friend{
+    margin-top: 20px;
+    background-color: rgb(21, 79, 41);
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+    justify-content: center;
+  }
+  .add_friend:hover{
+    background-color: #7eea7e;
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+  }
+  .button_group{
+    display:inline-block;
+    vertical-align: middle;
+  }
+
     .friendname{
         font-size: 20px;
         display:inline-block; 
@@ -470,6 +494,8 @@ border-radius: 50%;
     cursor: pointer;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     vertical-align: middle;
+    margin-right:15px;
+
   }
 
   .Message{
@@ -487,6 +513,11 @@ border-radius: 50%;
     cursor: pointer;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     vertical-align: middle;
+  }
+
+  .Message:hover {
+    background-color: rgb(85, 186, 186);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
   }
   
   .Block:hover {
@@ -577,10 +608,30 @@ border-radius: 50%;
   }
 }
   @media (max-width:450px){
+    .add_friend{
+      margin-top: 20px;
+      background-color: rgb(21, 79, 41);
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 12px;
+      margin: 4px 2px;
+      border-radius: 50px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      vertical-align: middle;
+    }
+    
+    .button_group{
+      display: inline-block;
+      vertical-align: middle; 
+    }
     .friendname{
-        font-size: 20px;
-        display:inline-block; 
-        vertical-align: middle; 
+        font-size: 20px;     
         margin-right: 10px;
     }
     .friendpicture{
@@ -702,7 +753,22 @@ border-radius: 50%;
     background-color: #4f574f;
     box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
   }
-
+  .Message{
+    background-color: rgb(6, 97, 97);
+    border: none;
+    color: white;
+    padding: 10px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+  }
   .Block {
     background-color: red;
     border: none;
@@ -718,6 +784,7 @@ border-radius: 50%;
     cursor: pointer;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     vertical-align: middle;
+    margin-right:15px;
   }
   
   .Block:hover {

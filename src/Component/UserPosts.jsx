@@ -56,7 +56,6 @@ const UserPosts = (props) => {
         <div className="userPostFeed">
             <br/>
           {posts.map((post) => {
-            console.log("usernameperpost",username);
             if (post.attributes.mediaType === "image" && post.author.attributes.username === username) {
               return (
                 <EditImagePost

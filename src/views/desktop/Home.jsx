@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import NavbarOwn from "../../Component/NavbarOwn.jsx";
 import { FaUserCircle } from "react-icons/fa";
+import CommentModal from "../../Component/CommentModal.jsx";
 
 const Home = () => {
   const [posts, getPosts] = useState([]);
@@ -17,7 +18,7 @@ const Home = () => {
   
   useEffect(() => {
     //get the block list
-    fetch(process.env.REACT_APP_API_PATH+`/post-reactions?reactorID=${sessionStorage.getItem("user")}`, {
+    fetch(process.env.REACT_APP_API_PATH+`/post-reactions?reactorID=${sessionStorage.getItem("user")}&name=block`, {
       method: "GET",
       headers: {
         'Content-Type': 'application/json',
@@ -61,6 +62,7 @@ const Home = () => {
       .then((res) => {
         if (res) {
           getPosts(res[0]);
+          console.log(res[0])
         }
       });
   }, []);
@@ -127,11 +129,10 @@ const Home = () => {
         </div>
         <div id="homeFeed">
           {posts.map((post) => {
-            console.log(post.author);
             if (!blocklist.includes(post.id)){
             if (post.attributes.mediaType === "image") {
               return (
-                <div key={post.attributes.caption} className="homePost">
+                <div key={post.id} className="homePost">
                   <button onClick={() => Block(post.id)} className="blockButton">Block</button>
                   <table style={{ margin: "0", borderCollapse: "collapse" }}>
                     <tr>
@@ -157,12 +158,13 @@ const Home = () => {
                     </tr>
                   </table>
                   <img alt="post" src={post.attributes.mediaUrl} className="homePostImage" />
-                  <p>&nbsp;&nbsp;{post.attributes.caption}</p>
+                  <p>&nbsp;&nbsp;{post.author.attributes.username}: {post.attributes.caption}</p>
+                  <button className="commentButton" onClick={() => navigate(`/mobilecomment?id=${post.id}`)}>Comment</button>
                 </div>
               );
-            } else if (post.attributes && post.attributes.mediaUrl && post.attributes.mediaUrl === "video/mp4") {
+            } else {
               return (
-                <div key={post.attributes.caption} className="homePost container">
+                <div key={post.id} className="homePost">
                   <button onClick={() => Block(post.id)} className="blockButton">Block</button>
                   <table style={{ margin: "0", borderCollapse: "collapse" }}>
                     <tr>
@@ -191,11 +193,16 @@ const Home = () => {
                     <source src={post.attributes.mediaUrl} type="video/mp4" />
                   </video>
                   <p>&nbsp;&nbsp;{post.attributes.caption}</p>
+                  <button className="commentButton" onClick={() => navigate(`/mobilecomment?id=${post.id}`)}>Comment</button>
                 </div>
               );
             }
           }
-          })}
+          
+          }
+          
+          )
+          } 
         </div>
       </div>
     </>

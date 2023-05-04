@@ -56,16 +56,16 @@ const CreatePost = () => {
               }}
             />
           </div>
-          <br />
+         
           <textarea
             className="input-box-white"
             placeholder="Caption"
-            style={{ borderRadius: "1%", height: "300px", width: "90%" }}
+            style={{ borderRadius: "1%", height: "200px", width: "90%" }}
             onChange={(e) => {
               setCaption(e.target.value);
             }}
           />
-          <br />
+          
           <button
             className="submit-button"
             onClick={() => {
@@ -107,6 +107,7 @@ const CreatePost = () => {
                         caption: caption,
                         mediaUrl: postMediaUrl,
                         mediaType: mediaType,
+                        comment:[],
                       },
                     }),
                   })
@@ -114,7 +115,7 @@ const CreatePost = () => {
                     .then(
                       (result) => {
                         console.log("Post was successful");
-                        navigate("/user_posts");
+                        navigate("/home");
                       },
                       (error) => {
                         console.log(`error!: ${error}`);
