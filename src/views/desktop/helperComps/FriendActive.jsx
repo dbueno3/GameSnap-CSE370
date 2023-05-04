@@ -17,10 +17,7 @@ const FriendActive = (props) => {
               alt="profile"
               style={{ margin: "20px", cursor: "pointer", verticalAlign: "middle" }}
             />
-          </h6>
-        </td>
-        <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "20px" }}>
-          <p
+            <p
             className="friendname"
             onClick={() => {
               navigate(`/search/${props.userId}`);
@@ -28,7 +25,12 @@ const FriendActive = (props) => {
           >
             {props.username}
           </p>
+          </h6>
 
+        </td>
+        <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "20px" }}>
+          
+          <div className="button_group"></div>
           <button className="cancel" onClick={() => setunfriendIsOpen(true)}>
             Unfriend
           </button>

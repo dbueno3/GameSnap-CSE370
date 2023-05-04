@@ -56,16 +56,16 @@ const CreatePost = () => {
               }}
             />
           </div>
-          <br />
+         
           <textarea
             className="input-box-white"
             placeholder="Caption"
-            style={{ borderRadius: "1%", height: "300px", width: "90%" }}
+            style={{ borderRadius: "1%", height: "200px", width: "90%" }}
             onChange={(e) => {
               setCaption(e.target.value);
             }}
           />
-          <br />
+          
           <button
             className="submit-button"
             onClick={() => {

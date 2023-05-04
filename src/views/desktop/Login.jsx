@@ -4,14 +4,42 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import logo_mini from "../../assets/logo_mini.png";
+import Alert from "../../Component/Alert.jsx";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let navigate = useNavigate();
+  
+  const [showAlert, setShowAlert] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleOkButtonAction = () => {
+    console.log("OK button clicked!");
+    // Perform any desired action here
+    setShowAlert(false);
+  };
+
+  // const handleCancelButtonAction = () => {
+  //   console.log("Cancel button clicked!");
+  //   // Perform any desired action here
+  //   setShowAlert(false);
+  // };
+
 
   return (
     <div id="loginMainContainer" className="container">
+      <Alert
+        showAlert={showAlert}
+        message={errorMessage}
+        alertType="error"
+        okButtonAction={handleOkButtonAction}
+      />
+
       <div id="loginMain" class="container" style={{ display: "inline" }}>
         <div style={{ textAlign: "center" }}>
           <div class="container landingLogo" style={{ display: "inline-block" }}>
@@ -65,8 +93,13 @@ const Login = () => {
                 password: password,
               }),
             })
-              .then((res) => res.json())
-              .then(
+              .then((res) =>{
+                if(res.ok){
+                  return res.json();
+                } else  {
+                  throw new Error("Login failed");
+                }
+              }).then(
                 (result) => {
                   if (result.userID) {
                     // set the auth token and user ID in the session state
@@ -81,9 +114,10 @@ const Login = () => {
                     sessionStorage.removeItem("user");
                     sessionStorage.removeItem("email");
                   }
-                },
-                (error) => {
-                  alert(error);
+                }).catch((error) => {
+                  console.log(error);
+                  setErrorMessage(error.message);
+                  handleShowAlert();
                 }
               );
           }}
