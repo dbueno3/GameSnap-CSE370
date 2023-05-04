@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 import logo_mini from "../../assets/logo_mini.png";
 
+import Alert from "../../Component/Alert.jsx";
+
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,9 +18,21 @@ const SignUp = () => {
   const [capital, setCapital] = useState(false);
   const [specialChar, setSpecialChar] = useState(false);
 
+  const [showAlert, setShowAlert] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleOkButtonAction = () => {
+    setShowAlert(false);
+  };
+
   let navigate = useNavigate();
   return (
     <div id="signUpContainer" className="container">
+      <Alert showAlert={showAlert} message={errorMessage} alertType="error" okButtonAction={handleOkButtonAction} />
       <div id="signupMain" class="container">
         <div style={{ textAlign: "center" }}>
           <div class="container landingLogo" style={{ display: "inline-block" }}>
@@ -138,17 +152,23 @@ const SignUp = () => {
           onClick={() => {
             //NEED TO FIX ALERTS
             if (email === "" || !email.includes("@")) {
-              alert("Please input a valid email");
+              handleShowAlert();
+              setErrorMessage("Please input a valid email");
             } else if (password !== confirmPassword) {
-              alert("password don't match");
+              handleShowAlert();
+              setErrorMessage("password don't match");
             } else if (passLen < 8) {
-              alert("Password is too short");
+              handleShowAlert();
+              setErrorMessage("Password is too short");
             } else if (!checkNum) {
-              alert("Password does not contain a number");
+              handleShowAlert();
+              setErrorMessage("Password does not contain a number");
             } else if (!capital) {
-              alert("Password does not contain a capital letter");
+              handleShowAlert();
+              setErrorMessage("Password does not contain a capital letter");
             } else if (!specialChar) {
-              alert("Password does not contain a special character");
+              handleShowAlert();
+              setErrorMessage("Password does not contain a special character");
             } else {
               fetch(process.env.REACT_APP_API_PATH + "/auth/signup", {
                 method: "post",
