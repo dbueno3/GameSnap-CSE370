@@ -372,6 +372,16 @@ class Profile_mobile extends React.Component {
         <button
               className="submit-button"
               onClick={() => {
+                sessionStorage.removeItem("token");
+                sessionStorage.removeItem("user");
+                this.props.navigate("/")
+              }}
+        >
+          Logout
+        </button>
+        <button
+              className="submit-button"
+              onClick={() => {
             fetch(process.env.REACT_APP_API_PATH + `/auth/request-reset`, {
               method: "POST",
               headers: {
