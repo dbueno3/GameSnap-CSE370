@@ -18,18 +18,16 @@ const FriendActive = (props) => {
               style={{ margin: "20px", cursor: "pointer", verticalAlign: "middle" }}
             />
             <p
-            className="friendname"
-            onClick={() => {
-              navigate(`/search/${props.userId}`);
-            }}
-          >
-            {props.username}
-          </p>
+              className="friendname"
+              onClick={() => {
+                navigate(`/search/${props.userId}`);
+              }}
+            >
+              {props.username}
+            </p>
           </h6>
-
         </td>
         <td style={{ textAlign: "center", verticalAlign: "middle", height: "5px", paddingRight: "20px" }}>
-          
           <div className="button_group"></div>
           <button className="cancel" onClick={() => setunfriendIsOpen(true)}>
             Unfriend
@@ -60,6 +58,7 @@ const FriendActive = (props) => {
                 .then((response) => {
                   if (response.status === 201) {
                     console.log("Connection created");
+                    navigate(`/chat`);
                   } else {
                     console.log("Error:", response.status);
                   }

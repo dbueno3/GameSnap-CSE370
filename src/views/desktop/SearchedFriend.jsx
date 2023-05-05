@@ -68,7 +68,7 @@ const SearchedFriend = () => {
           if (res[0][0].attributes.requestStatus === "blocked") {
             setBlock(true);
           } else {
-            setRequestStatus("pendingRequest");
+            setRequestStatus(res[0][0].attributes.requestStatus);
           }
         }
       });
@@ -125,6 +125,12 @@ const SearchedFriend = () => {
         >
           Friend Request Pending
         </h6>
+        <h6
+          id="activeText"
+          style={requestStatus === "active" ? { display: "inline-block", color: "teal" } : { display: "none" }}
+        >
+          You are friends!
+        </h6>
         <h6 style={block ? { display: "inline-block", color: "teal" } : { display: "none" }}>
           This profile can't be accessed
         </h6>
@@ -134,7 +140,7 @@ const SearchedFriend = () => {
           <br />
           <div>
             <h4 className="nobottom-margin left-text">Posts</h4>
-            {requestStatus != "active" && privateProfile ? <OtherUserPosts user={userId} /> : ""}
+            <OtherUserPosts user={userId} />
           </div>
         </div>
       </RenderProfile>

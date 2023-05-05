@@ -53,12 +53,19 @@ const Messages = () => {
       <NavbarOwn />
       <div className="MessagesPage">
         <u>
-        <h3>Message Threads</h3>
+          <h3>Message Threads</h3>
         </u>
-        <table style={{ marginTop: "50px", borderCollapse: "collapse" , textAlign:"center", width:"100vw", height:"100vh"}}>
+        <table
+          style={{
+            marginTop: "50px",
+            borderCollapse: "collapse",
+            textAlign: "center",
+            width: "100vw",
+            height: "100vh",
+          }}
+        >
           <tr>
             {conns.map((conn) => {
-              console.log(conns);
               return (
                 <div>
                   <td
@@ -87,6 +94,35 @@ const Messages = () => {
                         style={{ margin: "20px", cursor: "pointer", verticalAlign: "middle" }}
                       />
                     </h6>
+                  </td>
+                  <td>
+                    <button
+                      className="Block"
+                      style={{ margin: "20px", cursor: "pointer", verticalAlign: "middle", backgroundColor: "red" }}
+                      onClick={() => {
+                        fetch(process.env.REACT_APP_API_PATH + `/connections/${conn.id}`, {
+                          method: "DELETE",
+                          headers: {
+                            "Content-Type": "application/json",
+                            Authorization: "Bearer " + sessionStorage.getItem("token"),
+                          },
+                        })
+                          .then((response) => {
+                            if (response.status === 204) {
+                              setTimeout(() => {
+                                window.location.reload();
+                              }, 500);
+                            } else {
+                              console.log("Error:", response.status);
+                            }
+                          })
+                          .catch((error) => {
+                            console.error("Error:", error);
+                          });
+                      }}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </div>
               );

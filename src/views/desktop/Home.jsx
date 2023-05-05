@@ -51,6 +51,11 @@ const Home = () => {
       });
   };
 
+  const handlecancel = () =>{
+    setShowAlert(false);
+
+  }
+
   useEffect(() => {
     //get the block list
     fetch(process.env.REACT_APP_API_PATH + `/post-reactions?reactorID=${sessionStorage.getItem("user")}&name=block`, {
@@ -171,6 +176,7 @@ const Home = () => {
         message={errorMessage}
         alertType="error"
         okButtonAction={HandleConfirmBlock}
+        cancelButtonAction={handlecancel}
       />
         <div id="homeFeed">
           {posts.map((post) => {

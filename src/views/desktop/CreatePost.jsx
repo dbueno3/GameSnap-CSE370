@@ -9,14 +9,29 @@ import { useNavigate } from "react-router-dom";
 
 import NavbarOwn from "../../Component/NavbarOwn.jsx";
 
+import Alert from "../../Component/Alert.jsx";
+
 const CreatePost = () => {
   let navigate = useNavigate();
   const [caption, setCaption] = useState("");
   const [mediaType, setMediaType] = useState("");
   // eslint-disable-next-line
   const [formData, addToFormData] = useState(new FormData());
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleOkButtonAction = () => {
+    setShowAlert(false);
+  };
+
   return (
     <>
+      <Alert showAlert={showAlert} message={errorMessage} alertType="error" okButtonAction={handleOkButtonAction} />
       <NavbarOwn />
       <div id="createPostMain">
         <div id="createPostHolder">
@@ -30,33 +45,44 @@ const CreatePost = () => {
             <input
               type="file"
               id="postImageUpload"
+              accept="image/png, image/jpeg, image/jpg, video/mp4, image/gif"
               onChange={() => {
                 let media = document.getElementById("postImageUpload").files[0];
                 formData.append("uploaderID", sessionStorage.getItem("user"));
-                // formData.append("attributes", JSON.stringify({}));
+                console.log(media.type);
                 formData.append("file", media);
                 const input = document.getElementById("postImageUpload");
                 if (input.files && input.files[0]) {
                   const reader = new FileReader();
                   reader.onload = function (e) {
                     const file = input.files[0];
-                    const mediaElement = file.type.startsWith("image/")
-                      ? document.getElementById("NewPostImage")
-                      : document.getElementById("newVideoPreview");
-                    mediaElement.src = e.target.result;
-                    mediaElement.style.display = "inline";
                     if (file.type.startsWith("image/")) {
                       setMediaType("image");
-                    } else {
+                      const mediaElement = file.type.startsWith("image/")
+                        ? document.getElementById("NewPostImage")
+                        : document.getElementById("newVideoPreview");
+                      mediaElement.src = e.target.result;
+                      mediaElement.style.display = "inline";
+                    } else if (file.type.startsWith("video/")) {
                       setMediaType("video");
+                      const mediaElement = file.type.startsWith("image/")
+                        ? document.getElementById("NewPostImage")
+                        : document.getElementById("newVideoPreview");
+                      mediaElement.src = e.target.result;
+                      mediaElement.style.display = "inline";
+                    } else {
+                      handleShowAlert();
+                      setErrorMessage("unsupported media type");
                     }
                   };
                   reader.readAsDataURL(input.files[0]);
                 }
               }}
             />
+            <br />
+            <p style={{ fontSize: "10px", color: "grey" }}>accepted formats: /png, /jpg, /jpeg, /mp4, /gif</p>
           </div>
-         
+
           <textarea
             className="input-box-white"
             placeholder="Caption"
@@ -65,7 +91,7 @@ const CreatePost = () => {
               setCaption(e.target.value);
             }}
           />
-          
+
           <button
             className="submit-button"
             onClick={() => {
@@ -107,7 +133,7 @@ const CreatePost = () => {
                         caption: caption,
                         mediaUrl: postMediaUrl,
                         mediaType: mediaType,
-                        comment:[],
+                        comment: [],
                       },
                     }),
                   })
