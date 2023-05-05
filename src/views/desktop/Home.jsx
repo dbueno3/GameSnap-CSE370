@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import NavbarOwn from "../../Component/NavbarOwn.jsx";
 import { FaUserCircle } from "react-icons/fa";
 import CommentModal from "../../Component/CommentModal.jsx";
+import Alert from "../../Component/Alert.jsx";
 
 const Home = () => {
   const [posts, getPosts] = useState([]);
@@ -15,6 +16,40 @@ const Home = () => {
   const [searchresult, setSearchResult] = useState([]);
 
   let navigate = useNavigate();
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("Are you sure you want to block this post?");
+  const [postIdToBlock, setPostIdToBlock] = useState("");
+
+  const handleShowAlert = (postId) => {
+    setPostIdToBlock(postId);
+    setShowAlert(true);
+  };
+
+  const HandleConfirmBlock = () => {
+    console.log("OK button clicked!");
+    // Perform any desired action here
+    setShowAlert(false);
+    fetch(process.env.REACT_APP_API_PATH + "/post-reactions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        reactorID: sessionStorage.getItem("user"),
+        postID: postIdToBlock,
+        name: "block",
+      }),
+    })
+      .then((result) => {
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("error!" + error);
+      });
+  };
 
   useEffect(() => {
     //get the block list
@@ -102,6 +137,7 @@ const Home = () => {
   return (
     <>
       <NavbarOwn />
+      
       <div id="homeFeedMain" className="container">
         <div class="container">
           <input
@@ -129,13 +165,20 @@ const Home = () => {
             search by content
           </button>
         </div>
+
+        <Alert
+        showAlert={showAlert}
+        message={errorMessage}
+        alertType="error"
+        okButtonAction={HandleConfirmBlock}
+      />
         <div id="homeFeed">
           {posts.map((post) => {
             if (!blocklist.includes(post.id)) {
               if (post.attributes.mediaType === "image") {
                 return (
                   <div key={post.id} className="homePost">
-                    <button onClick={() => Block(post.id)} className="blockButton">
+                    <button onClick={() => handleShowAlert(post.id)} className="blockButton">
                       Block
                     </button>
                     <table style={{ margin: "0", borderCollapse: "collapse" }}>
@@ -179,7 +222,7 @@ const Home = () => {
               } else {
                 return (
                   <div key={post.id} className="homePost">
-                    <button onClick={() => Block(post.id)} className="blockButton">
+                    <button onClick={() => handleShowAlert(post.id)} className="blockButton">
                       Block
                     </button>
                     <table style={{ margin: "0", borderCollapse: "collapse" }}>

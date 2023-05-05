@@ -46,7 +46,7 @@ const Confirm = ({open, children, onClose, postid}) =>{
             console.error(error);
           })
     }
-    
+
 
     if (!open) return null
     return (

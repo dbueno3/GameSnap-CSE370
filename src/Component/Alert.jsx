@@ -1,6 +1,7 @@
 import React from "react";
 
 const Alert = ({ showAlert, message, alertType,
+    cancelButtonAction,
      okButtonAction }) => {
   
 if (!showAlert) {
@@ -13,18 +14,18 @@ if (!showAlert) {
     }
   };
 
-//   const handleCancelButtonClick = () => {
-//     if (cancelButtonAction) {
-//       cancelButtonAction();
-//     }
-//   };
+  const handleCancelButtonClick = () => {
+    if (cancelButtonAction) {
+      cancelButtonAction();
+    }
+  };
 
   return (
     <div className={`alert alert-${alertType}`}>
       <h4>{message}</h4>
       <div>
         {okButtonAction && <button className="small-button-green" onClick={handleOkButtonClick}>OK</button>}
-        {/* {cancelButtonAction && <button className="blockButton" onClick={handleCancelButtonClick}>CCancel</button>} */}
+        {cancelButtonAction && <button className="block_small" onClick={handleCancelButtonClick}>Cancel</button>}
       </div>
     </div>
   );
