@@ -2,6 +2,8 @@ import React from "react";
 import avatar from "../../assets/group.png";
 import userPic from "../../assets/user.png";
 import { FaUserCircle } from "react-icons/fa";
+import NavbarOwn from "../../Component/NavbarOwn.jsx";
+import Alert from "../../Component/Alert.jsx";
 
 import rainbowSeigeImage from "../../assets/rainbowseige.jpeg";
 import fortniteImage from "../../assets/fortnite.jpg";
@@ -18,6 +20,7 @@ function withNavigate(WrappedComponent) {
     return <WrappedComponent {...props} navigate={navigate} />;
   };
 }
+
 
 class Profile_mobile extends React.Component {
   // The constructor will hold the default values for the state.  This is also where any props that are passed
@@ -38,10 +41,13 @@ class Profile_mobile extends React.Component {
       youtube: "",
       private: false,
       games: [],
+      showAlert: false,
       // NOTE : if you wanted to add another user attribute to the profile, you would add a corresponding state element here
     };
     this.fieldChangeHandler.bind(this);
+    
   }
+  
 
   // This is the function that will get called every time we change one of the fields tied to the user data source.
   // it keeps the state current so that when we submit the form, we can pull the value to update from the state.  Note that
@@ -53,6 +59,40 @@ class Profile_mobile extends React.Component {
       [field]: value,
     });
   }
+  handleShowAlert = () => {
+    window.scrollTo(0, 0);
+    this.setState({ showAlert: true });
+  };
+  
+
+  handleConfirmDelete = () => {
+    this.setState({ showAlert: false });
+    fetch(
+      process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}?relatedObjectsAction=delete`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
+        },
+      }
+    )
+      .then((response) => {
+        console.log(response);
+        if (response.status === 204) {
+          sessionStorage.removeItem("token");
+          sessionStorage.removeItem("user");
+          sessionStorage.removeItem("email");
+          this.props.navigate("/");
+        } else {
+          alert("Error:", response.status);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    this.props.navigate("/");
+  };
+  
 
   handleCheckboxChange = (event) => {
     const { value, checked } = event.target;
@@ -175,8 +215,19 @@ class Profile_mobile extends React.Component {
       { id: 4, text: "Modern Warfare", image: modernWarfareImage },
       // Add more checkbox options as needed
     ];
+
+    
     return (
+      <div style={{paddingBottom:200}}>
+      <NavbarOwn />
       <div className="container">
+      <Alert
+        showAlert={this.state.showAlert}
+        message="Are you sure you want to delete your account?"
+        alertType="error"
+        okButtonAction={this.handleConfirmDelete}
+        cancelButtonAction={() => this.setState({ showAlert: false })}
+      />
         <form onSubmit={this.submitHandler}>
           <input
             type="file"
@@ -409,40 +460,11 @@ class Profile_mobile extends React.Component {
         <button
           className="submit-button red"
           value="Delete Account"
-          onClick={() => {
-            const confirmDelete = window.confirm("Are you sure you want to delete your account?");
-            console.log(confirmDelete);
-            if (confirmDelete) {
-              fetch(
-                process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}?relatedObjectsAction=delete`,
-                {
-                  method: "DELETE",
-                  headers: {
-                    Authorization: "Bearer " + sessionStorage.getItem("token"),
-                  },
-                }
-              )
-                .then((response) => {
-                  console.log(response);
-                  if (response.status === 204) {
-                    sessionStorage.removeItem("token");
-                    sessionStorage.removeItem("user");
-                    sessionStorage.removeItem("email");
-                    this.props.navigate("/");
-                  } else {
-                    alert("Error:", response.status);
-                  }
-                })
-                .catch((error) => {
-                  alert("An error occurred while deleting your account. Please try again later.");
-                });
-            } else {
-              this.props.navigate("/edit_profile_mobile");
-            }
-          }}
+          onClick={this.handleShowAlert}
         >
           Delete Account
         </button>
+      </div>
       </div>
     );
   }
