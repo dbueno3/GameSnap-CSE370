@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import NavbarOwn from "../../Component/NavbarOwn";
-import "../styles/chat.css"
+import "../styles/chat.css";
 
 const Chat = () => {
   const params = useParams();
@@ -13,8 +13,6 @@ const Chat = () => {
   const [connInfo, setConnInfo] = useState({});
   const [messages, setMessages] = useState([]);
   const [userProfile, setUserProfile] = useState(null);
-
-
 
   //Get the connection
   useEffect(() => {
@@ -30,7 +28,7 @@ const Chat = () => {
       .then((result) => {
         setUser(result.attributes.username);
       });
-    // get the current user profile 
+    // get the current user profile
     fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
       method: "GET",
       headers: {
@@ -40,8 +38,8 @@ const Chat = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        setUserProfile(result.attributes.profilePicture)
-        console.log(result)
+        setUserProfile(result.attributes.profilePicture);
+        console.log(result);
       });
 
     let pollInterval = null;
@@ -125,49 +123,45 @@ const Chat = () => {
                       <img src={connInfo.toUser.attributes.profilePicture} alt={`${connInfo.toUser.attributes.username}'s Profile`} />
                     </div>
                   )} */}
-                      {msg.from !== user && connInfo.fromUser && connInfo.fromUser.attributes.profilePicture && (
+                  {/* {msg.from !== user && connInfo.fromUser && connInfo.fromUser.attributes.profilePicture && (
                     <div className="userProfile">
                       <img src={connInfo.fromUser.attributes.profilePicture} alt={`${connInfo.fromUser.attributes.username}'s Profile`} />
                     </div>
-                  )}
+                  )} */}
                   <div className="messageContent">
                     <p>
                       {msg.from}: {msg.message}
                     </p>
                   </div>
 
-                  {msg.from === user && userProfile && (
+                  {/* {msg.from === user && userProfile && (
                     <div className="userProfile">
                       <img src={userProfile} alt="User Profile" />
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
             ))}
-
         </div>
         <div>
-        <div className="chatInputContainer">
-          <input
-            className="saySomethingContainer"
-            type="text"
-            placeholder="Say something nice"
-            value={chatInput}
-            onChange={(e) => {
-              setChatInput(e.target.value);
-            }}
+          <div className="chatInputContainer">
+            <input
+              className="saySomethingContainer"
+              type="text"
+              placeholder="Say something nice"
+              value={chatInput}
+              onChange={(e) => {
+                setChatInput(e.target.value);
+              }}
             />
           </div>
-        <div className="sendButtonContainer" onClick={handleMessageSend}>
-          Send
+          <div className="sendButtonContainer" onClick={handleMessageSend}>
+            Send
+          </div>
         </div>
-      </div>
       </div>
     </>
   );
-
-
-
 };
 
 export default Chat;
