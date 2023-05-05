@@ -253,7 +253,58 @@ pre > code {
   padding: 1rem;
   word-wrap: normal;
 }
-
+.block_small {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+    margin-right: 15px;
+    width: auto;
+}
+.submit_small {
+    background-color: var(--color-honolulu-blue);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: auto;
+}
+.add_friend{
+    margin-top: 20px;
+    background-color: rgb(21, 79, 41);
+    border: none;
+    color: white;
+    padding: 8px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    width: auto;
+    margin: 4px 2px;
+    border-radius: 50px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+    justify-content: center;
+  }
+  .add_friend:hover{
+    background-color: #7eea7e;
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+  }
 </style>
 </head>
 <body>
@@ -375,6 +426,10 @@ pre > code {
             <h2>Button Example</h2>
             <input type="password" id="confirm-password" name="confirm-password" required>
             <input type="submit" value="Sign Up">
+            <h3>Small Buttons</h3>
+            <input type="button" value="Add Friend" class="add_friend"/>
+            <input type="button" value="Submit" class="submit_small"/>
+            <input type="button" value="Block" class="block_small"/>
           </form>
             <pre><code>
                 &lt;form&gt;
@@ -386,6 +441,9 @@ pre > code {
                 &lt;input type="password" id="confirm-password" name="confirm-password" required&gt;
                 &lt;input type="submit" value="Sign Up"&gt;
                 &lt;/form&gt;
+                &lt;input type="button" value="Add Friend" class="add_friend"/&gt;
+                &lt;input type="button" value="Submit" class="submit_small"/&gt;
+                &lt;input type="button" value="Block" class="block_small"/&gt;
                 </code></pre>
           <br>
           <h2>Methods for inline help Tooltips</h2>
