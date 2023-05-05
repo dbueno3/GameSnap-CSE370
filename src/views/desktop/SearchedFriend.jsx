@@ -140,7 +140,7 @@ const SearchedFriend = () => {
           <br />
           <div>
             <h4 className="nobottom-margin left-text">Posts</h4>
-            {requestStatus != "active" && privateProfile ? <OtherUserPosts user={userId} /> : ""}
+            <OtherUserPosts user={userId} />
           </div>
         </div>
       </RenderProfile>
