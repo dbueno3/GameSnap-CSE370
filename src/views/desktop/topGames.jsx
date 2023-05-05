@@ -59,23 +59,13 @@ const TopGames = () => {
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
         {checkboxOptions.map((option)=>{
           if(option.text === map[1][0]){
-            return(<div style={{ 
+            return( 
+              <div className='box_a' style={{ 
               display: 'flex', 
               flexDirection: 'column', 
               alignItems: 'center', 
               marginRight: '10px' }}>
-            
-              <div style={{ 
-                height: '130px', 
-                width: '130px', 
-                marginTop: 'auto', 
-                marginBottom: 'auto',
-                backgroundImage: `url(${option.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-              }}>
-              </div>
-  
+                
               <div style={{ 
                 textAlign: 'center', 
                 marginTop: 'auto', 
@@ -83,6 +73,13 @@ const TopGames = () => {
                 <p style={{ margin: 0 }}>{map[1][0]}</p>
                 
               </div>
+            
+              <div className="secondTopGame" style={{ 
+                backgroundImage: `url(${option.image})`,
+              }}>
+              </div>
+  
+              
               <div 
                   style={{ 
                   textAlign: 'center', 
@@ -91,7 +88,8 @@ const TopGames = () => {
                   <p style={{ margin: 0 }}>{map[1][1]} users like</p>
                 </div>
   
-            </div>)
+            </div>
+            )
                 
           }
         })}   
@@ -99,22 +97,13 @@ const TopGames = () => {
         {checkboxOptions.map((option)=>{
           if(option.text === map[0][0]){
             return (
-            <div style={{ 
+            <div className='box_b' style={{ 
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
             height: '100%'
           }}>
-            <div className="firstTopGame" style={{ 
-              height: '225px', 
-              width: '225px', 
-              marginRight: 'auto', 
-              backgroundImage: `url(${option.image}`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}>
-            </div>
             <div style={{ 
               display: 'flex',
               justifyContent: 'flex-end',
@@ -123,6 +112,11 @@ const TopGames = () => {
               alignItems: 'center' }}>
               <p style={{ margin: 0 }}>{map[0][0]}</p>
             </div>
+            <div className="firstTopGame" style={{ 
+              backgroundImage: `url(${option.image}`,
+            }}>
+            </div>
+            
             <div 
                   style={{ 
                   textAlign: 'center', 
@@ -130,43 +124,40 @@ const TopGames = () => {
                   alignItems: 'center' }}>
                   <p style={{ margin: 0 }}>{map[0][1]} users like</p>
                 </div>
-          </div>
+            </div>            
             )
           }
         })}        
           {checkboxOptions.map((option)=>{
             if(option.text === map[2][0]){
-              return(<div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                marginLeft: '10px',
-
-              }}>
-                <div style={{ 
-                  height: '75px', 
-                  width: '75px', 
-                  marginTop: 'auto', 
-                  marginBottom: 'auto',
-                  backgroundImage: `url(${option.image}`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
+              return(
+                <div className='box_c' style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  marginLeft: '10px',
+  
                 }}>
+                  <div style={{ 
+                    textAlign: 'center', 
+                    marginTop: '10px', 
+                    alignItems: 'center' }}>
+                    <p style={{ margin: 0 }}>{map[2][0]}</p>
+                  </div>
+                  <div className="thirdTopGame" style={{ 
+                    backgroundImage: `url(${option.image}`,
+                  }}>
+                  </div>
+                  
+                  <div 
+                    style={{ 
+                    textAlign: 'center', 
+                    marginTop: '2px', 
+                    alignItems: 'center' }}>
+                    <p style={{ margin: 0 }}>{map[2][1]} users like</p>
+                  </div>
                 </div>
-                <div style={{ 
-                  textAlign: 'center', 
-                  marginTop: '10px', 
-                  alignItems: 'center' }}>
-                  <p style={{ margin: 0 }}>{map[2][0]}</p>
-                </div>
-                <div 
-                  style={{ 
-                  textAlign: 'center', 
-                  marginTop: '2px', 
-                  alignItems: 'center' }}>
-                  <p style={{ margin: 0 }}>{map[2][1]} users like</p>
-                </div>
-              </div>)
+              )
             }
           })}
           

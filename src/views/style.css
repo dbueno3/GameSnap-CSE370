@@ -290,6 +290,32 @@
   border-radius: 50%;
 }
 @media (min-width:451px){
+
+  .firstTopGame{
+    height: 400px; 
+    width: 400px; 
+    
+    background-size: cover;
+    background-position: center;
+  }
+  .secondTopGame{
+    height: 300px; 
+    width: 300px; 
+    margin-top: auto; 
+    margin-bottom: auto;
+    margin-right: 10%;
+    background-size: cover;
+    background-position: center;
+  }
+  .thirdTopGame{
+    height: 200px;
+    width: 200px;
+    margin-top: auto; 
+    margin-bottom: auto;
+    margin-left:10%;
+    background-size: cover;
+    background-position: center;
+  }
   .add_friend{
     margin-top: 20px;
     background-color: rgb(21, 79, 41);
@@ -611,6 +637,29 @@ border-radius: 50%;
   }
 }
   @media (max-width:450px){
+    .firstTopGame{
+      height: 225px; 
+      width: 225px; 
+      margin-right: auto; 
+      background-size: cover;
+      background-position: center;
+    }
+    .secondTopGame{
+      height: 130px; 
+      width: 130px; 
+      margin-top: auto; 
+      margin-bottom: auto;
+      background-size: cover;
+      background-position: center;
+    }
+    .thirdTopGame{
+      height: 75px;
+      width: 75px;
+      margin-top: auto; 
+      margin-bottom: auto;
+      background-size: cover;
+      background-position: center;
+    }
     .add_friend{
       margin-top: 20px;
       background-color: rgb(21, 79, 41);
