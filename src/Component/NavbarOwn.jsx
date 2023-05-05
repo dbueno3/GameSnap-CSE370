@@ -10,11 +10,13 @@ import searchIcon from "../assets/search.svg";
 import addIcon from "../assets/add.svg";
 import messageIcon from "../assets/message.svg";
 
+import logoMini from "../assets/logo_mini.png";
+
 const NavbarOwn = () => {
   let navigate = useNavigate();
   const location = useLocation();
   const [proPic, setPropic] = useState("");
-  
+
   useEffect(() => {
     //Get the user
     fetch(process.env.REACT_APP_API_PATH + `/users/${sessionStorage.getItem("user")}`, {
@@ -50,7 +52,7 @@ const NavbarOwn = () => {
             />
           </td> */}
       <Link to="/home" className={`navbar-item ${isActive("/home")}`}>
-        <img className="bottombar__icon" src={homeIcon || "https://via.placeholder.com/20"} alt="Home" />
+        <img className="bottombar__icon" src={logoMini || "https://via.placeholder.com/20"} alt="Home" />
         <span className="navbarText">Home</span>
       </Link>
       <Link to="/explore" className={`navbar-item ${isActive("/explore")}`}>
