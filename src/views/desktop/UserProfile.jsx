@@ -32,6 +32,7 @@ const UserProfile = () => {
         >
           View the top rated games!
         </button>
+        
         {/* {we dont need reset password here ?} */}
         {/* <button
           onClick={() => {
@@ -68,6 +69,7 @@ const UserProfile = () => {
           </div>
         </div>
       </RenderProfile>
+      
     </div>
   );
 };
