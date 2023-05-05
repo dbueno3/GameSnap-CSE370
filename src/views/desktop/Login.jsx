@@ -133,6 +133,51 @@ const Login = () => {
         >
           Sign up
         </button>
+        <div className="credits">
+          <p>Made with 💗 by </p>
+          <p>Team Hooligans</p>
+          <br/>
+          <button
+          className="button"
+          onClick={(e) => {
+            navigate("/about/dev/Shad");
+          }}
+        >
+          Shad
+        </button>
+        <button
+          className="button"
+          onClick={(e) => {
+            navigate("/about/dev/Ze");
+          }}
+        >
+          Ze
+        </button>
+        <button
+          className="button"
+          onClick={(e) => {
+            navigate("/about/dev/Daniel");
+          }}
+        >
+          Daniel
+        </button>
+        <a href="./dheeraj.html">
+          <button className="button">Dheeraj</button>
+        </a>
+        <button
+          className="button"
+          onClick={(e) => {
+            navigate("/about/dev/Eric");
+          }}
+        >
+          Eric
+        </button>
+        <br/>
+        <a href="./styleguide.html">
+        <button className="submit-button-small"
+        >Style Guide</button>
+        </a>
+        </div>
       </div>
     </div>
   );

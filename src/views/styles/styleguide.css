@@ -221,6 +221,23 @@ cursor: pointer;
 margin-top: 20px;
 width: 100%;
 }
+.submit-button-small{
+  background-color: var(--color-honolulu-blue);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: auto;
+  }
+
+  .credits {
+    text-align: center;
+    margin-top: 100px;
+  }
+
 .view_top {
   background-color: var(--color-honolulu-blue);
   color: #fff;
