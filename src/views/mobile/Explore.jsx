@@ -46,6 +46,7 @@ const Explore = () => {
             if (
               post.attributes.caption &&
               topicsSplit.some((topic) => post.attributes.caption.toLowerCase().includes(topic.toLowerCase()))
+              && post.author.attributes.private === false
             ) {
               return post;
             }
@@ -64,7 +65,7 @@ const Explore = () => {
         <h5 className="center-text">Find posts which match your interests</h5>
         <div id="homeFeed">
           {posts.map((post) => {
-            if (post.attributes.mediaType === "image") {
+            if (post.attributes.mediaType === "image" ){
               return (
                 <div key={post.id} className="homePost">
                   <table style={{ margin: "0", borderCollapse: "collapse" }}>
