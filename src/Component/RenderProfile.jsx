@@ -55,8 +55,8 @@ const RenderProfile = (props) => {
             {privateAccount === true ? "🔒 Private Profile" : "🔓 Public Profile"}
             <span class="tooltip-text">
               {privateAccount === true
-                ? "Your Posts are only shared with your friends"
-                : "Your Posts are visible to people who you are not friends with"}
+                ? "Private profile's post will not be visible in Explore Page"
+                : "Your Posts are visible to people who you are not friends with on Explore Page"}
             </span>
           </div>
           <br />
