@@ -1,0 +1,39 @@
+Sprint 4 Usability Testing
+
+Based on the feedback we received from our tester, there are a few things that we need to improve.
+
+Right now for both the desktop and mobile versions, we need to have a functionality where we can 
+
+suggest friends with people who have similar top games to that user. This new functionality will ease 
+
+a new user experience of making friends on the platform. With new functionality. While all three users
+
+did not have trouble using the app. There were a few issues where messaging will not be responsive. 
+
+However, the backend of the project does not have websockets implemented. There is no possible chance 
+
+that there will be persistent updates, the user just has to wait 5 seconds for receiving a message from another user.
+
+Secondly, while the platform was responsive on multiple devices' screen sizes, there was good feedback
+
+ where there were no issues with having different sizes. The one problem pointed out was that the mobile 
+
+ version of the website's top 3 games needs to be fixed. They said the way we currently have it doesn't 
+
+ have the same appeal that it has in the desktop version. The way we will improve this is that instead of 
+
+ having the games listed vertically, we will change them so they are horizontal and no longer include the pictures.
+
+When trying to test searching for friends on the platform all of the users ran into the same issue.
+
+ Our intention was that if you have a private profile then only your friends should be able to see your post.
+
+  However, we noticed that if you aren't friends with someone who is private and try to search for them, you'll 
+
+  be able to see their posts. This is a complete security issue. We intend on changing this code around as soon 
+
+  as possible making it so that private users are only visible to their friends.
+
+Overall our app seems to be in good standing, we just have some minor issues to take care of. After these 
+
+issues are resolved we should have a complete application.
