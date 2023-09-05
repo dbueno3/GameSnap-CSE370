@@ -3,7 +3,7 @@ name: Frontend CI
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:  # Allow manual triggering of the workflow
 
 jobs:
@@ -30,15 +30,14 @@ jobs:
       if: success()  
       uses: dawidd6/action-send-mail@v3.8.0
       with:
-        files: README.html
-        subject: "Build Successful with Github action test"
+        files: README.html  
+        subject: Build was successful and GitHub actions are properly working :D 
 
       # Define environment variables for SMTP configuration
       env:
+        REPO_TOKEN: ${{ secrets.REPO_TOKEN}}
         TO_EMAIL: ${{ secrets.MAIL_TO }}
         FROM_EMAIL: ${{ secrets.MAIL_FROM }}
-        SMTP_HOST: smtp.gmail.com
-        SMTP_PORT: 465
-        SMTP_USERNAME: ${{ secrets.MAIL_USER_EMAIL }}
-        SMTP_PASSWORD: ${{ secrets.MAIL_USER_PASSWORD }}
+        SMTP_HOST: smtp.hobbes.cse.buffalo.edu
+        SMTP_PORT: 589
         SMTP_SECURE: tls
