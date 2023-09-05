@@ -17,8 +17,8 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: 14
-
+        node-version: 12
+      
     - name: Install dependencies
       run: npm install
 
@@ -31,7 +31,7 @@ jobs:
       uses: dawidd6/action-send-mail@v3.8.0
       with:
         files: README.html  
-        subject: Build was successful and GitHub actions are properly working :D 
+        subject: Build was successful and GitHub actions is properly working :D 
 
       # Define environment variables for SMTP configuration
       env:
