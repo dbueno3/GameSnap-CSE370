@@ -1,38 +1,40 @@
-name: Node.js CI (On Merge to Master)
+name: Frontend CI
 
 on:
   push:
     branches:
-      - 'dev'
-    paths:
-      - 'master'
-env:
-# CSE 370 email 
-MAIL_USER_EMAIL = ${{ secrets.MAIL_USER_EMAIL }}
-# CSE 370 PW?? 
-MAIL_USER_PASSWORD = ${{ secrets.MAIL_USER_PASSWORD }}
-# THE SENDER
-MAIL_FROM = ${{ secrets.MAIL_FROM }}
-#MAIL TO (this is my test to see use before I start using the config file)
-MAIL_TO = ${{ secrets.MAIL_TO }}
-  
-jobs:
-  build:
+      - master
 
+jobs:
+  build: # All in one runner: Runner 1 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [19.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+        node-version: 14  # You can adjust the Node.js version as needed
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test  # Replace with your actual test command
+
+    - name: Send Email Notification on Success
+      if: success()
+      uses: softprops/action-gh-release@v1
+      with:
+        files: README.html  # Attach HTML file
+      env:
+        REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
+        TO_EMAIL: ${{ secrets.MAIL_TO }}
+        FROM_EMAIL: ${{ secrets.MAIL_FROM }}
+        SMTP_HOST: smtp.gmail.com  
+        SMTP_PORT: 465              
+        SMTP_USERNAME: ${{ secrets.MAIL_USER_EMAIL }}
+        SMTP_PASSWORD: ${{ secrets.MAIL_USER_PASSWORD }}
+        SMTP_SECURE: tls  
