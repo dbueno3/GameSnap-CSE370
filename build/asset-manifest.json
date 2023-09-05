@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f330d393.css",
+    "main.js": "/static/js/main.a71db104.js",
+    "static/media/shad.png": "/static/media/shad.55f419f4a65f693fbff6.png",
+    "static/media/zechen.png": "/static/media/zechen.111098ca74d6046adc9f.png",
+    "static/media/daniel.png": "/static/media/daniel.ef1bbd77ccd0f0c4a910.png",
+    "static/media/space.jpg": "/static/media/space.d085c9a57c361fa7a5e0.jpg",
+    "static/media/minecraft.png": "/static/media/minecraft.a29dad02bcd5f9bbd19d.png",
+    "static/media/blank_profile.png": "/static/media/blank_profile.bb51a3639c21ade5e3f1.png",
+    "static/media/git.png": "/static/media/git.00c601f1724a126c1cbd.png",
+    "static/media/group.png": "/static/media/group.bb4bb276377cd19c381e.png",
+    "static/media/ln.png": "/static/media/ln.2f0b5dc4ec88f9336d9f.png",
+    "static/media/fortnite.jpg": "/static/media/fortnite.4687cf99e001f8e28964.jpg",
+    "static/media/modernwarfare.jpg": "/static/media/modernwarfare.d253c73e4ea514b86c8e.jpg",
+    "static/media/thumbsup.png": "/static/media/thumbsup.184b4a3a869ae2aef8c1.png",
+    "static/media/youtube_logo.png": "/static/media/youtube_logo.7b3f794d5fd6cc348f1d.png",
+    "static/media/upload.png": "/static/media/upload.51098d4f6ee1dbc45c12.png",
+    "static/media/user.png": "/static/media/user.557587208eb9e232f2ca.png",
+    "static/media/logo_mini.png": "/static/media/logo_mini.707da9f501092ff1a967.png",
+    "static/media/twitter.png": "/static/media/twitter.4e4adfa6439ea5bbee6f.png",
+    "static/media/rainbowseige.jpeg": "/static/media/rainbowseige.173b6e5326fcdfa19c71.jpeg",
+    "static/media/home.svg": "/static/media/home.5141438137442aa9e45d73ce505f8a48.svg",
+    "static/media/comment.svg": "/static/media/comment.cf77e22bd9f854b2e81fbe4aa46efbb1.svg",
+    "static/media/add.svg": "/static/media/add.af3d1d0c7a275bcb508347196e123006.svg",
+    "index.html": "/index.html",
+    "static/media/gridicon.svg": "/static/media/gridicon.c1374351f0a5c6166d8ed41225ca7367.svg",
+    "static/media/message.svg": "/static/media/message.0307fe622c0f6217ea40674a3232c73c.svg",
+    "static/media/search.svg": "/static/media/search.ed66ec02739635ce4ca5918df3df5cf1.svg",
+    "main.f330d393.css.map": "/static/css/main.f330d393.css.map",
+    "main.a71db104.js.map": "/static/js/main.a71db104.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f330d393.css",
+    "static/js/main.a71db104.js"
+  ]
+}

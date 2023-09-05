@@ -21,8 +21,8 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run App.jsx
-      run: node src/App.jsx
+    - name: Run built files
+      run: node build/main.js
 
     - name: Send email on success
     # Send email only if previous steps were successful
