@@ -21,8 +21,8 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run tests
-      run: npm run src/App.jsx
+    - name: Run App.jsx
+      run: node src/App.jsx
 
     - name: Send email on success
     # Send email only if previous steps were successful
@@ -34,7 +34,7 @@ jobs:
 
       # Define environment variables for SMTP configuration
       env:
-        REPO_TOKEN: ${{ secrets.REPO_TOKEN}}
+        REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
         TO_EMAIL: ${{ secrets.MAIL_TO }}
         FROM_EMAIL: ${{ secrets.MAIL_FROM }}
         SMTP_HOST: smtp.hobbes.cse.buffalo.edu
