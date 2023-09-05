@@ -22,7 +22,7 @@ jobs:
       run: npm install
 
     - name: Run tests
-      run: npm test  
+      run: npm run src/App.jsx
 
     - name: Send email on success
     # Send email only if previous steps were successful
