@@ -1,0 +1,38 @@
+name: Node.js CI (On Merge to Master)
+
+on:
+  push:
+    branches:
+      - 'dev'
+    paths:
+      - 'master'
+env:
+# CSE 370 email 
+MAIL_USER_EMAIL = ${{ secrets.MAIL_USER_EMAIL }}
+# CSE 370 PW?? 
+MAIL_USER_PASSWORD = ${{ secrets.MAIL_USER_PASSWORD }}
+# THE SENDER
+MAIL_FROM = ${{ secrets.MAIL_FROM }}
+#MAIL TO (this is my test to see use before I start using the config file)
+MAIL_TO = ${{ secrets.MAIL_TO }}
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [19.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
