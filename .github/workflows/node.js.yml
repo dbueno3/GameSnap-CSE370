@@ -3,10 +3,11 @@ name: Frontend CI
 on:
   push:
     branches:
-      - master
+      - main
+  workflow_dispatch:  # Allow manual triggering of the workflow
 
 jobs:
-  build: # All in one runner: Runner 1 
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,25 +17,28 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: 14  # You can adjust the Node.js version as needed
+        node-version: 14
 
     - name: Install dependencies
       run: npm install
 
     - name: Run tests
-      run: npm test  # Replace with your actual test command
+      run: npm test  
 
-    - name: Send Email Notification on Success
-      if: success()
-      uses: softprops/action-gh-release@v1
+    - name: Send email on success
+    # Send email only if previous steps were successful
+      if: success()  
+      uses: dawidd6/action-send-mail@v3.8.0
       with:
-        files: README.html  # Attach HTML file
+        files: README.html
+        subject: "Build Successful with Github action test"
+
+      # Define environment variables for SMTP configuration
       env:
-        REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
         TO_EMAIL: ${{ secrets.MAIL_TO }}
         FROM_EMAIL: ${{ secrets.MAIL_FROM }}
-        SMTP_HOST: smtp.gmail.com  
-        SMTP_PORT: 465              
+        SMTP_HOST: smtp.gmail.com
+        SMTP_PORT: 465
         SMTP_USERNAME: ${{ secrets.MAIL_USER_EMAIL }}
         SMTP_PASSWORD: ${{ secrets.MAIL_USER_PASSWORD }}
-        SMTP_SECURE: tls  
+        SMTP_SECURE: tls
