@@ -11,8 +11,7 @@ yarn-error.log*
 # testing
 /coverage
 
-# production
-build
+
 
 # OSX
 .DS_Store
