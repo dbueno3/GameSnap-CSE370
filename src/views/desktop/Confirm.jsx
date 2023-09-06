@@ -27,7 +27,7 @@ const overlay_styles={
     zIndex:1000
 }
 const Confirm = ({open, children, onClose, postid}) =>{  
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     const delete_post = (postid) => {
         fetch(process.env.REACT_APP_API_PATH + "/posts/" + postid, {
             method: "DELETE",

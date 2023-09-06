@@ -1,4 +1,4 @@
-import DeletePost from "../../assets/delete.png";
+//import DeletePost from "../../assets/delete.png";
 import Confirm from "./Confirm";
 import { useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";

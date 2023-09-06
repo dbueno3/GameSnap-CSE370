@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProfileGrid.css';
 import GridIcon from '../../assets/gridicon.svg';
-import { Link, useNavigate } from 'react-router-dom';
+//import { Link, useNavigate } from 'react-router-dom';
 
 const ProfileGrid = ({ posts }) => {
   console.log(posts)

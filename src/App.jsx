@@ -7,11 +7,10 @@
 import React from "react";
 // import "./App.css";
 import PostForm from "./Component/PostForm.jsx";
-import FriendList from "./Component/FriendList.jsx";
+// import FriendList from "./Component/FriendList.jsx";
 import GroupList from "./Component/GroupList.jsx";
 import LoginForm from "./Component/LoginForm.jsx";
 import Profile from "./Component/Profile.jsx";
-import FriendForm from "./Component/FriendForm.jsx";
 import Modal from "./Component/Modal.jsx";
 import Promise from "./Component/Promise.jsx";
 
@@ -38,8 +37,8 @@ import UserPosts from "./views/desktop/UserPosts.jsx";
 import CreatePost from "./views/desktop/CreatePost.jsx";
 import Make_Post from "./views/mobile/MakePost.jsx";
 import Personal from "./views/mobile/Personal.jsx";
-import Profile_mobile from "./views/mobile/ProfileMobile.jsx";
-import Posts_mobile from "./views/mobile/PostsMobile.jsx";
+import Profile_Mobile from "./views/mobile/ProfileMobile.jsx";
+//import Posts_mobile from "./views/mobile/PostsMobile.jsx";
 import CommentPostExampleMobile from "./Component/CommentPostExampleMobile.jsx";
 import SignUpMobile from "./views/mobile/Signupmobile.jsx";
 import LoginMobile from "./views/mobile/LoginMobile.jsx";
@@ -164,7 +163,7 @@ class App extends React.Component {
                 <Route path="/profile" element={<UserProfile />} />
                 <Route path="/otherprofile" element={<OtherUserProfile />} />
                 <Route path="/personal" element={<Personal login={this.login} />} />
-                <Route path="/edit_profile_mobile" element={<Profile_mobile login={this.login} />} />
+                <Route path="/edit_profile_mobile" element={<Profile_Mobile login={this.login} />} />
                 <Route path="/make_post_mobile" element={<Make_Post login={this.login} />} />
                 <Route path="/mobilehome" element={<MobileHome />} />
                 <Route path="/edit_posts" element={<EditPosts login={this.login} />} />
@@ -250,24 +249,25 @@ const Settings = (props) => {
 //   );
 // };
 
-const Groups = (props) => {
-  // if the user is not logged in, show the login form.  Otherwise, show the post form
-  if (!sessionStorage.getItem("token")) {
-    console.log("LOGGED OUT");
-    return (
-      <div>
-        <p>CSE 370 Social Media Test Harness</p>
-        <LoginForm login={props.login} />
-      </div>
-    );
-  }
-  return (
-    <div>
-      <p>Join a Group!</p>
-      <GroupList userid={sessionStorage.getItem("user")} />
-    </div>
-  );
-};
+// const Groups = (props) => {
+//   // if the user is not logged in, show the login form.  Otherwise, show the post form
+//   if (!sessionStorage.getItem("token")) {
+//     console.log("LOGGED OUT");
+//     return (
+//       <div>
+//         <p>CSE 370 Social Media Test Harness</p>
+//         <LoginForm login={props.login} />
+//       </div>
+//     );
+//   }
+//   return (
+//     <div>
+//       <p>Join a Group!</p>
+//       <GroupList userid={sessionStorage.getItem("user")} />
+
+//     </div>
+//   );
+// };
 
 const Posts = (props) => {
   console.log("RENDERING POSTS");

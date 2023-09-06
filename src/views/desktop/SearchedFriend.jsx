@@ -13,7 +13,7 @@ const SearchedFriend = () => {
   const [requestStatus, setRequestStatus] = useState("");
   const [block, setBlock] = useState(false);
 
-  const [privateProfile, setPrivateProfile] = useState("");
+  //const [privateProfile, setPrivateProfile] = useState("");
 
   useEffect(() => {
     fetch(process.env.REACT_APP_API_PATH + `/users/${userId}`, {

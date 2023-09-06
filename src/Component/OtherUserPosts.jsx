@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import EditImagePost from "../views/desktop/EditImagePost.jsx";
-import EditVideoPost from "../views/desktop/EditVideoPost.jsx";
+//
 
 const OtherUserPosts = (props) => {
     const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
+  //  const [email, setEmail] = useState("");
     const [posts, setPosts] = useState([]);
-    const [isOpen, setIsOpen] = useState(false)
+    //const [isOpen, setIsOpen] = useState(false)
 
     useEffect(() => {
         fetch(process.env.REACT_APP_API_PATH + `/users/${props.user}`, {

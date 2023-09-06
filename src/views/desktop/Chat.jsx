@@ -12,7 +12,7 @@ const Chat = () => {
   const [user, setUser] = useState("");
   const [connInfo, setConnInfo] = useState({});
   const [messages, setMessages] = useState([]);
-  const [userProfile, setUserProfile] = useState(null);
+  //const [userProfile, setUserProfile] = useState(null);
 
   //Get the connection
   useEffect(() => {
@@ -72,7 +72,7 @@ const Chat = () => {
     return () => {
       stopPolling();
     };
-  }, []);
+  }, [connId]);
 
   const handleMessageSend = () => {
     fetch(process.env.REACT_APP_API_PATH + `/connections/${connId}`, {

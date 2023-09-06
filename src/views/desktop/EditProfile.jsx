@@ -110,9 +110,9 @@ const EditProfile = () => {
               })
               .then((result) => {
                 const data = JSON.parse(result);
-                if (privateAccount == "Private Account") {
+                if (privateAccount === "Private Account") {
                   setPrivate(true);
-                } else if (privateAccount == "Public Account") {
+                } else if (privateAccount === "Public Account") {
                   setPrivate(false);
                 }
                 //   Create the post here

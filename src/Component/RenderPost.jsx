@@ -28,9 +28,7 @@ const RenderPost = () => {
   }, []);
   return (
     <>
-      {posts.map((post) => {
-        <PostOwn post={post} />;
-      })}
+    //
     </>
   );
 };

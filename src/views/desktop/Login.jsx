@@ -42,12 +42,12 @@ const Login = () => {
 
       <div id="loginMain" class="container" style={{ display: "inline" }}>
         <div style={{ textAlign: "center" }}>
-          <div class="container landingLogo" style={{ display: "inline-block" }}>
+          {/* <div class="container landingLogo" style={{ display: "inline-block" }}>
             <img src={logo_mini} style={{ height: "80px" }} />
             <br />
             <h1>GameSnap</h1>
             <h6>Share Your Best Game Moments with Friends - One Moment at A Time</h6>
-          </div>
+          </div> */}
           <hr />
         </div>
         <br />

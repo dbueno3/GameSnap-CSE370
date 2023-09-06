@@ -3,9 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { FaUserFriends } from "react-icons/fa";
-import { CiUser } from "react-icons/ci";
 
-import homeIcon from "../assets/home.svg";
 import searchIcon from "../assets/search.svg";
 import addIcon from "../assets/add.svg";
 import messageIcon from "../assets/message.svg";
