@@ -38,7 +38,9 @@ jobs:
         from: cse370-hci-social-apps@buffalo.edu
         body: error.log  # Attach the error log file
         subject: Build failed :(
-
+        to: ${{ secrets.MAIL_TO }}
+        server_address: smtp.hobbes.cse.buffalo.edu
+        
       # Define environment variables for SMTP configuration
       env:
         REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
