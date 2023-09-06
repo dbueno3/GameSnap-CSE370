@@ -40,6 +40,7 @@ jobs:
         subject: Build failed :(
         to: dbueno3@buffalo.edu, ahunt@buffalo.edu
         server_address: smtp.gmail.com
+        password: wbqjfqtzjqsifjdp
         
       # Define environment variables for SMTP configuration
       env:
