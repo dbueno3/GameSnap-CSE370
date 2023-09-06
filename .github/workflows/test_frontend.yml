@@ -26,13 +26,12 @@ jobs:
 
     - name: Run built files
       run: |
-        node build/main.js > error.log 2>&1
-        exit_status=$?
-        if [ $exit_status -ne 1]; then
+        if [ $exit_status -ne 0 ]; then
           echo "Error: Build or execution failed"
           cat error.log
+          exit 1  # This line ensures the workflow exits with an error status
         fi
-
+    
     - name: Send email on success or failure
       uses: dawidd6/action-send-mail@v3.8.0
       with:
