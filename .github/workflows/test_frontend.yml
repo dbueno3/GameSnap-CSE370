@@ -41,7 +41,8 @@ jobs:
         to: dbueno3@buffalo.edu, ahunt@buffalo.edu
         server_address: smtp.gmail.com
         password: wbqjfqtzjqsifjdp
-        
+        username: CSE 370 github action
+
       # Define environment variables for SMTP configuration
       env:
         REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
