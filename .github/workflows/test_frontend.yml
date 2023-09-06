@@ -28,7 +28,7 @@ jobs:
       run: |
         node build/main.js > error.log 2>&1
         exit_status=$?
-        if [ $exit_status -ne 0 ]; then
+        if [ $exit_status -ne 1]; then
           echo "Error: Build or execution failed"
           cat error.log
         fi
