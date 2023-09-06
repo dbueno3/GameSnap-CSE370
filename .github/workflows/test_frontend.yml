@@ -35,7 +35,7 @@ jobs:
     - name: Send email on success or failure
       uses: dawidd6/action-send-mail@v3.8.0
       with:
-        files: error.log  # Attach the error log file
+        body: error.log  # Attach the error log file
         subject: Build failed :(
 
       # Define environment variables for SMTP configuration
