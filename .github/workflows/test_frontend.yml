@@ -21,16 +21,23 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run built files
-      run: node build/main.js
+    - name: Build the project
+      run: npm run build  # Assuming this script generates files in the "build" directory
 
-    - name: Send email on success
-    # Send email only if previous steps were successful
-      if: success()  
+    - name: Run built files
+      run: |
+        node build/main.js > error.log 2>&1
+        exit_status=$?
+        if [ $exit_status -ne 0 ]; then
+          echo "Error: Build or execution failed"
+          cat error.log
+        fi
+
+    - name: Send email on success or failure
       uses: dawidd6/action-send-mail@v3.8.0
       with:
-        files: README.html  
-        subject: Build was successful and GitHub actions is properly working :D 
+        files: error.log  # Attach the error log file
+        subject: Build failed :(
 
       # Define environment variables for SMTP configuration
       env:
