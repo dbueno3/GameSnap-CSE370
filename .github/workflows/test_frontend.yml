@@ -35,11 +35,11 @@ jobs:
     - name: Send email on success or failure
       uses: dawidd6/action-send-mail@v3.8.0
       with:
-        from: cse370-hci-social-apps@buffalo.edu
+        from: danielbueno1145@gmail.com
         body: error.log  # Attach the error log file
         subject: Build failed :(
         to: dbueno3@buffalo.edu, ahunt@buffalo.edu
-        server_address: smtp.hobbes.cse.buffalo.edu
+        server_address: smtp.gmail.com
         
       # Define environment variables for SMTP configuration
       env:
@@ -47,5 +47,5 @@ jobs:
         TO_EMAIL: ${{ secrets.MAIL_TO }}
         FROM_EMAIL: ${{ secrets.MAIL_FROM }}
         SMTP_HOST: smtp.hobbes.cse.buffalo.edu
-        SMTP_PORT: 589
+        SMTP_PORT: 465
         SMTP_SECURE: tls
