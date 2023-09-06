@@ -3,7 +3,7 @@ import React, { useState } from "react";
 //Router
 import { useNavigate } from "react-router-dom";
 
-import logo_mini from "../../assets/logo_mini.png";
+// import logo_mini from "../../assets/logo_mini.png";
 import Alert from "../../Component/Alert.jsx";
 
 const Login = () => {

@@ -58,7 +58,7 @@ const Friends = () => {
                       // eslint-disable-next-line
                       setErrorMessage("user not fount");
                       handleShowAlert();
-                    } else if (res[0][0].id == sessionStorage.getItem("user")) {
+                    } else if (res[0][0].id === sessionStorage.getItem("user")) {
                       navigate(`/profile`);
                     } else {
                       navigate(`/search/${res[0][0].id}`);

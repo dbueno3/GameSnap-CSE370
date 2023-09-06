@@ -1,6 +1,4 @@
 import React from 'react'
-import { useNavigate } from "react-router-dom";
-
 const modal_styles = {
   position: "fixed",
   top: "50%",

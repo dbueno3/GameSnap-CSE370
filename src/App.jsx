@@ -8,7 +8,7 @@ import React from "react";
 // import "./App.css";
 import PostForm from "./Component/PostForm.jsx";
 // import FriendList from "./Component/FriendList.jsx";
-import GroupList from "./Component/GroupList.jsx";
+// import GroupList from "./Component/GroupList.jsx";
 import LoginForm from "./Component/LoginForm.jsx";
 import Profile from "./Component/Profile.jsx";
 import Modal from "./Component/Modal.jsx";
@@ -35,9 +35,9 @@ import ResetPasswordLogin from "./views/desktop/ResetPasswordLogin.jsx";
 import Home from "./views/desktop/Home.jsx";
 import UserPosts from "./views/desktop/UserPosts.jsx";
 import CreatePost from "./views/desktop/CreatePost.jsx";
-import Make_Post from "./views/mobile/MakePost.jsx";
+// import Make_Post from "./views/mobile/MakePost.jsx";
 import Personal from "./views/mobile/Personal.jsx";
-import Profile_Mobile from "./views/mobile/ProfileMobile.jsx";
+// import Profile_Mobile from "./views/mobile/ProfileMobile.jsx";
 //import Posts_mobile from "./views/mobile/PostsMobile.jsx";
 import CommentPostExampleMobile from "./Component/CommentPostExampleMobile.jsx";
 import SignUpMobile from "./views/mobile/Signupmobile.jsx";
@@ -163,8 +163,8 @@ class App extends React.Component {
                 <Route path="/profile" element={<UserProfile />} />
                 <Route path="/otherprofile" element={<OtherUserProfile />} />
                 <Route path="/personal" element={<Personal login={this.login} />} />
-                <Route path="/edit_profile_mobile" element={<Profile_Mobile login={this.login} />} />
-                <Route path="/make_post_mobile" element={<Make_Post login={this.login} />} />
+                {/* <Route path="/edit_profile_mobile" element={<Profile_Mobile login={this.login} />} />
+                <Route path="/make_post_mobile" element={<Make_Post login={this.login} />} /> */}
                 <Route path="/mobilehome" element={<MobileHome />} />
                 <Route path="/edit_posts" element={<EditPosts login={this.login} />} />
                 <Route path="/top_games" element={<TopGames />} />
