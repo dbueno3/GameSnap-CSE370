@@ -39,7 +39,7 @@ jobs:
         body: error.log  # Attach the error log file
         subject: Build failed :(
         to: ${{ secrets.MAIL_TO }}
-        server_address: smtp.hobbes.cse.buffalo.edu
+        server_address: hobbes.cse.buffalo.edu
         
       # Define environment variables for SMTP configuration
       env:
